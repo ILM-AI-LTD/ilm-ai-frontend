@@ -2,7 +2,7 @@
 
 # dependencies
 /node_modules
-/.pnp
+/.pnpgit status
 .pnp.*
 .yarn/*
 !.yarn/patches
