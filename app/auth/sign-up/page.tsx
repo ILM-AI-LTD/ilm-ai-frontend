@@ -2,6 +2,7 @@
 
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import SignUpForm from "@/feature/auth/sign-up/SignUpForm";
+import Link from "next/link";
 
 const SignUpPage = () => {
     return (
@@ -9,7 +10,7 @@ const SignUpPage = () => {
             <Card className="w-[498px] rounded-3xl p-5 md:p-10 flex flex-col gap-10">
 
                 <div className="flex justify-center">
-                    <p>Logo</p>
+                    <p className="text-2xl font-medium">Logo</p>
                 </div>
 
                 <CardHeader className='p-0 space-y-0 flex flex-col gap-2'>
@@ -38,7 +39,7 @@ const SignUpPage = () => {
                         )}
                     </p> */}
 
-                    <p>Already have an account? Sign In here</p>
+                    <p>Already have an account? <Link href="/auth/sign-in" className="text-blue-500">Sign In</Link> here</p>
                 </CardFooter>
 
             </Card>

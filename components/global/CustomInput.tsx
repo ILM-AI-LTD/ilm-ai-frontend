@@ -58,7 +58,7 @@ const InputField = React.forwardRef<HTMLInputElement, InputFieldProps>(
             <div className="flex justify-start mt-[2px]">
               <CircleAlert size={15} color="#F51714" />
             </div>
-            <p className="text-danger-500 text-sm font-medium">{errors}</p>
+            <p className="text-red-500 text-sm font-medium">{errors}</p>
           </div>
         ) : null}
       </div>
