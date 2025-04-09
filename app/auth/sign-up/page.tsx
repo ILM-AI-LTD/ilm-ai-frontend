@@ -6,24 +6,24 @@ import Link from "next/link";
 
 const SignUpPage = () => {
     return (
-        <div>
-            <Card className="w-[498px] rounded-3xl p-5 md:p-10 flex flex-col gap-10">
 
-                <div className="flex justify-center">
-                    <p className="text-2xl font-medium">Logo</p>
-                </div>
+        <Card className="w-[498px] rounded-3xl p-5 md:p-10 flex flex-col gap-10">
 
-                <CardHeader className='p-0 space-y-0 flex flex-col gap-2'>
-                    <CardTitle className='text-[28px] font-medium'>Sign up</CardTitle>
-                    <CardDescription className="text-sm font-normal text-label-color">Create a new account</CardDescription>
-                </CardHeader>
+            <div className="flex justify-center">
+                <p className="text-2xl font-medium">Logo</p>
+            </div>
 
-                <CardContent className="p-0">
-                    < SignUpForm />
-                </CardContent>
+            <CardHeader className='p-0 space-y-0 flex flex-col gap-2'>
+                <CardTitle className='text-[28px] font-medium'>Sign up</CardTitle>
+                <CardDescription className="text-sm font-normal text-label-color">Create a new account</CardDescription>
+            </CardHeader>
 
-                <CardFooter className="flex-col p-0">
-                    {/* <p className="text-base font-medium">
+            <CardContent className="p-0">
+                < SignUpForm />
+            </CardContent>
+
+            <CardFooter className="flex-col p-0">
+                {/* <p className="text-base font-medium">
                         Already have an account?
                         {disable ? (
                             <span className=" text-brand-500 opacity-50 ml-1">
@@ -39,11 +39,11 @@ const SignUpPage = () => {
                         )}
                     </p> */}
 
-                    <p>Already have an account? <Link href="/auth/sign-in" className="text-blue-500">Sign In</Link> here</p>
-                </CardFooter>
+                <p>Already have an account? <Link href="/auth/sign-in" className="text-blue-500">Sign In</Link> here</p>
+            </CardFooter>
 
-            </Card>
-        </div>
+        </Card>
+
     )
 }
 
