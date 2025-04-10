@@ -1,3 +1,5 @@
+"use client"
+
 import CustomButton from '@/components/global/CustomButton';
 import InputField from '@/components/global/CustomInput';
 import { SignInSchema } from '@/schema';
@@ -22,13 +24,13 @@ const SignInForm = () => {
             },
             onSubmit: async (values, action) => {
                 setDisable(true);
-
+                // Call your sign-in API here
             },
         });
 
 
     return (
-        <form className='flex flex-col gap-6'>
+        <form className='flex flex-col gap-6' onSubmit={handleSubmit}>
             <div className="flex flex-col gap-4">
 
                 <InputField

@@ -1,3 +1,5 @@
+"use client"
+
 import CustomButton from '@/components/global/CustomButton';
 import InputField from '@/components/global/CustomInput';
 import { SignUpSchema } from '@/schema';
@@ -10,9 +12,8 @@ const SignUpForm = () => {
     const { values, errors, touched, handleSubmit, handleChange, handleBlur } =
         useFormik({
             initialValues: {
-                Email: "",
+                email: "",
                 full_name: "",
-                mobile: "",
                 password: "",
                 confirmPassword: "",
             },
@@ -25,13 +26,13 @@ const SignUpForm = () => {
             },
             onSubmit: async (values, action) => {
                 setDisable(true);
-
+                // Call your sign-up API here
             },
         });
 
 
     return (
-        <form className='flex flex-col gap-6'>
+        <form className='flex flex-col gap-6' onSubmit={handleSubmit}>
             <div className="flex flex-col gap-4">
 
                 <InputField
@@ -49,13 +50,13 @@ const SignUpForm = () => {
                 <InputField
                     placeholder="Enter email address"
                     labelText="Email address"
-                    name="Email"
+                    name="email"
                     type="text"
-                    value={values.Email}
+                    value={values.email}
                     onChange={handleChange}
                     onBlur={handleBlur}
-                    errors={errors.Email && errors.Email.length > 0 ? errors.Email[0] : undefined}
-                    touched={touched.Email}
+                    errors={errors.email && errors.email.length > 0 ? errors.email[0] : undefined}
+                    touched={touched.email}
                 />
 
                 <InputField
