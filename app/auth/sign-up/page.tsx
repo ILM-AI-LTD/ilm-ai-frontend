@@ -7,9 +7,9 @@ import Link from "next/link";
 
 const SignUpPage = () => {
     return (
-
         <div className="w-[500px] items-center flex flex-col gap-10">
-            <Card className="p-5 md:p-10 rounded-[20px] flex flex-col gap-6">
+
+            <Card className="w-full p-5 md:p-10 rounded-[20px] flex flex-col gap-6">
 
                 <CardHeader className="p-0 space-y-0 flex flex-col gap-6 justify-center items-center">
 
@@ -55,7 +55,7 @@ const SignUpPage = () => {
             </Card>
 
             <p>Already have an account? <Link href="/auth/sign-in" className="text-blue-500">Sign In</Link> here</p>
-            
+
         </div>
 
     )
