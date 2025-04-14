@@ -4,6 +4,7 @@ import CustomButton from '@/components/global/CustomButton';
 import InputField from '@/components/global/CustomInput';
 import { SignUpSchema } from '@/schema';
 import { useFormik } from 'formik';
+import Link from 'next/link';
 import { useState } from 'react';
 
 const SignUpForm = () => {
@@ -14,6 +15,7 @@ const SignUpForm = () => {
             initialValues: {
                 email: "",
                 full_name: "",
+                institute: "",
                 password: "",
                 confirmPassword: "",
             },
@@ -60,6 +62,18 @@ const SignUpForm = () => {
                 />
 
                 <InputField
+                    placeholder="Enter institute name"
+                    labelText="Institute/School name"
+                    name="institute"
+                    type="text"
+                    value={values.institute}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    errors={errors.institute}
+                    touched={touched.institute}
+                />
+
+                <InputField
                     placeholder="Enter password"
                     labelText="Password"
                     type="password"
@@ -86,11 +100,11 @@ const SignUpForm = () => {
             </div>
 
             <CustomButton
-                label="Continue"
+                label="Sign Up"
                 type="submit"
                 // isLoading={isLoading}
                 disabled={disable}
-                className="rounded-full h-12 text-base"
+                className="rounded-full h-13 text-base font-semibold bg-button-primary-color hover:bg-button-primary-color cursor-pointer "
             />
 
 

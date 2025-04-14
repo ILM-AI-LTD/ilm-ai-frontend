@@ -1,5 +1,6 @@
 "use client"
 
+import CustomLogo from "@/components/global/CustomLogo";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import SignUpForm from "@/feature/auth/sign-up/SignUpForm";
 import Link from "next/link";
@@ -7,23 +8,25 @@ import Link from "next/link";
 const SignUpPage = () => {
     return (
 
-        <Card className="w-[498px] rounded-3xl p-5 md:p-10 flex flex-col gap-10">
+        <div className="w-[500px] items-center flex flex-col gap-10">
+            <Card className="p-5 md:p-10 rounded-[20px] flex flex-col gap-6">
 
-            <div className="flex justify-center">
-                <p className="text-2xl font-medium">Logo</p>
-            </div>
+                <CardHeader className="p-0 space-y-0 flex flex-col gap-6 justify-center items-center">
 
-            <CardHeader className='p-0 space-y-0 flex flex-col gap-2'>
-                <CardTitle className='text-[28px] font-medium'>Sign up</CardTitle>
-                <CardDescription className="text-sm font-normal text-label-color">Create a new account</CardDescription>
-            </CardHeader>
+                    <CustomLogo />
 
-            <CardContent className="p-0">
-                < SignUpForm />
-            </CardContent>
+                    <div className="text-center flex flex-col gap-2">
+                        <CardTitle className="text-2xl font-semibold text-primary-color">Create a new account</CardTitle>
+                        <CardDescription className="font-normal text-base text-label-color">Enter your details to sign up</CardDescription>
+                    </div>
+                </CardHeader>
 
-            <CardFooter className="flex-col p-0">
-                {/* <p className="text-base font-medium">
+                <CardContent className="p-0">
+                    < SignUpForm />
+                </CardContent>
+
+                {/* <CardFooter className="flex-col p-0">
+                    <p className="text-base font-medium">
                         Already have an account?
                         {disable ? (
                             <span className=" text-brand-500 opacity-50 ml-1">
@@ -37,12 +40,23 @@ const SignUpPage = () => {
                                 Sign in
                             </Link>
                         )}
-                    </p> */}
+                    </p>
 
-                <p>Already have an account? <Link href="/auth/sign-in" className="text-blue-500">Sign In</Link> here</p>
-            </CardFooter>
+                    
+                </CardFooter> */}
 
-        </Card>
+
+                <CardFooter className="flex-col p-0">
+
+                    <p className="text-center text-label-color font-normal text-sm">By creating an account, you are agreeing to our <Link href="#" className="text-primary-color underline">Terms and Conditions</Link> and <Link href="#" className="text-primary-color underline">Privacy Policy</Link> </p>
+
+                </CardFooter>
+
+            </Card>
+
+            <p>Already have an account? <Link href="/auth/sign-in" className="text-blue-500">Sign In</Link> here</p>
+            
+        </div>
 
     )
 }

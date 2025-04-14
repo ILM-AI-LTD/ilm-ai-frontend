@@ -2,13 +2,14 @@ import * as z from "zod";
 
 export const SignUpSchema = z
   .object({
-    Email: z.string().email("Invalid email address. "),
+    email: z.string().trim() .min(1, "Email is required. ").email("Invalid email address. "),
     full_name: z.string().min(1, "Full name is required. "),
+    institute: z.string().min(1, "Institute/School name is required. "),
     password: z
       .string()
       .regex(
         /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/,
-        "Password must be at least 8 characters long and include at least one letter and one digit."
+        "Password must be 8 characters long including one letter and one digit."
       ),
     confirmPassword: z.string().min(1, "Confirm password required. "),
   })
@@ -17,11 +18,11 @@ export const SignUpSchema = z
     path: ["confirmPassword"],
   })
 
-  export const SignInSchema = z.object({
-    email: z
-      .string()
-      .trim()
-      .min(1, "Email is required. ")
-      .email("Invalid email address. "),
-    password: z.string().trim().min(1, "Password required. "),
-  });
+export const SignInSchema = z.object({
+  email: z
+    .string()
+    .trim()
+    .min(1, "Email is required. ")
+    .email("Invalid email address. "),
+  password: z.string().trim().min(1, "Password required. "),
+});
