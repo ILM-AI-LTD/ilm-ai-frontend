@@ -5,14 +5,16 @@ import InputField from '@/components/global/CustomInput';
 import { SignInSchema } from '@/schema';
 import { useFormik } from 'formik';
 import Link from 'next/link';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const SignInForm = () => {
     const [disable, setDisable] = useState<boolean>(false);
-    const [isChecked, setIsChecked] = useState<boolean>(() => {
+    const [isChecked, setIsChecked] = useState<boolean>(true);
+
+    useEffect(() => {
         const rememberMe = localStorage.getItem("rememberMe");
-        return rememberMe === "true" || rememberMe === null;
-    });
+        setIsChecked(rememberMe === "true" || rememberMe === null);
+    }, []);
 
     const handleCheckboxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setIsChecked(event.target.checked);
@@ -108,4 +110,6 @@ const SignInForm = () => {
     )
 }
 
-export default SignInForm
+export default SignInForm;
+
+//TODO : remember me flicker issue fix with loading.
