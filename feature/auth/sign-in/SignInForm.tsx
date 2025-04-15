@@ -59,7 +59,7 @@ const SignInForm = () => {
                 />
 
                 <InputField
-                    placeholder="Enter password"
+                    placeholder={"\u2022 \u2022 \u2022 \u2022 \u2022 \u2022 \u2022"}
                     labelText="Password"
                     type="password"
                     name="password"
@@ -77,9 +77,9 @@ const SignInForm = () => {
                             id="remember-me"
                             checked={isChecked}
                             onChange={handleCheckboxChange}
-                            className={`form-checkbox  transition duration-150 ease-in-out h-4 w-4`}
+                            className="form-checkbox h-4 w-4"
                         />
-                        <label htmlFor="remember-me" className="font-medium text-sm">
+                        <label htmlFor="remember-me" className="font-medium text-sm text-primary-font-color">
                             Remember me
                         </label>
                     </div>

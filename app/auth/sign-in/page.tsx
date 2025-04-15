@@ -8,14 +8,14 @@ import Link from "next/link";
 const SignInPage = () => {
     return (
         <div className="w-[500px] items-center flex flex-col gap-10">
-            <Card className="w-full p-5 md:p-10 rounded-[20px] flex flex-col gap-6">
+            <Card className="w-full p-5 md:p-10 rounded-[20px] flex flex-col gap-6 bg-form-color border-none shadow-none">
 
                 <CardHeader className="p-0 space-y-0 flex flex-col gap-6 justify-center items-center">
 
                     <CustomLogo />
 
                     <div className="text-center flex flex-col gap-2">
-                        <CardTitle className="text-2xl font-semibold text-primary-color">Sign in to your account</CardTitle>
+                        <CardTitle className="text-2xl font-semibold text-primary-font-color">Sign in to your account</CardTitle>
                         <CardDescription className="font-normal text-base text-label-color">Enter your details to sign in</CardDescription>
                     </div>
                 </CardHeader>
@@ -46,7 +46,7 @@ const SignInPage = () => {
 
             </Card>
 
-            <p>Don't have an account? <Link href="/auth/sign-up" className="text-blue-500">Sign Up</Link> here</p>
+            <p className="text-primary-font-color">Don't have an account? <Link href="/auth/sign-up" className="text-blue-500">Sign Up</Link> here</p>
 
 
         </div>

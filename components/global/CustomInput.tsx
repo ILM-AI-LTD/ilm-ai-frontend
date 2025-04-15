@@ -23,13 +23,13 @@ const InputField = React.forwardRef<HTMLInputElement, InputFieldProps>(
 
     return (
       <div className="w-full flex flex-col justify-center items-start gap-2">
-        <Label className="text-base font-medium">{labelText}</Label>
+        <Label className="text-base font-medium text-primary-font-color">{labelText}</Label>
 
         <div className="w-full relative">
           <Input
             ref={ref}
             className={twMerge(
-              `text-start ${touched && errors ? " placeholder:text-destructive  border-solid border-destructive !ring-destructive" : ""}`,
+              `text-start text-primary-font-color border-input-border-color ${touched && errors ? "placeholder:text-destructive  border-solid border-destructive !ring-destructive" : ""}`,
               className
             )}
             {...restProps}

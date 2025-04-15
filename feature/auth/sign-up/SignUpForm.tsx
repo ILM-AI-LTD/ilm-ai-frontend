@@ -51,7 +51,7 @@ const SignUpForm = () => {
 
                 <InputField
                     placeholder="Enter email address"
-                    labelText="Email address"
+                    labelText="Email Address"
                     name="email"
                     type="text"
                     value={values.email}
@@ -63,7 +63,7 @@ const SignUpForm = () => {
 
                 <InputField
                     placeholder="Enter institute name"
-                    labelText="Institute/School name"
+                    labelText="Institute/School Name"
                     name="institute"
                     type="text"
                     value={values.institute}
@@ -74,7 +74,7 @@ const SignUpForm = () => {
                 />
 
                 <InputField
-                    placeholder="Enter password"
+                    placeholder={"\u2022 \u2022 \u2022 \u2022 \u2022 \u2022 \u2022"}
                     labelText="Password"
                     type="password"
                     name="password"
@@ -86,7 +86,7 @@ const SignUpForm = () => {
                 />
 
                 <InputField
-                    placeholder="Retype password"
+                    placeholder={"\u2022 \u2022 \u2022 \u2022 \u2022 \u2022 \u2022"}
                     labelText="Confirm Password"
                     type="password"
                     name="confirmPassword"

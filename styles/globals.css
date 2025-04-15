@@ -41,10 +41,13 @@
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
-
-  --color-primary-color: var(--primary-color);
+    /* custom colors */
+  --color-primary-bg-color: var(--primary-bg-color);
+  --color-form-color: var(--form-color);
+  --color-primary-font-color: var(--primary-font-color);
   --color-label-color: var(--label-color);
   --color-button-primary-color: var(--button-primary-color);
+  --color-input-border-color: var(--input-border-color);
 }
 
 :root {
@@ -80,10 +83,13 @@
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
-
-  --primary-color: #0D0D12;
-  --label-color: #666D80;
+    /* custom colors */
+  --primary-bg-color: #020617;
+  --form-color: #0F172A;
+  --primary-font-color: #ffffff;
+  --label-color: #818898;
   --button-primary-color: #4084F3;
+  --input-border-color:#525874;
 }
 
 .dark {
@@ -118,10 +124,13 @@
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.556 0 0);
-
-  --primary-color: #0D0D12;
-  --label-color: #666D80;
+    /* custom colors */
+  --primary-bg-color: #020617;
+  --form-color: #0F172A;
+  --primary-font-color: #ffffff;
+  --label-color: #818898;
   --button-primary-color: #4084F3;
+  --input-border-color:#525874;
 }
 
 @layer base {

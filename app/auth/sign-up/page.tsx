@@ -9,14 +9,14 @@ const SignUpPage = () => {
     return (
         <div className="w-[500px] items-center flex flex-col gap-10">
 
-            <Card className="w-full p-5 md:p-10 rounded-[20px] flex flex-col gap-6">
+            <Card className="w-full p-5 md:p-10 rounded-[20px] flex flex-col gap-6 bg-form-color border-none shadow-none">
 
                 <CardHeader className="p-0 space-y-0 flex flex-col gap-6 justify-center items-center">
 
                     <CustomLogo />
 
                     <div className="text-center flex flex-col gap-2">
-                        <CardTitle className="text-2xl font-semibold text-primary-color">Create a new account</CardTitle>
+                        <CardTitle className="text-2xl font-semibold text-primary-font-color">Create a new account</CardTitle>
                         <CardDescription className="font-normal text-base text-label-color">Enter your details to sign up</CardDescription>
                     </div>
                 </CardHeader>
@@ -48,13 +48,13 @@ const SignUpPage = () => {
 
                 <CardFooter className="flex-col p-0">
 
-                    <p className="text-center text-label-color font-normal text-sm">By creating an account, you are agreeing to our <Link href="#" className="text-primary-color underline">Terms and Conditions</Link> and <Link href="#" className="text-primary-color underline">Privacy Policy</Link> </p>
+                    <p className="text-center text-primary-font-color font-normal text-sm">By creating an account, you are agreeing to our <Link href="#" className=" underline">Terms and Conditions</Link> and <Link href="#" className="underline">Privacy Policy</Link> </p>
 
                 </CardFooter>
 
             </Card>
 
-            <p>Already have an account? <Link href="/auth/sign-in" className="text-blue-500">Sign In</Link> here</p>
+            <p className="text-primary-font-color">Already have an account? <Link href="/auth/sign-in" className="text-blue-500">Sign In</Link> here</p>
 
         </div>
 
