@@ -88,7 +88,7 @@ const SignInForm = () => {
                         {disable ? (
                             <span className="text-sm font-medium text-blue-500 opacity-50">Forgot Password?</span>
                         ) : (
-                            <Link href={"/#"} className="text-sm font-medium text-blue-500">
+                            <Link href="/auth/reset-password" className="text-sm font-medium text-blue-500">
                                 Forgot Password?
                             </Link>
                         )}
