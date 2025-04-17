@@ -48,6 +48,7 @@
   --color-label-color: var(--label-color);
   --color-button-primary-color: var(--button-primary-color);
   --color-input-border-color: var(--input-border-color);
+  --color-button-disabled-color: var(--button-disabled-color);
 }
 
 :root {
@@ -89,6 +90,7 @@
   --primary-font-color: #ffffff;
   --label-color: #818898;
   --button-primary-color: #4084F3;
+  --button-disabled-color: #848688;
   --input-border-color:#525874;
 }
 
@@ -130,6 +132,7 @@
   --primary-font-color: #ffffff;
   --label-color: #818898;
   --button-primary-color: #4084F3;
+  --button-disabled-color: #848688;
   --input-border-color:#525874;
 }
 
