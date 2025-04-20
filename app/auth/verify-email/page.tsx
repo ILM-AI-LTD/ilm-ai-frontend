@@ -1,6 +1,6 @@
 import CustomLogo from "@/components/global/CustomLogo";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import VerifyEmailForm from "@/feature/auth/verify-email/VerifyEmailForm";
+import VerifyEmailForm from "@/feature/auth/components/verify-email/VerifyEmailForm";
 
 const VerifyEmailPage = () => {
     return (

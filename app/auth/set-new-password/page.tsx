@@ -2,7 +2,7 @@
 
 import CustomLogo from "@/components/global/CustomLogo";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import SetNewPasswordForm from "@/feature/auth/set-new-password/SetNewPasswordForm";
+import SetNewPasswordForm from "@/feature/auth/components/set-new-password/SetNewPasswordForm";
 
 const SetNewPasswordPage = () => {
     return (

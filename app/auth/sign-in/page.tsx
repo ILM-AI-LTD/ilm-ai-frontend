@@ -2,7 +2,7 @@
 
 import CustomLogo from "@/components/global/CustomLogo";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import SignInForm from "@/feature/auth/sign-in/SignInForm";
+import SignInForm from "@/feature/auth/components/sign-in/SignInForm";
 import Link from "next/link";
 
 const SignInPage = () => {

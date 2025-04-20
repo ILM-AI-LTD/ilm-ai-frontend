@@ -4,13 +4,12 @@ import CustomButton from '@/components/global/CustomButton';
 import InputField from '@/components/global/CustomInput';
 import { SignUpSchema } from '@/schema';
 import { useFormik } from 'formik';
-import Link from 'next/link';
 import { useState } from 'react';
 
 const SignUpForm = () => {
     const [disable, setDisable] = useState<boolean>(false);
 
-    const { values, errors, touched, handleSubmit, handleChange, handleBlur } =
+    const { values, errors, touched, handleSubmit, handleChange, handleBlur} =
         useFormik({
             initialValues: {
                 email: "",

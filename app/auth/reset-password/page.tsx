@@ -2,8 +2,7 @@
 
 import CustomLogo from "@/components/global/CustomLogo";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import ResetPasswordForm from "@/feature/auth/reset-password/ResetPasswordForm";
-import Link from "next/link";
+import ResetPasswordForm from "@/feature/auth/components/reset-password/ResetPasswordForm";
 
 const ResetPasswordPage = () => {
     return (

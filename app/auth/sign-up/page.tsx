@@ -1,8 +1,6 @@
-"use client"
-
 import CustomLogo from "@/components/global/CustomLogo";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import SignUpForm from "@/feature/auth/sign-up/SignUpForm";
+import SignUpForm from "@/feature/auth/components/sign-up/SignUpForm";
 import Link from "next/link";
 
 const SignUpPage = () => {
@@ -24,26 +22,6 @@ const SignUpPage = () => {
                 <CardContent className="p-0">
                     < SignUpForm />
                 </CardContent>
-
-                {/* <CardFooter className="flex-col p-0">
-                    <p className="text-base font-medium">
-                        Already have an account?
-                        {disable ? (
-                            <span className=" text-brand-500 opacity-50 ml-1">
-                                Sign in
-                            </span>
-                        ) : (
-                            <Link
-                                className="text-blue-500 ml-1"
-                                to={"/signin"}
-                            >
-                                Sign in
-                            </Link>
-                        )}
-                    </p>
-
-                    
-                </CardFooter> */}
 
 
                 <CardFooter className="flex-col p-0">
