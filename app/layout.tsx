@@ -1,3 +1,4 @@
+import { AuthProvider } from "@/context/AuthContext";
 import ReactQueryProvider from "@/lib/react query/provider";
 import "@/styles/globals.css";
 import type { Metadata } from "next";
@@ -15,7 +16,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <ReactQueryProvider>{children}</ReactQueryProvider>
+        <ReactQueryProvider>
+          <AuthProvider>
+            {children}
+          </AuthProvider>
+        </ReactQueryProvider>
       </body>
     </html>
   );
