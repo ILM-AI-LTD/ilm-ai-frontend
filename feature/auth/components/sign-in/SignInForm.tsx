@@ -1,26 +1,18 @@
 "use client"
 
 import CustomButton from '@/components/global/CustomButton';
+import FormError from '@/components/global/CustomFormError';
 import InputField from '@/components/global/CustomInput';
 import { SignInSchema } from '@/schema';
 import { useFormik } from 'formik';
-import Link from 'next/link';
-import { useEffect, useState } from 'react';
+import { useAuth } from '../../hooks/useAuth';
 
 const SignInForm = () => {
-    const [disable, setDisable] = useState<boolean>(false);
-    const [isChecked, setIsChecked] = useState<boolean>(true);
 
-    useEffect(() => {
-        const rememberMe = localStorage.getItem("rememberMe");
-        setIsChecked(rememberMe === "true" || rememberMe === null);
-    }, []);
 
-    const handleCheckboxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setIsChecked(event.target.checked);
-        localStorage.setItem("rememberMe", event.target.checked.toString());
-        // setIsremember(event.target.checked);
-    };
+    const {
+        signIn: { mutate: handleSignIn, isPending, error }
+    } = useAuth();
 
     const { values, errors, touched, handleSubmit, handleChange, handleBlur } =
         useFormik({
@@ -36,14 +28,20 @@ const SignInForm = () => {
                 }
             },
             onSubmit: async (values, action) => {
-                setDisable(true);
-                // Call your sign-in API here
+                handleSignIn(values, {
+                    onSuccess: () => {
+                        action.resetForm();
+                    }
+                })
             },
         });
 
 
     return (
         <form className='flex flex-col gap-6' onSubmit={handleSubmit}>
+
+            <FormError error={error} />
+
             <div className="flex flex-col gap-4">
 
                 <InputField
@@ -70,41 +68,15 @@ const SignInForm = () => {
                     touched={touched.password}
                 />
 
-                <div className="flex justify-between">
-                    <div className="flex items-center gap-2">
-                        <input
-                            type="checkbox"
-                            id="remember-me"
-                            checked={isChecked}
-                            onChange={handleCheckboxChange}
-                            className="form-checkbox h-4 w-4"
-                        />
-                        <label htmlFor="remember-me" className="font-medium text-sm text-primary-font-color">
-                            Remember me
-                        </label>
-                    </div>
-
-                    <div>
-                        {disable ? (
-                            <span className="text-sm font-medium text-blue-500 opacity-50">Forgot Password?</span>
-                        ) : (
-                            <Link href="/auth/reset-password" className="text-sm font-medium text-blue-500">
-                                Forgot Password?
-                            </Link>
-                        )}
-                    </div>
-                </div>
-
             </div>
 
             <CustomButton
                 label="Sign In"
                 type="submit"
-                // isLoading={isLoading}
-                disabled={disable}
+                isLoading={isPending}
+                disabled={isPending}
                 className="rounded-full h-13 text-base font-semibold bg-button-primary-color hover:bg-button-primary-color cursor-pointer "
             />
-
 
         </form>
     )
