@@ -6,10 +6,10 @@ import InputField from '@/components/global/CustomInput';
 import { SignInSchema } from '@/schema';
 import { useFormik } from 'formik';
 import { useAuth } from '../../hooks/useAuth';
+import { useRouter } from 'next/navigation'
 
 const SignInForm = () => {
-
-
+    const router = useRouter()
     const {
         signIn: { mutate: handleSignIn, isPending, error }
     } = useAuth();
@@ -31,12 +31,13 @@ const SignInForm = () => {
                 handleSignIn(values, {
                     onSuccess: () => {
                         action.resetForm();
+                        router.push('/dashboard')
                     }
                 })
             },
         });
 
-
+console.log(error)
     return (
         <form className='flex flex-col gap-6' onSubmit={handleSubmit}>
 
