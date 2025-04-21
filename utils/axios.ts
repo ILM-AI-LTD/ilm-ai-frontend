@@ -1,16 +1,12 @@
 import axios, { AxiosError,InternalAxiosRequestConfig, AxiosRequestConfig, AxiosResponse } from 'axios'
 
 const axiosInstance = axios.create({
-    baseURL: process.env.NEXT_PUBLIC_API_BASE_URL || '', // set this in .env
+    baseURL: process.env.NEXT_PUBLIC_API_BASE_URL || '',
     headers: {
         "Content-Type": "application/json",
         "Accept": "application/json",
-        "Access-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS, PATCH",
-        "Access-Control-Allow-Headers": "Content-Type, Authorization",
-        "Access-Control-Allow-Credentials": "true",
     },
-    withCredentials: true,
+    // withCredentials: true,
 })
 
 
