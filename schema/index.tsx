@@ -3,8 +3,8 @@ import * as z from "zod";
 export const SignUpSchema = z
   .object({
     email: z.string().trim().min(1, "Email is required. ").email("Invalid email address. "),
-    full_name: z.string().min(1, "Full name is required. "),
-    institute: z.string().min(1, "Institute/School name is required. "),
+    name: z.string().min(1, "Full name is required. "),
+    institution: z.string().min(1, "Institute/School name is required. "),
     password: z
       .string()
       .regex(

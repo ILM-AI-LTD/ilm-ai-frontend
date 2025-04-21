@@ -1,20 +1,24 @@
 "use client"
 
 import CustomButton from '@/components/global/CustomButton';
+import FormError from '@/components/global/CustomFormError';
 import InputField from '@/components/global/CustomInput';
 import { SignUpSchema } from '@/schema';
 import { useFormik } from 'formik';
-import { useState } from 'react';
+import { redirect } from 'next/navigation';
+import { useAuth } from '../../hooks/useAuth';
 
 const SignUpForm = () => {
-    const [disable, setDisable] = useState<boolean>(false);
+    const {
+        signUp: { mutate: handleSignUp, isPending, error },
+    } = useAuth()
 
-    const { values, errors, touched, handleSubmit, handleChange, handleBlur} =
+    const { values, errors, touched, handleSubmit, handleChange, handleBlur } =
         useFormik({
             initialValues: {
                 email: "",
-                full_name: "",
-                institute: "",
+                name: "",
+                institution: "",
                 password: "",
                 confirmPassword: "",
             },
@@ -26,26 +30,34 @@ const SignUpForm = () => {
                 }
             },
             onSubmit: async (values, action) => {
-                setDisable(true);
-                // Call your sign-up API here
+                handleSignUp(values, {
+                    onSuccess: () => {
+                        action.resetForm();
+                        redirect('/auth/sign-in');
+                    }
+                })
             },
         });
 
 
+
     return (
         <form className='flex flex-col gap-6' onSubmit={handleSubmit}>
+
+            <FormError error={error} />
+
             <div className="flex flex-col gap-4">
 
                 <InputField
                     placeholder="Enter full name"
                     labelText="Full Name"
                     type="text"
-                    name="full_name"
-                    value={values.full_name}
+                    name="name"
+                    value={values.name}
                     onChange={handleChange}
                     onBlur={handleBlur}
-                    errors={errors.full_name}
-                    touched={touched.full_name}
+                    errors={errors.name}
+                    touched={touched.name}
                 />
 
                 <InputField
@@ -61,15 +73,15 @@ const SignUpForm = () => {
                 />
 
                 <InputField
-                    placeholder="Enter institute name"
-                    labelText="Institute/School Name"
-                    name="institute"
+                    placeholder="Enter institution name"
+                    labelText="Institution/School Name"
+                    name="institution"
                     type="text"
-                    value={values.institute}
+                    value={values.institution}
                     onChange={handleChange}
                     onBlur={handleBlur}
-                    errors={errors.institute}
-                    touched={touched.institute}
+                    errors={errors.institution}
+                    touched={touched.institution}
                 />
 
                 <InputField
@@ -101,8 +113,8 @@ const SignUpForm = () => {
             <CustomButton
                 label="Sign Up"
                 type="submit"
-                // isLoading={isLoading}
-                disabled={disable}
+                isLoading={isPending}
+                disabled={isPending}
                 className="rounded-full h-13 text-base font-semibold bg-button-primary-color hover:bg-button-primary-color cursor-pointer "
             />
 
