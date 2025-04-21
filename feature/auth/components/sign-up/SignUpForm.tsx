@@ -5,10 +5,11 @@ import FormError from '@/components/global/CustomFormError';
 import InputField from '@/components/global/CustomInput';
 import { SignUpSchema } from '@/schema';
 import { useFormik } from 'formik';
-import { redirect } from 'next/navigation';
+import { redirect, useRouter } from 'next/navigation';
 import { useAuth } from '../../hooks/useAuth';
 
 const SignUpForm = () => {
+    const router = useRouter();
     const {
         signUp: { mutate: handleSignUp, isPending, error },
     } = useAuth()
@@ -33,13 +34,13 @@ const SignUpForm = () => {
                 handleSignUp(values, {
                     onSuccess: () => {
                         action.resetForm();
-                        redirect('/auth/sign-in');
+                        router.push('/dashboard')
                     }
                 })
             },
         });
 
-
+console.log(error)
 
     return (
         <form className='flex flex-col gap-6' onSubmit={handleSubmit}>

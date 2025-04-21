@@ -1,7 +1,8 @@
-// src/features/auth/hooks/useSignUp.ts
+"use client"
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { AuthService } from '../services/AuthService'
 import type { SignUpDto, AuthResponse, User } from '@/types/auth'
+import { setCookie as setClientCookie} from '@/lib/cookies/cookies-client'
 
 export function useSignUp() {
   const qc = useQueryClient()
@@ -10,9 +11,12 @@ export function useSignUp() {
     
     mutationFn: AuthService.signUp,
     onSuccess: (res) => {
-      const { user, token } = res.data
+      const { user,token } = res.data
+
       qc.setQueryData<User>(['currentUser'], user)
-      localStorage.setItem('token', token)
+
+      setClientCookie("token", token)
+
       localStorage.setItem('currentUser', JSON.stringify(user))
     },
   })
