@@ -1,5 +1,5 @@
 const authEndpoints = {
-    signup: "/auth/signup",
+    signUp: "/auth/signup",
 }
 
 export default authEndpoints;
