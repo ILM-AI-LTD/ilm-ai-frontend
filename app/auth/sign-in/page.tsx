@@ -24,26 +24,6 @@ const SignInPage = () => {
                     < SignInForm />
                 </CardContent>
 
-                {/* <CardFooter className="flex-col p-0">
-                    <p className="text-base font-medium">
-                        Already have an account?
-                        {disable ? (
-                            <span className=" text-brand-500 opacity-50 ml-1">
-                                Sign in
-                            </span>
-                        ) : (
-                            <Link
-                                className="text-blue-500 ml-1"
-                                to={"/signin"}
-                            >
-                                Sign in
-                            </Link>
-                        )}
-                    </p>
-
-                    <p>Don't have an account? <Link href="/auth/sign-up" className="text-blue-500">Sign Up</Link> here</p>
-                </CardFooter> */}
-
             </Card>
 
             <p className="text-primary-font-color">Don't have an account? <Link href="/auth/sign-up" className="text-blue-500">Sign Up</Link> here</p>
