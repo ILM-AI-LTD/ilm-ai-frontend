@@ -1,11 +1,9 @@
-import React from 'react'
+import CustomPlaceHolder from '@/components/global/CustomPlaceHolder'
 
 const LandingPage = () => {
   return (
     <div>
-        <p className='text-3xl'>
-            welcome to landing page
-        </p>
+      <CustomPlaceHolder />
     </div>
   )
 }
