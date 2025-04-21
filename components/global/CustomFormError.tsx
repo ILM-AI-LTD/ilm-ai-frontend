@@ -1,4 +1,4 @@
-import { CircleAlert } from "lucide-react";
+import { AlertCircle } from "lucide-react";
 import { Alert, AlertDescription, AlertTitle } from "../ui/alert";
 
 type FormErrorProps = {
@@ -10,17 +10,13 @@ export default function FormError({ error }: FormErrorProps) {
     return (
         <>
             {error && (
-                <div>
-                    <Alert variant="destructive" >
-                        <div className="flex gap-2">
-                            <CircleAlert className="h-4 w-4"/>
-                            <AlertTitle className="">Error</AlertTitle>
-                        </div>
-                        <AlertDescription className="ml-6">
-                            {error.message}
-                        </AlertDescription>
-                    </Alert>
-                </div>
+                <Alert variant="destructive" >
+                    <AlertCircle className="h-4 w-4" />
+                    <AlertTitle>Error</AlertTitle>
+                    <AlertDescription>
+                        {error.message}
+                    </AlertDescription>
+                </Alert>
             )}
         </>
     )
