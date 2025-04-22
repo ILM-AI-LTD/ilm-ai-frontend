@@ -5,8 +5,8 @@ import FormError from '@/components/global/CustomFormError';
 import InputField from '@/components/global/CustomInput';
 import { SignInSchema } from '@/schema';
 import { useFormik } from 'formik';
+import { useRouter } from 'next/navigation';
 import { useAuth } from '../../hooks/useAuth';
-import { useRouter } from 'next/navigation'
 
 const SignInForm = () => {
     const router = useRouter()
@@ -19,6 +19,7 @@ const SignInForm = () => {
             initialValues: {
                 email: "",
                 password: "",
+                rememberMe: false,
             },
             validate: (values) => {
                 try {
@@ -28,16 +29,19 @@ const SignInForm = () => {
                 }
             },
             onSubmit: async (values, action) => {
-                handleSignIn(values, {
-                    onSuccess: () => {
-                        action.resetForm();
-                        router.push('/dashboard')
-                    }
-                })
+                handleSignIn({
+                    data: { email: values.email, password: values.password },
+                    rememberMe: values.rememberMe
+                },
+                    {
+                        onSuccess: () => {
+                            action.resetForm();
+                            router.push('/dashboard')
+                        }
+                    })
             },
         });
 
-console.log(error)
     return (
         <form className='flex flex-col gap-6' onSubmit={handleSubmit}>
 
@@ -69,6 +73,19 @@ console.log(error)
                     touched={touched.password}
                 />
 
+            </div>
+
+            <div className="flex justify-between items-center">
+                <div className="flex items-center gap-2">
+                    <input
+                        type="checkbox"
+                        name="rememberMe"
+                        checked={values.rememberMe}
+                        onChange={handleChange}
+                        className="w-4 h-4"
+                    />
+                    <label htmlFor="remember-me" className="text-base text-label-color">Remember me</label>
+                </div>
             </div>
 
             <CustomButton

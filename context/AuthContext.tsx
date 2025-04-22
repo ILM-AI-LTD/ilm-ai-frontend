@@ -1,16 +1,16 @@
 "use client"
 
-import React, {
+import { deleteCookie as deleteClientCookie } from "@/lib/cookies/cookies-client"
+import type { User } from "@/types/auth"
+import { useRouter } from "next/navigation"
+import {
+  ReactNode,
   createContext,
+  useCallback,
   useContext,
   useEffect,
   useState,
-  ReactNode,
-  useCallback,
 } from "react"
-import { useRouter } from "next/navigation"
-import type { User } from "@/types/auth"
-import { deleteCookie as deleteClientCookie } from "@/lib/cookies/cookies-client"
 
 interface AuthContextType {
   user: User | null
@@ -21,16 +21,20 @@ interface AuthContextType {
 const AuthContext = createContext<AuthContextType>({
   user: null,
   isAuthenticated: false,
-  signOut: () => {},
+  signOut: () => { },
 })
 
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [user, setUser] = useState<User | null>(null)
   const router = useRouter()
 
-  // Load user from localStorage on mount
   useEffect(() => {
-    const stored = localStorage.getItem("currentUser")
+    let stored = localStorage.getItem("currentUser")
+
+    if (!stored) {
+      stored = sessionStorage.getItem('currentUser') || null
+    }
+
     if (stored) {
       try {
         setUser(JSON.parse(stored))
@@ -44,7 +48,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     deleteClientCookie("token")
 
     localStorage.removeItem("currentUser")
-    localStorage.removeItem("token")
+    sessionStorage.removeItem('currentUser')
 
     setUser(null)
 

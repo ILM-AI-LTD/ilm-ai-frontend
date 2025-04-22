@@ -8,18 +8,20 @@ export type ClientCookieOptions = {
   path?: string
 }
 
-
 export function setCookie(
   name: string,
   value: string,
   options?: ClientCookieOptions
 ) {
-  Cookies.set(name, value, {
-    expires: options?.expires ?? 7,
+  const cookieOpts: Record<string, any> = {
     sameSite: options?.sameSite ?? 'Lax',
     path: options?.path ?? '/',
     secure: process.env.NODE_ENV === 'production',
-  })
+  }
+  if (options?.expires !== undefined) {
+    cookieOpts.expires = options.expires
+  }
+  Cookies.set(name, value, cookieOpts)
 }
 
 
