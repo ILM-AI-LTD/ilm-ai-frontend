@@ -36,7 +36,7 @@ const VerifyEmailForm = () => {
                     <CustomButton
                         type="submit"
                         label="Verify OTP"
-                        // disabled={isLoading}
+                        disabled={!value.trim()}
                         // isLoading={isLoading}
                         className={`rounded-full h-13 text-base font-semibold cursor-pointer ${value.trim() ? "bg-button-primary-color hover:bg-button-primary-color" : "bg-button-disabled-color hover:bg-button-disabled-color cursor-not-allowed"}`}
                     />
