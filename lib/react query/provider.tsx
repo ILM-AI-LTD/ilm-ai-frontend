@@ -1,7 +1,7 @@
 'use client'
 
 import { ReactNode, useState } from 'react'
-import { QueryClientProvider, HydrationBoundary, QueryClient } from '@tanstack/react-query'
+import { QueryClientProvider, HydrationBoundary } from '@tanstack/react-query'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import { getQueryClient } from './client'
 
