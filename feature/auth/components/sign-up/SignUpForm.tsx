@@ -19,7 +19,6 @@ const SignUpForm = () => {
             initialValues: {
                 email: "",
                 name: "",
-                institution: "",
                 password: "",
                 confirmPassword: "",
             },
@@ -73,17 +72,7 @@ console.log(error)
                     touched={touched.email}
                 />
 
-                <InputField
-                    placeholder="Enter institution name"
-                    labelText="Institution/School Name"
-                    name="institution"
-                    type="text"
-                    value={values.institution}
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    errors={errors.institution}
-                    touched={touched.institution}
-                />
+
 
                 <InputField
                     placeholder={"\u2022 \u2022 \u2022 \u2022 \u2022 \u2022 \u2022"}

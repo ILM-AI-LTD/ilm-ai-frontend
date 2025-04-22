@@ -8,7 +8,6 @@ export type User = {
 export type SignUpDto = {
   email: string
   name: string
-  institution: string
   password: string
   confirmPassword: string
 }
