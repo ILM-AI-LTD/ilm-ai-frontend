@@ -32,7 +32,7 @@ const SignUpPage = () => {
 
             </Card>
 
-            <p className="text-primary-font-color">Already have an account? <Link href="/auth/sign-in" className="text-blue-500">Sign In</Link> here</p>
+            <p className="text-primary-font-color">Already have an account? <Link href="/auth/sign-in" className="text-button-primary-color">Sign In</Link> here</p>
 
         </div>
 

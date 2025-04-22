@@ -26,7 +26,7 @@ const SignInPage = () => {
 
             </Card>
 
-            <p className="text-primary-font-color">Do not have an account? <Link href="/auth/sign-up" className="text-blue-500">Sign Up</Link> here</p>
+            <p className="text-primary-font-color">Do not have an account? <Link href="/auth/sign-up" className="text-button-primary-color">Sign Up</Link> here</p>
 
 
         </div>
