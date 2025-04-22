@@ -1,0 +1,30 @@
+name: Deploy to AWS Amplify
+
+on:
+  push:
+    branches:
+      - dev
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Configure AWS credentials using OIDC
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          role-to-assume: arn:aws:iam::013419929011:role/GitHubAmplifyDeployRole
+          aws-region: eu-west-2
+
+      - name: Deploy to Amplify
+        run: |
+          aws amplify start-deployment \
+            --app-id d25dzauresqkjf \
+            --branch-name dev
