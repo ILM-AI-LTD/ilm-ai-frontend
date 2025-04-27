@@ -43,12 +43,12 @@
   --radius-xl: calc(var(--radius) + 4px);
     /* custom colors */
   --color-primary-bg-color: var(--primary-bg-color);
-  --color-form-color: var(--form-color);
+  --color-secondary-bg-color: var(--secondary-bg-color);
   --color-primary-font-color: var(--primary-font-color);
   --color-label-color: var(--label-color);
-  --color-button-primary-color: var(--button-primary-color);
-  --color-input-border-color: var(--input-border-color);
+  --color-border-color: var(--border-color);
   --color-button-disabled-color: var(--button-disabled-color);
+  --color-brand-color: var(--brand-color);
 }
 
 :root {
@@ -86,12 +86,12 @@
   --sidebar-ring: oklch(0.708 0 0);
     /* custom colors */
   --primary-bg-color: #020617;
-  --form-color: #0F172A;
+  --secondary-bg-color: #0F172A;
   --primary-font-color: #ffffff;
   --label-color: #818898;
-  --button-primary-color: #19BDFF;
   --button-disabled-color: #848688;
-  --input-border-color:#525874;
+  --border-color:#525874;
+  --brand-color: #19BDFF;
 }
 
 .dark {
@@ -128,12 +128,12 @@
   --sidebar-ring: oklch(0.556 0 0);
     /* custom colors */
   --primary-bg-color: #020617;
-  --form-color: #0F172A;
+  --secondary-bg-color: #0F172A;
   --primary-font-color: #ffffff;
   --label-color: #818898;
-  --button-primary-color: #19BDFF;
   --button-disabled-color: #848688;
-  --input-border-color:#525874;
+  --border-color:#525874;
+  --brand-color: #19BDFF;
 }
 
 @layer base {

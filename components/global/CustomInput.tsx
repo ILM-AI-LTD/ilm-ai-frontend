@@ -29,7 +29,7 @@ const InputField = React.forwardRef<HTMLInputElement, InputFieldProps>(
           <Input
             ref={ref}
             className={twMerge(
-              `text-start text-primary-font-color border-input-border-color ${touched && errors ? "placeholder:text-destructive  border-solid border-destructive !ring-destructive" : ""}`,
+              `text-start text-primary-font-color border-border-color ${touched && errors ? "placeholder:text-destructive  border-solid border-destructive !ring-destructive" : ""}`,
               className
             )}
             {...restProps}

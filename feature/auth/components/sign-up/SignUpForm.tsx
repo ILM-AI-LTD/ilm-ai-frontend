@@ -5,7 +5,7 @@ import FormError from '@/components/global/CustomFormError';
 import InputField from '@/components/global/CustomInput';
 import { SignUpSchema } from '@/schema';
 import { useFormik } from 'formik';
-import { redirect, useRouter } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import { useAuth } from '../../hooks/useAuth';
 
 const SignUpForm = () => {
@@ -39,7 +39,7 @@ const SignUpForm = () => {
             },
         });
 
-console.log(error)
+    console.log(error)
 
     return (
         <form className='flex flex-col gap-6' onSubmit={handleSubmit}>
@@ -105,7 +105,7 @@ console.log(error)
                 type="submit"
                 isLoading={isPending}
                 disabled={isPending}
-                className="rounded-full h-13 text-base font-semibold bg-button-primary-color hover:bg-button-primary-color cursor-pointer "
+                className="rounded-full h-13 text-base font-semibold bg-brand-color hover:bg-brand-color cursor-pointer "
             />
 
 

@@ -49,7 +49,7 @@ export default function ResetPasswordForm() {
                 type="submit"
                 // isLoading={isLoading}
                 disabled={!values.email.trim()}
-                className={`rounded-full h-13 text-base font-semibold cursor-pointer ${values.email.trim() ? "bg-button-primary-color hover:bg-button-primary-color" : "bg-button-disabled-color hover:bg-button-disabled-color cursor-not-allowed"}`}
+                className={`rounded-full h-13 text-base font-semibold cursor-pointer ${values.email.trim() ? "bg-brand-color hover:bg-brand-color" : "bg-button-disabled-color hover:bg-button-disabled-color cursor-not-allowed"}`}
             />
 
         </form>

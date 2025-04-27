@@ -1,9 +1,9 @@
-import CustomPlaceHolder from '@/components/global/CustomPlaceHolder'
+import SmartToolsSection from '@/feature/landing/components/featureComponents/SmartTools'
 
 const LandingPage = () => {
   return (
     <div>
-      <CustomPlaceHolder />
+      <SmartToolsSection />
     </div>
   )
 }

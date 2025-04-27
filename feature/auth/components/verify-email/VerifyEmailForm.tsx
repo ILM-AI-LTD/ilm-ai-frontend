@@ -38,7 +38,7 @@ const VerifyEmailForm = () => {
                         label="Verify OTP"
                         disabled={!value.trim()}
                         // isLoading={isLoading}
-                        className={`rounded-full h-13 text-base font-semibold cursor-pointer ${value.trim() ? "bg-button-primary-color hover:bg-button-primary-color" : "bg-button-disabled-color hover:bg-button-disabled-color cursor-not-allowed"}`}
+                        className={`rounded-full h-13 text-base font-semibold cursor-pointer ${value.trim() ? "bg-brand-color hover:bg-brand-color" : "bg-button-disabled-color hover:bg-button-disabled-color cursor-not-allowed"}`}
                     />
                 </div>
             </div>

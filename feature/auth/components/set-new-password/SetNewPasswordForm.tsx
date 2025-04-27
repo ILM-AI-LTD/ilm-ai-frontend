@@ -31,7 +31,7 @@ export default function SetNewPasswordForm() {
         <form className='flex flex-col gap-6' onSubmit={handleSubmit}>
             <div className="flex flex-col gap-4">
 
-            <InputField
+                <InputField
                     placeholder={"\u2022 \u2022 \u2022 \u2022 \u2022 \u2022 \u2022"}
                     labelText="Password"
                     type="password"
@@ -62,7 +62,7 @@ export default function SetNewPasswordForm() {
                 type="submit"
                 // isLoading={isLoading}
                 disabled={!(values.password.trim() && values.confirmPassword.trim())}
-                className={`rounded-full h-13 text-base font-semibold cursor-pointer ${(values.password.trim() && values.confirmPassword.trim()) ? "bg-button-primary-color hover:bg-button-primary-color" : "bg-button-disabled-color hover:bg-button-disabled-color cursor-not-allowed"}`}
+                className={`rounded-full h-13 text-base font-semibold cursor-pointer ${(values.password.trim() && values.confirmPassword.trim()) ? "bg-brand-color hover:bg-brand-color" : "bg-button-disabled-color hover:bg-button-disabled-color cursor-not-allowed"}`}
             />
 
         </form>
