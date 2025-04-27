@@ -13,7 +13,7 @@ const VerifyEmailPage = () => {
 
                     <div className="text-center flex flex-col gap-2">
                         <CardTitle className="text-2xl font-semibold text-primary-font-color">Verify your email</CardTitle>
-                        <CardDescription className="font-normal text-base text-label-color">Enter the one-time password sent to your email to verify</CardDescription>
+                        <CardDescription className="font-normal text-base text-label-color">Enter the one-time password sent to your email to verify.</CardDescription>
                     </div>
                 </CardHeader>
 
