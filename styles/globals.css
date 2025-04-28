@@ -49,6 +49,7 @@
   --color-border-color: var(--border-color);
   --color-button-disabled-color: var(--button-disabled-color);
   --color-brand-color: var(--brand-color);
+  --color-faq-border-color: var(--faq-border-color);
 }
 
 :root {
@@ -92,6 +93,7 @@
   --button-disabled-color: #848688;
   --border-color:#525874;
   --brand-color: #19BDFF;
+  --faq-border-color:#20294C;
 }
 
 .dark {
@@ -134,6 +136,8 @@
   --button-disabled-color: #848688;
   --border-color:#525874;
   --brand-color: #19BDFF;
+  --faq-border-color:#20294C;
+
 }
 
 @layer base {
