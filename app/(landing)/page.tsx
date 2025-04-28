@@ -1,9 +1,11 @@
-import SmartToolsSection from '@/feature/landing/components/featureComponents/SmartTools'
+import SmartToolsSection from '@/feature/landing/components/SmartTools/SmartToolsSection'
+import GettingStartedSection from '@/feature/landing/components/gettingStarted/GettingStartedSection'
 
 const LandingPage = () => {
   return (
     <div>
       <SmartToolsSection />
+      <GettingStartedSection />
     </div>
   )
 }
