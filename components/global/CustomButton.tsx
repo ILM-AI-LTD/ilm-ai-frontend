@@ -32,7 +32,7 @@ const CustomButton: React.FC<ButtonProps> = ({
   return (
     <Button
       disabled={disabled}
-      className={cn("rounded-3xl", className)}
+      className={cn("rounded-3xl cursor-pointer", className)}
       variant={buttonVariant}
       {...rest}
       ref={ref}
