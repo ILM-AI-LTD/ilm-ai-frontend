@@ -1,5 +1,6 @@
 import Footer from '@/components/global/Footer'
 import CompetitionSection from '@/feature/landing/components/competition/CompetitionSection'
+import CustomerService from '@/feature/landing/components/customerService/CustomerService'
 import FAQSection from '@/feature/landing/components/faq/FAQSection'
 import GettingStartedSection from '@/feature/landing/components/gettingStarted/GettingStartedSection'
 import HeroSection from '@/feature/landing/components/hero/HeroSection'
@@ -17,6 +18,7 @@ const LandingPage = () => {
       <SubscriptionSection />
       <FAQSection />
       <CompetitionSection />
+      <CustomerService />
       <Footer />
     </div>
   )
