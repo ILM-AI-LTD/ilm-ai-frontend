@@ -14,8 +14,8 @@ export const GettingStartedCard: React.FC<GettingStartedCardProps> = ({ index, t
         <CardHeader className='inline-flex items-center justify-between px-0'>
             <Image
                 src={`/${imgSrc}`}
-                height={100}
-                width={100}
+                height={90}
+                width={90}
                 alt={imgSrc}
             />
             <p className='text-brand-color opacity-20 text-8xl font-bold'>{index + 1}</p>
