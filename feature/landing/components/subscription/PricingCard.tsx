@@ -129,7 +129,7 @@ const PricingCard = ({
             {originalPrice && discountPrice ? (
               <div className="flex flex-row items-center gap-2">
                 <div className="inline-flex gap-1 justify-center">
-                  <p className="text-xl line-through text-gray-400">${originalPrice}</p>
+                  <p className="text-xl line-through text-gray-400">£{originalPrice}</p>
                   {/* <span className="flex flex-col text-xs line-through text-gray-400 mt-1">
                     {yearlyPrice && isYearly
                       ? "/year"
@@ -142,7 +142,7 @@ const PricingCard = ({
                 <div className="inline-flex gap-1">
                   <h3 className="text-3xl font-bold">
                     {
-                      (originalPrice - discountPrice === 0) ? "Free" : `${originalPrice - discountPrice}`
+                      (originalPrice - discountPrice === 0) ? "Free" : `£${originalPrice - discountPrice}`
                     }
                   </h3>
                   <span className="flex flex-col justify-end text-sm mb-1">
@@ -162,7 +162,7 @@ const PricingCard = ({
               <div className="inline-flex gap-1">
                 <h3 className="text-3xl font-bold">
                   {
-                    originalPrice === 0 ? "Free" : `${originalPrice}`
+                    originalPrice === 0 ? "Free" : `£${originalPrice}`
                   }
                 </h3>
                 <span className="flex flex-col justify-end text-sm mb-1">

@@ -2,7 +2,7 @@ const plans = [
     {
         title: "Individual Plan",
         description: "Perfect for individual learners.",
-        monthlyPrice: 15,
+        monthlyPrice: 30,
         yearlyPrice: 180,
         //   monthlyPriceId: import.meta.env.VITE_BASIC_MONTHLY_PRICE_ID,
         //   yearlyPriceId: import.meta.env.VITE_BASIC_YEARLY_PRICE_ID,
@@ -14,14 +14,14 @@ const plans = [
         ],
         actionLabel: "Join",
         discountedPrice: {
-            monthly: 0,
+            monthly: 15,
             yearly: 0,
         },
     },
     {
         title: "Family Plan",
         description: "Great for siblings and learning families.",
-        monthlyPrice: 25,
+        monthlyPrice: 45,
         yearlyPrice: 300,
         //   monthlyPriceId: import.meta.env.VITE_PRO_MONTHLY_PRICE_ID,
         //   yearlyPriceId: import.meta.env.VITE_PRO_YEARLY_PRICE_ID,
@@ -34,7 +34,7 @@ const plans = [
         actionLabel: "Join",
         // popular: true,
         discountedPrice: {
-            monthly: 0,
+            monthly: 20,
             yearly: 0,
         },
     },
