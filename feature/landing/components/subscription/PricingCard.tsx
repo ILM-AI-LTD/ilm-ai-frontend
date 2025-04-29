@@ -1,0 +1,223 @@
+import CustomButton from "@/components/global/CustomButton";
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { cn } from "@/lib/utils";
+import { CheckCircle2, Zap } from "lucide-react";
+
+interface PricingCardProps {
+  isYearly?: boolean;
+  title: string;
+  monthlyPrice?: number;
+  yearlyPrice?: number;
+  monthlyPriceId?: string;
+  yearlyPriceId?: string;
+  description: string;
+  features: string[];
+  actionLabel: string;
+  popular?: boolean;
+  exclusive?: boolean;
+  discount?: boolean;
+  discountedPrice?: {
+    monthly?: number;
+    yearly?: number;
+  };
+}
+
+// const calculateSubscriptionType = (
+//   start: string,
+//   end: string
+// ): "monthly" | "yearly" | null => {
+//   const startDate = new Date(start);
+//   const endDate = new Date(end);
+//   const diffInDays =
+//     (endDate.getTime() - startDate.getTime()) / (1000 * 3600 * 24);
+
+//   if (diffInDays >= 28 && diffInDays <= 31) {
+//     return "monthly";
+//   } else if (diffInDays >= 364 && diffInDays <= 366) {
+//     return "yearly";
+//   }
+//   return null;
+// };
+
+const PricingCard = ({
+  isYearly,
+  title,
+  monthlyPrice,
+  yearlyPrice,
+  description,
+  features,
+  actionLabel,
+  popular,
+  discountedPrice,
+  // monthlyPriceId,
+  // yearlyPriceId,
+}: PricingCardProps) => {
+
+  const originalPrice = isYearly ? yearlyPrice : monthlyPrice;
+  const discountPrice = isYearly
+    ? discountedPrice?.yearly
+    : discountedPrice?.monthly;
+  const savings = originalPrice && discountPrice ? discountPrice : null;
+
+
+  // const currentSubscriptionType = calculateSubscriptionType(
+  //   data?.currentPeriodStart,
+  //   data?.currentPeriodEnd
+  // );
+  // const isCurrentSubscription =
+  //   data?.productName === title &&
+  //   data?.status === "active" &&
+  //   ((isYearly && currentSubscriptionType === "yearly") ||
+  //     (!isYearly && currentSubscriptionType === "monthly"));
+
+  return (
+    <Card
+      className={cn(
+        "w-[350px] flex flex-col justify-between mx-auto sm:mx-0 shadow-none p-6 gap-6 bg-primary-bg-color border-0 text-white",
+        title === "Family Plan" ? " border-1 border-brand-color" : "",
+      )}
+    >
+      <div className="flex flex-col gap-6">
+
+        <CardHeader className="p-0 space-y-0 gap-2 border-b-1 border-dashed pb-4">
+          {isYearly && yearlyPrice && monthlyPrice ? (
+            <div className="flex justify-between items-center">
+
+              <div className="flex items-center gap-2">
+                <CardTitle className="text-xl font-normal">{title}</CardTitle>
+              </div>
+
+              <div className="flex flex-row gap-2">
+                {
+                  popular ? (
+                    <div className="flex flex-row px-2.5 rounded-xl h-fit text-sm py-1 bg-gradient-to-r from-brand-500 to-[#FF5834] text-white">
+                      <Zap size={12} className="mr-1 mt-1" />
+                      Popular
+                    </div>
+                  ) :
+                    savings !== null ? (
+                      <div
+                        className={cn(
+                          "px-2.5 rounded-xl h-fit text-sm py-1 bg-zinc-200 text-black dark:bg-zinc-800 dark:text-white",
+                        )}
+                      >
+                        Save ${savings ? savings * (isYearly ? 1 : 12) : 0}
+                      </div>
+                    ) : null}
+              </div>
+
+            </div>
+          ) : (
+            <div className="flex justify-between items-center">
+              <div className="flex items-center gap-2">
+                <CardTitle className="text-xl font-normal">{title}</CardTitle>
+              </div>
+
+              {
+                popular && (
+                  <div className="flex flex-row px-2.5 rounded-xl h-fit text-sm py-1 bg-gradient-to-r from-brand-500 to-[#FF5834] text-white">
+                    <Zap size={12} className="mr-1 mt-1" />
+                    Popular
+                  </div>
+                )
+              }
+
+            </div>
+          )}
+
+          <div className="flex gap-0.5 items-baseline">
+            {originalPrice && discountPrice ? (
+              <div className="flex flex-row items-center gap-2">
+                <div className="inline-flex gap-1 justify-center">
+                  <p className="text-xl line-through text-gray-400">${originalPrice}</p>
+                  {/* <span className="flex flex-col text-xs line-through text-gray-400 mt-1">
+                    {yearlyPrice && isYearly
+                      ? "/year"
+                      : monthlyPrice
+                        ? "/month"
+                        : null}
+                  </span> */}
+                </div>
+
+                <div className="inline-flex gap-1">
+                  <h3 className="text-3xl font-bold">
+                    {
+                      (originalPrice - discountPrice === 0) ? "Free" : `${originalPrice - discountPrice}`
+                    }
+                  </h3>
+                  <span className="flex flex-col justify-end text-sm mb-1">
+                    {
+                      (originalPrice - discountPrice === 0 ? null : (
+                        yearlyPrice && isYearly
+                          ? "per year"
+                          : monthlyPrice
+                            ? "per month"
+                            : null
+                      ))
+                    }
+                  </span>
+                </div>
+              </div>
+            ) : (
+              <div className="inline-flex gap-1">
+                <h3 className="text-3xl font-bold">
+                  {
+                    originalPrice === 0 ? "Free" : `${originalPrice}`
+                  }
+                </h3>
+                <span className="flex flex-col justify-end text-sm mb-1">
+                  {yearlyPrice && isYearly
+                    ? "per year"
+                    : monthlyPrice
+                      ? "per month"
+                      : null}
+                </span>
+              </div>
+            )}
+          </div>
+
+          <CardDescription className="p-0 font-normal text-base text-white">
+            {description}
+          </CardDescription>
+        </CardHeader>
+
+        <CardContent className="flex flex-col gap-4 p-0">
+          {features.map((feature: string) => (
+            <CheckItem key={feature} text={feature} />
+          ))}
+        </CardContent>
+      </div>
+
+      <CardFooter className="flex flex-col gap-3 p-0">
+
+        <CustomButton
+          className={`inline-flex h-12 w-full items-center justify-center rounded-full bg-primary-bg-color text-brand-color hover:bg-primary-bg-color hover:text-brand-color border-1 border-brand-color`}
+          label={actionLabel}
+          variant='outline'
+        // disabled={isPending || isCurrentSubscription}
+        // isLoading={isPending}
+        // onClick={() => {
+        //   if (!isAuthenticated) {
+        //     navigate("/signin");
+        //   } else {
+        //     console.log(isYearly ? yearlyPriceId : monthlyPriceId);
+        //     console.log("test");
+        //     mutate(isYearly ? yearlyPriceId : monthlyPriceId);
+        //   }
+        // }}
+        />
+      </CardFooter>
+    </Card>
+  );
+};
+
+const CheckItem = ({ text }: { text: string }) => (
+  <div className="flex flex-row items-start  gap-2">
+    <div className="flex justify-start mt-1">
+      <CheckCircle2 size={18} className=" text-brand-500" />
+    </div>
+    <p className="text-base font-medium">{text}</p>
+  </div>
+);
+
+export default PricingCard;
