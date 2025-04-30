@@ -25,11 +25,11 @@ const subjects = [
 
 export default function FeatureDiagram() {
     return (
-        <section className='bg-primary-bg-color w-full flex flex-col items-center justify-center px-5 md:px-32 py-32 gap-8'>
+        <section className='bg-primary-bg-color w-full flex flex-col items-center justify-center py-20 px-6 md:px-10 2xl:px-[135px] gap-8'>
 
-            <p className="text-white font-bold text-[min(10vw,48px)] text-center">Subjects We Cover</p>
+            <p className="text-white font-bold text-[min(10vw,36px)] text-center">Explore Our Subjects</p>
 
-            <div className='w-full grid grid-cols-1 sm:grid-cols-2 bg-primary-bg-color rounded-4xl p-5 sm:p-20 gap-4'>
+            <div className='max-w-[1170px] grid grid-cols-1 md:grid-cols-2 bg-primary-bg-color rounded-4xl gap-4'>
                 {
                     subjects.map((subject, index) => (
                         <SubjectCard 

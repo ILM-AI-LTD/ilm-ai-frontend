@@ -35,7 +35,7 @@ const SmartToolsSection: React.FC = () => (
       Smart Tools Better Learning
     </h1>
 
-    <div className='max-w-[1170px] grid grid-cols-1 md:grid-cols-2 bg-primary-bg-color rounded-4xl p-4 md:p-6  gap-4 '>
+    <div className='max-w-[1170px] grid grid-cols-1 md:grid-cols-2 bg-primary-bg-color rounded-4xl p-4 md:p-6 gap-4 '>
 
       {features.map((feature, idx) => (
         <FeatureCard
