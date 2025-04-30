@@ -3,6 +3,11 @@
 
 @custom-variant dark (&:is(.dark *));
 
+@theme {
+  --breakpoint-*: initial;
+  --breakpoint-2xl: 1440px;
+}
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -157,3 +162,4 @@
 .animate-marquee {
   animation: marquee 40s linear infinite;
 }
+
