@@ -29,13 +29,13 @@ const features = [
 ];
 
 const SmartToolsSection: React.FC = () => (
-  <section className="bg-secondary-bg-color px-5 md:px-32 py-32 text-center">
+  <section className="bg-secondary-bg-color px-5 md:px-32 py-32 text-center flex flex-col justify-center items-center">
 
     <h1 className='font-bold text-4xl text-white mb-16'>
       Smart Tools Better Learning
     </h1>
 
-    <div className='grid grid-cols-1 sm:grid-cols-2 bg-primary-bg-color rounded-4xl p-5 sm:p-20 gap-4'>
+    <div className='w-full grid grid-cols-1 sm:grid-cols-2 bg-primary-bg-color rounded-4xl p-5 sm:p-20 gap-4 '>
 
       {features.map((feature, idx) => (
         <FeatureCard

@@ -19,6 +19,7 @@ export const FeatureCard: React.FC<FeatureCardProps> = ({ index, title, descript
         width={120}
         alt={imgSrc}
       />
+      <div className='w-12 hidden md:block'></div>
     </CardHeader>
 
     <CardTitle className='text-[28px] font-semibold text-white'>

@@ -30,7 +30,7 @@ const HeroSection = () => {
 
                 {/* video  */}
                 <CustomVideoPlayer
-                    src="/Coin operated.mp4"
+                    src="/Coin Operated.mp4"
                     poster="/video preview.png"
                 />
 
