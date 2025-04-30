@@ -10,7 +10,7 @@ export interface FeatureCardProps {
 }
 
 export const FeatureCard: React.FC<FeatureCardProps> = ({ index, title, description, imgSrc }) => (
-  <Card className='bg-secondary-bg-color border-0 p-5 md:p-8'>
+  <Card className='max-w-[480px] bg-secondary-bg-color border-0 p-5 md:p-8'>
     <CardHeader className='inline-flex items-center justify-between px-0'>
       <p className='text-brand-color opacity-20 text-8xl font-bold'>{index+1}</p>
       <Image
