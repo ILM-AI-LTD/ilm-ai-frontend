@@ -45,7 +45,7 @@ const testimonials = [
     }
 ];
 
-export default function TestimonialMarquee() {
+export default function ReviewSection() {
     const looped = [...testimonials, ...testimonials, ...testimonials]
 
     return (

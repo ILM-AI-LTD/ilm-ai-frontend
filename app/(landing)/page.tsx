@@ -3,9 +3,9 @@ import SmartToolsSection from '@/feature/landing/components/SmartTools/SmartTool
 import CompetitionSection from '@/feature/landing/components/competition/CompetitionSection'
 import CustomerService from '@/feature/landing/components/customerService/CustomerService'
 import FAQSection from '@/feature/landing/components/faq/FAQSection'
-import TestimonialMarquee from '@/feature/landing/components/faq/test'
 import GettingStartedSection from '@/feature/landing/components/gettingStarted/GettingStartedSection'
 import HeroSection from '@/feature/landing/components/hero/HeroSection'
+import ReviewSection from '@/feature/landing/components/reviews/ReviewSection'
 import FeatureDiagram from '@/feature/landing/components/subjectCover/SubjectCoverSection'
 import SubscriptionSection from '@/feature/landing/components/subscription/SubscriptionSection'
 
@@ -19,7 +19,7 @@ const LandingPage = () => {
       <SubscriptionSection />
       <FAQSection />
       <CompetitionSection />
-      <TestimonialMarquee />
+      <ReviewSection />
       <CustomerService />
       <Footer />
     </div>
