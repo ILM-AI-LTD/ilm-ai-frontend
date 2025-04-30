@@ -1,4 +1,6 @@
 import CustomLogo from '@/components/global/CustomLogo'
+import { linkGroups } from '@/constants/FooterLinkGroups copy';
+import Link from 'next/link';
 import type { FC } from 'react'
 
 const Footer: FC = () => {
@@ -7,7 +9,7 @@ const Footer: FC = () => {
             <div className="flex flex-col lg:flex-row justify-between gap-12 py-12">
                 <CustomLogo />
 
-                {/* <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 text-white">
                     {linkGroups.map((group) => (
                         <div key={group.title}>
                             <ul className="space-y-4 text-sm">
@@ -24,7 +26,7 @@ const Footer: FC = () => {
                             </ul>
                         </div>
                     ))}
-                </div> */}
+                </div>
 
 
             </div>
@@ -33,6 +35,7 @@ const Footer: FC = () => {
                 <p className="text-base font-medium">
                     © 2025 ILM AI Ltd. All rights reserved
                 </p>
+                
             </div>
         </footer>
     )
