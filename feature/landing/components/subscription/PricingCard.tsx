@@ -191,7 +191,7 @@ const PricingCard = ({
       <CardFooter className="flex flex-col gap-3 p-0">
 
         <CustomButton
-          className={`inline-flex h-12 w-full items-center justify-center rounded-full bg-primary-bg-color text-brand-color hover:bg-primary-bg-color hover:text-brand-color border-1 border-brand-color`}
+          className={`inline-flex h-12 w-full items-center justify-center rounded-full bg-primary-bg-color text-white hover:bg-[#007AAC] hover:text-white border-1 border-brand-color `}
           label={actionLabel}
           variant='outline'
         // disabled={isPending || isCurrentSubscription}
