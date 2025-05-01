@@ -23,7 +23,7 @@ const subjects = [
     },
 ]
 
-export default function FeatureDiagram() {
+export default function SubjectCoverSection() {
     return (
         <section className='bg-primary-bg-color w-full flex flex-col items-center justify-center py-20 px-6 md:px-10 2xl:px-[135px] gap-8'>
 
