@@ -9,7 +9,7 @@ const HeroSection = () => {
 
             <div className="relative max-w-[1170px] z-10 flex flex-col items-center justify-center text-white">
 
-                <div className="flex flex-col items-center gap-8">
+                <div className="w-full flex flex-col items-center gap-8">
                     <p className="font-bold  text-[min(12vw,72px)] text-center">
                         Get <span className="text-brand-color italic">Ilmified</span>
                     </p>
