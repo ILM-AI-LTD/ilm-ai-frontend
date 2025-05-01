@@ -1,42 +1,69 @@
-import CustomLogo from '@/components/global/CustomLogo'
+import CustomLogo from '@/components/global/CustomLogo';
 import { linkGroups } from '@/constants/FooterLinkGroups copy';
 import Link from 'next/link';
-import type { FC } from 'react'
+import type { FC } from 'react';
+import CustomIcon from './CustomIcon';
 
 const Footer: FC = () => {
     return (
-        <footer className=" text-white px-5 md:px-[120px] py-16">
-            <div className="flex flex-col lg:flex-row justify-between gap-12 py-12">
-                <CustomLogo />
+        <footer className="flex justify-center items-center text-white py-20 px-6 md:px-10 2xl:px-[135px] border-t-1 border-border-color">
+            <div className='max-w-[1170px] w-full'>
+                <div className=" flex flex-col md:flex-row justify-between gap-12">
+                    <div>
+                        <CustomLogo />
+                    </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 text-white">
-                    {linkGroups.map((group) => (
-                        <div key={group.title}>
-                            <ul className="space-y-4 text-sm">
-                                {group.links.map((link) => (
-                                    <li key={link.href}>
-                                        <Link
-                                            href={link.href}
-                                            className="hover:underline text-base font-semibold"
-                                        >
-                                            {link.label}
-                                        </Link>
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
-                    ))}
+                    <div className="grid grid-cols-2 md:grid-cols-3 gap-6 text-white mb-16">
+                        {linkGroups.map((group) => (
+                            <div key={group.title}>
+                                <ul className="space-y-4 text-sm">
+                                    {group.links.map((link) => (
+                                        <li key={link.href}>
+                                            <Link
+                                                href={link.href}
+                                                className="hover:underline text-base font-semibold"
+                                            >
+                                                {link.label}
+                                            </Link>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                        ))}
+                    </div>
+
+
                 </div>
 
+                <div className='flex flex-row justify-between'>
+                    <p className="text-base font-medium">
+                        © 2025 ILM AI Ltd. All rights reserved
+                    </p>
 
+                    <div className='inline-flex gap-4'>
+                        <CustomIcon
+                            iconSrc='/icon_linkedIn.svg'
+                            altText='LinkedIn'
+                        />
+                        <CustomIcon
+                            iconSrc='/icon_X.svg'
+                            altText='X'
+                        />
+                        <CustomIcon
+                            iconSrc='/icon_tiktok.svg'
+                            altText='TikTok'
+                        />
+                        <CustomIcon
+                            iconSrc='/icon_facebook.svg'
+                            altText='Facebook'
+                        />
+
+                    </div>
+
+                </div>
             </div>
 
-            <div className='flex flex-row justify-between'>
-                <p className="text-base font-medium">
-                    © 2025 ILM AI Ltd. All rights reserved
-                </p>
-                
-            </div>
+
         </footer>
     )
 }
