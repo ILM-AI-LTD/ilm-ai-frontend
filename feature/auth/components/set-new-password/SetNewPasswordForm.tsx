@@ -1,11 +1,23 @@
 "use client"
 
 import CustomButton from "@/components/global/CustomButton";
+import FormError from "@/components/global/CustomFormError";
 import InputField from "@/components/global/CustomInput";
 import { SetNewPasswordSchema } from "@/schema";
 import { useFormik } from "formik";
+import { useRouter, useSearchParams } from "next/navigation";
+import { useAuth } from "../../hooks/useAuth";
 
 export default function SetNewPasswordForm() {
+
+    const router = useRouter()
+
+    const { setNewPassword } = useAuth();
+    const { mutate, isPending, error } = setNewPassword;
+
+    const searchParams = useSearchParams();
+    const token = searchParams.get('token');
+    const email = searchParams.get('email');
 
     const { values, errors, touched, handleSubmit, handleChange, handleBlur } =
         useFormik({
@@ -21,14 +33,33 @@ export default function SetNewPasswordForm() {
                 }
             },
             onSubmit: async (values, action) => {
-                // setDisable(true);
-                // Call your sign-in API here
+                if (!token || !email) {
+                    alert('Missing token or email in URL');
+                    return;
+                  }
+
+                  mutate(
+                    {
+                      token,
+                      email,
+                      newPassword: values.password,
+                    },
+                    {
+                      onSuccess: () => {
+                        action.resetForm();
+                        router.push('/auth/sign-in')
+                      },
+                    }
+                  );
             },
         });
 
 
     return (
         <form className='flex flex-col gap-6' onSubmit={handleSubmit}>
+
+            <FormError error={error} />
+
             <div className="flex flex-col gap-4">
 
                 <InputField
@@ -60,7 +91,7 @@ export default function SetNewPasswordForm() {
             <CustomButton
                 label="Reset Password"
                 type="submit"
-                // isLoading={isLoading}
+                isLoading={isPending}
                 disabled={!(values.password.trim() && values.confirmPassword.trim())}
                 className={`rounded-full h-13 text-base font-semibold cursor-pointer ${(values.password.trim() && values.confirmPassword.trim()) ? "bg-brand-color hover:bg-brand-color" : "bg-button-disabled-color hover:bg-button-disabled-color cursor-not-allowed"}`}
             />

@@ -34,3 +34,14 @@ export type ResetPasswordResponse = {
   status: string;
   message: string; 
 };
+
+export type SetNewPasswordDto = {
+  email: string;
+  token: string;
+  newPassword: string;
+};
+
+export type SetNewPasswordResponse = {
+  status: string;
+  message: string; 
+};
