@@ -33,7 +33,7 @@ const HeroSection = () => {
                     poster="/video preview.png"
                 />
 
-                <div className="flex flex-col gap-8 items-center w-full md:w-[80%]">
+                <div className="flex flex-col gap-8 items-center w-full">
 
                     <p className="text-[min(10vw,20px)] font-bold text-center">All of our courses are crafted by award-winning teachers and professionals from top institutions.</p>
 

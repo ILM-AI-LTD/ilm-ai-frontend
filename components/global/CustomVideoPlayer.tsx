@@ -25,7 +25,7 @@ export default function CustomVideoPlayer({ src, poster }: Props) {
   }
 
   return (
-    <div className="group relative mx-auto rounded-2xl overflow-hidden m-20">
+    <div className="group relative mx-auto rounded-2xl overflow-hidden m-10">
 
       <video
         ref={videoRef}
