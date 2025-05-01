@@ -14,11 +14,12 @@ export const GettingStartedCard: React.FC<GettingStartedCardProps> = ({ index, t
         <CardHeader className='inline-flex items-center justify-between px-0'>
             <Image
                 src={`/${imgSrc}`}
-                height={90}
-                width={90}
+                height={80}
+                width={80}
                 alt={imgSrc}
+                className='w-[60px] h-[60px] 2xl:w-[80px] 2xl:h-[80px]'
             />
-            <p className='text-brand-color opacity-20 text-8xl font-bold'>{index + 1}</p>
+            <p className='text-brand-color opacity-20 text-7xl font-bold'>{index + 1}</p>
 
         </CardHeader>
 
