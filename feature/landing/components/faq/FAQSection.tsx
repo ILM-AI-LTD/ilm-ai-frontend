@@ -27,13 +27,13 @@ const faqItems = [
 
 const FAQSection = () => {
     return (
-        <section className="bg-secondary-bg-color px-5 md:px-32 py-32 flex flex-col items-center">
+        <section className="bg-secondary-bg-color py-20 px-6 md:px-10 2xl:px-[135px] flex flex-col items-center">
 
-            <h1 className='font-bold text-4xl text-white mb-16'>
-                Frequently asked questions
+            <h1 className='font-bold text-[min(10vw,36px)] text-white mb-16 text-center'>
+                Frequently Asked Questions
             </h1>
 
-            <div className="w-full md:w-2/3">
+            <div className="max-w-[1170px] w-full">
                 <Accordion type="single" collapsible className="w-full">
                     {
                         faqItems.map((item, index) => (
