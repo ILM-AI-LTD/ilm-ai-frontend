@@ -1,6 +1,7 @@
 import CustomLogo from "@/components/global/CustomLogo";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import SetNewPasswordForm from "@/feature/auth/components/set-new-password/SetNewPasswordForm";
+import { Suspense } from "react";
 
 const SetNewPasswordPage = () => {
     return (
@@ -18,7 +19,9 @@ const SetNewPasswordPage = () => {
                 </CardHeader>
 
                 <CardContent className="p-0">
-                    < SetNewPasswordForm />
+                    <Suspense>
+                        < SetNewPasswordForm />
+                    </Suspense>
                 </CardContent>
 
             </Card>
