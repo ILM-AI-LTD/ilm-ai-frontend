@@ -35,7 +35,7 @@ const Footer: FC = () => {
 
                 </div>
 
-                <div className='flex flex-row justify-between'>
+                <div className='flex flex-col md:flex-row justify-between gap-6'>
                     <p className="text-base font-medium">
                         © 2025 ILM AI Ltd. All rights reserved
                     </p>
