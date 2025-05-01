@@ -7,8 +7,8 @@ import Link from "next/link";
 
 const SignInPage = () => {
     return (
-        <div className="flex items-center flex-col gap-10">
-            <Card className="w-full md:w-[500px] p-5 md:p-10 rounded-[20px] flex flex-col gap-6 bg-secondary-bg-color border-none shadow-none">
+        <div className="w-full max-w-[500px] flex flex-col items-center gap-10">
+            <Card className="w-full p-5 md:p-10 rounded-[20px] flex flex-col gap-6 bg-secondary-bg-color border-none shadow-none">
 
                 <CardHeader className="p-0 space-y-0 flex flex-col gap-6 justify-center items-center">
 
