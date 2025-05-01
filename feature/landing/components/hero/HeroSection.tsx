@@ -29,8 +29,7 @@ const HeroSection = () => {
                 </div>
 
                 <CustomVideoPlayer
-                    src="/Coin Operated.mp4"
-                    poster="/video preview.png"
+                    src="/Hero Video.mp4"
                 />
 
                 <div className="flex flex-col gap-8 items-center w-full">

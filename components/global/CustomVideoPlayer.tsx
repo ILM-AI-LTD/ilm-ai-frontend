@@ -6,10 +6,10 @@ import { useRef, useState } from 'react'
 
 type Props = {
   src: string
-  poster: string
+
 }
 
-export default function CustomVideoPlayer({ src, poster }: Props) {
+export default function CustomVideoPlayer({ src }: Props) {
   const videoRef = useRef<HTMLVideoElement>(null)
   const [isPlaying, setIsPlaying] = useState(false)
 
@@ -25,17 +25,17 @@ export default function CustomVideoPlayer({ src, poster }: Props) {
   }
 
   return (
-    <div className="group relative mx-auto rounded-2xl overflow-hidden m-10">
+    <div className={`group relative mx-auto rounded-2xl overflow-hidden m-10 ${!isPlaying ? "mask-b-from-50% mask-b-to-90%" : ""}`}>
 
       <video
         ref={videoRef}
         src={src}
-        poster={poster}
+        // poster={poster}
         preload="metadata"
         controls={false}
         muted
         playsInline
-        className="w-full h-auto block bg-black"
+        className="w-full h-full block"
         onClick={togglePlay}
       />
 
@@ -45,8 +45,10 @@ export default function CustomVideoPlayer({ src, poster }: Props) {
           aria-label="Play video"
           className="absolute inset-0 flex items-center justify-center"
         >
-          <div className='bg-[#003366] rounded-full h-[60px] w-[60px] inline-flex justify-center items-center'>
-            <Play />
+          <div>
+            <div className='bg-[#003366] rounded-full h-[60px] w-[60px] inline-flex justify-center items-center'>
+              <Play />
+            </div>
           </div>
         </button>
       )}
