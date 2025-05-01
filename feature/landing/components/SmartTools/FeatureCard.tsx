@@ -10,16 +10,17 @@ export interface FeatureCardProps {
 }
 
 export const FeatureCard: React.FC<FeatureCardProps> = ({ index, title, description, imgSrc }) => (
-  <Card className='bg-secondary-bg-color border-0 p-5 md:p-8'>
+  <Card className='bg-secondary-bg-color border-0 p-4 md:p-6 2xl:p-10'>
     <CardHeader className='inline-flex items-center justify-between px-0'>
-      <p className='text-brand-color opacity-20 text-8xl font-bold'>{index+1}</p>
+      <p className='text-brand-color opacity-20 text-[80px] font-bold'>{index + 1}</p>
       <Image
         src={`/${imgSrc}`}
-        height={120}
-        width={120}
+        height={160}
+        width={160}
         alt={imgSrc}
+        className='w-[80px] h-[80px] md:w-[100px] md:h-[100px] 2xl:w-[160px] 2xl:h-[160px]'
       />
-      <div className='w-12 hidden md:block'></div>
+      <div className='w-12'></div>
     </CardHeader>
 
     <CardTitle className='text-[28px] font-semibold text-white'>
