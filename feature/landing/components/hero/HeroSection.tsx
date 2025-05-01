@@ -19,11 +19,11 @@ const HeroSection = () => {
                     <div className="inline-flex gap-4">
                         <CustomButton
                             label="Get Started"
-                            className="border-1 border-white bg-primary-bg-color hover:bg-primary-bg-color h-14 w-32 rounded-full"
+                            className="border-1 border-white bg-primary-bg-color hover:bg-[#007AAC] hover:border-0 h-14 w-32 rounded-full"
                         />
                         <CustomButton
                             label="Free Trial"
-                            className="border-1 border-brand-color text-brand-color bg-primary-bg-color hover:bg-primary-bg-color h-14 w-32 rounded-full"
+                            className="border-1 border-brand-color text-brand-color bg-primary-bg-color hover:bg-[#007AAC] hover:border-0 hover:text-white h-14 w-32 rounded-full"
                         />
                     </div>
                 </div>

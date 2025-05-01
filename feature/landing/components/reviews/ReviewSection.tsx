@@ -46,7 +46,7 @@ const testimonials = [
 ];
 
 export default function ReviewSection() {
-    const looped = [...testimonials, ...testimonials, ...testimonials]
+    const looped = [...testimonials, ...testimonials, ...testimonials,...testimonials,...testimonials]
 
     return (
         <section className='bg-secondary-bg-color w-full flex flex-col items-center justify-center py-20 px-6 md:px-10 2xl:px-[135px] gap-8'>
@@ -57,7 +57,7 @@ export default function ReviewSection() {
             </div>
 
             <div className="relative w-[90%] overflow-hidden rounded-3xl mask-l-from-70% mask-r-from-70%">
-                <div className="flex gap-8 animate-marquee will-change-transform mb-8">
+                <div className="flex gap-8 animate-marquee-reverse will-change-transform mb-8">
                     {looped.map((t, i) => (
                         <div
                             key={i}
