@@ -4,8 +4,13 @@ import CustomButton from "@/components/global/CustomButton";
 import InputField from "@/components/global/CustomInput";
 import { ResetPasswordSchema } from "@/schema";
 import { useFormik } from "formik";
+import { useAuth } from "../../hooks/useAuth";
+import FormError from "@/components/global/CustomFormError";
 
 export default function ResetPasswordForm() {
+
+    const { resetPassword } = useAuth();
+    const { mutate, isPending, error } = resetPassword;
 
     const { values, errors, touched, handleSubmit, handleChange, handleBlur } =
         useFormik({
@@ -20,14 +25,20 @@ export default function ResetPasswordForm() {
                 }
             },
             onSubmit: async (values, action) => {
-                // setDisable(true);
-                // Call your sign-in API here
+                mutate(values, {
+                    onSuccess: () => {
+                        action.resetForm();
+                    }
+                });
             },
         });
 
 
     return (
         <form className='flex flex-col gap-6' onSubmit={handleSubmit}>
+
+            <FormError error={error} />
+
             <div className="flex flex-col gap-4">
 
                 <InputField
@@ -47,7 +58,7 @@ export default function ResetPasswordForm() {
             <CustomButton
                 label="Reset Password"
                 type="submit"
-                // isLoading={isLoading}
+                isLoading={isPending}
                 disabled={!values.email.trim()}
                 className={`rounded-full h-13 text-base font-semibold cursor-pointer ${values.email.trim() ? "bg-brand-color hover:bg-brand-color" : "bg-button-disabled-color hover:bg-button-disabled-color cursor-not-allowed"}`}
             />

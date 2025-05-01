@@ -25,3 +25,12 @@ export type SignInDto = {
   email: string
   password: string
 }
+
+export type ResetPasswordDto = {
+  email: string;
+};
+
+export type ResetPasswordResponse = {
+  status: string;
+  message: string; 
+};

@@ -1,5 +1,5 @@
 import { AuthEndpoints } from '@/constants/Endpoints'
-import type { AuthResponse, SignInDto, SignUpDto } from '@/types/auth'
+import type { AuthResponse, ResetPasswordDto, ResetPasswordResponse, SignInDto, SignUpDto } from '@/types/auth'
 import { apiRequest } from '@/utils/axios'
 
 export const AuthService = {
@@ -13,6 +13,11 @@ export const AuthService = {
         apiRequest(AuthEndpoints.signIn, {
             method: 'POST',
             data,
-        })
+        }),
+    resetPassword: (data: ResetPasswordDto): Promise<ResetPasswordResponse> =>
+        apiRequest('/auth/forgot-password', {
+            method: 'POST',
+            data,
+        }),
 
 }
