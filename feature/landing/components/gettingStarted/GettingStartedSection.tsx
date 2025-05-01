@@ -24,12 +24,12 @@ const steps = [
 
 const GettingStartedSection = () => {
     return (
-        <section className="bg-secondary-bg-color px-5 md:px-32 py-32 text-center">
-            <h1 className='font-bold text-4xl text-white mb-16'>
-                Getting started is easy!
+        <section className="bg-secondary-bg-color py-20 px-6 md:px-10 2xl:px-[135px] flex flex-col items-center justify-center">
+            <h1 className='font-bold text-[min(10vw,36px)] text-white mb-16 text-center'>
+                Getting Started is Easy!
             </h1>
 
-            <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4'>
+            <div className='max-w-[1170px] grid grid-cols-1 md:grid-cols-3 gap-4'>
 
                 {steps.map((step, idx) => (
                     <GettingStartedCard

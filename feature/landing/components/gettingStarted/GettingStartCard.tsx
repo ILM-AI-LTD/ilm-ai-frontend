@@ -10,7 +10,7 @@ export interface GettingStartedCardProps {
 }
 
 export const GettingStartedCard: React.FC<GettingStartedCardProps> = ({ index, title, description, imgSrc }) => (
-    <Card className='bg-primary-bg-color border-0 p-5 md:p-8'>
+    <Card className='bg-primary-bg-color border-0 p-6'>
         <CardHeader className='inline-flex items-center justify-between px-0'>
             <Image
                 src={`/${imgSrc}`}
