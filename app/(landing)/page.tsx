@@ -6,7 +6,7 @@ import FAQSection from '@/feature/landing/components/faq/FAQSection'
 import GettingStartedSection from '@/feature/landing/components/gettingStarted/GettingStartedSection'
 import HeroSection from '@/feature/landing/components/hero/HeroSection'
 import ReviewSection from '@/feature/landing/components/reviews/ReviewSection'
-import FeatureDiagram from '@/feature/landing/components/subjectCover/SubjectCoverSection'
+import SubjectCoverSection from '@/feature/landing/components/subjectCover/SubjectCoverSection'
 import SubscriptionSection from '@/feature/landing/components/subscription/SubscriptionSection'
 
 const LandingPage = () => {
@@ -14,7 +14,7 @@ const LandingPage = () => {
     <div>
       <HeroSection />
       <SmartToolsSection />
-      <FeatureDiagram />
+      <SubjectCoverSection />
       <GettingStartedSection />
       <SubscriptionSection />
       <FAQSection />
