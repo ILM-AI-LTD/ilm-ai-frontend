@@ -7,6 +7,7 @@ import { SignInSchema } from '@/schema';
 import { useFormik } from 'formik';
 import { useRouter } from 'next/navigation';
 import { useAuth } from '../../hooks/useAuth';
+import Link from 'next/link';
 
 const SignInForm = () => {
     const router = useRouter()
@@ -86,6 +87,10 @@ const SignInForm = () => {
                     />
                     <label htmlFor="remember-me" className="text-base text-label-color mb-1">Keep me logged in</label>
                 </div>
+
+                <Link href="/auth/reset-password">
+                    <p className="text-base text-brand-color hover:text-brand-color font-semibold">Forgot password?</p>
+                </Link>
             </div>
 
             <CustomButton
