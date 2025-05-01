@@ -4,7 +4,7 @@ import InputField from "@/components/global/CustomInput"
 
 const CompetitionForm = () => {
     return (
-        <form className='w-full lg:w-[65%] p-5 md:p-8 flex flex-col gap-6 border-1 border-border-color rounded-2xl bg-primary-bg-color'>
+        <form className='w-full px-8 py-10 flex flex-col gap-6 border-1 border-border-color rounded-2xl bg-primary-bg-color'>
             <div className="flex flex-col sm:flex-row gap-4">
                 <InputField
                     labelText="First Name"
