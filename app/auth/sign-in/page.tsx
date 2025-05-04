@@ -1,5 +1,3 @@
-"use client"
-
 import CustomLogo from "@/components/global/CustomLogo";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import SignInForm from "@/feature/auth/components/sign-in/SignInForm";

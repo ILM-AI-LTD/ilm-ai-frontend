@@ -1,5 +1,3 @@
-"use client"
-
 import CustomLogo from "@/components/global/CustomLogo";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import ResetPasswordForm from "@/feature/auth/components/reset-password/ResetPasswordForm";
