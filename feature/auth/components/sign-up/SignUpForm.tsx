@@ -1,11 +1,11 @@
 "use client"
-
 import CustomButton from '@/components/global/CustomButton';
 import FormError from '@/components/global/CustomFormError';
 import InputField from '@/components/global/CustomInput';
 import { SignUpSchema } from '@/schema';
 import { useFormik } from 'formik';
 import { useRouter } from 'next/navigation';
+import { toast } from 'sonner';
 import { useAuth } from '../../hooks/useAuth';
 
 const SignUpForm = () => {
@@ -32,14 +32,16 @@ const SignUpForm = () => {
             onSubmit: async (values, action) => {
                 handleSignUp(values, {
                     onSuccess: () => {
+                        toast.success("Successfully Completed Registration.")
                         action.resetForm();
                         router.push('/dashboard')
+                    },
+                    onError: () => {
+                        toast.error("Something went wrong")
                     }
                 })
             },
         });
-
-    console.log(error)
 
     return (
         <form className='flex flex-col gap-6' onSubmit={handleSubmit}>

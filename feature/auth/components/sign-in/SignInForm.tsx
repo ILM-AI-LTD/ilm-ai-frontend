@@ -5,9 +5,10 @@ import FormError from '@/components/global/CustomFormError';
 import InputField from '@/components/global/CustomInput';
 import { SignInSchema } from '@/schema';
 import { useFormik } from 'formik';
-import { useRouter } from 'next/navigation';
-import { useAuth } from '../../hooks/useAuth';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import { toast } from 'sonner';
+import { useAuth } from '../../hooks/useAuth';
 
 const SignInForm = () => {
     const router = useRouter()
@@ -36,8 +37,12 @@ const SignInForm = () => {
                 },
                     {
                         onSuccess: () => {
+                            toast.success("Successfully Logged In.")
                             action.resetForm();
                             router.push('/dashboard')
+                        },
+                        onError: () => {
+                            toast.error("Something went wrong")
                         }
                     })
             },

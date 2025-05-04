@@ -1,3 +1,4 @@
+import { Toaster } from "@/components/ui/sonner";
 import { AuthProvider } from "@/context/AuthContext";
 import ReactQueryProvider from "@/lib/react query/provider";
 import "@/styles/globals.css";
@@ -19,6 +20,7 @@ export default function RootLayout({
         <ReactQueryProvider>
           <AuthProvider>
             {children}
+            <Toaster richColors />
           </AuthProvider>
         </ReactQueryProvider>
       </body>

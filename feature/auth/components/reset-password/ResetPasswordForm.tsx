@@ -1,11 +1,12 @@
 "use client"
 
 import CustomButton from "@/components/global/CustomButton";
+import FormError from "@/components/global/CustomFormError";
 import InputField from "@/components/global/CustomInput";
 import { ResetPasswordSchema } from "@/schema";
 import { useFormik } from "formik";
+import { toast } from "sonner";
 import { useAuth } from "../../hooks/useAuth";
-import FormError from "@/components/global/CustomFormError";
 
 export default function ResetPasswordForm() {
 
@@ -27,7 +28,12 @@ export default function ResetPasswordForm() {
             onSubmit: async (values, action) => {
                 mutate(values, {
                     onSuccess: () => {
+                        toast.success("A password reset instruction has been sent to your registered email.")
                         action.resetForm();
+                    },
+                    onError: () => {
+                        toast.error("Something went wrong!")
+
                     }
                 });
             },

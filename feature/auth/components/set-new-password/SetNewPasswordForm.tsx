@@ -6,6 +6,7 @@ import InputField from "@/components/global/CustomInput";
 import { SetNewPasswordSchema } from "@/schema";
 import { useFormik } from "formik";
 import { useRouter, useSearchParams } from "next/navigation";
+import { toast } from "sonner";
 import { useAuth } from "../../hooks/useAuth";
 
 export default function SetNewPasswordForm() {
@@ -36,21 +37,25 @@ export default function SetNewPasswordForm() {
                 if (!token || !email) {
                     alert('Missing token or email in URL');
                     return;
-                  }
+                }
 
-                  mutate(
+                mutate(
                     {
-                      token,
-                      email,
-                      newPassword: values.password,
+                        token,
+                        email,
+                        newPassword: values.password,
                     },
                     {
-                      onSuccess: () => {
-                        action.resetForm();
-                        router.push('/auth/sign-in')
-                      },
+                        onSuccess: () => {
+                            toast.success("Your password has been updated.")
+                            action.resetForm();
+                            router.push('/auth/sign-in')
+                        },
+                        onError: () => {
+                            toast.error("Something went wrong")
+                        }
                     }
-                  );
+                );
             },
         });
 
