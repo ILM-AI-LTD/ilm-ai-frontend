@@ -1,10 +1,14 @@
 import React from 'react'
 import Image from 'next/image'
 
-const CustomLogo = () => {
+type CustomLogoProps = {
+  logoSrc: string;
+}
+
+const CustomLogo = ({logoSrc}:CustomLogoProps) => {
     return (
         <Image
-          src="/ILM_AI_Logo.svg"
+          src={logoSrc}
           width={48}
           height={60}
           alt="ILM Logo"

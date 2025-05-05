@@ -10,7 +10,7 @@ const Footer: FC = () => {
             <div className='max-w-[1170px] w-full'>
                 <div className=" flex flex-col md:flex-row justify-between gap-12">
                     <div>
-                        <CustomLogo />
+                        <CustomLogo logoSrc="/ILM_AI_Logo.svg" />
                     </div>
 
                     <div className="grid grid-cols-2 md:grid-cols-3 gap-6 text-white mb-16">
