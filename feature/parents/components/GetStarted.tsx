@@ -1,3 +1,5 @@
+"use client"
+import InputField from '@/components/global/CustomInput'
 import AssistantCallout from './common/AssistantCallout'
 import FooterParents from './common/FooterParents'
 import ILMIAssistant from './common/ILMIAssistant'
@@ -8,6 +10,7 @@ const GetStarted = () => {
             <div className='flex-1 flex flex-col items-center justify-center gap-2 overflow-auto'>
                 <AssistantCallout
                     message="Hello! I’m Ilmi – your personal assistant. Let’s get started by setting up your child’s learning profile."
+                    orientation="bottom"
                 />
 
                 <ILMIAssistant
@@ -17,8 +20,10 @@ const GetStarted = () => {
                 />
             </div>
 
-            <FooterParents 
-                rightButton={{ label: "Let's Get Started"}}
+          
+
+            <FooterParents
+                rightButton={{ label: "Let's Get Started" }}
             />
         </div>
     )

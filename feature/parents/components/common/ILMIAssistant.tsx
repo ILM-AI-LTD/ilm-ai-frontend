@@ -16,6 +16,7 @@ const ILMIAssistant = ({height=500,width=500,className}: ILMIAssistantProps) => 
         width={width}
         alt="ILMI Assistant"
         className={`${className}`}
+        priority
     />
   )
 }

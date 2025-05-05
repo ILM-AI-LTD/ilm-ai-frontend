@@ -3,19 +3,20 @@ import React from 'react';
 export interface AssistantCalloutProps {
     message: string;
     className?: string;
+    orientation: 'top' | 'bottom' | 'left' | 'right';
 }
 
-const AssistantCallout: React.FC<AssistantCalloutProps> = ({ message, className = '' }) => {
+const AssistantCallout: React.FC<AssistantCalloutProps> = ({ message, orientation, className = '' }) => {
     return (
         <div className={`relative inline-block ${className}`}>
-            <div className="bg-brand-color-parent text-white px-6 py-3 text-lg font-normal rounded-xl ">
+            <div className="bg-brand-color-parent text-white px-6 py-4 md:py-6 text-xl font-normal rounded-xl ">
                 {message}
             </div>
             <div
-                className="absolute left-1/2 transform -translate-x-1/2 -bottom-2 w-4 h-4 bg-brand-color-parent rotate-45"
+                className={`absolute transform w-4 h-4 bg-brand-color-parent rotate-45  ${orientation ==='bottom' ? "-translate-x-1/2 left-1/2 -bottom-2" : "top-1/2 -translate-x-1/2 -translate-y-1/2"}`}
                 aria-hidden="true"
             />
-        </div>
+        </div>        
     );
 };
 
