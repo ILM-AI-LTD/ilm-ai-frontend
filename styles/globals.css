@@ -59,6 +59,7 @@
   --color-button-disabled-color: var(--button-disabled-color);
   --color-brand-color: var(--brand-color);
   --color-faq-border-color: var(--faq-border-color);
+  --color-brand-color-parent: var(--brand-color-parent);
 }
 
 :root {
@@ -103,6 +104,7 @@
   --border-color:#525874;
   --brand-color: #19BDFF;
   --faq-border-color:#20294C;
+  --brand-color-parent: #4B2700;
 }
 
 .dark {
@@ -146,6 +148,7 @@
   --border-color:#525874;
   --brand-color: #19BDFF;
   --faq-border-color:#20294C;
+  --brand-color-parent: #4B2700;
 
 }
 
