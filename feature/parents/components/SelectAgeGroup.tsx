@@ -3,6 +3,7 @@
 import { Label } from "@/components/ui/label"
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import { useState } from "react"
+import { useParentsSetupStore } from "../store/useParentsSetupStore"
 import AssistantCallout from "./common/AssistantCallout"
 import FooterParents from "./common/FooterParents"
 import ILMIAssistant from "./common/ILMIAssistant"
@@ -14,7 +15,15 @@ interface SelectAgeGroupProps {
 
 const SelectAgeGroup = ({ onNext, onBack }: SelectAgeGroupProps) => {
 
-    const [ageGroup, setAgeGroup] = useState<string>("")
+    const persisted = useParentsSetupStore((s) => s.ageGroup)
+    const setAgeGroup = useParentsSetupStore((s) => s.setAgeGroup)
+
+    const [ageGroup, setLocalAgeGroup] = useState<string>(persisted)
+
+    const handleAgeGroupChange = (value: string) => {
+        setLocalAgeGroup(value)
+        setAgeGroup(value)
+    }
 
     return (
 
@@ -39,7 +48,7 @@ const SelectAgeGroup = ({ onNext, onBack }: SelectAgeGroupProps) => {
                 <div className="w-full inline-flex justify-center">
                     <RadioGroup
                         value={ageGroup}
-                        onValueChange={setAgeGroup}
+                        onValueChange={handleAgeGroupChange}
                         className="flex flex-col lg:flex-row gap-6"
                     >
                         <div className="flex items-center space-x-2">

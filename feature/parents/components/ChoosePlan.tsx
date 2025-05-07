@@ -3,6 +3,7 @@
 import MultiChildPlan from '@/components/global/MultiChildPlan'
 import SingleChildPlan from '@/components/global/SingleChildPlan'
 import { useState } from 'react'
+import { useParentsSetupStore } from '../store/useParentsSetupStore'
 import AssistantCallout from './common/AssistantCallout'
 import FooterParents from './common/FooterParents'
 import ILMIAssistant from './common/ILMIAssistant'
@@ -14,14 +15,22 @@ interface ChoosePlanProps {
 }
 
 
-const plans = [
-    { Icon: SingleChildPlan, title: 'Perfect for one learner' },
-    { Icon: MultiChildPlan, title: 'Manage multiple children under one account' },
-]
+const ChoosePlan = ({ onNext, onBack }: ChoosePlanProps) => {
 
-const ChoosePlan = ({onNext,onBack}:ChoosePlanProps) => {
+    const plans = [
+        { Icon: SingleChildPlan, title: 'Perfect for one learner' },
+        { Icon: MultiChildPlan, title: 'Manage multiple children under one account' },
+    ]
 
-    const [selected, setSelected] = useState<number | null>(null)
+    const persisted = useParentsSetupStore((s) => s.planIndex)
+    const setPlanIndex = useParentsSetupStore((s) => s.setPlanIndex)
+
+    const [selected, setSelected] = useState<number | null>(persisted)
+
+    const handlePlanSelect = (index: number) => {
+        setSelected(index)
+        setPlanIndex(index)
+    }
 
     return (
         <div className='h-full max-w-[1770px] w-full flex flex-col py-5'>
@@ -50,7 +59,7 @@ const ChoosePlan = ({onNext,onBack}:ChoosePlanProps) => {
                             title={title}
                             Icon={Icon}
                             isSelected={selected === i}
-                            onClick={() => setSelected(i)}
+                            onClick={() => handlePlanSelect(i)}
                         />
                     ))}
                 </div>

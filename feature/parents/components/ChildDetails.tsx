@@ -5,20 +5,25 @@ import { useFormik } from 'formik'
 import AssistantCallout from './common/AssistantCallout'
 import FooterParents from './common/FooterParents'
 import ILMIAssistant from './common/ILMIAssistant'
+import { useParentsSetupStore } from '../store/useParentsSetupStore'
 
 interface ChildDetailsSectionProps {
     onNext: () => void
     onBack: () => void
 }
 
+
 const ChildDetailsSection = ({ onNext, onBack }: ChildDetailsSectionProps) => {
+
+    const childDetails = useParentsSetupStore((s) => s.childDetails)
+    const setChildDetails = useParentsSetupStore((s) => s.setChildDetails);
 
     const { values, errors, touched, handleSubmit, handleChange, handleBlur } =
         useFormik({
             initialValues: {
-                fullName: "",
-                userName: "",
-                password: "",
+                fullName: (childDetails as any).fullName,
+                username: (childDetails as any).username,
+                password: (childDetails as any).password,
                 confirmPassword: "",
             },
             validate: (values) => {
@@ -29,7 +34,13 @@ const ChildDetailsSection = ({ onNext, onBack }: ChildDetailsSectionProps) => {
                 }
             },
             onSubmit: async (values, action) => {
-                onNext();
+
+                setChildDetails({
+                    fullName: values.fullName,
+                    username: values.username,
+                    password: values.password,
+                  })
+                // onNext();
             },
         });
 
@@ -60,20 +71,20 @@ const ChildDetailsSection = ({ onNext, onBack }: ChildDetailsSectionProps) => {
                         value={values.fullName}
                         onChange={handleChange}
                         onBlur={handleBlur}
-                        errors={errors.fullName}
-                        touched={touched.fullName}
+                        errors={errors.fullName as any}
+                        touched={!!touched.fullName}
                         className='h-12 bg-parent-inputField-color border-0 placeholder:text-white/60'
                     />
                     <InputField
                         placeholder="Enter your child's username"
                         labelText="Username"
-                        name='userName'
+                        name='username'
                         type='text'
-                        value={values.userName}
+                        value={values.username}
                         onChange={handleChange}
                         onBlur={handleBlur}
-                        errors={errors.userName}
-                        touched={touched.userName}
+                        errors={errors.username as any}
+                        touched={!!touched.username}
                         className='h-12 bg-parent-inputField-color border-0 placeholder:text-white/60'
                     />
                     <InputField
@@ -84,8 +95,8 @@ const ChildDetailsSection = ({ onNext, onBack }: ChildDetailsSectionProps) => {
                         value={values.password}
                         onChange={handleChange}
                         onBlur={handleBlur}
-                        errors={errors.password}
-                        touched={touched.password}
+                        errors={errors.password as any}
+                        touched={!!touched.password}
                         className='h-12 bg-parent-inputField-color border-0 placeholder:text-white/60'
                     />
                     <InputField
