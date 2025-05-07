@@ -49,17 +49,17 @@ export const SetNewPasswordSchema = z
     path: ["confirmPassword"],
   })
 
-  export const ChildDetailsSchema = z.object({
-    fullName: z.string().min(1, "Full name is required. "),
-    userName: z.string().min(1, "Username is required. "),
-    password: z
-      .string()
-      .regex(
-        /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/,
-        "Password must be 8 characters long including one letter and one digit."
-      ),
-    confirmPassword: z.string().min(1, "Confirm password required. "),
-  })
+export const ChildDetailsSchema = z.object({
+  fullName: z.string().min(1, "Full name is required. "),
+  username: z.string().min(1, "Username is required. "),
+  password: z
+    .string()
+    .regex(
+      /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/,
+      "Password must be 8 characters long including one letter and one digit."
+    ),
+  confirmPassword: z.string().min(1, "Confirm password required. "),
+})
   .refine((data) => data.password === data.confirmPassword, {
     message: "Passwords don't match. ",
     path: ["confirmPassword"],
