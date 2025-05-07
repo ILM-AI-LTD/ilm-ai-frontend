@@ -1,10 +1,21 @@
+"use client"
+
 import { Label } from "@/components/ui/label"
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
+import { useState } from "react"
 import AssistantCallout from "./common/AssistantCallout"
 import FooterParents from "./common/FooterParents"
 import ILMIAssistant from "./common/ILMIAssistant"
 
-const SelectAgeGroup = () => {
+interface SelectAgeGroupProps {
+    onNext: () => void
+    onBack: () => void
+}
+
+const SelectAgeGroup = ({ onNext, onBack }: SelectAgeGroupProps) => {
+
+    const [ageGroup, setAgeGroup] = useState<string>("")
+
     return (
 
         <div className='h-full max-w-[1770px] w-full flex flex-col py-5'>
@@ -26,7 +37,11 @@ const SelectAgeGroup = () => {
                 </div>
 
                 <div className="w-full inline-flex justify-center">
-                    <RadioGroup defaultValue="option-one" className="flex flex-col lg:flex-row gap-6">
+                    <RadioGroup
+                        value={ageGroup}
+                        onValueChange={setAgeGroup}
+                        className="flex flex-col lg:flex-row gap-6"
+                    >
                         <div className="flex items-center space-x-2">
                             <RadioGroupItem value="Year 1–2 (Key Stage 1)" id="Year 1–2 (Key Stage 1)" />
                             <Label htmlFor="option-one" className="text-white font-normal text-[min(10vw,20px)] mb-[5px] ">Year 1–2 (Key Stage 1)</Label>
@@ -48,7 +63,7 @@ const SelectAgeGroup = () => {
                         </div>
 
                         <div className="flex items-center space-x-2">
-                            <RadioGroupItem value="Year 12–13 (A-Level)" id="Year 12–13 (A-Level)"/>
+                            <RadioGroupItem value="Year 12–13 (A-Level)" id="Year 12–13 (A-Level)" />
                             <Label htmlFor="option-one" className="text-white font-normal text-[min(10vw,20px)] mb-[5px]">Year 12–13 (A-Level)</Label>
                         </div>
 
@@ -61,8 +76,8 @@ const SelectAgeGroup = () => {
 
 
             <FooterParents
-                leftButton={{ label: "Back" }}
-                rightButton={{ label: "Next" }}
+                leftButton={{ label: "Back", onClick: onBack }}
+                rightButton={{ label: "Next", onClick: onNext, disabled: ageGroup === "" }}
             />
         </div>
 
