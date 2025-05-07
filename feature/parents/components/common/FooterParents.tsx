@@ -28,7 +28,7 @@ const FooterParents: React.FC<FooterParentsProps> = ({
                     label={leftButton.label}
                     onClick={leftButton.onClick}
                     disabled={leftButton.disabled}
-                    className="bg-brand-color-parent text-white py-2 px-8 rounded-full hover:bg-brand-color-parent disabled:opacity-50"
+                    className="h-[52px] bg-brand-color-parent text-white py-2 px-8 font-bold text-base rounded-full hover:bg-brand-color-parent disabled:opacity-50"
 
                 />
             )}
