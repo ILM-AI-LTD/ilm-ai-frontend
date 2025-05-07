@@ -8,12 +8,18 @@ import FooterParents from './common/FooterParents'
 import ILMIAssistant from './common/ILMIAssistant'
 import PlanCard from './common/PlanCard'
 
+interface ChoosePlanProps {
+    onNext: () => void
+    onBack: () => void
+}
+
+
 const plans = [
     { Icon: SingleChildPlan, title: 'Perfect for one learner' },
     { Icon: MultiChildPlan, title: 'Manage multiple children under one account' },
 ]
 
-const ChoosePlan = () => {
+const ChoosePlan = ({onNext,onBack}:ChoosePlanProps) => {
 
     const [selected, setSelected] = useState<number | null>(null)
 
@@ -57,7 +63,8 @@ const ChoosePlan = () => {
 
 
             <FooterParents
-                rightButton={{ label: "Next" }}
+                leftButton={{ label: "Back", onClick: onBack }}
+                rightButton={{ label: "Next", onClick: onNext, disabled: selected === null }}
             />
         </div>
     )
