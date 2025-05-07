@@ -60,6 +60,8 @@
   --color-brand-color: var(--brand-color);
   --color-faq-border-color: var(--faq-border-color);
   --color-brand-color-parent: var(--brand-color-parent);
+  --color-parent-chatbox-color: var(--parent-chatbox-color);
+  --color-parent-inputField-color: var(--parent-inputField-color);
 }
 
 :root {
@@ -105,6 +107,8 @@
   --brand-color: #19BDFF;
   --faq-border-color:#20294C;
   --brand-color-parent: #4B2700;
+  --parent-chatbox-color: #7C4202;
+  --parent-inputField-color: #82521C;
 }
 
 .dark {
@@ -149,6 +153,8 @@
   --brand-color: #19BDFF;
   --faq-border-color:#20294C;
   --brand-color-parent: #4B2700;
+  --parent-chatbox-color: #7C4202;
+  --parent-inputField-color: #82521C;
 
 }
 
