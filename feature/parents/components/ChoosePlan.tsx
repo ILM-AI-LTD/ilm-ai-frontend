@@ -1,4 +1,5 @@
 "use client"
+
 import MultiChildPlan from '@/components/global/MultiChildPlan'
 import SingleChildPlan from '@/components/global/SingleChildPlan'
 import { useState } from 'react'
@@ -17,8 +18,9 @@ const ChoosePlan = () => {
     const [selected, setSelected] = useState<number | null>(null)
 
     return (
-        <div className='h-full max-w-[1770px] w-full flex flex-col md:py-10'>
+        <div className='h-full max-w-[1770px] w-full flex flex-col py-5'>
             <div className='flex-1 flex flex-col justify-between overflow-auto'>
+
                 <div className='inline-flex  items-center'>
                     <ILMIAssistant
                         height={180}
@@ -46,6 +48,8 @@ const ChoosePlan = () => {
                         />
                     ))}
                 </div>
+
+                <div></div>
 
                 <div></div>
             </div>
