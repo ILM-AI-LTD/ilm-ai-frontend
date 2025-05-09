@@ -22,7 +22,7 @@ const FooterParents: React.FC<FooterParentsProps> = ({
     const justifyClass = leftButton ? 'justify-between' : 'justify-end';
 
     return (
-        <div className={`flex items-center border-t-1 border-brand-color-parent ${justifyClass} py-6 md:py-14 bg-transparent ${className}`}>
+        <div className={`flex items-center border-t-1 border-brand-color-parent ${justifyClass} py-6 bg-transparent ${className}`}>
             {leftButton && (
                 <CustomButton
                     label={leftButton.label}
