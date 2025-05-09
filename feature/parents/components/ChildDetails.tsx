@@ -40,7 +40,7 @@ const ChildDetailsSection = ({ onNext, onBack }: ChildDetailsSectionProps) => {
                     username: values.username,
                     password: values.password,
                   })
-                // onNext();
+                onNext();
             },
         });
 
@@ -56,7 +56,7 @@ const ChildDetailsSection = ({ onNext, onBack }: ChildDetailsSectionProps) => {
 
                     <div className='mb-20'>
                         <AssistantCallout
-                            message="Let's Start With Your Child's Full Name"
+                            message="Let's Start With Your Child's Details"
                             orientation="left"
                         />
                     </div>
