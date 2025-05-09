@@ -1,86 +1,108 @@
-import {create} from 'zustand'
+import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
 
-// Define schedule and subject types
-type Schedule = {
+export type Schedule = {
   day: string
   startTime: string
   endTime: string
 }
 
-type Subject = {
+export type Subject = {
   id: number
   subject_name: string
   schedule: Schedule[]
 }
 
-// Child details grouping
-interface ChildDetails {
+export interface ChildDetails {
   fullName: string
   username: string
   password: string
 }
 
-// Store state interface
 interface ParentsSetupState {
+
   planIndex: number | null
   ageGroup: string
   childDetails: ChildDetails
+
   subjects: Subject[]
 
-  // Navigation & basic info actions
   setPlanIndex: (planIndex: number) => void
   setAgeGroup: (ageGroup: string) => void
   setChildDetails: (details: ChildDetails) => void
 
-  // Schedule actions
-  setSubjects: (subjects: Subject[]) => void
-  addSubject: (subject: Subject) => void
-  updateSubject: (subject: Subject) => void
-  removeSubject: (id: number) => void
+  toggleSubjectSchedule: (
+    subjectId: number,
+    entry: Schedule
+  ) => void
 
-  // Reset entire wizard
   reset: () => void
 }
 
-// Create the Zustand store with persistence
 export const useParentsSetupStore = create<ParentsSetupState>()(
   persist(
-    (set) => ({
+    (set, get) => ({
+
       planIndex: null,
       ageGroup: '',
       childDetails: { fullName: '', username: '', password: '' },
-      subjects: [],
+
+      subjects: [
+        { id: 1, subject_name: 'Math', schedule: [] },
+        { id: 2, subject_name: 'Physics', schedule: [] },
+        { id: 3, subject_name: 'Chemistry', schedule: [] },
+        { id: 4, subject_name: 'Biology', schedule: [] },
+      ],
+
 
       setPlanIndex: (planIndex) => set({ planIndex }),
       setAgeGroup: (ageGroup) => set({ ageGroup }),
       setChildDetails: (childDetails) => set({ childDetails }),
 
-      setSubjects: (subjects) => set({ subjects }),
-      addSubject: (subject) =>
-        set((state) => ({ subjects: [...state.subjects, subject] })),
-      updateSubject: (subject) =>
+      toggleSubjectSchedule: (subjectId, entry) => {
         set((state) => ({
-          subjects: state.subjects.map((s) =>
-            s.id === subject.id ? subject : s
-          ),
-        })),
-      removeSubject: (id) =>
-        set((state) => ({
-          subjects: state.subjects.filter((s) => s.id !== id),
-        })),
+          subjects: state.subjects.map((sub) => {
+            if (sub.id !== subjectId) return sub
+
+            const exists = sub.schedule.some(
+              (s) =>
+                s.day === entry.day &&
+                s.startTime === entry.startTime &&
+                s.endTime === entry.endTime
+            )
+
+            return {
+              ...sub,
+              schedule: exists
+                ? sub.schedule.filter(
+                  (s) =>
+                    !(
+                      s.day === entry.day &&
+                      s.startTime === entry.startTime &&
+                      s.endTime === entry.endTime
+                    )
+                )
+                : [...sub.schedule, entry],
+            }
+          }),
+        }))
+      },
 
       reset: () =>
         set({
           planIndex: null,
           ageGroup: '',
           childDetails: { fullName: '', username: '', password: '' },
-          subjects: [],
+          subjects: [
+            { id: 1, subject_name: 'Math', schedule: [] },
+            { id: 2, subject_name: 'Physics', schedule: [] },
+            { id: 3, subject_name: 'Chemistry', schedule: [] },
+            { id: 4, subject_name: 'Biology', schedule: [] },
+          ],
         }),
     }),
     {
-      name: 'parents-setup', // key in localStorage
-      // using default localStorage
+      name: 'parents-setup',
     }
   )
 )
