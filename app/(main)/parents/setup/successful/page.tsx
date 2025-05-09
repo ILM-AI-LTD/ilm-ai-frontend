@@ -1,7 +1,7 @@
 import CustomButton from "@/components/global/CustomButton"
-import AssistantCallout from "@/feature/parents/components/common/AssistantCallout"
-import FooterParents from "@/feature/parents/components/common/FooterParents"
-import ILMIAssistant from "@/feature/parents/components/common/ILMIAssistant"
+import AssistantCallout from "@/feature/parents/setup/components/common/AssistantCallout"
+import FooterParents from "@/feature/parents/setup/components/common/FooterParents"
+import ILMIAssistant from "@/feature/parents/setup/components/common/ILMIAssistant"
 import { CircleCheck, FileText } from "lucide-react"
 
 const page = () => {
@@ -45,7 +45,7 @@ const page = () => {
 
             <FooterParents
 
-                rightButton={{ label: "Finish & View Dashboard",}}
+                rightButton={{ label: "Finish & View Dashboard", }}
             />
         </div>
     )

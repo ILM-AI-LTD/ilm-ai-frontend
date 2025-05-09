@@ -3,7 +3,7 @@
 import MultiChildPlan from '@/components/global/MultiChildPlan'
 import SingleChildPlan from '@/components/global/SingleChildPlan'
 import { useState } from 'react'
-import { useParentsSetupStore } from '../store/useParentsSetupStore'
+import { useParentsSetupStore } from '../../store/useParentsSetupStore'
 import AssistantCallout from './common/AssistantCallout'
 import FooterParents from './common/FooterParents'
 import ILMIAssistant from './common/ILMIAssistant'

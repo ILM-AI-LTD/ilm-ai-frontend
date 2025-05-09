@@ -1,10 +1,10 @@
 'use client';
 
-import ChildDetailsSection from '@/feature/parents/components/ChildDetails';
-import ChoosePlan from '@/feature/parents/components/ChoosePlan';
-import ClassScheduleSection from '@/feature/parents/components/ClassScheduleSection';
-import GetStarted from '@/feature/parents/components/GetStarted';
-import SelectAgeGroup from '@/feature/parents/components/SelectAgeGroup';
+import ChildDetailsSection from '@/feature/parents/setup/components/ChildDetails';
+import ChoosePlan from '@/feature/parents/setup/components/ChoosePlan';
+import ClassScheduleSection from '@/feature/parents/setup/components/ClassScheduleSection';
+import GetStarted from '@/feature/parents/setup/components/GetStarted';
+import SelectAgeGroup from '@/feature/parents/setup/components/SelectAgeGroup';
 import { useState } from 'react';
 
 const STEPS = [

@@ -3,7 +3,7 @@
 import { Label } from "@/components/ui/label"
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import { useState } from "react"
-import { useParentsSetupStore } from "../store/useParentsSetupStore"
+import { useParentsSetupStore } from "../../store/useParentsSetupStore"
 import AssistantCallout from "./common/AssistantCallout"
 import FooterParents from "./common/FooterParents"
 import ILMIAssistant from "./common/ILMIAssistant"

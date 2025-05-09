@@ -10,7 +10,7 @@ import {
   TableRow,
 } from '@/components/ui/table'
 import { useState } from 'react'
-import { useParentsSetupStore } from '../store/useParentsSetupStore'
+import { useParentsSetupStore } from '../../store/useParentsSetupStore'
 
 const days = [
   'Monday',

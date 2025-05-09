@@ -2,10 +2,10 @@
 import InputField from '@/components/global/CustomInput'
 import { ChildDetailsSchema } from '@/schema'
 import { useFormik } from 'formik'
+import { useParentsSetupStore } from '../../store/useParentsSetupStore'
 import AssistantCallout from './common/AssistantCallout'
 import FooterParents from './common/FooterParents'
 import ILMIAssistant from './common/ILMIAssistant'
-import { useParentsSetupStore } from '../store/useParentsSetupStore'
 
 interface ChildDetailsSectionProps {
     onNext: () => void
@@ -39,7 +39,7 @@ const ChildDetailsSection = ({ onNext, onBack }: ChildDetailsSectionProps) => {
                     fullName: values.fullName,
                     username: values.username,
                     password: values.password,
-                  })
+                })
                 onNext();
             },
         });
