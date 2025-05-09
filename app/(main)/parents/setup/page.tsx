@@ -2,6 +2,7 @@
 
 import ChildDetailsSection from '@/feature/parents/components/ChildDetails';
 import ChoosePlan from '@/feature/parents/components/ChoosePlan';
+import ClassScheduleSection from '@/feature/parents/components/ClassScheduleSection';
 import GetStarted from '@/feature/parents/components/GetStarted';
 import SelectAgeGroup from '@/feature/parents/components/SelectAgeGroup';
 import { useState } from 'react';
@@ -11,6 +12,7 @@ const STEPS = [
     { Component: ChoosePlan, title: "Choose Plan" },
     { Component: SelectAgeGroup, title: "Select Age" },
     { Component: ChildDetailsSection, title: "Child Details" },
+    { Component: ClassScheduleSection, title: "Class Schedule" },
 ];
 
 const page = () => {

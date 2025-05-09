@@ -1,6 +1,6 @@
 import Navbar from "@/feature/parents/components/navbar/Navbar";
 
-export default function LandingLayout({ children }: { children: React.ReactNode }) {
+export default function ParentsSetupLayout({ children }: { children: React.ReactNode }) {
     return (
         <div className="flex flex-col h-screen w-full bg-primary-bg-color overflow-hidden">
             <Navbar />
