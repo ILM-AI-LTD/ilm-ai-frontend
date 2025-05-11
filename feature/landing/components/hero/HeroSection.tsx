@@ -1,6 +1,7 @@
 import CustomButton from "@/components/global/CustomButton"
 import CustomVideoPlayer from "@/components/global/CustomVideoPlayer"
 import Image from "next/image"
+import Link from "next/link"
 
 const HeroSection = () => {
     return (
@@ -10,17 +11,19 @@ const HeroSection = () => {
             <div className="relative max-w-[1170px] z-10 flex flex-col items-center justify-center text-white">
 
                 <div className="w-full flex flex-col items-center gap-8">
-                    <p className="font-bold  text-[min(12vw,72px)] text-center">
-                        Get <span className="text-brand-color italic">Ilmified</span>
+                    <p className="font-bold  text-[min(12vw,52px)] text-center">
+                        Personalised Learning, <span className="text-brand-color">Parent-led Progress</span>
                     </p>
 
-                    <p className="font-medium text-[min(10vw,16px)] text-center">Empowering learners through intelligent, adaptive, and personalized study tools.</p>
+                    <p className="font-medium text-[min(10vw,16px)] text-center">Interactive education with AI-enhanced tutor and parental governance. ILM AI- where learning becomes personal.</p>
 
                     <div className="inline-flex gap-4">
-                        <CustomButton
-                            label="Get Started"
-                            className="border-1 border-white bg-primary-bg-color hover:bg-[#007AAC] hover:border-[#007AAC] h-14 w-32 rounded-full"
-                        />
+                        <Link href="/auth/sign-up">
+                            <CustomButton
+                                label="Get Started"
+                                className="border-1 border-white bg-primary-bg-color hover:bg-[#007AAC] hover:border-[#007AAC] h-14 w-32 rounded-full"
+                            />
+                        </Link>
                         <CustomButton
                             label="Free Trial"
                             className="border-1 border-brand-color text-brand-color bg-primary-bg-color hover:bg-[#007AAC] hover:border-0 hover:text-white h-14 w-32 rounded-full"

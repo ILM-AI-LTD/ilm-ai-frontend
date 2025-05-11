@@ -14,8 +14,8 @@ const Navbar = () => {
             <Link href="/auth/sign-in">
                 <CustomButton
                     label="Login"
-                    className="bg-primary-color text-brand-color font-bold text-base rounded-full hover:bg-primary-color-hover hover:text-brand-color transition-all duration-300 ease-in-out border-1 border-brand-color h-[52px] cursor-pointer"
-                    icon={<LogIn color="#19BDFF" />}
+                    className="bg-primary-color text-brand-color font-bold text-base rounded-full hover:bg-[#007AAC] hover:border-[#007AAC] hover:text-white transition-all duration-300 ease-in-out border-1 border-brand-color h-[52px] cursor-pointer"
+                    icon={<LogIn />}
                 />
             </Link>
         </nav>
