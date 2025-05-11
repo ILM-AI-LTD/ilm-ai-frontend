@@ -9,8 +9,8 @@ import { useState } from 'react';
 
 const STEPS = [
     { Component: GetStarted, title: "Welcome" },
-    { Component: ChoosePlan, title: "Choose Plan" },
-    { Component: SelectAgeGroup, title: "Select Age" },
+    // { Component: ChoosePlan, title: "Choose Plan" },
+    // { Component: SelectAgeGroup, title: "Select Age" },
     { Component: ChildDetailsSection, title: "Child Details" },
     { Component: ClassScheduleSection, title: "Class Schedule" },
 ];
