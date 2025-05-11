@@ -8,8 +8,8 @@ const plans = [
         //   yearlyPriceId: import.meta.env.VITE_BASIC_YEARLY_PRICE_ID,
         features: [
             "1 Student",
-            "Full SUbject Aceess",
-            "All AI Modes (Mr. Classic & Mr. Sassy",
+            "Full Subject Aceess",
+            "All AI Modes (Mr. Classic & Mr. Sassy)",
             "Weekly Progress Report",
         ],
         actionLabel: "Join",
@@ -20,7 +20,7 @@ const plans = [
     },
     {
         title: "Family Plan",
-        description: "Great for siblings and learning families.",
+        description: "Ideal for siblings and family learning.",
         monthlyPrice: 45,
         yearlyPrice: 300,
         //   monthlyPriceId: import.meta.env.VITE_PRO_MONTHLY_PRICE_ID,
@@ -29,7 +29,7 @@ const plans = [
             "Up to 3 Students",
             "Full Subject & AI Access",
             "Group Performance Analytics",
-            "Dedicated SUpport",
+            "Dedicated Support",
         ],
         actionLabel: "Join",
         // popular: true,
