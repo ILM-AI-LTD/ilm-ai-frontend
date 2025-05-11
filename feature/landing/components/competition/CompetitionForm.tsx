@@ -40,6 +40,7 @@ const CompetitionForm = () => {
             <CustomButton
                 label="Join the Competition"
                 className="w-full bg-brand-color hover:bg-[#007AAC] hover:border-0 h-14 py-4 px-8 rounded-full text-white"
+                disabled
             />
         </form>
     )
