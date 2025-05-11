@@ -10,12 +10,12 @@ const CustomerService = () => {
 
                 <div className="flex flex-col gap-4 justify-center items-center lg:items-start w-full lg:w-[60%]">
                     <p className="font-medium text-lg text-center lg:text-left">
-                        Speak with one of our sales specialists and determine which ILM AI product is best for you.
+                        Empower your learning journey with AI-driven education designed to unlock your potential.
                     </p>
 
                     <CustomButton
-                        label="Get in touch"
-                        className="w-[148px] h-12 bg-white hover:bg-white rounded-full font-bold text-brand-color"
+                        label="Get Started"
+                        className="w-[148px] h-12 bg-brand-color hover:bg-brand-color rounded-full font-bold"
                     />
                 </div>
 
