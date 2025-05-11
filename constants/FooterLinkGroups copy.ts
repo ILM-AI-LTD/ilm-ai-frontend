@@ -5,35 +5,47 @@ export interface LinkGroup {
 
 export const linkGroups: LinkGroup[] = [
     {
-        title: 'Navigation Links',
+        title: 'Explore ILM',
         links: [
-            { label: "Navigation Links", href: "/navigation-links" },
             { label: 'Home', href: '/' },
             { label: 'Features', href: '/features' },
             { label: 'How It Works', href: '/how-it-works' },
-            { label: 'Pricing', href: '/pricing' },
             { label: 'About Us', href: '/about' },
-        ],
-    },
-    {
-        title: 'Support',
-        links: [
-            { label: 'Support', href: '/support' },
-            { label: 'Competition', href: '/competition' },
-            { label: 'Tech', href: '/tech' },
-            { label: 'Career', href: 'https://development.d1dxdcfh1vnsex.amplifyapp.com/career' },
-            { label: 'FAQ', href: '/faq' },
-            { label: 'Contact Us', href: '/contact' },
         ],
     },
     {
         title: 'Resources',
         links: [
-            { label: 'Resources', href: '/resources' },
             { label: 'Tutorials', href: '/tutorials' },
+            { label: 'Quizzes', href: '/quizzes' },
+            { label: 'Parents Portal', href: '/parents-portal' },
+            { label: 'FAQs', href: '/faqs' },
+        ],
+    },
+    {
+        title: 'Get Involved',
+        links: [
+            { label: 'Join us', href: '/join-us' },
+            { label: 'Careers', href: '/careers' },
+            { label: 'Pricing', href: '/pricing' },
             { label: 'Community', href: '/community' },
-            { label: 'Privacy Policy', href: '/privacy' },
-            { label: 'Terms & Condition', href: '/terms' },
+        ],
+    },
+    {
+        title: 'Support',
+        links: [
+            { label: 'Contact us', href: '/contact-us' },
+            { label: 'help center', href: '/help-center' },
+            { label: 'Report a problem', href: '/report-a-problem' },
+            { label: 'Feedback', href: '/feedback' },
+        ],
+    },
+    {
+        title: 'Legal',
+        links: [
+            { label: 'Privacy policy', href: '/privacy-policy' },
+            { label: 'Cookie policy', href: '/cookie-policy' },
+            { label: 'Terms & Conditions', href: '/terms-conditions' },
         ],
     },
 ]

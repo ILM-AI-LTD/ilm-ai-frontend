@@ -13,9 +13,10 @@ const Footer: FC = () => {
                         <CustomLogo logoSrc="/ILM_AI_Logo.svg" />
                     </div>
 
-                    <div className="grid grid-cols-2 md:grid-cols-3 gap-6 text-white mb-16">
+                    <div className="grid grid-cols-2 md:grid-cols-5 gap-6 text-white mb-16">
                         {linkGroups.map((group) => (
                             <div key={group.title}>
+                                <p className='font-bold text-xl mb-4'>{group.title}</p>
                                 <ul className="space-y-4 text-sm">
                                     {group.links.map((link) => (
                                         <li key={link.href}>
