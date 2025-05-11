@@ -9,6 +9,7 @@ const page = () => {
         <div className="h-full max-w-[1770px] w-full flex flex-col py-5">
             <div className="flex-1 flex flex-col overflow-auto">
                 <div className="inline-flex  items-center">
+
                     <ILMIAssistant height={180} width={140} className="h-[180px] w-[140px]" />
 
                     <div className="mb-20">
