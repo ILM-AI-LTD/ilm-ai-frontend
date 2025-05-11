@@ -3,22 +3,22 @@ import SubjectCard from "./SubjectCard"
 const subjects = [
     {
         title: "Mathematics",
-        description: "Dive into dynamic, hands-on lessons that spark curiosity, build confidence, and keep you excited about learning.",
+        description: "Master the art of mathematics with interactive problems, real-life examples that make numbers feel less scary and more fun.",
         iconSrc: "/Mathematics.svg"
     },
     {
         title: "Biology",
-        description: "Dive into dynamic, hands-on lessons that spark curiosity, build confidence, and keep you excited about learning.",
+        description: "Learn biology by diving into animated cells, body systems, and nature explorations that make the living world exciting and easy to grasp.",
         iconSrc: "/Biology.svg"
     },
     {
         title: "Physics",
-        description: "Dive into dynamic, hands-on lessons that spark curiosity, build confidence, and keep you excited about learning.",
+        description: "Explore physics through immersive animations, virtual experiments, and simulations that bring concepts of motion, energy, and forces to life.",
         iconSrc: "/Physics.svg"
     },
     {
         title: "Chemistry",
-        description: "Dive into dynamic, hands-on lessons that spark curiosity, build confidence, and keep you excited about learning.",
+        description: "Discover the wonders of chemistry with interactive experiments and vibrant animations that bring reactions to life.",
         iconSrc: "/Chemistry.svg"
     },
 ]
