@@ -52,7 +52,7 @@ export default function ReviewSection() {
         <section className='bg-secondary-bg-color w-full flex flex-col items-center justify-center py-20 px-6 md:px-10 2xl:px-[135px] gap-8'>
 
             <div className='text-white w-full md:w-[90%]'>
-                <p className='font-bold text-[min(10vw,40px)] text-center mb-4'>See What Our Students Are Saying</p>
+                <p className='font-bold text-[min(10vw,40px)] text-center mb-4'>Feedback From Our Students</p>
                 <p className='font-medium text-lg text-center'>Strong relationships start with strong interactions. Our feature lets you personalize customer experiences, building loyalty and revenue.</p>
             </div>
 
