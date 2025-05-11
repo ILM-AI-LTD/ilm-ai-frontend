@@ -7,20 +7,20 @@ import {
 
 const faqItems = [
     {
-        question: "Can I switch between Mr. Classic and Mr. Sassy?",
-        answer: "Yes, you can easily switch between Mr. Classic and Mr. Sassy teaching styles in your account settings. Mr. Classic offers a traditional teaching approach, while Mr. Sassy provides a more engaging and humorous learning experience. Switch anytime based on your child's preference or learning needs!"
+        question: "Will the platform work on tablets or mobile devices?",
+        answer: ""
     },
     {
-        question: "How does Ilm AI evaluate handwritten answers?",
-        answer: "Our system uses advanced AI handwriting recognition technology. Students can write their answers on paper, snap a photo, and upload it. Ilm AI reads, analyzes, and provides detailed feedback instantly — just like a real teacher!"
+        question: "Can multiple children use the same account?",
+        answer: "We offer family and multi-learner plans that allow you to manage multiple profiles under one account."
     },
     {
-        question: "Is there a free trial available before subscribing?",
-        answer: "Absolutely! We offer a 14-day free trial that gives you full access to all features. No credit card required to start your trial. Experience the full capabilities of our platform before making a commitment."
+        question: "What subjects does the platform cover?",
+        answer: ""
     },
     {
-        question: "How are progress and reports shared with parents?",
-        answer: "Parents receive weekly progress reports via email and can access a comprehensive dashboard showing their child's performance, strengths, and areas for improvement. The dashboard highlights completed assignments, mastery levels, and learning trends. Parents can also enable real-time notifications for important milestones."
+        question: "What makes your platform different from others?",
+        answer: ""
     }
 ];
 
