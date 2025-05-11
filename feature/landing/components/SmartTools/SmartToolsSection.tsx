@@ -5,13 +5,13 @@ const features = [
   {
     title: 'ILMI Vision',
     description:
-      ' Step into the future of learning with ILMI where personalized education, real connections, and limitless growth begin.',
+      ' Step into the future of learning with ILMI where personalized education, real connections, and limitless growth begins.',
     imgSrc: 'ilm-vision-icon.svg'
   },
   {
     title: 'Adaptive Tutor',
     description:
-      'Unlock a learning path that grows with you, guided by your Adaptive Tutor to fit your strengths and challenges.',
+      'Unlock a learning path that evolves with you, guided by your Adaptive Tutor to fit your strengths and challenges.',
     imgSrc: 'adaptive-tutor-icon 1.svg'
   },
   {
@@ -32,7 +32,7 @@ const SmartToolsSection: React.FC = () => (
   <section className="bg-secondary-bg-color py-20 px-6 md:px-10 2xl:px-[135px] text-center flex flex-col justify-center items-center">
 
     <h1 className='font-bold text-[min(10vw,36px)] text-white mb-16'>
-      Smart Tools, Better Learning
+      Smarter Tools, Better Learning
     </h1>
 
     <div className='max-w-[1170px] grid grid-cols-1 md:grid-cols-2 bg-primary-bg-color rounded-4xl p-4 md:p-6 2xl:p-20 gap-4 '>
