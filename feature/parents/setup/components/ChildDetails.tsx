@@ -1,5 +1,6 @@
 "use client"
 import InputField from '@/components/global/CustomInput'
+import { CustomSelect } from '@/components/global/CustomSelect'
 import { ChildDetailsSchema } from '@/schema'
 import { useFormik } from 'formik'
 import { useParentsSetupStore } from '../../store/useParentsSetupStore'
@@ -23,6 +24,7 @@ const ChildDetailsSection = ({ onNext, onBack }: ChildDetailsSectionProps) => {
             initialValues: {
                 fullName: (childDetails as any).fullName,
                 username: (childDetails as any).username,
+                ageGroup: (childDetails as any).ageGroup,
                 password: (childDetails as any).password,
                 confirmPassword: "",
             },
@@ -38,6 +40,7 @@ const ChildDetailsSection = ({ onNext, onBack }: ChildDetailsSectionProps) => {
                 setChildDetails({
                     fullName: values.fullName,
                     username: values.username,
+                    ageGroup: values.ageGroup,
                     password: values.password,
                 })
                 onNext();
@@ -62,7 +65,7 @@ const ChildDetailsSection = ({ onNext, onBack }: ChildDetailsSectionProps) => {
                     </div>
                 </div>
 
-                <form action="" className='w-full max-w-[800px] mx-auto flex flex-col gap-4' onSubmit={handleSubmit}>
+                <form action="" className='w-full max-w-[800px] mx-auto flex flex-col gap-4 mb-4' onSubmit={handleSubmit}>
                     <InputField
                         placeholder="Enter your child's full name"
                         labelText="Full Name"
@@ -87,6 +90,24 @@ const ChildDetailsSection = ({ onNext, onBack }: ChildDetailsSectionProps) => {
                         touched={!!touched.username}
                         className='h-12 bg-parent-inputField-color border-0 placeholder:text-white/60'
                     />
+                    <CustomSelect
+                        label="Age Group"
+                        placeholder="Select Age Group"
+                        options={[
+                            { value: "Year 1–2", label: "Year 1–2 (Key Stage 1)" },
+                            { value: "Year 3–6", label: "Year 3–6 (Key Stage 2)" },
+                            { value: "Year 7–8", label: "Year 7-8 (Key Stage 3)" },
+                            { value: "Year 9–11", label: "Year 9–11 (GCSE Level)" },
+                            { value: "Year 12-13", label: "Year 12-13 (A-Level)" },
+                        ]}
+                        value={values.ageGroup}                         // Formik’s current value
+                        onValueChange={(val) => {
+                            // Tell Formik about the new field value
+                            handleChange({ target: { name: "ageGroup", value: val } })
+                        }}
+
+                    />
+
                     <InputField
                         placeholder={"\u2022  \u2022  \u2022  \u2022  \u2022  \u2022  \u2022  \u2022"}
                         labelText="Password"

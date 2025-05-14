@@ -16,19 +16,16 @@ export type Subject = {
 export interface ChildDetails {
   fullName: string
   username: string
+  ageGroup: string
   password: string
 }
 
 interface ParentsSetupState {
 
-  planIndex: number | null
-  ageGroup: string
   childDetails: ChildDetails
 
   subjects: Subject[]
 
-  setPlanIndex: (planIndex: number) => void
-  setAgeGroup: (ageGroup: string) => void
   setChildDetails: (details: ChildDetails) => void
 
   toggleSubjectSchedule: (
@@ -43,9 +40,12 @@ export const useParentsSetupStore = create<ParentsSetupState>()(
   persist(
     (set, get) => ({
 
-      planIndex: null,
-      ageGroup: '',
-      childDetails: { fullName: '', username: '', password: '' },
+      childDetails: {
+        fullName: '',
+        username: '',
+        ageGroup: '',
+        password: ''
+      },
 
       subjects: [
         { id: 1, subject_name: 'Math', schedule: [] },
@@ -55,8 +55,6 @@ export const useParentsSetupStore = create<ParentsSetupState>()(
       ],
 
 
-      setPlanIndex: (planIndex) => set({ planIndex }),
-      setAgeGroup: (ageGroup) => set({ ageGroup }),
       setChildDetails: (childDetails) => set({ childDetails }),
 
       toggleSubjectSchedule: (subjectId, entry) => {
@@ -90,9 +88,13 @@ export const useParentsSetupStore = create<ParentsSetupState>()(
 
       reset: () =>
         set({
-          planIndex: null,
-          ageGroup: '',
-          childDetails: { fullName: '', username: '', password: '' },
+          childDetails: {
+            fullName: '',
+            username: '',
+            ageGroup: '',
+            password: ''
+          },
+          
           subjects: [
             { id: 1, subject_name: 'Math', schedule: [] },
             { id: 2, subject_name: 'Physics', schedule: [] },
