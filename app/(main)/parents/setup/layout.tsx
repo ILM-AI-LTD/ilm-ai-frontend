@@ -1,4 +1,4 @@
-import Navbar from "@/feature/parents/setup/components/navbar/Navbar";
+import Navbar from "@/feature/parents/components/setup/navbar/Navbar";
 
 export default function ParentsSetupLayout({ children }: { children: React.ReactNode }) {
     return (

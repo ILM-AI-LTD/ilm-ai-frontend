@@ -34,7 +34,7 @@ const ClassScheduleSection = ({ onNext, onBack }: ClassScheduleSectionProps) => 
 
             <FooterParents
                 leftButton={{ label: "Back", onClick: onBack }}
-                rightButton={{ label: "Next", }}
+                rightButton={{ label: "Finish Setup", }}
             />
         </div>
     )

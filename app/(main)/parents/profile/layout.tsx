@@ -3,7 +3,7 @@ import {
   SidebarInset,
   SidebarProvider
 } from "@/components/ui/sidebar"
-import ParentsNavbar from "@/feature/parents/profile/components/common/Navbar"
+import ParentsNavbar from "@/feature/parents/components/profile/common/Navbar"
 
 
 const ParentProfileLayout = ({ children }: { children: React.ReactNode }) => {

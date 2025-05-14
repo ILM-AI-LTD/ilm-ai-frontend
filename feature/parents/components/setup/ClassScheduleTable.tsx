@@ -32,6 +32,8 @@ const timeSlots = [
   { label: '16:00-17:00', startTime: '16:00', endTime: '17:00' },
 ]
 
+
+
 export default function ClassScheduleTable() {
   const subjects = useParentsSetupStore((s) => s.subjects)
   const toggle = useParentsSetupStore((s) => s.toggleSubjectSchedule)

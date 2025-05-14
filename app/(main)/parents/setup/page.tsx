@@ -1,8 +1,8 @@
 'use client';
 
-import ChildDetailsSection from '@/feature/parents/setup/components/ChildDetails';
-import ClassScheduleSection from '@/feature/parents/setup/components/ClassScheduleSection';
-import GetStarted from '@/feature/parents/setup/components/GetStarted';
+import ChildDetailsSection from '@/feature/parents/components/setup/ChildDetails';
+import ClassScheduleSection from '@/feature/parents/components/setup/ClassScheduleSection';
+import GetStarted from '@/feature/parents/components/setup/GetStarted';
 import { useState } from 'react';
 
 const STEPS = [

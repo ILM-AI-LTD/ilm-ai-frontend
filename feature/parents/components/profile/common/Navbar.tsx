@@ -1,7 +1,7 @@
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { DropdownMenu, DropdownMenuCheckboxItem, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuSub, DropdownMenuSubContent, DropdownMenuSubTrigger, DropdownMenuTrigger } from '@/components/ui/dropdown-menu'
 import { SidebarTrigger } from '@/components/ui/sidebar'
-import { Bolt, ChevronsUpDown, ExternalLink, Filter, LogIn, LogOut, Rocket, Settings2, User } from 'lucide-react'
+import { Bolt, ChevronsUpDown, ExternalLink, Filter, LogOut, Settings2, User } from 'lucide-react'
 import ButtonsWithBadge from './ButtonWithBadge'
 
 const ParentsNavbar = () => {

@@ -1,7 +1,7 @@
 import CustomButton from "@/components/global/CustomButton"
-import AssistantCallout from "@/feature/parents/setup/components/common/AssistantCallout"
-import FooterParents from "@/feature/parents/setup/components/common/FooterParents"
-import ILMIAssistant from "@/feature/parents/setup/components/common/ILMIAssistant"
+import AssistantCallout from "@/feature/parents/components/setup/common/AssistantCallout"
+import FooterParents from "@/feature/parents/components/setup/common/FooterParents"
+import ILMIAssistant from "@/feature/parents/components/setup/common/ILMIAssistant"
 import { CircleCheck, FileText } from "lucide-react"
 
 const page = () => {
