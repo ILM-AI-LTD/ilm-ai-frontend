@@ -15,13 +15,13 @@ export const AuthService = {
             data,
         }),
     resetPassword: (data: ResetPasswordDto): Promise<ResetPasswordResponse> =>
-        apiRequest('/auth/forgot-password', {
+        apiRequest(AuthEndpoints.resetPassword, {
             method: 'POST',
             data,
         }),
 
     setNewPassword: (data: SetNewPasswordDto): Promise<SetNewPasswordResponse> =>
-        apiRequest('/auth/reset-password', {
+        apiRequest(AuthEndpoints.setNewPassword, {
             method: 'PATCH',
             data,
         }),
