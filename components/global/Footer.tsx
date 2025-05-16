@@ -1,5 +1,5 @@
 import CustomLogo from '@/components/global/CustomLogo';
-import { linkGroups } from '@/constants/FooterLinkGroups copy';
+import { linkGroups } from '@/constants/FooterLinkGroups';
 import Link from 'next/link';
 import type { FC } from 'react';
 import CustomIcon from './CustomIcon';
