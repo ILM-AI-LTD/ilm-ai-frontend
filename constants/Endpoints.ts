@@ -1,6 +1,7 @@
 export const AuthEndpoints = {
     signUp: "/auth/signup",
-    signIn: "auth/login",
+    signInParents: "auth/login",
+    signInStudents: "",
     resetPassword: "/auth/forgot-password",
     setNewPassword: "/auth/reset-password",
 }
