@@ -3,17 +3,17 @@
 import CustomButton from '@/components/global/CustomButton';
 import FormError from '@/components/global/CustomFormError';
 import InputField from '@/components/global/CustomInput';
-import { SignInSchema } from '@/schema';
+import { SignInParentsSchema } from '@/schema';
 import { useFormik } from 'formik';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { toast } from 'sonner';
 import { useAuth } from '../../hooks/useAuth';
 
-const SignInForm = () => {
+const SignInFormParents = () => {
     const router = useRouter()
     const {
-        signIn: { mutate: handleSignIn, isPending, error }
+        signInParents: { mutate: handleSignInParents, isPending, error, data }
     } = useAuth();
 
     const { values, errors, touched, handleSubmit, handleChange, handleBlur } =
@@ -25,19 +25,20 @@ const SignInForm = () => {
             },
             validate: (values) => {
                 try {
-                    SignInSchema.parse(values);
+                    SignInParentsSchema.parse(values);
                 } catch (error: any) {
                     return error.flatten().fieldErrors;
                 }
             },
             onSubmit: async (values, action) => {
-                handleSignIn({
+                handleSignInParents({
                     data: { email: values.email, password: values.password },
                     rememberMe: values.rememberMe
                 },
                     {
                         onSuccess: () => {
-                            toast.success("Successfully Logged In.")
+                            // console.log(data);
+                            toast.success("Successfully Logged In.");
                             action.resetForm();
                             router.push('/dashboard')
                         },
@@ -110,6 +111,4 @@ const SignInForm = () => {
     )
 }
 
-export default SignInForm;
-
-//TODO : remember me flicker issue fix with loading.
+export default SignInFormParents;
