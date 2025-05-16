@@ -1,6 +1,9 @@
 import CustomLogo from "@/components/global/CustomLogo";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import SignInForm from "@/feature/auth/components/sign-in/SignInForm";
+import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import SignInFormParents from "@/feature/auth/components/sign-in/SignInFormParents";
+import SignInFormStudents from "@/feature/auth/components/sign-in/SignInFormStudents";
+import { TabsContent } from "@radix-ui/react-tabs";
 import Link from "next/link";
 
 const SignInPage = () => {
@@ -18,8 +21,28 @@ const SignInPage = () => {
                     </div>
                 </CardHeader>
 
-                <CardContent className="p-0">
-                    < SignInForm />
+                <CardContent className="p-0 w-full">
+
+                    <Tabs defaultValue="signin-parents" className="w-full">
+                        <TabsList className="bg-primary-bg-color rounded-full border-1 border-brand-color p-1 mx-auto">
+                            <TabsTrigger value="signin-parents" className="text-base rounded-full text-white  px-3 py-3">
+                                Parents
+                            </TabsTrigger>
+                            <TabsTrigger value="signin-students" className="text-base rounded-full text-white px-3 py-3">
+                                Students
+                            </TabsTrigger>
+                        </TabsList>
+
+                        <TabsContent value="signin-parents">
+                            < SignInFormParents />
+                        </TabsContent>
+                        <TabsContent value="signin-students">
+                            < SignInFormStudents />
+                        </TabsContent>
+
+
+
+                    </Tabs>
                 </CardContent>
 
             </Card>
