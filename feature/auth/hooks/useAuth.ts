@@ -1,12 +1,14 @@
 import { useResetPassword } from './useResetPassword'
 import { useSetNewPassword } from './useSetNewPassword'
-import { useSignIn } from './useSignIn'
+import { useSignInParents } from './useSignInParents'
+import { useSignInStudents } from './useSignInStudents'
 import { useSignUp } from './useSignUp'
 
 export function useAuth() {
   return {
     signUp: useSignUp(),
-    signIn: useSignIn(),
+    signInParents: useSignInParents(),
+    signInStudents: useSignInStudents(),
     resetPassword: useResetPassword(),
     setNewPassword: useSetNewPassword(),
   }
