@@ -12,7 +12,17 @@ export type SignUpDto = {
   confirmPassword: string
 }
 
-export type AuthResponse = {
+export type AuthParentsResponse = {
+  success: boolean
+  data: {
+    user: User
+    token: string
+    hasChild: boolean
+  }
+  message: string
+}
+
+export type AuthStudentsResponse = {
   success: boolean
   data: {
     user: User
@@ -21,8 +31,13 @@ export type AuthResponse = {
   message: string
 }
 
-export type SignInDto = {
+export type SignInParentsDto = {
   email: string
+  password: string
+}
+
+export type SignInStudentsDto = {
+  username: string
   password: string
 }
 
