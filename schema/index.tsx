@@ -17,12 +17,19 @@ export const SignUpSchema = z
     path: ["confirmPassword"],
   })
 
-export const SignInSchema = z.object({
+export const SignInParentsSchema = z.object({
   email: z
     .string()
     .trim()
     .min(1, "Email is required. ")
     .email("Invalid email address. "),
+  password: z.string().trim().min(1, "Password required. "),
+});
+export const SignInStudentsSchema = z.object({
+  username: z
+    .string()
+    .trim()
+    .min(1, "Username is required. "),
   password: z.string().trim().min(1, "Password required. "),
 });
 
