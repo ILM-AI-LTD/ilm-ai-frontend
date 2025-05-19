@@ -15,18 +15,16 @@ interface ClassScheduleSectionProps {
 const ClassScheduleSection = ({ onNext, onBack }: ClassScheduleSectionProps) => {
     const router = useRouter()
     const { mutate: completeSetup, isPending } = useParentsSetup()
-    const { childDetails, subjects } = useParentsSetupStore()
+    const { childDetails, subjects,reset } = useParentsSetupStore()
 
 
     const handleRegisterChild = () => {
         completeSetup({ childDetails, subjects }, {
             onSuccess: (res) => {
-
                 let childId = res.data.child._id
-
                 toast.success("Your child has been successfully registered.")
                 router.push('/parents/setup/successful?childId=' + childId)
-                //TODO: need to send the child's ID on successful.
+                reset();
             },
             onError: () => {
                 toast.error("Something went wrong")
