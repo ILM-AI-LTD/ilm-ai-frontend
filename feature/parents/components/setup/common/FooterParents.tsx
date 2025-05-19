@@ -5,6 +5,7 @@ export interface FooterButton {
     label: string;
     onClick?: () => void;
     disabled?: boolean;
+    isPending?: boolean;
 }
 
 export interface FooterParentsProps {
@@ -37,6 +38,7 @@ const FooterParents: React.FC<FooterParentsProps> = ({
                 label={rightButton.label}
                 onClick={rightButton.onClick}
                 disabled={rightButton.disabled}
+                isLoading={rightButton.isPending}
                 className="h-[52px] bg-brand-color-parent text-white py-2 px-8 font-bold text-base rounded-full hover:bg-brand-color-parent disabled:opacity-50"
 
             />
