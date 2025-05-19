@@ -5,7 +5,6 @@ import FormError from '@/components/global/CustomFormError';
 import InputField from '@/components/global/CustomInput';
 import { SignInStudentsSchema } from '@/schema';
 import { useFormik } from 'formik';
-import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { toast } from 'sonner';
 import { useAuth } from '../../hooks/useAuth';
@@ -13,7 +12,7 @@ import { useAuth } from '../../hooks/useAuth';
 const SignInFormStudents = () => {
     const router = useRouter()
     const {
-        signInStudents: { mutate: handleSignInStudents, isPending, error, data }
+        signInStudents: { mutate: handleSignInStudents, isPending, error }
     } = useAuth();
 
     const { values, errors, touched, handleSubmit, handleChange, handleBlur } =
@@ -36,11 +35,11 @@ const SignInFormStudents = () => {
                     rememberMe: values.rememberMe
                 },
                     {
-                        onSuccess: () => {
-                            // console.log(data);
+                        onSuccess: (res) => {
+                            // console.log(res.data);
                             toast.success("Successfully Logged In.");
                             action.resetForm();
-                            router.push('/dashboard')
+                            //TODO: redirect to appropriate page based on student workflow
                         },
                         onError: () => {
                             toast.error("Something went wrong")
