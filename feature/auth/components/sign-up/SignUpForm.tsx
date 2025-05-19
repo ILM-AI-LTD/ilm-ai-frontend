@@ -33,9 +33,8 @@ const SignUpForm = () => {
                 handleSignUp(values, {
                     onSuccess: () => {
                         toast.success("Successfully Completed Registration.")
+                        router.push('/parents/setup')
                         action.resetForm();
-                        router.push('/parents/profile')
-                        //TODO: need to make changes here regarding redirect    
                     },
                     onError: () => {
                         toast.error("Something went wrong")
