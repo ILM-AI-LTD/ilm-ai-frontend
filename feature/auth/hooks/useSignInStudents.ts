@@ -19,12 +19,12 @@ export function useSignInStudents() {
 
       const { user, token } = res.data
 
-      qc.setQueryData<User>(['currentParents'], user)
+      qc.setQueryData<User>(['currentStudents'], user)
 
       setClientCookie('token', token, { expires: rememberMe ? 7 : undefined })
 
       const storage = rememberMe ? localStorage : sessionStorage
-      storage.setItem('currentParents', JSON.stringify(user))
+      storage.setItem('currentStudents', JSON.stringify(user))
     },
   })
 }
