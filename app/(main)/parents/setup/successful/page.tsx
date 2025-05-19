@@ -22,19 +22,26 @@ const page = () => {
     const child = data?.data.child
     const subjects = child?.subjects.map((s) => s).join(', ')
 
-    if (isPending) {
-        return (
+    // if (isPending) {
+    //     return (
+    //         <div className="h-full w-full flex items-center justify-center">
+    //             <div className="flex flex-col items-center gap-4">
+    //                 <ILMIAssistant height={180} width={140} className="h-[180px] w-[140px]" />
+    //                 <p className="text-white text-lg">Loading...</p>
+    //             </div>
+    //         </div>
+    //     )
+    // }
+
+    return (
+        <Suspense fallback={
             <div className="h-full w-full flex items-center justify-center">
                 <div className="flex flex-col items-center gap-4">
                     <ILMIAssistant height={180} width={140} className="h-[180px] w-[140px]" />
                     <p className="text-white text-lg">Loading...</p>
                 </div>
             </div>
-        )
-    }
-
-    return (
-        <Suspense >
+        }>
             <div className="h-full max-w-[1770px] w-full flex flex-col py-5">
                 <div className="flex-1 flex flex-col overflow-auto">
                     <div className="inline-flex  items-center">
