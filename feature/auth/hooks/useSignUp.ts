@@ -1,13 +1,13 @@
 "use client"
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { AuthService } from '../services/AuthService'
-import type { SignUpDto, AuthResponse, User } from '@/types/auth'
-import { setCookie as setClientCookie} from '@/lib/cookies/cookies-client'
+import type { SignUpDto, User, AuthParentsResponse } from '@/types/auth'
+import { setCookie as setClientCookie } from '@/lib/cookies/cookies-client'
 
 export function useSignUp() {
   const qc = useQueryClient()
 
-  return useMutation<AuthResponse, Error, SignUpDto>({
+  return useMutation<AuthParentsResponse, Error, SignUpDto>({
     
     mutationFn: AuthService.signUp,
     onSuccess: (res) => {
