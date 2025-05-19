@@ -1,3 +1,7 @@
+import { useRouter } from "next/navigation"
+import { toast } from "sonner"
+import { useParentsSetup } from "../../hooks/useParentsSetup"
+import { useParentsSetupStore } from "../../store/useParentsSetupStore"
 import ClassScheduleTable from "./ClassScheduleTable"
 import AssistantCallout from "./common/AssistantCallout"
 import FooterParents from "./common/FooterParents"
@@ -9,6 +13,27 @@ interface ClassScheduleSectionProps {
 }
 
 const ClassScheduleSection = ({ onNext, onBack }: ClassScheduleSectionProps) => {
+    const router = useRouter()
+    const { mutate: completeSetup, isPending } = useParentsSetup()
+    const { childDetails, subjects } = useParentsSetupStore()
+
+
+    const handleRegisterChild = () => {
+        completeSetup({ childDetails, subjects }, {
+            onSuccess: (res) => {
+
+                let childId = res.data.child._id
+
+                toast.success("Your child has been successfully registered.")
+                router.push('/parents/setup/successful?childId=' + childId)
+                //TODO: need to send the child's ID on successful.
+            },
+            onError: () => {
+                toast.error("Something went wrong")
+            }
+        })
+    }
+
     return (
         <div className='h-full max-w-[1770px] w-full flex flex-col py-3'>
             <div className='flex-1 flex flex-col overflow-auto'>
@@ -34,7 +59,12 @@ const ClassScheduleSection = ({ onNext, onBack }: ClassScheduleSectionProps) => 
 
             <FooterParents
                 leftButton={{ label: "Back", onClick: onBack }}
-                rightButton={{ label: "Finish Setup", }}
+                rightButton={{
+                    label: 'Finish Setup',
+                    onClick: handleRegisterChild,
+                    disabled: isPending,
+                    isPending: isPending,
+                }}
             />
         </div>
     )

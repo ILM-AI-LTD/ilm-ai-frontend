@@ -2,8 +2,6 @@ import { ChildDetails, Schedule, Subject } from '@/types/parents'
 import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
 
-
-
 interface ParentsSetupState {
 
   childDetails: ChildDetails
