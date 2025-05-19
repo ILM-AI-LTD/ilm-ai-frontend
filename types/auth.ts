@@ -13,22 +13,23 @@ export type SignUpDto = {
 }
 
 export type AuthParentsResponse = {
-  success: boolean
+  status: string
+  message: string
   data: {
+    hasChild: boolean
     user: User
     token: string
-    hasChild: boolean
   }
-  message: string
 }
+//TODO: fix these response types 
 
 export type AuthStudentsResponse = {
-  success: boolean
+  status: string
+  message: string
   data: {
     user: User
     token: string
   }
-  message: string
 }
 
 export type SignInParentsDto = {

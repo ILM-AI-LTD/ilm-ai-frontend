@@ -16,3 +16,34 @@ export interface ChildDetails {
     ageGroup: string
     password: string
 }
+
+export type ParentsSetupDto = {
+    childDetails: ChildDetails
+    subjects: Subject[]
+}
+
+export type ParentsSetupResponse = {
+    status: string
+    message: string
+    data: {
+      child:{
+        _id: string
+        fullName: string
+        username: string
+      }
+    }
+}
+
+export type GetChildSummaryResponse = {
+    status: string
+    data: {
+      child:{
+        _id: string
+        fullName: string
+        username: string
+        ageGroup: string
+        password: string
+        subjects: Subject[]
+      }
+    }
+}
