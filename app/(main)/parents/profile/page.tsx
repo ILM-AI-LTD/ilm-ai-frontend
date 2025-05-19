@@ -1,7 +1,7 @@
 
 const page = () => {
   return (
-    <div>page</div>
+    <div>right now no dashboard. this is for testing purpose.</div>
   )
 }
 
