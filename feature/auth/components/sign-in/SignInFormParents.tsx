@@ -13,7 +13,7 @@ import { useAuth } from '../../hooks/useAuth';
 const SignInFormParents = () => {
     const router = useRouter()
     const {
-        signInParents: { mutate: handleSignInParents, isPending, error, data }
+        signInParents: { mutate: handleSignInParents, isPending, error }
     } = useAuth();
 
     const { values, errors, touched, handleSubmit, handleChange, handleBlur } =
@@ -36,11 +36,16 @@ const SignInFormParents = () => {
                     rememberMe: values.rememberMe
                 },
                     {
-                        onSuccess: () => {
-                            // console.log(data);
+                        onSuccess: (res) => {
+                            const { hasChild } = res.data;
                             toast.success("Successfully Logged In.");
                             action.resetForm();
-                            router.push('/dashboard')
+                            if (hasChild) {
+                                router.push('/parents/profile')
+                                //TODO: redirect to dashboard
+                            }else{
+                                router.push('/parents/setup')
+                            }
                         },
                         onError: () => {
                             toast.error("Something went wrong")
