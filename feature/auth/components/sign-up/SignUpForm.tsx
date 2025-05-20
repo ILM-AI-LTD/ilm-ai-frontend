@@ -54,7 +54,7 @@ const SignUpForm = () => {
                     placeholder="Enter full name"
                     labelText="Full Name"
                     type="text"
-                    name="name"
+                    name="fullName"
                     value={values.fullName}
                     onChange={handleChange}
                     onBlur={handleBlur}
