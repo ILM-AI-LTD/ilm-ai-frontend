@@ -18,7 +18,7 @@ const SignUpForm = () => {
         useFormik({
             initialValues: {
                 email: "",
-                name: "",
+                fullName: "",
                 password: "",
                 confirmPassword: "",
             },
@@ -55,11 +55,11 @@ const SignUpForm = () => {
                     labelText="Full Name"
                     type="text"
                     name="name"
-                    value={values.name}
+                    value={values.fullName}
                     onChange={handleChange}
                     onBlur={handleBlur}
-                    errors={errors.name}
-                    touched={touched.name}
+                    errors={errors.fullName}
+                    touched={touched.fullName}
                 />
 
                 <InputField

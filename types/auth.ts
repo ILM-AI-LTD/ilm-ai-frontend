@@ -7,7 +7,7 @@ export type User = {
 
 export type SignUpDto = {
   email: string
-  name: string
+  fullName: string
   password: string
   confirmPassword: string
 }
