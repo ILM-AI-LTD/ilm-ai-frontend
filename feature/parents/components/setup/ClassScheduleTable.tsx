@@ -105,7 +105,7 @@ export default function ClassScheduleTable() {
                 }
 
                 return (
-                  <TableCell key={`${day}-${label}`} className="p-0">
+                  <TableCell key={`${day}-${label}`} className="p-0 hover:bg-parent-chatbox-color">
                     <div
                       onClick={handleClick}
                       className={[

@@ -27,11 +27,11 @@ const HeroSection = () => {
 
                     <div className="inline-flex gap-4">
                         <Link href="/auth/sign-up">
-                            <button className="border-1 border-white bg-transparent hover:bg-[#007AAC] hover:border-[#007AAC] h-14 w-32 rounded-full">
+                            <button className="border-1 border-white bg-transparent hover:bg-[#007AAC] hover:border-[#007AAC] h-14 w-32 rounded-full cursor-pointer">
                                 Get Started
                             </button>
                         </Link>
-                        <button className="border-1 border-brand-color text-brand-color bg-transparent hover:bg-[#007AAC] hover:border-0 hover:text-white h-14 w-32 rounded-full">
+                        <button className="border-1 border-brand-color text-brand-color bg-transparent hover:bg-[#007AAC] hover:border-0 hover:text-white h-14 w-32 rounded-full cursor-pointer">
                             Free Trial
                         </button>
                     </div>
