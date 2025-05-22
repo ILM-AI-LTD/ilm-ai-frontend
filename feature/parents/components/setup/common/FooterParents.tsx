@@ -39,7 +39,7 @@ const FooterParents: React.FC<FooterParentsProps> = ({
                 onClick={rightButton.onClick}
                 disabled={rightButton.disabled}
                 isLoading={rightButton.isPending}
-                className="h-[52px] bg-brand-color-parent text-white py-2 px-8 font-bold text-base rounded-full hover:bg-brand-color-parent hover:bg-parent-chatbox-color disabled:opacity-50"
+                className="h-[52px] bg-brand-color-parent text-white py-2 px-8 font-bold text-base rounded-full hover:bg-parent-chatbox-color disabled:opacity-50"
 
             />
         </div>
