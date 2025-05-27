@@ -3,12 +3,15 @@ import { DropdownMenu, DropdownMenuCheckboxItem, DropdownMenuContent, DropdownMe
 import { SidebarTrigger } from '@/components/ui/sidebar'
 import { Bolt, ChevronsUpDown, ExternalLink, Filter, LogOut, Settings2, User } from 'lucide-react'
 import ButtonsWithBadge from './ButtonWithBadge'
+import CustomDropdown from '@/components/global/CustomDropdown'
+import { menuOptions } from '@/constants/Helpers'
 
 const StudentsNavbar = () => {
     return (
         <nav className='h-24 bg-primary-bg-color flex items-center justify-between z-10 px-6'>
             <SidebarTrigger className="-ml-1" />
             <div className="flex flex-row gap-4">
+                <CustomDropdown title={'Board'} menuOptions={menuOptions} />
                 <ButtonsWithBadge />
                 <DropdownMenu>
                     <DropdownMenuTrigger className="flex items-center gap-3">

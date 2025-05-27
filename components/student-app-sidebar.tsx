@@ -241,7 +241,7 @@ export function StudentAppSidebar({ ...props }: React.ComponentProps<typeof Side
         </div>
       </SidebarHeader>
 
-      <SidebarContent>
+      <SidebarContent className="border border-['#cdd3ec'] rounded-lg">
         {/* <NavMain items={data.navMain} /> */}
         <NavProjectStudents projects={data.projects} />
       </SidebarContent>

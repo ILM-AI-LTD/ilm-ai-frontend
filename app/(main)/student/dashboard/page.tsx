@@ -45,7 +45,7 @@ const page = () => {
 
 
             {/*--------------------  ---------------  */}
-            <div className="grid grid-cols-1 sm:grid-cols-5 grid-flow-row lg:gap-y-20 lg:md:mt-5 gap-4">
+            {/* <div className="grid grid-cols-1 sm:grid-cols-5 grid-flow-row lg:gap-y-20 lg:md:mt-5 gap-4">
                 <div className=""></div>
                 <div className=""></div>
                 <div className=""></div>
@@ -74,7 +74,7 @@ const page = () => {
                 <div className=""></div>
                 <div className=""></div>
                 <div className=""></div>
-            </div >
+            </div > */}
 
             {/* ----------------------   ------------*/}
             <div className="grid grid-cols-1 sm:grid-cols-5 grid-flow-row lg:gap-y-20 gap-y-10 md:gap-y-16 lg:mt-5 gap-x-4 ">
