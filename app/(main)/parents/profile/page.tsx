@@ -4,21 +4,37 @@ import React, { forwardRef, useRef } from "react";
 
 import { AnimatedBeam } from "@/components/magicui/animated-beam";
 import { cn } from "@/lib/utils";
+import Link from "next/link";
 
 const Circle = forwardRef<
   HTMLDivElement,
-  { className?: string; children?: React.ReactNode }
->(({ className, children }, ref) => {
+  { className?: string; children?: React.ReactNode, hidden?: boolean, top?: boolean, title?: string }
+>(({ className, children, hidden, top = false, title }, ref) => {
   return (
-    <div
-      ref={ref}
-      className={cn(
-        "z-10 flex size-12 items-center justify-center rounded-full border-2 bg-white p-3 shadow-[0_0_20px_-12px_rgba(0,0,0,0.8)]",
-        className,
-      )}
-    >
-      {children}
-    </div>
+    <Link href={"/#"}>
+      <div
+        ref={ref}
+        className={cn(
+          "relative flex size-24 items-center justify-center rounded-full border-2 bg-white p-3 shadow-[0_0_20px_-12px_rgba(0,0,0,0.8)]",
+          className,
+        )}
+      >
+        {children}
+        {
+          !hidden && (
+            <div className={`absolute size-2.5 rounded-full ${top ? "-top-3" : "-right-3"}  bg-white`}></div>
+
+          )
+        }
+      </div>
+
+      {
+        !hidden && (
+          <p className="text-center w-24">{title}</p>
+
+        )
+      }
+    </Link>
   );
 });
 
@@ -30,53 +46,269 @@ export function AnimatedBeamDemo() {
   const div2Ref = useRef<HTMLDivElement>(null);
   const div3Ref = useRef<HTMLDivElement>(null);
   const div4Ref = useRef<HTMLDivElement>(null);
+  const div5Ref = useRef<HTMLDivElement>(null);
+  const div6Ref = useRef<HTMLDivElement>(null);
+  const div7Ref = useRef<HTMLDivElement>(null);
+  const div8Ref = useRef<HTMLDivElement>(null);
+  const div9Ref = useRef<HTMLDivElement>(null);
+  const div10Ref = useRef<HTMLDivElement>(null);
+  const div11Ref = useRef<HTMLDivElement>(null);
+  const div12Ref = useRef<HTMLDivElement>(null);
+  const div13Ref = useRef<HTMLDivElement>(null);
+  const div14Ref = useRef<HTMLDivElement>(null);
+  const div15Ref = useRef<HTMLDivElement>(null);
+  const div16Ref = useRef<HTMLDivElement>(null);
+  const div17Ref = useRef<HTMLDivElement>(null);
+  const div18Ref = useRef<HTMLDivElement>(null);
+  const div19Ref = useRef<HTMLDivElement>(null);
+  const div20Ref = useRef<HTMLDivElement>(null);
 
   return (
     <div
-      className="relative flex w-full max-w-[500px] items-center justify-center overflow-hidden p-10"
+      className="relative flex flex-col gap-20 w-full max-w-[900px] items-center justify-center overflow-hidden p-10"
       ref={containerRef}
     >
-      <div className="flex size-full flex-col items-stretch justify-between gap-10">
-        <div className="flex flex-row justify-between">
-          <Circle ref={div1Ref}>
-            <Icons.user />
-          </Circle>
-          <div ref={div3Ref}></div>
-          <Circle ref={div2Ref}>
-            <Icons.openai />
-          </Circle>
-        </div>
-
-        <div className="flex items-center justify-center w-full">
-          <Circle ref={div4Ref}>
-            <Icons.user />
-          </Circle>
-        </div>
+      <div className="flex size-full flex-col items-center">
+        <Circle ref={div1Ref} hidden className="size-36" title="Energy">
+          <Icons.openai />
+        </Circle>
       </div>
+
+      <div className="flex size-full flex-row items-start justify-between">
+        <Circle ref={div3Ref} title="Energy Stores and Systems">
+          <Icons.user />
+        </Circle>
+
+        <div ref={div2Ref} className="size-24 rounded-full" />
+        <div className="size-24 rounded-full" />
+
+      </div>
+
+      <div className="flex size-full flex-col items-center">
+        <Circle ref={div4Ref} top title="Kinetic and Potential Energy Stores">
+          <Icons.notion />
+        </Circle>
+      </div>
+
+      {/* break */}
+      <div className="flex size-full flex-row items-start justify-between">
+        <Circle ref={div6Ref} title="Specific Heat Capacity">
+          <Icons.googleDrive />
+        </Circle>
+
+        <div ref={div5Ref} className="size-24 rounded-full" />
+        <div className="size-24 rounded-full" />
+      </div>
+
+      <div className="flex size-full flex-col items-center">
+        <Circle ref={div7Ref} top title="Conservation of Energy and Power">
+          <Icons.openai />
+        </Circle>
+      </div>
+
+      {/* break */}
+      <div className="flex size-full flex-row items-start justify-between">
+        <Circle ref={div9Ref} title="Conduction and Convection">
+          <Icons.googleDrive />
+        </Circle>
+
+        <div ref={div8Ref} className="size-24 rounded-full" />
+        <div className="size-24 rounded-full" />
+      </div>
+
+      <div className="flex size-full flex-col items-center">
+        <Circle ref={div10Ref} top title="Reducing Unwanted Energy Transfers">
+          <Icons.openai />
+        </Circle>
+      </div>
+
+      {/* break */}
+      <div className="flex size-full flex-row items-start justify-between">
+        <Circle ref={div12Ref} title="Efficiency" >
+          <Icons.googleDrive />
+        </Circle>
+        <div ref={div11Ref} className="size-24 rounded-full" />
+        <div className="size-24 rounded-full" />
+      </div>
+
+      <div className="flex size-full flex-col items-center">
+        <Circle ref={div13Ref} top title="Energy Resources and Their Uses">
+          <Icons.openai />
+        </Circle>
+      </div>
+
+      {/* break  */}
+      <div className="flex size-full flex-row items-start justify-between">
+        <Circle ref={div15Ref} title="Wind, Solar, and Geothermal" >
+          <Icons.googleDrive />
+        </Circle>
+        <div ref={div14Ref} className="size-24 rounded-full" />
+        <div className="size-24 rounded-full" />
+      </div>
+
+      <div className="flex size-full flex-col items-center">
+        <Circle ref={div16Ref} top title="Hydro-electricity, Waves, and Tides">
+          <Icons.openai />
+        </Circle>
+      </div>
+
+      {/* break  */}
+      <div className="flex size-full flex-row items-start justify-between">
+        <Circle ref={div18Ref} title="Bio-fuels and non-renewables" >
+          <Icons.googleDrive />
+        </Circle>
+        <div ref={div17Ref} className="size-24 rounded-full" />
+        <div className="size-24 rounded-full" />
+      </div>
+
+      <div className="flex size-full flex-col items-center">
+        <Circle ref={div19Ref} top title="Trends in Energy Resource Use">
+          <Icons.openai />
+        </Circle>
+      </div>
+
+      <div className="flex size-full flex-col items-center">
+        <Circle ref={div20Ref} top title="Revision Questions for Chapter 1">
+          <Icons.openai />
+        </Circle>
+      </div>
+
 
       <AnimatedBeam
         duration={3}
         containerRef={containerRef}
         fromRef={div1Ref}
-        toRef={div3Ref}
-        pathColor={"#fff"}
-        pathOpacity={1}
-      />
-      <AnimatedBeam
-        duration={3}
-        containerRef={containerRef}
-        fromRef={div3Ref}
         toRef={div2Ref}
         pathColor={"#fff"}
-        pathOpacity={1}
       />
       <AnimatedBeam
         duration={3}
         containerRef={containerRef}
-        fromRef={div3Ref}
+        fromRef={div2Ref}
+        toRef={div3Ref}
+        pathColor={"#fff"}
+      />
+      <AnimatedBeam
+        duration={3}
+        containerRef={containerRef}
+        fromRef={div2Ref}
         toRef={div4Ref}
         pathColor={"#fff"}
-        pathOpacity={1}
+      />
+      <AnimatedBeam
+        duration={3}
+        containerRef={containerRef}
+        fromRef={div4Ref}
+        toRef={div5Ref}
+        pathColor={"#fff"}
+        startYOffset={125}
+      />
+      <AnimatedBeam
+        duration={3}
+        containerRef={containerRef}
+        fromRef={div5Ref}
+        toRef={div6Ref}
+        pathColor={"#fff"}
+      />
+      <AnimatedBeam
+        duration={3}
+        containerRef={containerRef}
+        fromRef={div5Ref}
+        toRef={div7Ref}
+        pathColor={"#fff"}
+      />
+      <AnimatedBeam
+        duration={3}
+        containerRef={containerRef}
+        fromRef={div7Ref}
+        toRef={div8Ref}
+        pathColor={"#fff"}
+        startYOffset={125}
+      />
+      <AnimatedBeam
+        duration={3}
+        containerRef={containerRef}
+        fromRef={div8Ref}
+        toRef={div9Ref}
+        pathColor={"#fff"}
+      />
+      <AnimatedBeam
+        duration={3}
+        containerRef={containerRef}
+        fromRef={div8Ref}
+        toRef={div10Ref}
+        pathColor={"#fff"}
+      />
+      <AnimatedBeam
+        duration={3}
+        containerRef={containerRef}
+        fromRef={div10Ref}
+        toRef={div11Ref}
+        pathColor={"#fff"}
+        startYOffset={125}
+      />
+      <AnimatedBeam
+        duration={3}
+        containerRef={containerRef}
+        fromRef={div11Ref}
+        toRef={div12Ref}
+        pathColor={"#fff"}
+      />
+      <AnimatedBeam
+        duration={3}
+        containerRef={containerRef}
+        fromRef={div11Ref}
+        toRef={div13Ref}
+        pathColor={"#fff"}
+      />
+      <AnimatedBeam
+        duration={3}
+        containerRef={containerRef}
+        fromRef={div13Ref}
+        toRef={div14Ref}
+        pathColor={"#fff"}
+      />
+      <AnimatedBeam
+        duration={3}
+        containerRef={containerRef}
+        fromRef={div14Ref}
+        toRef={div15Ref}
+        pathColor={"#fff"}
+      />
+      <AnimatedBeam
+        duration={3}
+        containerRef={containerRef}
+        fromRef={div14Ref}
+        toRef={div16Ref}
+        pathColor={"#fff"}
+      />
+      <AnimatedBeam
+        duration={3}
+        containerRef={containerRef}
+        fromRef={div16Ref}
+        toRef={div17Ref}
+        pathColor={"#fff"}
+      />
+      <AnimatedBeam
+        duration={3}
+        containerRef={containerRef}
+        fromRef={div17Ref}
+        toRef={div18Ref}
+        pathColor={"#fff"}
+      />
+      <AnimatedBeam
+        duration={3}
+        containerRef={containerRef}
+        fromRef={div17Ref}
+        toRef={div19Ref}
+        pathColor={"#fff"}
+      />
+      <AnimatedBeam
+        duration={3}
+        containerRef={containerRef}
+        fromRef={div19Ref}
+        toRef={div20Ref}
+        pathColor={"#fff"}
       />
     </div>
   );
@@ -124,6 +356,39 @@ const Icons = {
         fill="#000000"
         fillRule="evenodd"
         clipRule="evenodd"
+      />
+    </svg>
+  ),
+  googleDrive: () => (
+    <svg
+      width="100"
+      height="100"
+      viewBox="0 0 87.3 78"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="m6.6 66.85 3.85 6.65c.8 1.4 1.95 2.5 3.3 3.3l13.75-23.8h-27.5c0 1.55.4 3.1 1.2 4.5z"
+        fill="#0066da"
+      />
+      <path
+        d="m43.65 25-13.75-23.8c-1.35.8-2.5 1.9-3.3 3.3l-25.4 44a9.06 9.06 0 0 0 -1.2 4.5h27.5z"
+        fill="#00ac47"
+      />
+      <path
+        d="m73.55 76.8c1.35-.8 2.5-1.9 3.3-3.3l1.6-2.75 7.65-13.25c.8-1.4 1.2-2.95 1.2-4.5h-27.502l5.852 11.5z"
+        fill="#ea4335"
+      />
+      <path
+        d="m43.65 25 13.75-23.8c-1.35-.8-2.9-1.2-4.5-1.2h-18.5c-1.6 0-3.15.45-4.5 1.2z"
+        fill="#00832d"
+      />
+      <path
+        d="m59.8 53h-32.3l-13.75 23.8c1.35.8 2.9 1.2 4.5 1.2h50.8c1.6 0 3.15-.45 4.5-1.2z"
+        fill="#2684fc"
+      />
+      <path
+        d="m73.4 26.5-12.7-22c-.8-1.4-1.95-2.5-3.3-3.3l-13.75 23.8 16.15 28h27.45c0-1.55-.4-3.1-1.2-4.5z"
+        fill="#ffba00"
       />
     </svg>
   ),

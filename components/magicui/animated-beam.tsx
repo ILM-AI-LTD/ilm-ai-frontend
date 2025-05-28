@@ -37,8 +37,8 @@ export const AnimatedBeam: React.FC<AnimatedBeamProps> = ({
   pathColor = "gray",
   pathWidth = 2,
   pathOpacity = 0.2,
-  gradientStartColor = "#fff",
-  gradientStopColor = "#fff",
+  // gradientStartColor = "#000",
+  // gradientStopColor = "#000",
   startXOffset = 0,
   startYOffset = 0,
   endXOffset = 0,
@@ -173,14 +173,14 @@ export const AnimatedBeam: React.FC<AnimatedBeamProps> = ({
             repeatDelay: 0,
           }}
         >
-          <stop stopColor={gradientStartColor} stopOpacity="0"></stop>
+          {/* <stop stopColor={gradientStartColor} stopOpacity="0"></stop>
           <stop stopColor={gradientStartColor}></stop>
           <stop offset="32.5%" stopColor={gradientStopColor}></stop>
           <stop
             offset="100%"
             stopColor={gradientStopColor}
             stopOpacity="0"
-          ></stop>
+          ></stop> */}
         </motion.linearGradient>
       </defs>
     </svg>
