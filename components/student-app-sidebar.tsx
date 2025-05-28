@@ -195,42 +195,42 @@ const data = {
     {
       name: "Start Learning",
       url: "#",
-      icon: Home,
+      icon: '/StudentMenuIcon/Start_learning_logo.svg',
     },
     {
       name: "Submit Work",
       url: "#",
-      icon: Puzzle,
+      icon: '/StudentMenuIcon/Submit_logo.svg',
     },
     {
       name: "Practise & Test",
       url: "#",
-      icon: UserPlus,
+      icon: '/StudentMenuIcon/Practise_logo.svg',
     },
     {
       name: "ILM Hub",
       url: "#",
-      icon: ReceiptText,
+      icon: '/StudentMenuIcon/ILM_hub_logo.svg',
     },
     {
       name: "Leaderboard",
       url: "#",
-      icon: ReceiptText,
+      icon: '/StudentMenuIcon/Leaderboard_logo.svg',
     },
     {
       name: "Progress",
       url: "#",
-      icon: ReceiptText,
+      icon: '/StudentMenuIcon/Progress_logo.svg',
     },
     {
       name: "Resume",
       url: "#",
-      icon: ReceiptText,
+      icon: '/StudentMenuIcon/Resume_logo.svg',
     },
     {
       name: "Settings",
       url: "#",
-      icon: Settings,
+      icon: '/StudentMenuIcon/Setting_logo.svg',
     },
   ],
 }

@@ -24,6 +24,7 @@ import {
   SidebarMenuItem,
   useSidebar,
 } from "@/components/ui/sidebar"
+import Image from "next/image"
 
 export function NavProjects({
   projects,
@@ -94,7 +95,8 @@ export function NavProjectStudents({
   projects: {
     name: string
     url: string
-    icon: LucideIcon
+    // icon: LucideIcon | string
+    icon: string
   }[]
 }) {
   // const { isMobile } = useSidebar()
@@ -109,7 +111,13 @@ export function NavProjectStudents({
           <SidebarMenuItem key={item.name} className={isExpanded ? "lg:px-5 lg:pt-5" : ""}>
             <SidebarMenuButton tooltip={item.name} asChild className="hover:bg-[#005E83] hover:text-white mb-2 rounded-lg p-4 h-12 text-base font-semibold">
               <a href={item.url}>
-                <item.icon />
+                {/* <item.icon /> */}
+                <Image
+                  src={item.icon}
+                  height={24}
+                  width={24}
+                  alt="ILMI Assistant"
+                />
                 <span>{item.name}</span>
               </a>
             </SidebarMenuButton>
