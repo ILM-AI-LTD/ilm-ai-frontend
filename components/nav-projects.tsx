@@ -97,14 +97,16 @@ export function NavProjectStudents({
     icon: LucideIcon
   }[]
 }) {
-  const { isMobile } = useSidebar()
+  // const { isMobile } = useSidebar()
+  const { open, state, isMobile } = useSidebar()
+  const isExpanded = open && state !== "collapsed" && !isMobile
 
   return (
     <SidebarGroup className="mt-4">
       {/* <SidebarGroupLabel>Projects</SidebarGroupLabel> */}
-      <SidebarMenu>
+      <SidebarMenu className="border border-['#cdd3ec'] rounded-lg">
         {projects.map((item) => (
-          <SidebarMenuItem key={item.name}>
+          <SidebarMenuItem key={item.name} className={isExpanded ? "lg:px-5 lg:pt-5" : ""}>
             <SidebarMenuButton tooltip={item.name} asChild className="hover:bg-[#005E83] hover:text-white mb-2 rounded-lg p-4 h-12 text-base font-semibold">
               <a href={item.url}>
                 <item.icon />

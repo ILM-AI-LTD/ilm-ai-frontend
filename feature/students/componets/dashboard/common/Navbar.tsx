@@ -11,7 +11,7 @@ const StudentsNavbar = () => {
         <nav className='h-24 bg-primary-bg-color flex items-center justify-between z-10 px-6'>
             <SidebarTrigger className="-ml-1" />
             <div className="flex flex-row gap-4">
-                <CustomDropdown title={'Board'} menuOptions={menuOptions} />
+                {/* <CustomDropdown title={'Board'} menuOptions={menuOptions} /> */}
                 <ButtonsWithBadge />
                 <DropdownMenu>
                     <DropdownMenuTrigger className="flex items-center gap-3">

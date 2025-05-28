@@ -193,25 +193,40 @@ const data = {
   ],
   projects: [
     {
-      name: "Home",
+      name: "Start Learning",
       url: "#",
       icon: Home,
     },
     {
-      name: "Quiz Library",
+      name: "Submit Work",
       url: "#",
       icon: Puzzle,
     },
     {
-      name: "Leaderboard",
+      name: "Practise & Test",
       url: "#",
       icon: UserPlus,
     },
-    // {
-    //   name: "Billing",
-    //   url: "#",
-    //   icon: ReceiptText,
-    // },
+    {
+      name: "ILM Hub",
+      url: "#",
+      icon: ReceiptText,
+    },
+    {
+      name: "Leaderboard",
+      url: "#",
+      icon: ReceiptText,
+    },
+    {
+      name: "Progress",
+      url: "#",
+      icon: ReceiptText,
+    },
+    {
+      name: "Resume",
+      url: "#",
+      icon: ReceiptText,
+    },
     {
       name: "Settings",
       url: "#",
@@ -222,7 +237,9 @@ const data = {
 
 export function StudentAppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
 
-  const { open } = useSidebar();
+  // const { open } = useSidebar();
+  // const { open, state, isMobile } = useSidebar()
+  // const isExpanded = open && state !== "collapsed" && !isMobile
 
   return (
     <StudentSidebar collapsible="icon" {...props}>
@@ -241,7 +258,7 @@ export function StudentAppSidebar({ ...props }: React.ComponentProps<typeof Side
         </div>
       </SidebarHeader>
 
-      <SidebarContent className="border border-['#cdd3ec'] rounded-lg">
+      <SidebarContent>
         {/* <NavMain items={data.navMain} /> */}
         <NavProjectStudents projects={data.projects} />
       </SidebarContent>

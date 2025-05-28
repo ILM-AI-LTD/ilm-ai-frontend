@@ -12,18 +12,18 @@ interface Props {
 const CustomDropdown: React.FC<Props> = ({ title, menuOptions }) => {
     const [selectedOption, setSelectedOption] = useState(`Select ${title}`);
 
-    // const handleSelect = (value: string) => {
-    //     setSelectedOption(value);
-    // };
-
-    const router = useRouter();
-    const searchParams = useSearchParams();
-    // const current = searchParams.get('view') || 'parent';
     const handleSelect = (value: string) => {
-        const newParams = new URLSearchParams(searchParams);
-        newParams.set('view', value);
-        router.push(`?${newParams.toString()}`);
+        setSelectedOption(value);
     };
+
+    // const router = useRouter();
+    // const searchParams = useSearchParams();
+    // const current = searchParams.get('view') || 'parent';
+    // const handleSelect = (value: string) => {
+    //     const newParams = new URLSearchParams(searchParams);
+    //     newParams.set('view', value);
+    //     router.push(`?${newParams.toString()}`);
+    // };
 
     return (
         <DropdownMenu.Root>
