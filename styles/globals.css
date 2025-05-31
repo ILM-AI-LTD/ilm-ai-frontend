@@ -76,6 +76,7 @@
   --color-brand-color-parent: var(--brand-color-parent);
   --color-parent-chatbox-color: var(--parent-chatbox-color);
   --color-parent-inputField-color: var(--parent-inputField-color);
+  --color-button-bg-color: var(--button-bg-color);
 }
 
 :root {
@@ -133,6 +134,7 @@
   --brand-color-parent: #4b2700;
   --parent-chatbox-color: #7c4202;
   --parent-inputField-color: #82521c;
+  --button-bg-color: #005E83;
   /* custom font */
   --font-eb-garamond: "EB Garamond";
 }
@@ -192,6 +194,7 @@
   --brand-color-parent: #4b2700;
   --parent-chatbox-color: #7c4202;
   --parent-inputField-color: #82521c;
+  --button-bg-color: #005E83;
 }
 
 @layer base {

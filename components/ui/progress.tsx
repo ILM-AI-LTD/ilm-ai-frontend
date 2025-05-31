@@ -7,7 +7,8 @@ import { cn } from "@/lib/utils"
 
 interface ProgressProps extends React.ComponentProps<typeof ProgressPrimitive.Root> {
   value: number
-  color?: string // tailwind color like "indigo", "red", "green"
+  color?: string,
+  hoverColor?: string
 }
 
 function Progress({
@@ -37,9 +38,11 @@ function CustomProgress({
   className,
   value,
   color = "indigo",
+  // hoverColor = "blue",
   ...props
 }: ProgressProps) {
-  const colorClass = `bg-${color}-500` // e.g., "bg-indigo-500"
+  const colorClass = `bg-${color}-500`
+  // const hoverColorClass = hoverColor ? `group-hover:bg-${hoverColor}-950` : ''
 
   return (
     <ProgressPrimitive.Root
@@ -53,7 +56,9 @@ function CustomProgress({
       <ProgressPrimitive.Indicator
         data-slot="progress-indicator"
         className={cn("h-full transition-all", colorClass)}
-        style={{ width: `${value}%` }}
+        style={{
+          width: `${value}%`
+        }}
       />
     </ProgressPrimitive.Root>
   )

@@ -22,3 +22,22 @@ export const subjects = [
         iconSrc: "/Mathematics_logo.gif"
     }
 ]
+
+export const boards = [
+    {
+        id: 1,
+        name: "AQA"
+    },
+    {
+        id: 2,
+        name: "Edexcel"
+    },
+    {
+        id: 3,
+        name: "OCR"
+    },
+    {
+        id: 4,
+        name: "OCR Gateway"
+    }
+]
