@@ -41,3 +41,21 @@ export const boards = [
         name: "OCR Gateway"
     }
 ]
+
+export const countries = [
+    {
+        id: '1',
+        image: "/country/uk.svg",
+        label: "United Kingdom",
+    },
+    {
+        id: '2',
+        image: "/country/bangladesh.png",
+        label: "Bangladesh",
+    },
+    {
+        id: '3',
+        image: "/country/uk.svg",
+        label: "United Kingdom",
+    },
+];

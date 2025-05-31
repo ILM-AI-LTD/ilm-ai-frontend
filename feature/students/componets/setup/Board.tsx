@@ -11,16 +11,12 @@
 import React, { useEffect, useState } from "react";
 import * as RadioGroup from "@radix-ui/react-radio-group";
 import { CircleCheck, CpuIcon } from "lucide-react";
-import { cn } from "@/lib/utils";
-import Image from "next/image";
 import ILMIAssistantv2 from "@/feature/parents/components/setup/common/ILMIAssistantv2";
 import FooterStudents from "./common/FooterStudents";
 import AssistantCallout from "./common/AssistantCallout";
 import { boards } from "@/constants/Helpers";
 import { useRouter } from "next/navigation";
 import { BoardResponse } from "@/types/student";
-// import { useRouter } from "next/router";
-// import { Router } from "next/router";
 
 interface BoardProps {
     onNext: () => void
@@ -32,7 +28,6 @@ const Board = ({ onBack, onNext }: BoardProps) => {
 
     const [selectedOption, setSelectedOption] = useState<BoardResponse | null>(null);
 
-    // Load from localStorage on component mount
     useEffect(() => {
         const savedSelection = localStorage.getItem('selectedBoard');
         if (savedSelection) {
@@ -44,7 +39,6 @@ const Board = ({ onBack, onNext }: BoardProps) => {
         }
     }, []);
 
-    // Save to localStorage when selection changes
     useEffect(() => {
         if (selectedOption) {
             localStorage.setItem('selectedBoard', JSON.stringify(selectedOption));
@@ -111,7 +105,6 @@ const Board = ({ onBack, onNext }: BoardProps) => {
 
             <FooterStudents
                 leftButton={{ label: "Back", onClick: onBack }}
-                // rightButton={{ label: "Next", onClick: handleSubmit, disabled: Object.keys(errors).length > 0 || Object.keys(touched).length === 0 }}
                 rightButton={{
                     label: "Finish & View Dashboard",
                     onClick: () => router.push('/student/dashboard'),
