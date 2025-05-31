@@ -37,9 +37,16 @@ const SignInFormStudents = () => {
                     {
                         onSuccess: (res) => {
                             // console.log(res.data);
+                            const flagBoardselected = false;
                             toast.success("Successfully Logged In.");
                             action.resetForm();
                             //TODO: redirect to appropriate page based on student workflow
+                            if (flagBoardselected) {
+                                router.push('/student/dashboard')
+                                //TODO: redirect to dashboard
+                            } else {
+                                router.push('/student/setup')
+                            }
                         },
                         onError: () => {
                             toast.error("Something went wrong")
@@ -92,7 +99,7 @@ const SignInFormStudents = () => {
                     />
                     <label htmlFor="remember-me" className="text-base text-label-color mb-1">Keep me logged in</label>
                 </div>
-{/* 
+                {/* 
                 <Link href="/auth/reset-password">
                     <p className="text-base text-brand-color hover:text-brand-color font-semibold">Forgot password?</p>
                 </Link> */}
