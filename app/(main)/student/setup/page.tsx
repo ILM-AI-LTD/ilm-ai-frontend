@@ -1,10 +1,7 @@
 'use client';
 
-import ChildDetailsSection from '@/feature/parents/components/setup/ChildDetails';
-import ClassScheduleSection from '@/feature/parents/components/setup/ClassScheduleSection';
 import Country from '@/feature/students/componets/setup/Country';
 import Board from '@/feature/students/componets/setup/Board';
-// import GetStarted from '@/feature/parents/components/setup/GetStarted';
 import { useState } from 'react';
 
 const STEPS = [
