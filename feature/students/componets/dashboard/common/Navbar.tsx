@@ -1,6 +1,6 @@
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { DropdownMenu, DropdownMenuCheckboxItem, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuSub, DropdownMenuSubContent, DropdownMenuSubTrigger, DropdownMenuTrigger } from '@/components/ui/dropdown-menu'
-import { SidebarTrigger } from '@/components/ui/sidebar'
+import { SidebarTrigger, StudentSidebarTrigger } from '@/components/ui/sidebar'
 import { Bolt, ChevronsUpDown, ExternalLink, Filter, LogOut, Settings2, SunDim, User } from 'lucide-react'
 import ButtonsWithBadge from './ButtonWithBadge'
 import CustomDropdown from '@/components/global/CustomDropdown'
@@ -46,7 +46,7 @@ const StudentsNavbar = () => {
     }, []);
     return (
         <nav className='h-24 bg-primary-bg-color flex items-center justify-between z-10 px-6'>
-            <SidebarTrigger className="-ml-1" />
+            <StudentSidebarTrigger className="-ml-1" />
             <div className="flex flex-row gap-6">
                 {/* <CustomDropdown title={'Board'} menuOptions={menuOptions} /> */}
                 <div className='flex items-center gap-3 border px-3 border-blue-50 rounded-3xl'>

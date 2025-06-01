@@ -237,14 +237,9 @@ const data = {
 
 export function StudentAppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
 
-  // const { open } = useSidebar();
-  // const { open, state, isMobile } = useSidebar()
-  // const isExpanded = open && state !== "collapsed" && !isMobile
-
   return (
     <StudentSidebar collapsible="icon" {...props}>
       <SidebarHeader>
-        {/* <TeamSwitcher teams={data.teams} /> */}
         <div className="px-3">
           <CustomLogo
             logoSrc="/ILM_AI_Logo_deep_blue.png"
@@ -257,14 +252,9 @@ export function StudentAppSidebar({ ...props }: React.ComponentProps<typeof Side
           )} */}
         </div>
       </SidebarHeader>
-
       <SidebarContent>
-        {/* <NavMain items={data.navMain} /> */}
         <NavProjectStudents projects={data.projects} />
       </SidebarContent>
-      {/* <SidebarFooter>
-        <NavUser user={data.user} />
-      </SidebarFooter> */}
       <SidebarRail />
     </StudentSidebar>
   )

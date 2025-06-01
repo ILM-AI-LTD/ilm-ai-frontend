@@ -14,8 +14,8 @@ const eBGaramondfont = EB_Garamond({
 const page = () => {
     return (
         <>
-
-            <div className={`${eBGaramondfont.className} `}>
+            {/* <div className={`${eBGaramondfont.className} `}> */}
+            <div>
                 <div className='flex'>
                     <p className="text-white font-bold text-[min(10vw,36px)]">Subjects</p>
                     <Image

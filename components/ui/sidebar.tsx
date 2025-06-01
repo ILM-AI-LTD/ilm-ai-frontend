@@ -24,7 +24,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip"
-import { useMediaQuery } from "@/hooks/use-tab"
+import { useMediaQuery } from "@/hooks/useMediaQuery"
 
 const SIDEBAR_COOKIE_NAME = "sidebar_state"
 const SIDEBAR_COOKIE_MAX_AGE = 60 * 60 * 24 * 7
@@ -363,6 +363,39 @@ function SidebarTrigger({
   ...props
 }: React.ComponentProps<typeof Button>) {
   const { toggleSidebar } = useSidebar()
+
+  return (
+    <Button
+      data-sidebar="trigger"
+      data-slot="sidebar-trigger"
+      variant="ghost"
+      size="icon"
+      className={cn("size-7", className)}
+      onClick={(event) => {
+        onClick?.(event)
+        toggleSidebar()
+      }}
+      {...props}
+    >
+      <PanelLeftIcon />
+      <span className="sr-only">Toggle Sidebar</span>
+    </Button>
+  )
+}
+
+function StudentSidebarTrigger({
+  className,
+  onClick,
+  ...props
+}: React.ComponentProps<typeof Button>) {
+  const { toggleSidebar, open, isMobile } = useSidebar()
+
+  const shouldShow = isMobile || !open // Show on mobile OR when not open
+
+  // Hide the button on lg if sidebar is open but keep a dummy space for flex condition
+  if (!shouldShow) {
+    return <div className={cn("w-7", className)} />
+  }
 
   return (
     <Button
@@ -827,5 +860,6 @@ export {
   SidebarSeparator,
   SidebarTrigger,
   useSidebar,
-  StudentSidebar
+  StudentSidebar,
+  StudentSidebarTrigger
 }
