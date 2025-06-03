@@ -32,7 +32,7 @@ export function NavProjects({
   projects: {
     name: string
     url: string
-    icon: LucideIcon
+    icon: LucideIcon | string
   }[]
 }) {
   const { isMobile } = useSidebar()
@@ -43,9 +43,17 @@ export function NavProjects({
       <SidebarMenu>
         {projects.map((item) => (
           <SidebarMenuItem key={item.name}>
-            <SidebarMenuButton tooltip={item.name} asChild className="hover:bg-brand-color-parent hover:text-white mb-2 rounded-lg p-4 h-12 text-base font-semibold">
+            <SidebarMenuButton tooltip={item.name} asChild className="hover:bg-button-hover-color hover:text-white mb-2 rounded-lg p-4 h-12 text-base font-semibold">
               <a href={item.url}>
-                <item.icon />
+                {typeof item.icon === "string" ?
+                  <Image
+                    src={item.icon}
+                    height={24}
+                    width={24}
+                    alt="ILMI Assistant"
+                  /> :
+                  <item.icon />
+                }
                 <span>{item.name}</span>
               </a>
             </SidebarMenuButton>

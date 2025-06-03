@@ -76,7 +76,7 @@
   --color-brand-color-parent: var(--brand-color-parent);
   --color-parent-chatbox-color: var(--parent-chatbox-color);
   --color-parent-inputField-color: var(--parent-inputField-color);
-  --color-button-bg-color: var(--button-bg-color);
+  --color-button-hover-color: var(--button-hover-color);
 }
 
 :root {
@@ -114,7 +114,8 @@
   --sidebar-ring: oklch(0.708 0 0);
 
   /* sidebar */
-  --sidebar: #0f172a;
+  /* --sidebar: #0f172a; */
+  --sidebar: #060B1A;
   --sidebar-foreground: #fff;
   --sidebar-primary: hsl(240 5.9% 10%);
   --sidebar-primary-foreground: hsl(0 0% 98%);
@@ -134,7 +135,7 @@
   --brand-color-parent: #4b2700;
   --parent-chatbox-color: #7c4202;
   --parent-inputField-color: #82521c;
-  --button-bg-color: #005E83;
+  --button-hover-color: #005E83;
   /* custom font */
   --font-eb-garamond: "EB Garamond";
 }
@@ -194,7 +195,7 @@
   --brand-color-parent: #4b2700;
   --parent-chatbox-color: #7c4202;
   --parent-inputField-color: #82521c;
-  --button-bg-color: #005E83;
+  --button-hover-color: #005E83;
 }
 
 @layer base {

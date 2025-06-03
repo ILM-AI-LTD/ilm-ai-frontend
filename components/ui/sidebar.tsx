@@ -67,8 +67,8 @@ function SidebarProvider({
   open?: boolean
   onOpenChange?: (open: boolean) => void
 }) {
-  // const isMobile = useIsMobile()
-  const isMobile = useMediaQuery("(max-width: 1024px)")
+  const isMobile = useIsMobile()
+  // const isMobile = useMediaQuery("(max-width: 1024px)")
   const [openMobile, setOpenMobile] = React.useState(false)
 
   // This is the internal state of the sidebar.
@@ -390,12 +390,12 @@ function StudentSidebarTrigger({
 }: React.ComponentProps<typeof Button>) {
   const { toggleSidebar, open, isMobile } = useSidebar()
 
-  const shouldShow = isMobile || !open // Show on mobile OR when not open
+  // const shouldShow = isMobile || !open // Show on mobile OR when not open
 
-  // Hide the button on lg if sidebar is open but keep a dummy space for flex condition
-  if (!shouldShow) {
-    return <div className={cn("w-7", className)} />
-  }
+  // // Hide the button on lg if sidebar is open but keep a dummy space for flex condition
+  // if (!shouldShow) {
+  //   return <div className={cn("w-7", className)} />
+  // }
 
   return (
     <Button
