@@ -1,11 +1,13 @@
 'use client'
 
 import { AppSidebar } from "@/components/app-sidebar"
+import CustomNavbar from "@/components/global/CustomNavbar"
 import {
   SidebarInset,
   SidebarProvider
 } from "@/components/ui/sidebar"
 import ParentsNavbar from "@/feature/parents/components/profile/common/Navbar"
+import StudentsNavbar from "@/feature/students/componets/dashboard/common/Navbar"
 import { BookOpen, Home, ReceiptText, Settings, UserPlus } from "lucide-react"
 
 const projects = [
@@ -41,7 +43,8 @@ const ParentProfileLayout = ({ children }: { children: React.ReactNode }) => {
     <SidebarProvider>
       <AppSidebar projects={projects} />
       <SidebarInset>
-        <ParentsNavbar />
+        {/* <ParentsNavbar /> */}
+        <CustomNavbar role={'parent'} />
         <div className="flex flex-1 flex-col bg-primary-bg-color gap-4 p-4">
           {children}
         </div>
