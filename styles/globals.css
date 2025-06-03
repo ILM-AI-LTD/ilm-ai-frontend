@@ -76,7 +76,10 @@
   --color-brand-color-parent: var(--brand-color-parent);
   --color-parent-chatbox-color: var(--parent-chatbox-color);
   --color-parent-inputField-color: var(--parent-inputField-color);
+  --color-button-color: var(--button-color);
+  --color-button-shadow-color: var(--button-shadow-color);
   --color-button-hover-color: var(--button-hover-color);
+  --color-button-shadow-hover-color: var(--button-shadow-hover-color);
 }
 
 :root {
@@ -135,7 +138,10 @@
   --brand-color-parent: #4b2700;
   --parent-chatbox-color: #7c4202;
   --parent-inputField-color: #82521c;
-  --button-hover-color: #005E83;
+  --button-color: #005E83;
+  --button-shadow-color: #004F6E;
+  --button-hover-color: #017AAA;
+  --button-shadow-hover-color: #006D98;
   /* custom font */
   --font-eb-garamond: "EB Garamond";
 }
@@ -195,7 +201,10 @@
   --brand-color-parent: #4b2700;
   --parent-chatbox-color: #7c4202;
   --parent-inputField-color: #82521c;
-  --button-hover-color: #005E83;
+  --button-color: #005E83;
+  --button-shadow-color: #004F6E;
+  --button-hover-color: #017AAA;
+  --button-shadow-hover-color: #006D98;
 }
 
 @layer base {
