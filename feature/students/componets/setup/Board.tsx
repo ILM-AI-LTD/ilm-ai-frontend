@@ -81,17 +81,26 @@ const Board = ({ onBack, onNext }: BoardProps) => {
                         <div
                             key={index}
                             onClick={() => handleSelect(option)}
-                            className={`relative p-4 cursor-pointer transition-all 
-                                duration-300 ease-in-out rounded-full bg-[#020617] 
+                            // className={`relative p-4 cursor-pointer transition-all 
+                            //     duration-300 ease-in-out rounded-full bg-[#020617] 
+                            //     shadow-[0px_8px_0px_0px_#444]
+                            //     hover:scale-105 hover:bg-button-hover-color
+                            //     hover:shadow-[0px_8px_0px_0px_#006D98]
+                            //     ${selectedOption?.id === option.id ? 'ring-2 ring-white' : ''}`
+                            // }
+                            className={`
+                                relative p-4 cursor-pointer transition-all 
+                                duration-300 ease-in-out rounded-full 
                                 shadow-[0px_8px_0px_0px_#444]
-                                hover:scale-105 hover:bg-[#19BDFF]
-                                hover:shadow-[0px_8px_0px_0px_#0077cc]
-                                ${selectedOption?.id === option.id ? 'ring-2 ring-white' : ''}`
-                            }
+                                ${selectedOption?.id === option.id
+                                    ? 'bg-button-hover-color shadow-[0px_8px_0px_0px_#006D98]'
+                                    : 'bg-[#020617] hover:scale-105 hover:bg-button-hover-color hover:shadow-[0px_8px_0px_0px_#006D98]'
+                                }
+                            `}
                         >
-                            {selectedOption?.id === option.id && (
+                            {/* {selectedOption?.id === option.id && (
                                 <CircleCheck className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/2 h-6 w-6 text-primary fill-blue-500 stroke-white z-10" />
-                            )}
+                            )} */}
                             <div className=" text-white  flex items-center justify-center gap-2 text-lg font-semibold">
                                 {option.name}
                             </div>

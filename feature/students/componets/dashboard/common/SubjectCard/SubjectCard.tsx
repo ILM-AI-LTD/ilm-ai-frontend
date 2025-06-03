@@ -1,6 +1,7 @@
 'use client'
+import ProgressDemo from "@/components/customized/progress/progress-01"
 import { Card, CardDescription, CardTitle } from "@/components/ui/card"
-import { CustomProgress, Progress } from "@/components/ui/progress"
+import { Progress } from "@/components/ui/progress"
 import Image from "next/image"
 import { useRef } from "react"
 
@@ -43,7 +44,8 @@ const SubjectCard = ({ title, description, iconSrc }: SubjectCardProps) => {
                 <CardDescription className="text-white text-lg text-center">
                     {description}
                 </CardDescription>
-                <CustomProgress value={50} color="indigo" />
+                {/* <CustomProgress value={50} color="indigo" /> */}
+                <Progress value={50} className="w-[60%] [&>div]:bg-button-color" />
             </Card>
         </>
 

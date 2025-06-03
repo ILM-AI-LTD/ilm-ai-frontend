@@ -29,7 +29,7 @@ const FooterStudents: React.FC<FooterStudentsProps> = ({
                     label={leftButton.label}
                     onClick={leftButton.onClick}
                     disabled={leftButton.disabled}
-                    className="h-[52px] bg-button-hover-color text-white py-2 px-8 font-bold text-base rounded-full hover:bg-brand-color disabled:opacity-50 shadow-[0px_8px_0px_0px_#0077cc] hover:shadow-[0px_8px_0px_0px_#0077cc]"
+                    className="h-[52px] bg-button-color text-white py-2 px-8 font-bold text-base rounded-full hover:bg-button-hover-color disabled:opacity-50 shadow-[0px_8px_0px_0px_#004F6E] hover:shadow-[0px_8px_0px_0px_#006D98]"
 
                 />
             )}
@@ -39,7 +39,7 @@ const FooterStudents: React.FC<FooterStudentsProps> = ({
                 onClick={rightButton.onClick}
                 disabled={rightButton.disabled}
                 isLoading={rightButton.isPending}
-                className="h-[52px] bg-button-hover-color text-white py-2 px-8 font-bold text-base rounded-full hover:bg-brand-color disabled:opacity-50 shadow-[0px_8px_0px_0px_#0077cc] hover:shadow-[0px_8px_0px_0px_#0077cc]"
+                className="h-[52px] bg-button-color text-white py-2 px-8 font-bold text-base rounded-full hover:bg-button-hover-color disabled:opacity-50 shadow-[0px_8px_0px_0px_#004F6E] hover:shadow-[0px_8px_0px_0px_#006D98]"
 
             />
         </div>

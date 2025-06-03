@@ -9,6 +9,9 @@ import { BoardResponse, CountryResponse } from '@/types/student'
 import { useEffect, useState } from 'react'
 import Image from 'next/image'
 import { Button } from '@/components/ui/button'
+import { Switch } from '@radix-ui/react-switch'
+import SwitchCustomizationDemo from '@/components/customized/switch/switch-07'
+// import { Switch } from '@/components/ui/switch'
 
 const StudentsNavbar = () => {
     const [board, setBoard] = useState<BoardResponse | null>(null);
@@ -96,6 +99,7 @@ const StudentsNavbar = () => {
                                         alt="ILM Logo"
                                         className=' rounded-full object-cover w-[30px] h-[30px]'
                                     />
+                                    {option?.label}
                                 </DropdownMenuItem>
                             ))}
                         </DropdownMenuContent>
@@ -127,13 +131,13 @@ const StudentsNavbar = () => {
 
                 </div>
                 <div className=' flex items-center gap-8 border p-3 border-blue-50 rounded-full'>
-                    <ButtonsWithBadge />
+                    <SwitchCustomizationDemo />
                     <div className=' justify-center'>
                         <div className="flex items-center gap-1">
                             <SunDim />
-                            <p className="text-sm font-medium">Good Morning</p>
+                            <p>Good Morning</p>
                         </div>
-                        <p >{user?.name}</p>
+                        <p>{user?.name}</p>
                     </div>
                     <User />
 

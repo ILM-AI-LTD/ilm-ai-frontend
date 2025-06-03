@@ -25,6 +25,7 @@ import {
   useSidebar,
 } from "@/components/ui/sidebar"
 import Image from "next/image"
+import React from "react"
 
 export function NavProjects({
   projects,
@@ -41,23 +42,24 @@ export function NavProjects({
     <SidebarGroup className="mt-4">
       {/* <SidebarGroupLabel>Projects</SidebarGroupLabel> */}
       <SidebarMenu>
-        {projects.map((item) => (
-          <SidebarMenuItem key={item.name}>
-            <SidebarMenuButton tooltip={item.name} asChild className="hover:bg-button-hover-color hover:text-white mb-2 rounded-lg p-4 h-12 text-base font-semibold">
-              <a href={item.url}>
-                {typeof item.icon === "string" ?
-                  <Image
-                    src={item.icon}
-                    height={24}
-                    width={24}
-                    alt="ILMI Assistant"
-                  /> :
-                  <item.icon />
-                }
-                <span>{item.name}</span>
-              </a>
-            </SidebarMenuButton>
-            {/* <DropdownMenu>
+        {projects.map((item, index: number) => (
+          <React.Fragment key={item.name}>
+            <SidebarMenuItem key={item.name}>
+              <SidebarMenuButton tooltip={item.name} asChild className="hover:bg-button-hover-color hover:text-white mb-2 rounded-lg p-4 h-12 text-base font-semibold">
+                <a href={item.url}>
+                  {typeof item.icon === "string" ?
+                    <Image
+                      src={item.icon}
+                      height={24}
+                      width={24}
+                      alt="ILMI Assistant"
+                    /> :
+                    <item.icon />
+                  }
+                  <span>{item.name}</span>
+                </a>
+              </SidebarMenuButton>
+              {/* <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <SidebarMenuAction showOnHover>
                   <MoreHorizontal />
@@ -84,7 +86,12 @@ export function NavProjects({
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu> */}
-          </SidebarMenuItem>
+            </SidebarMenuItem>
+            {index === projects.length - 2 && (
+              <hr className="my-2 mx-4 border-button-color" />
+
+            )}
+          </React.Fragment>
         ))}
         {/* <SidebarMenuItem>
           <SidebarMenuButton className="text-sidebar-foreground/70">

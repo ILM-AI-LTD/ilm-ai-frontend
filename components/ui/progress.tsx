@@ -5,12 +5,6 @@ import * as ProgressPrimitive from "@radix-ui/react-progress"
 
 import { cn } from "@/lib/utils"
 
-interface ProgressProps extends React.ComponentProps<typeof ProgressPrimitive.Root> {
-  value: number
-  color?: string,
-  hoverColor?: string
-}
-
 function Progress({
   className,
   value,
@@ -20,7 +14,7 @@ function Progress({
     <ProgressPrimitive.Root
       data-slot="progress"
       className={cn(
-        "bg-primary/20 relative h-2 w-full overflow-hidden rounded-full",
+        "bg-white relative h-2 w-full overflow-hidden rounded-full",
         className
       )}
       {...props}
@@ -34,34 +28,4 @@ function Progress({
   )
 }
 
-function CustomProgress({
-  className,
-  value,
-  color = "indigo",
-  // hoverColor = "blue",
-  ...props
-}: ProgressProps) {
-  const colorClass = `bg-${color}-500`
-  // const hoverColorClass = hoverColor ? `group-hover:bg-${hoverColor}-950` : ''
-
-  return (
-    <ProgressPrimitive.Root
-      data-slot="progress"
-      className={cn(
-        "bg-gray-200 dark:bg-gray-700 relative h-2 w-2/4 overflow-hidden rounded-full",
-        className
-      )}
-      {...props}
-    >
-      <ProgressPrimitive.Indicator
-        data-slot="progress-indicator"
-        className={cn("h-full transition-all", colorClass)}
-        style={{
-          width: `${value}%`
-        }}
-      />
-    </ProgressPrimitive.Root>
-  )
-}
-
-export { Progress, CustomProgress }
+export { Progress }
