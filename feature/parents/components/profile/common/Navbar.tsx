@@ -6,7 +6,7 @@ import ButtonsWithBadge from './ButtonWithBadge'
 
 const ParentsNavbar = () => {
     return (
-        <nav className='h-24 bg-secondary-bg-color flex items-center justify-between z-10 px-6'>
+        <nav className='h-24 sticky top-0 bg-secondary-bg-color flex items-center justify-between z-10 px-6'>
             <SidebarTrigger className="-ml-1" />
 
             <div className="flex flex-row gap-4">

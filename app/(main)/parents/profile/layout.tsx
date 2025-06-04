@@ -6,6 +6,7 @@ import {
 import ParentsNavbar from "@/feature/parents/components/profile/common/Navbar"
 
 
+
 const ParentProfileLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <SidebarProvider>
