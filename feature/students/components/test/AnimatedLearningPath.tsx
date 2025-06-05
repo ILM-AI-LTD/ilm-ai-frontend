@@ -23,7 +23,7 @@ export function AnimatedLearningPath({ chapter }: AnimatedLearningPathProps) {
   const mainTopic = {
     id: "0",
     subChapter: chapter.name,
-    href: "#", // or `/chapters/${chapter.name.toLowerCase()}`
+    href: "#",
     progress: 0,
     icon: chapter.icon,
   };
