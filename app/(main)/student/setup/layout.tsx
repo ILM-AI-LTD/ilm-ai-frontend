@@ -1,6 +1,6 @@
 // import Navbar from "@/feature/students/components/setup/navbar/Navbar";
 
-import Navbar from "@/feature/students/componets/setup/navbar/Navbar";
+import Navbar from "@/feature/students/components/setup/navbar/Navbar";
 
 export default function StudentsSetupLayout({ children }: { children: React.ReactNode }) {
     return (

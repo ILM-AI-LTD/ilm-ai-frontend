@@ -1,7 +1,7 @@
 import { subjects } from '@/constants/Helpers';
 // import SubjectCard from '@/feature/landing/components/subjectCover/SubjectCard';
 import ILMIAssistantv2 from '@/feature/parents/components/setup/common/ILMIAssistantv2';
-import SubjectCard from '@/feature/students/componets/dashboard/common/SubjectCard/SubjectCard';
+import SubjectCard from '@/feature/students/components/dashboard/common/SubjectCard/SubjectCard';
 import { EB_Garamond } from 'next/font/google';
 import Image from 'next/image';
 

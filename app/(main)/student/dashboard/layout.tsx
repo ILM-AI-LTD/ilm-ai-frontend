@@ -8,7 +8,7 @@ import {
     SidebarProvider
 } from "@/components/ui/sidebar"
 import ParentsNavbar from "@/feature/parents/components/profile/common/Navbar";
-import StudentsNavbar from "@/feature/students/componets/dashboard/common/Navbar"
+import StudentsNavbar from "@/feature/students/components/dashboard/common/Navbar"
 
 export const projects = [
     {

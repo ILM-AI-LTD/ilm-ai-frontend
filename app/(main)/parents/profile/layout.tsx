@@ -7,7 +7,7 @@ import {
   SidebarProvider
 } from "@/components/ui/sidebar"
 import ParentsNavbar from "@/feature/parents/components/profile/common/Navbar"
-import StudentsNavbar from "@/feature/students/componets/dashboard/common/Navbar"
+import StudentsNavbar from "@/feature/students/components/dashboard/common/Navbar"
 import { BookOpen, Home, ReceiptText, Settings, UserPlus } from "lucide-react"
 
 const projects = [
