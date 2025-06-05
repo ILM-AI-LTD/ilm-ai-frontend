@@ -1,17 +1,48 @@
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { DropdownMenu, DropdownMenuCheckboxItem, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuSub, DropdownMenuSubContent, DropdownMenuSubTrigger, DropdownMenuTrigger } from '@/components/ui/dropdown-menu'
 import { SidebarTrigger } from '@/components/ui/sidebar'
-import { Bolt, ChevronsUpDown, ExternalLink, Filter, LogOut, Settings2, User } from 'lucide-react'
+import { Bolt, ChevronsUpDown, ExternalLink, Filter, LogOut, Settings2, SunDim, User } from 'lucide-react'
 import ButtonsWithBadge from './ButtonWithBadge'
+import { useEffect, useState } from 'react'
 
 const ParentsNavbar = () => {
+
+    const [user, setUser] = useState<any | null>(null);
+    // const country: CountryResponse | null = localStorage.getItem('selectedCountry');
+    // const board = localStorage.getItem('selectedBoard');
+    // console.log('c --', country, 'b----', board);
+    // const [selectedOption, setSelectedOption] = useState(`Select ${title}`);
+
+
+    useEffect(() => {
+        const savedUser = localStorage.getItem('currentUser');
+        if (savedUser) {
+            try {
+                setUser(JSON.parse(savedUser));
+            } catch (e) {
+                console.error('Failed to parse saved user', e);
+            }
+        }
+    }, []);
+
     return (
-        <nav className='h-24 bg-secondary-bg-color flex items-center justify-between z-10 px-6'>
+        <nav className='h-24 bg-primary-bg-color flex items-center justify-between z-10 px-6'>
             <SidebarTrigger className="-ml-1" />
 
             <div className="flex flex-row gap-4">
+                <div className=' flex items-center gap-6 border p-3 border-blue-50 rounded-3xl'>
+                    <ButtonsWithBadge />
+                    <div className=' justify-center'>
+                        <div className="flex items-center gap-1">
+                            <SunDim />
+                            <p className="text-sm font-medium">Good Morning</p>
+                        </div>
+                        <p >{user?.name}</p>
+                    </div>
+                    <User />
+                </div>
 
-                <ButtonsWithBadge />
+                {/* <ButtonsWithBadge />
 
 
                 <DropdownMenu>
@@ -107,7 +138,7 @@ const ParentsNavbar = () => {
                             <LogOut className="mr-1" /> Sign out
                         </DropdownMenuItem>
                     </DropdownMenuContent>
-                </DropdownMenu>
+                </DropdownMenu> */}
             </div>
         </nav>
     )

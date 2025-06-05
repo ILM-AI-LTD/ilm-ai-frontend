@@ -5,13 +5,13 @@ import SuccessfulSetup from "@/feature/parents/components/setup/successful/Succe
 export default function Page() {
   return (
     <Suspense fallback={
-        <div className="h-full w-full flex items-center justify-center">
-          <div className="flex flex-col items-center gap-4">
-            <ILMIAssistant height={180} width={140} className="h-[180px] w-[140px]" />
-            <p className="text-white text-lg">Loading data…</p>
-          </div>
+      <div className="h-full w-full flex items-center justify-center">
+        <div className="flex flex-col items-center gap-4">
+          <ILMIAssistant height={180} width={140} className="h-[180px] w-[140px]" />
+          <p className="text-white text-lg">Loading data…</p>
         </div>
-      }>
+      </div>
+    }>
       <SuccessfulSetup />
     </Suspense>
   );
