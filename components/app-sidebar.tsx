@@ -235,17 +235,18 @@ export function AppSidebar({ ...props }: AppSidebarProps) {
     <Sidebar collapsible="icon" {...props} className=" border-r border-card-border-color">
       <SidebarHeader>
         {/* <TeamSwitcher teams={data.teams} /> */}
-        <div className="inline-flex gap-2 items-center mx-auto mt-3">
-          <CustomLogo
-            logoSrc="/ILM_AI_Logo_deep_blue.png"
+        {/* <div className=" gap-2 items-center mx-auto mt-3"> */}
+        {/* <div> */}
+        <CustomLogo
+          logoSrc="/ILM_AI_Logo_deep_blue.png"
 
-          />
-          {/* {open && (
+        />
+        {/* {open && (
             <p className="animate-fade-slide-in font-bold text-[min(10vw,32px)]">
               ILM AI
             </p>
           )} */}
-        </div>
+        {/* </div> */}
       </SidebarHeader>
 
       <SidebarContent >
