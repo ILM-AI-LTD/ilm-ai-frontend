@@ -6,9 +6,9 @@ import { getCookie } from './lib/cookies/cookies-server'
 export async function middleware(request: NextRequest) {
   const token = await getCookie('token')
 
-  // if (!token) {
-  //   return NextResponse.redirect(new URL('/auth/sign-in', request.url))
-  // }
+  if (!token) {
+    return NextResponse.redirect(new URL('/auth/sign-in', request.url))
+  }
 
   return NextResponse.next()
 }
