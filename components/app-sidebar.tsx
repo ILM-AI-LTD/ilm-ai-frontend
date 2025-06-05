@@ -232,7 +232,7 @@ export function AppSidebar({ ...props }: AppSidebarProps) {
   const { open } = useSidebar();
 
   return (
-    <Sidebar collapsible="icon" {...props}>
+    <Sidebar collapsible="icon" {...props} className=" border-r border-card-border-color">
       <SidebarHeader>
         {/* <TeamSwitcher teams={data.teams} /> */}
         <div className="inline-flex gap-2 items-center mx-auto mt-3">
@@ -248,7 +248,7 @@ export function AppSidebar({ ...props }: AppSidebarProps) {
         </div>
       </SidebarHeader>
 
-      <SidebarContent>
+      <SidebarContent >
         {/* <NavMain items={data.navMain} /> */}
         <NavProjects projects={props.projects} />
       </SidebarContent>

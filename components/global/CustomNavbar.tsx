@@ -68,7 +68,7 @@ const CustomNavbar = ({ role }: Props) => {
             <div className="flex flex-row gap-6">
                 {/* <CustomDropdown title={'Board'} menuOptions={menuOptions} /> */}
                 {role === 'student' && (
-                    <div className='flex items-center gap-6 border px-3 border-blue-50 rounded-full'>
+                    <div className='flex items-center gap-6 border px-3 border-[#3A3A3A] rounded-full'>
                         <DropdownMenu>
                             {/* <Avatar>
                             <AvatarImage src={`${country?.image}`} />
@@ -136,7 +136,7 @@ const CustomNavbar = ({ role }: Props) => {
                     </div>
                 )}
 
-                <div className=' flex items-center gap-8 border p-3 border-blue-50 rounded-full'>
+                <div className=' flex items-center gap-8 border p-3 border-[#3A3A3A] rounded-full'>
                     <SwitchCustomizationDemo />
                     <div className=' justify-center'>
                         <div className="flex items-center gap-1">

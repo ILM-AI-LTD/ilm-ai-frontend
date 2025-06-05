@@ -80,6 +80,7 @@
   --color-button-shadow-color: var(--button-shadow-color);
   --color-button-hover-color: var(--button-hover-color);
   --color-button-shadow-hover-color: var(--button-shadow-hover-color);
+  --color-card-border-color: var(--card-border-color);
 }
 
 :root {
@@ -142,6 +143,7 @@
   --button-shadow-color: #004F6E;
   --button-hover-color: #017AAA;
   --button-shadow-hover-color: #006D98;
+  --card-border-color: #393E55;
   /* custom font */
   --font-eb-garamond: "EB Garamond";
 }
@@ -205,6 +207,7 @@
   --button-shadow-color: #004F6E;
   --button-hover-color: #017AAA;
   --button-shadow-hover-color: #006D98;
+  --card-border-color: #393E55;
 }
 
 @layer base {

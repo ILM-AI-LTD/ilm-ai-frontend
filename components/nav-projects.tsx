@@ -88,7 +88,7 @@ export function NavProjects({
             </DropdownMenu> */}
             </SidebarMenuItem>
             {index === projects.length - 2 && (
-              <hr className="my-2 mx-4 border-button-color" />
+              <hr className="my-2 mx-1 border-button-color" />
 
             )}
           </React.Fragment>
