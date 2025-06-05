@@ -16,11 +16,11 @@ export const projects = [
         url: "#",
         icon: '/StudentMenuIcon/Start_learning_logo.svg',
     },
-    {
-        name: "Submit Work",
-        url: "#",
-        icon: '/StudentMenuIcon/Submit_logo.svg',
-    },
+    // {
+    //     name: "Submit Work",
+    //     url: "#",
+    //     icon: '/StudentMenuIcon/Submit_logo.svg',
+    // },
     {
         name: "Practise & Test",
         url: "#",
