@@ -1,11 +1,11 @@
 "use client";
 
 import React, { useMemo, useRef } from "react";
-import { Circle } from "./Circle";
 import { IconComponent } from "./IconComponent";
 import { generateLayoutStructure, generateConnections } from "./layoutUtils";
 import { AnimatedBeam } from "@/components/magicui/animated-beam";
 import type { SubChapter } from "./types";
+import { Circle } from "./Circle";
 
 interface Chapter {
   name: string;
