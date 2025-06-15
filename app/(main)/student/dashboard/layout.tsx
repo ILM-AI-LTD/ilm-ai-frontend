@@ -10,7 +10,7 @@ import {
 import { studentSideMenu } from "@/constants/Helpers";
 import { PaperProvider } from "@/context/PaperContext";
 import ParentsNavbar from "@/feature/parents/components/profile/common/Navbar";
-import StudentsNavbar from "@/feature/students/components/dashboard/common/Navbar"
+import StudentsNavbar from "@/feature/students/home/component/Navbar"
 
 const ParentProfileLayout = ({ children }: { children: React.ReactNode }) => {
 

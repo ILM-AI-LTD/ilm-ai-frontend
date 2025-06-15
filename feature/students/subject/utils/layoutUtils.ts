@@ -1,7 +1,7 @@
-import type { Connection, LayoutItem, SubChapter } from "./types";
+import { Connection, LayoutItem, SubChapter } from "@/types/student";
 
 export const generateLayoutStructure = (chapterData: SubChapter[]): LayoutItem[] => {
-    const layout: LayoutItem[] = [{ type: "single", topicId: "0", hidden: true, className: "size-48",  }];
+    const layout: LayoutItem[] = [{ type: "single", topicId: "0", hidden: true, className: "size-48", }];
     for (let i = 0; i < chapterData.length; i++) {
         const topic = chapterData[i];
         if (i % 2 === 0) {

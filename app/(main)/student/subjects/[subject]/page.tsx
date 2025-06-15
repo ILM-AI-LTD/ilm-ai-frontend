@@ -1,20 +1,22 @@
 'use client';
 
-import { AnimatedLearningPath } from '@/feature/students/components/subject/AnimatedLearningPath';
-import { physicsChapters } from '@/feature/students/components/subject/physics';
-import { useSearchParams } from 'next/navigation';
+import { AnimatedLearningPath } from '@/feature/students/subject/components/AnimatedLearningPath';
+import { physicsChapters } from '@/feature/students/subject/constants/physics';
+import { useParams, useSearchParams } from 'next/navigation';
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import Image from 'next/image';
-import { IconComponent } from '@/feature/students/components/subject/IconComponent';
-import ScrollToTopButton from '@/feature/students/components/subject/ScrollToTopButton';
+import { IconComponent } from '@/feature/students/subject/components/IconComponent';
+import ScrollToTopButton from '@/feature/students/subject/components/ScrollToTopButton';
 import { usePaper } from '@/context/PaperContext';
 // import { usePaper } from '@/context/PaperContext';
 
 const page = () => {
 
-    const searchParams = useSearchParams();
-    const name = searchParams.get('subject');
+    // const searchParams = useSearchParams();
+    // const name = searchParams.get('subject');
+    const { subject } = useParams();
+
 
     // const [selectedPaper, setSelectedPaper] = useState<"paper1" | "paper2">("paper1")
     const { selectedPaper, setSelectedPaper } = usePaper();
@@ -74,7 +76,7 @@ const page = () => {
                 </div>
                 {/* ========= Right side =========== */}
                 {/* <div className=" flex flex-col items-center gap-10 basis-1/3 flex-auto"> */}
-                <div className=" flex flex-col items-center gap-10 basis-1/3 sticky top-10 h-fit">
+                <div className=" flex flex-col items-center gap-10 basis-1/3 sticky top-30 h-fit">
                     <div className='max-w-[320px]  lg:w-[320px]'>
                         <Card className="w-full p-3 md:p-6 rounded-[20px] flex flex-col gap-6 border border-card-border-color bg-primary-bg-color shadow-none">
 
@@ -150,7 +152,7 @@ const page = () => {
                                 />
                             </div>
                             {/* </div> */}
-                            <p className=' text-xl text-center font-bold'>{name} Master</p>
+                            <p className=' text-xl text-center font-bold'>{subject} Master</p>
                             {/* </div> */}
 
                         </CardContent>

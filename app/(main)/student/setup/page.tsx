@@ -1,7 +1,7 @@
 'use client';
 
-import Country from '@/feature/students/components/setup/Country';
-import Board from '@/feature/students/components/setup/Board';
+import Country from '@/feature/students/setup/components/Country';
+import Board from '@/feature/students/setup/components/Board';
 import { useState } from 'react';
 
 const STEPS = [

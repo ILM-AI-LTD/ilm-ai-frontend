@@ -2,10 +2,10 @@
 
 import React, { useMemo, useRef } from "react";
 import { IconComponent } from "./IconComponent";
-import { generateLayoutStructure, generateConnections } from "./layoutUtils";
+import { generateLayoutStructure, generateConnections } from "../utils/layoutUtils";
 import { AnimatedBeam } from "@/components/magicui/animated-beam";
-import type { SubChapter } from "./types";
 import { Circle } from "./Circle";
+import { SubChapter } from "@/types/student";
 
 interface Chapter {
   name: string;

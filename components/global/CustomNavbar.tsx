@@ -11,7 +11,7 @@ import Image from 'next/image'
 import { Button } from '@/components/ui/button'
 import { Switch } from '@radix-ui/react-switch'
 import SwitchCustomizationDemo from '@/components/customized/switch/switch-07'
-import { useSearchParams } from 'next/navigation'
+import { useParams, useSearchParams } from 'next/navigation'
 import { usePaper } from '@/context/PaperContext'
 // import { Switch } from '@/components/ui/switch'
 
@@ -19,8 +19,7 @@ interface Props {
     role: string;
 }
 const CustomNavbar = ({ role }: Props) => {
-    const searchParams = useSearchParams();
-    const name = searchParams.get('subject');
+    const { subject } = useParams();
 
     const [board, setBoard] = useState<BoardResponse | null>(null);
     const [country, setCountry] = useState<CountryResponse | null>(null);
@@ -133,7 +132,7 @@ const CustomNavbar = ({ role }: Props) => {
                                 ))}
                             </DropdownMenuContent>
                         </DropdownMenu>
-                        {name && (<div className='text-button-color text-xl font-bold'>
+                        {subject && (<div className='text-button-color text-xl font-bold'>
                             {selectedPaper === "paper1" ? "Paper 1" : "Paper 2"}
                         </div>)}
 

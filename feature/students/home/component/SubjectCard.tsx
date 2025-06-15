@@ -24,7 +24,7 @@ const SubjectCard = ({ title, description, iconSrc }: SubjectCardProps) => {
             audioRef.current.play().catch(e => console.log("Audio play failed:", e));
         }
 
-        router.push(`/student/subjects?subject=${title.toLowerCase()}`)
+        router.push(`/student/subjects/${title.toLowerCase()}`)
     };
 
 
