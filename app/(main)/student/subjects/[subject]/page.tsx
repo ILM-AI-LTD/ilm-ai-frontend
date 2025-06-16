@@ -69,7 +69,7 @@ const page = () => {
                                 </div>
                             </div>
 
-                            <AnimatedLearningPath chapter={chapter} />
+                            <AnimatedLearningPath chapter={chapter} subject={subject as string} />
 
                         </div>
                     ))}

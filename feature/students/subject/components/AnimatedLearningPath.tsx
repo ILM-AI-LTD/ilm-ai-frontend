@@ -1,11 +1,11 @@
-"use client";
+'use client';
 
-import React, { useMemo, useRef } from "react";
-import { IconComponent } from "./IconComponent";
-import { generateLayoutStructure, generateConnections } from "../utils/layoutUtils";
-import { AnimatedBeam } from "@/components/magicui/animated-beam";
-import { Circle } from "./Circle";
-import { SubChapter } from "@/types/student";
+import React, { useMemo, useRef } from 'react';
+import { IconComponent } from './IconComponent';
+import { generateLayoutStructure, generateConnections } from '../utils/layoutUtils';
+import { AnimatedBeam } from '@/components/magicui/animated-beam';
+import { Circle } from './Circle';
+import { SubChapter } from '@/types/student';
 
 interface Chapter {
   name: string;
@@ -15,26 +15,36 @@ interface Chapter {
 
 interface AnimatedLearningPathProps {
   chapter: Chapter;
+  subject: string;
 }
 
-export function AnimatedLearningPath({ chapter }: AnimatedLearningPathProps) {
+export function AnimatedLearningPath({ chapter, subject }: AnimatedLearningPathProps) {
+  const chapterSlug = chapter.name.toLowerCase().replace(/\s+/g, '-');
   const chapterData = chapter.data;
 
   const mainTopic = {
-    id: "0",
+    id: '0',
     subChapter: chapter.name,
-    href: "#",
+    href: '#',
     progress: 0,
     icon: chapter.icon,
   };
 
-  const allTopics = [mainTopic, ...chapterData];
+  const allTopics = [
+    mainTopic,
+    ...chapterData.map((topic) => ({
+      ...topic,
+      href: `/student/subjects/${subject}/${chapterSlug}/${topic.subChapter
+        .toLowerCase()
+        .replace(/\s+/g, '-')}`,
+    })),
+  ];
 
   const containerRef = useRef<HTMLDivElement>(null);
 
   const topicRefs = useMemo(() => {
     const refs: Record<string, React.RefObject<HTMLDivElement | null>> = {};
-    allTopics.forEach(topic => {
+    allTopics.forEach((topic) => {
       refs[topic.id] = React.createRef();
     });
     return refs;
@@ -54,8 +64,8 @@ export function AnimatedLearningPath({ chapter }: AnimatedLearningPathProps) {
 
   const renderLayout = () =>
     layoutStructure.map((item, index) => {
-      if (item.type === "single") {
-        const topic = allTopics.find(t => t.id === item.topicId);
+      if (item.type === 'single') {
+        const topic = allTopics.find((t) => t.id === item.topicId);
         if (!topic) return null;
 
         return (
@@ -75,8 +85,7 @@ export function AnimatedLearningPath({ chapter }: AnimatedLearningPathProps) {
         );
       }
 
-      // type === 'branch'
-      const leftTopic = allTopics.find(t => t.id === item.leftTopicId);
+      const leftTopic = allTopics.find((t) => t.id === item.leftTopicId);
       if (!leftTopic) return null;
 
       return (
@@ -97,11 +106,11 @@ export function AnimatedLearningPath({ chapter }: AnimatedLearningPathProps) {
 
   const renderAnimatedBeams = () =>
     connections.map((connection, index) => {
-      const fromRef = connection.from.startsWith("junction")
+      const fromRef = connection.from.startsWith('junction')
         ? junctionRefs[connection.from]
         : topicRefs[connection.from];
 
-      const toRef = connection.to.startsWith("junction")
+      const toRef = connection.to.startsWith('junction')
         ? junctionRefs[connection.to]
         : topicRefs[connection.to];
 
