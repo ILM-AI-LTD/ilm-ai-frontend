@@ -12,7 +12,7 @@ export interface BoardResponse {
 export type SubChapter = {
     id: string;
     subChapter: string;
-    href: string;
+    href?: string;
     progress: number;
     icon: string;
 };
