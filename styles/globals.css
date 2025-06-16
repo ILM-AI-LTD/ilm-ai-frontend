@@ -128,7 +128,8 @@
   --sidebar-border: hsl(220 13% 91%);
   --sidebar-ring: hsl(217.2 91.2% 59.8%);
   /* custom colors */
-  --primary-bg-color: #020617;
+  /* --primary-bg-color: #020617; */
+  --primary-bg-color: #0B0E18;
   --secondary-bg-color: #0f172a;
   --primary-font-color: #ffffff;
   --label-color: #818898;
@@ -194,7 +195,8 @@
   --sidebar-ring: hsl(217.2 91.2% 59.8%);
 
   /* custom colors */
-  --primary-bg-color: #020617;
+  /* --primary-bg-color: #020617; */
+  --primary-bg-color: #0B0E18;
   --secondary-bg-color: #0f172a;
   --primary-font-color: #ffffff;
   --label-color: #818898;

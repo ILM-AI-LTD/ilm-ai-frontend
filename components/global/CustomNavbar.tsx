@@ -11,19 +11,20 @@ import Image from 'next/image'
 import { Button } from '@/components/ui/button'
 import { Switch } from '@radix-ui/react-switch'
 import SwitchCustomizationDemo from '@/components/customized/switch/switch-07'
+import { useParams, useSearchParams } from 'next/navigation'
+import { usePaper } from '@/context/PaperContext'
 // import { Switch } from '@/components/ui/switch'
 
 interface Props {
     role: string;
 }
 const CustomNavbar = ({ role }: Props) => {
+    const { subject } = useParams();
+
     const [board, setBoard] = useState<BoardResponse | null>(null);
     const [country, setCountry] = useState<CountryResponse | null>(null);
     const [user, setUser] = useState<any | null>(null);
-    // const country: CountryResponse | null = localStorage.getItem('selectedCountry');
-    // const board = localStorage.getItem('selectedBoard');
-    // console.log('c --', country, 'b----', board);
-    // const [selectedOption, setSelectedOption] = useState(`Select ${title}`);
+    const { selectedPaper } = usePaper();
 
     const handleSelectCountry = (value: CountryResponse) => {
         setCountry(value);
@@ -34,7 +35,6 @@ const CustomNavbar = ({ role }: Props) => {
         setBoard(value);
         localStorage.setItem('selectedBoard', JSON.stringify(value));
     };
-
 
     useEffect(() => {
         const savedCountry = localStorage.getItem('selectedCountry');
@@ -62,6 +62,7 @@ const CustomNavbar = ({ role }: Props) => {
             }
         }
     }, []);
+
     return (
         <nav className='h-24 bg-primary-bg-color flex items-center justify-between z-10 px-6'>
             <SidebarTrigger className="-ml-1" />
@@ -131,7 +132,9 @@ const CustomNavbar = ({ role }: Props) => {
                                 ))}
                             </DropdownMenuContent>
                         </DropdownMenu>
-
+                        {subject && (<div className='text-button-color text-xl font-bold'>
+                            {selectedPaper === "paper1" ? "Paper 1" : "Paper 2"}
+                        </div>)}
 
                     </div>
                 )}

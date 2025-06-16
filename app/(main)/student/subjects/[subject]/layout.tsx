@@ -16,17 +16,13 @@ const ParentProfileLayout = ({ children }: { children: React.ReactNode }) => {
 
     return (
         <SidebarProvider>
-            {/* <StudentAppSidebar />
-            <SidebarInset>
-                <StudentsNavbar />
-                <div className="flex flex-1 flex-col bg-primary-bg-color gap-4 p-4" >
-                    {children}
-                </div>
-            </SidebarInset> */}
             <PaperProvider>
                 <AppSidebar projects={studentSideMenu} />
                 <SidebarInset>
-                    <CustomNavbar role={'student'} />
+                    <div className="sticky top-0 z-50 ">
+                        <CustomNavbar role={'student'} />
+                    </div>
+                    {/* <CustomNavbar role={'student'} /> */}
                     <div className="flex flex-1 flex-col bg-primary-bg-color gap-4 p-4">
                         {children}
                     </div>
