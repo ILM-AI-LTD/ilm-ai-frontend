@@ -256,7 +256,7 @@ export function AppSidebar({ ...props }: AppSidebarProps) {
       {/* <SidebarFooter>
         <NavUser user={data.user} />
       </SidebarFooter> */}
-      <SidebarRail />
+      {/* <SidebarRail /> */}
     </Sidebar>
   )
 }
