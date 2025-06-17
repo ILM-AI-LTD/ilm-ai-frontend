@@ -23,7 +23,7 @@ const GoalsCompletion = ({ chapter, subChapters, goals }: GoalsCompletionProps) 
             </CardHeader>
 
             <CardDescription className='text-brand-color font-bold text-base capitalize px-6'>
-                {subChapters.replace(/-/g, ' ')} 
+                {subChapters.replace(/-/g, ' ')}
             </CardDescription>
 
             <CardContent className='mt-4'>
