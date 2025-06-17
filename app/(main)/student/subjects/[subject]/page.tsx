@@ -1,45 +1,56 @@
-'use client';
+// 'use client';
 
 import { AnimatedLearningPath } from '@/feature/students/subject/components/AnimatedLearningPath';
 import { physicsChapters } from '@/feature/students/subject/constants/physics';
-import { useParams, useSearchParams } from 'next/navigation';
-import React, { useEffect, useMemo, useRef, useState } from 'react';
+// import { useParams } from 'next/navisgation';
+import React from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import Image from 'next/image';
 import { IconComponent } from '@/feature/students/subject/components/IconComponent';
 import ScrollToTopButton from '@/feature/students/subject/components/ScrollToTopButton';
-import { usePaper } from '@/context/PaperContext';
+// import { usePaper } from '@/context/PaperContext';
+import { capitalizeFirstLetter } from '@/lib/utils';
+import { ChapterList } from '@/feature/students/subject/components/ChapterList';
+import { NavigationCard } from '@/feature/students/subject/components/NavigationCard';
+import { BadgeCard } from '@/feature/students/subject/components/BadgeCard';
+import { fetchPaper } from '@/feature/students/subject/utils/layoutUtils';
 // import { usePaper } from '@/context/PaperContext';
 
-const page = () => {
+interface PageProps {
+    params: Promise<{ subject: string }>;
+}
+// const page = () => {
+const page = async ({ params }: PageProps) => {
+    const { subject } = await params;
+    const progress = 50;
 
     // const searchParams = useSearchParams();
     // const name = searchParams.get('subject');
-    const { subject } = useParams();
-
+    // const { subject } = useParams();
 
     // const [selectedPaper, setSelectedPaper] = useState<"paper1" | "paper2">("paper1")
-    const { selectedPaper, setSelectedPaper } = usePaper();
+    // const { selectedPaper, setSelectedPaper } = usePaper();
 
-    const current = physicsChapters[selectedPaper]
+    // const selectedPaper = fetchPaper();
 
-    const progress = 50;
+    // const current = physicsChapters[selectedPaper]
 
-    const scrollToMainChapter = (chapterName: string) => {
-        const id = chapterName.replace(/\s+/g, "-").toLowerCase();
-        const element = document.getElementById(id);
-        if (element) {
-            element.scrollIntoView({ behavior: "smooth", block: "start" });
-        }
-    };
+    // const progress = 50;
+
+    // const scrollToMainChapter = (chapterName: string) => {
+    //     const id = chapterName.replace(/\s+/g, "-").toLowerCase();
+    //     const element = document.getElementById(id);
+    //     if (element) {
+    //         element.scrollIntoView({ behavior: "smooth", block: "start" });
+    //     }
+    // };
 
     return (
 
-        <div className='p-6 space-y-10'>
-            <div className=" flex flex-row  mx-auto p-3 gap-3 ">
-                {/* ========= Left side =========== */}
-                <div className='space-y-16 basis-2/3'>
-                    {/* <div className='space-y-16'> */}
+        <div>
+            <div className=" flex flex-row  mx-auto gap-3 ">
+
+                {/* <div className='space-y-16 basis-2/3'>
                     {current.chapters.map((chapter, index) => (
                         <div key={index} className='flex flex-col items-center' id={chapter.name.replace(/\s+/g, "-").toLowerCase()}>
                             <div className='flex gap-4'>
@@ -73,11 +84,12 @@ const page = () => {
 
                         </div>
                     ))}
-                </div>
-                {/* ========= Right side =========== */}
+                </div> */}
+                <ChapterList />
+
                 {/* <div className=" flex flex-col items-center gap-10 basis-1/3 flex-auto"> */}
                 <div className=" flex flex-col items-center gap-10 basis-1/3 sticky top-30 h-fit">
-                    <div className='max-w-[320px]  lg:w-[320px]'>
+                    {/* <div className='max-w-[320px]  lg:w-[320px]'>
                         <Card className="w-full p-3 md:p-6 rounded-[20px] flex flex-col gap-6 border border-card-border-color bg-primary-bg-color shadow-none">
 
                             <CardHeader className="p-0 space-y-0 flex flex-col gap-6 justify-center items-center">
@@ -106,11 +118,9 @@ const page = () => {
                                         Paper 2
                                     </button>
                                 </div>
-                                {/* <div> */}
                                 {current.chapters.map((chapter, index) => (
                                     <div key={index} className='flex gap-6 mb-4'>
                                         <div><IconComponent iconName={chapter.icon} width={24} height={24} /></div>
-                                        {/* <div><h2 className=' text-white font-bold '>{chapter.name}</h2></div> */}
                                         <div className='text-white font-bold cursor-pointer' onClick={() => scrollToMainChapter(chapter.name)}>
                                             {chapter.name}
                                         </div>
@@ -119,49 +129,50 @@ const page = () => {
                             </CardContent>
 
                         </Card>
-                    </div>
-                    {/* =========== Badge ============ */}
-                    {/* <div className=''> */}
-                    <Card className="max-w-[320px] w-full p-3 md:p-6 rounded-[20px] flex flex-col gap-6 border border-card-border-color bg-primary-bg-color shadow-none">
+                    </div> */}
+
+                    {/* <Card className="max-w-[320px] w-full p-3 md:p-6 rounded-[20px] flex flex-col gap-6 border border-card-border-color bg-primary-bg-color shadow-none">
 
                         <CardHeader className="flex flex-col justify-center items-center">
                             <p className=' text-2xl text-white flex items-center font-bold'>Badge</p>
                         </CardHeader>
 
-                        <CardContent className='p-10 bg-[#2abf65] text-white rounded-full shadow-md  flex flex-col items-center gap-2 group'>
-                            {/* <div className=''> */}
-                            {/* <div className=" mb-2"> */}
-                            <div className="relative size-32  group-hover:scale-105 transition-transform">
+                        <CardContent className='p-10 bg-[#020617] text-white rounded-full shadow-md  flex flex-col items-center gap-2 group'>
+                            
+                            <div className="relative size-28  group-hover:scale-105 transition-transform">
                                 <Image
                                     src="/subject/badge.svg"
                                     alt="Colored"
-                                    width={32}
-                                    height={32}
-                                    className="absolute size-32 inset-0  object-cover"
+                                    width={28}
+                                    height={28}
+                                    className="absolute size-30 inset-0  object-cover"
                                 />
                                 <Image
                                     src="/subject/badge.svg"
                                     alt="Grayscale"
-                                    width={32}
-                                    height={32}
-                                    className="absolute inset-0 size-32 object-cover grayscale pointer-events-none"
+                                    width={28}
+                                    height={28}
+                                    className="absolute inset-0 size-30 object-cover grayscale pointer-events-none"
                                     style={{
                                         maskImage: `linear-gradient(to bottom, transparent ${progress}%, black ${progress}%)`,
                                         WebkitMaskImage: `linear-gradient(to bottom, transparent ${progress}%, black ${progress}%)`,
                                     }}
                                 />
                             </div>
-                            {/* </div> */}
-                            <p className=' text-xl text-center font-bold'>{subject} Master</p>
-                            {/* </div> */}
+                            <p className=' text-xl text-center font-bold'>{capitalizeFirstLetter(subject ? String(subject) : '')} Master</p>
+                            
 
                         </CardContent>
 
-                    </Card>
-                    {/* </div> */}
+                    </Card> */}
+                    <NavigationCard />
+                    <BadgeCard subject={subject} progress={progress} />
+
 
                 </div>
             </div>
+
+
             <ScrollToTopButton />
         </div>
     )

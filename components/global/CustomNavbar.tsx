@@ -13,6 +13,9 @@ import { Switch } from '@radix-ui/react-switch'
 import SwitchCustomizationDemo from '@/components/customized/switch/switch-07'
 import { useParams, useSearchParams } from 'next/navigation'
 import { usePaper } from '@/context/PaperContext'
+import CustomLogo from './CustomLogo'
+import ThemeToggleButton from '../customized/button/button-16'
+import ComplexDropdownMenu from '../customized/dropdown-menu/dropdown-menu-07'
 // import { Switch } from '@/components/ui/switch'
 
 interface Props {
@@ -65,90 +68,23 @@ const CustomNavbar = ({ role }: Props) => {
 
     return (
         <nav className='h-24 bg-primary-bg-color flex items-center justify-between z-10 px-6'>
-            <SidebarTrigger className="-ml-1" />
-            <div className="flex flex-row gap-6">
-                {/* <CustomDropdown title={'Board'} menuOptions={menuOptions} /> */}
-                {role === 'student' && (
-                    <div className='flex items-center gap-6 border px-3 border-[#3A3A3A] rounded-full'>
-                        <DropdownMenu>
-                            {/* <Avatar>
-                            <AvatarImage src={`${country?.image}`} />
-                        </Avatar> */}
-                            <DropdownMenuTrigger className="flex items-center gap-3">
-                                <Image
-                                    src={country?.image || ''}
-                                    width={30}
-                                    height={30}
-                                    alt="ILM Logo"
-                                    className=' rounded-full object-cover w-[30px] h-[30px]'
-                                />
-                                <ChevronDown />
-                            </DropdownMenuTrigger>
-                            <DropdownMenuContent
-                                // sideOffset={5}
-                                className="bg-primary-bg-color border rounded shadow-md p-2"
-                            >
-                                {countries.map((option, index) => (
-                                    <DropdownMenuItem
-                                        key={index}
-                                        onSelect={() => handleSelectCountry(option)}
-                                        className="px-4 py-2 hover:bg-gray-100 hover:text-black  cursor-pointer text-white"
-                                    >
-                                        {/* <Avatar>
-                                        <AvatarImage src={`${option?.image}`} />
-                                    </Avatar> */}
-                                        <Image
-                                            src={`${option?.image}`}
-                                            width={30}
-                                            height={30}
-                                            alt="ILM Logo"
-                                            className=' rounded-full object-cover w-[30px] h-[30px]'
-                                        />
-                                        {option?.label}
-                                    </DropdownMenuItem>
-                                ))}
-                            </DropdownMenuContent>
-                        </DropdownMenu>
+            {/* <SidebarTrigger className="-ml-1" /> */}
+            <div>
+                <div className='lg:hidden'>
+                    <CustomLogo
+                        logoSrc="/ILM_AI_Logo_deep_blue.png"
 
-                        <DropdownMenu>
-                            <DropdownMenuTrigger className="flex items-center gap-3">
-                                {/* <p className="text-sm font-medium">{board?.name}</p> */}
-                                {board?.name}
-                                <ChevronDown />
-                            </DropdownMenuTrigger>
-                            <DropdownMenuContent
-                                // sideOffset={5}
-                                className="bg-primary-bg-color border rounded shadow-md p-2"
-                            >
-                                {boards.map((option, index) => (
-                                    <DropdownMenuItem
-                                        key={index}
-                                        onSelect={() => handleSelectBoard(option)}
-                                        className="px-4 py-2 hover:bg-gray-100 hover:text-black  cursor-pointer text-white"
-                                    >
-                                        {/* <p className="text-sm font-medium">{option?.name}</p> */}
-                                        {option?.name}
-                                    </DropdownMenuItem>
-                                ))}
-                            </DropdownMenuContent>
-                        </DropdownMenu>
-                        {subject && (<div className='text-button-color text-xl font-bold'>
-                            {selectedPaper === "paper1" ? "Paper 1" : "Paper 2"}
-                        </div>)}
+                    />
+                </div>
+            </div>
 
-                    </div>
-                )}
-
-                <div className=' flex items-center gap-8 border p-3 border-[#3A3A3A] rounded-full'>
-                    <SwitchCustomizationDemo />
-                    <div className=' justify-center'>
-                        <div className="flex items-center gap-1">
-                            <SunDim />
-                            <p>Good Morning</p>
-                        </div>
-                        <p>{user?.name}</p>
-                    </div>
-                    <User />
+            <div className="flex flex-row lg:gap-6 gap-4 lg:pr-5 items-center">
+                <ThemeToggleButton />
+                <div className='lg:hidden'>
+                    <SidebarTrigger className="" />
+                </div>
+                <div className="hidden lg:block">
+                    <ComplexDropdownMenu user={user} />
                 </div>
 
             </div>

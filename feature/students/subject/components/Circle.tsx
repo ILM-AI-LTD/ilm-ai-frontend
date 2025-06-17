@@ -40,7 +40,7 @@ export const Circle = forwardRef<HTMLDivElement, {
                 </div>
             </div>
             {title && (
-                <p className="text-center w-32 text-sm mt-2 mx-auto">{title}</p>
+                <p className="text-center w-32 text-lg font-bold mt-4 mx-auto">{title}</p>
             )}
         </Link>
     );

@@ -1,6 +1,7 @@
 'use client';
 
-import { AppSidebar } from "@/components/app-sidebar";
+import AppSidebar from "@/components/app-sidebar";
+// import { AppSidebar } from "@/components/app-sidebar";
 import CustomNavbar from "@/components/global/CustomNavbar";
 import { StudentAppSidebar } from "@/components/student-app-sidebar"
 import {
@@ -12,7 +13,7 @@ import { PaperProvider } from "@/context/PaperContext";
 import ParentsNavbar from "@/feature/parents/components/profile/common/Navbar";
 import StudentsNavbar from "@/feature/students/home/component/Navbar"
 
-const ParentProfileLayout = ({ children }: { children: React.ReactNode }) => {
+const SubjectLayout = ({ children }: { children: React.ReactNode }) => {
 
     return (
         <SidebarProvider>
@@ -32,4 +33,4 @@ const ParentProfileLayout = ({ children }: { children: React.ReactNode }) => {
     )
 }
 
-export default ParentProfileLayout
+export default SubjectLayout
