@@ -1,9 +1,7 @@
 'use client'
 
-import { Card, CardContent, CardDescription, CardHeader } from '@/components/ui/card';
-import { ScrollArea } from '@/components/ui/scroll-area'; // Import from shadcn components
+import ChatbotWidget from '@/components/global/CustomChatbotWidget';
 import GoalsCompletion from '@/feature/students/chapters-stream/components/GoalsCompletion';
-import { Check } from 'lucide-react';
 import { useParams } from 'next/navigation';
 
 export default function Page() {
@@ -18,7 +16,7 @@ export default function Page() {
     {
       id: 2,
       title: "8 main types of energy",
-      isCompleted: false
+      isCompleted: true
     },
     {
       id: 3,
@@ -28,7 +26,7 @@ export default function Page() {
     {
       id: 4,
       title: "Show how energy converted",
-      isCompleted: false
+      isCompleted: true
     },
   ];
 
@@ -45,6 +43,14 @@ export default function Page() {
           goals={goals}
         />
       </div>
+
+      <ChatbotWidget
+        position="bottom-right"
+        size="small"
+        iconColor="#ffffff"
+        placeholder="Type your message..."
+        offset={{ x: 40, y: 40 }}
+      />
     </div>
   );
 }
