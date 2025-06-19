@@ -1,17 +1,13 @@
 'use client';
 
 import AppSidebar from "@/components/app-sidebar";
-// import { AppSidebar } from "@/components/app-sidebar";
 import CustomNavbar from "@/components/global/CustomNavbar";
-import { StudentAppSidebar } from "@/components/student-app-sidebar"
 import {
     SidebarInset,
     SidebarProvider
 } from "@/components/ui/sidebar"
 import { studentSideMenu } from "@/constants/Helpers";
 import { PaperProvider } from "@/context/PaperContext";
-import ParentsNavbar from "@/feature/parents/components/profile/common/Navbar";
-import StudentsNavbar from "@/feature/students/home/component/Navbar"
 
 const SubjectLayout = ({ children }: { children: React.ReactNode }) => {
 
@@ -23,7 +19,6 @@ const SubjectLayout = ({ children }: { children: React.ReactNode }) => {
                     <div className="sticky top-0 z-50 ">
                         <CustomNavbar role={'student'} />
                     </div>
-                    {/* <CustomNavbar role={'student'} /> */}
                     <div className="flex flex-1 flex-col bg-primary-bg-color gap-4 p-4">
                         {children}
                     </div>
