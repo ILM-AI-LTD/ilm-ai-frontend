@@ -33,7 +33,10 @@ function ChatbotWidget({
     placeholder = 'Type your message...',
     offset = { x: 20, y: 20 }
 }: ChatbotWidgetProps) {
-    const [messages, setMessages] = useState<Message[]>([]);
+    const [messages, setMessages] = useState<Message[]>([{
+        text: 'Hello! I am ILMI Bot. How can I assist you today?',
+        isUser: false
+    }]);
     const [input, setInput] = useState('');
     const [isOpen, setIsOpen] = useState(false);
     const scrollAreaRef = useRef<HTMLDivElement>(null);
@@ -66,49 +69,19 @@ function ChatbotWidget({
         if (input.trim() && !isStreaming) {
             setMessages((prev) => [...prev, { text: input, isUser: true }, { text: '', isUser: false }]);
             const response = dedent(`
-          Here's a Markdown response to your input:
-        
-          # Heading 1
-        
-          ## Heading 2
-        
-          ### Heading 3
-        
-          ---
-        
-          **Bold Text**
-        
-          *Italic Text*
-                
-          **~~Strikethrough Text~~**
-                
-          - Unordered list item 1
-          - Unordered list item 2
-        
-          1. Ordered list item 1
-          2. Ordered list item 2
-        
-          [A clickable link](https://example.com)
-                
-          \`Inline code example\`
-        
-          \`\`\`javascript
-          // Code block example
-          function greet() {
-            console.log('Hello, Markdown!');
-          }
-          greet();
-          \`\`\`
-        
-          | Syntax    | Description |
-          |-----------|-------------|
-          | Header    | Title       |
-          | Paragraph | Text        |
-        
-          ---
-        
-          _Thank you for your message!_
-        `);
+            To prepare for your A-level exam on the topic of energy, it's important to understand the different types of energy stores. Here’s a brief overview of each:
+          
+            - **Thermal Energy:** This is the energy stored due to the temperature of an object. It’s linked to the vibrations of particles within the object.
+            - **Kinetic Energy:** This is the energy stored in moving objects. The faster an object moves, the more kinetic energy it has.
+            - **Gravitational Potential Energy (GPE):** This energy is stored in an object when it is raised above the ground. It depends on the object’s height and Earth’s gravity.
+            - **Elastic Potential Energy:** This is the energy stored in objects that are stretched or compressed, such as springs or elastic bands.
+            - **Chemical Energy:** This energy is stored in chemical bonds. It’s found in substances like food, fuel, and batteries.
+            - **Magnetic Energy:** This energy is stored when magnetic poles are either pushed together or pulled apart.
+            - **Electrostatic Energy:** This is the energy stored due to the attraction or repulsion between electric charges.
+            - **Nuclear Energy:** This energy is stored in the nucleus of atoms and is released during nuclear reactions, such as fusion or fission.
+          
+            Understanding these energy stores will help you analyze different physical situations and solve problems related to energy transfer and conservation.
+          `);
 
             await streamMessage(response, (streamedText) => {
                 setMessages((prev) => {
