@@ -9,7 +9,7 @@ export function useStreamedMessage() {
         setIsStreaming(true);
 
         for (let i = 0; i < response.length; i++) {
-            await new Promise((resolve) => setTimeout(resolve, 5));
+            await new Promise((resolve) => setTimeout(resolve, 1));
             streamedResponse += response[i];
             onUpdate(streamedResponse);
         }
