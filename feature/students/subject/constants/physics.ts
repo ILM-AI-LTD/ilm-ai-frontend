@@ -1,3 +1,5 @@
+import { progress } from "motion/react";
+
 export const physicsChapters = {
   paper1: {
     name: "Paper 1",
@@ -5,6 +7,7 @@ export const physicsChapters = {
       {
         name: "ENERGY",
         icon: "phy_energy",
+        progress: 40,
         data: [
           { id: "1", subChapter: "Energy Stores and Systems", progress: 70, icon: "phy_energy_store" },
           { id: "2", subChapter: "Kinetic and Potential Energy Stores", progress: 20, icon: "phy_kinetic" },
@@ -24,6 +27,7 @@ export const physicsChapters = {
       {
         name: "ELECTRICITY",
         icon: "phy_electricity",
+        progress: 10,
         data: [
           { id: "1", subChapter: "Current and Circuit Symbols", progress: 0, icon: "phy_current" },
           { id: "2", subChapter: "Resistance and V=IR", progress: 0, icon: "phy_resistanceVIR" },
@@ -50,6 +54,7 @@ export const physicsChapters = {
       {
         name: "FORCES",
         icon: "phy_forces",
+        progress: 30,
         data: [
           { id: "1", subChapter: "Contact and Non-contact Forces", progress: 0, icon: "activity" },
           { id: "2", subChapter: "Weight, Mass, and Gravity", progress: 0, icon: "divide-square" },

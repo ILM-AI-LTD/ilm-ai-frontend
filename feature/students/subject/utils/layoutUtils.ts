@@ -1,3 +1,4 @@
+import { usePaper } from "@/context/PaperContext";
 import { Connection, LayoutItem, SubChapter } from "@/types/student";
 
 export const generateLayoutStructure = (chapterData: SubChapter[]): LayoutItem[] => {
@@ -30,5 +31,9 @@ export const generateConnections = (chapterData: SubChapter[]) => {
     return connections;
 };
 
+export const fetchPaper = () => {
+    const { selectedPaper, setSelectedPaper } = usePaper();
 
+    return selectedPaper;
+}
 

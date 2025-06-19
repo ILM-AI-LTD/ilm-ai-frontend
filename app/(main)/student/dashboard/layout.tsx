@@ -1,16 +1,13 @@
 'use client';
 
-import { AppSidebar } from "@/components/app-sidebar";
+import AppSidebar from "@/components/app-sidebar";
 import CustomNavbar from "@/components/global/CustomNavbar";
-import { StudentAppSidebar } from "@/components/student-app-sidebar"
 import {
     SidebarInset,
     SidebarProvider
 } from "@/components/ui/sidebar"
 import { studentSideMenu } from "@/constants/Helpers";
 import { PaperProvider } from "@/context/PaperContext";
-import ParentsNavbar from "@/feature/parents/components/profile/common/Navbar";
-import StudentsNavbar from "@/feature/students/home/component/Navbar"
 
 const ParentProfileLayout = ({ children }: { children: React.ReactNode }) => {
 

@@ -11,6 +11,7 @@ interface Chapter {
   name: string;
   icon: string;
   data: SubChapter[];
+  progress: number;
 }
 
 interface AnimatedLearningPathProps {
@@ -25,8 +26,8 @@ export function AnimatedLearningPath({ chapter, subject }: AnimatedLearningPathP
   const mainTopic = {
     id: '0',
     subChapter: chapter.name,
-    href: '#',
-    progress: 0,
+    href: "#",
+    progress: chapter.progress,
     icon: chapter.icon,
   };
 
@@ -67,6 +68,7 @@ export function AnimatedLearningPath({ chapter, subject }: AnimatedLearningPathP
       if (item.type === 'single') {
         const topic = allTopics.find((t) => t.id === item.topicId);
         if (!topic) return null;
+        console.log('topic --------------', topic);
 
         return (
           <div key={index} className="flex size-full flex-col items-center">
@@ -78,6 +80,7 @@ export function AnimatedLearningPath({ chapter, subject }: AnimatedLearningPathP
               title={topic.subChapter}
               href={topic.href}
               progress={topic.progress}
+              index={index}
             >
               <IconComponent iconName={topic.icon} />
             </Circle>
@@ -95,6 +98,7 @@ export function AnimatedLearningPath({ chapter, subject }: AnimatedLearningPathP
             title={leftTopic.subChapter}
             href={leftTopic.href}
             progress={leftTopic.progress}
+            index={index}
           >
             <IconComponent iconName={leftTopic.icon} />
           </Circle>

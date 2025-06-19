@@ -42,7 +42,7 @@ const ParentsNavbar = () => {
                     <User />
                 </div>
 
-                {/* <ButtonsWithBadge />
+                <ButtonsWithBadge />
 
 
                 <DropdownMenu>
@@ -138,7 +138,7 @@ const ParentsNavbar = () => {
                             <LogOut className="mr-1" /> Sign out
                         </DropdownMenuItem>
                     </DropdownMenuContent>
-                </DropdownMenu> */}
+                </DropdownMenu>
             </div>
         </nav>
     )

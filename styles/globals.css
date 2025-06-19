@@ -81,6 +81,7 @@
   --color-button-hover-color: var(--button-hover-color);
   --color-button-shadow-hover-color: var(--button-shadow-hover-color);
   --color-card-border-color: var(--card-border-color);
+  --color-profile-dropdown-card: var(--profile-dropdown-card);
 }
 
 :root {
@@ -145,6 +146,7 @@
   --button-hover-color: #017AAA;
   --button-shadow-hover-color: #006D98;
   --card-border-color: #393E55;
+  --profile-dropdown-card: #0F1321;
 
   /* custom font */
   --font-geist-sans: Inter, sans-serif;
@@ -213,6 +215,7 @@
   --button-shadow-hover-color: #006D98;
   --card-border-color: #393E55;
   --font-geist-sans: Inter, sans-serif;
+  --profile-dropdown-card: #0F1321;
 }
 
 @layer base {

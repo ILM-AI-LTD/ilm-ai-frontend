@@ -18,7 +18,7 @@ import {
   SquareTerminal,
   UserPlus,
 } from "lucide-react"
-import * as React from "react"
+import { useEffect, useState } from "react"
 
 import { NavMain } from "@/components/nav-main"
 import { NavProjects } from "@/components/nav-projects"
@@ -32,6 +32,7 @@ import {
   useSidebar,
 } from "@/components/ui/sidebar"
 import CustomLogo from "./global/CustomLogo"
+import ComplexDropdownMenu from "./customized/dropdown-menu/dropdown-menu-07"
 
 // This is sample data.
 // const data = {
@@ -227,9 +228,33 @@ interface AppSidebarProps extends React.ComponentProps<typeof Sidebar> {
   }[];
 }
 
-export function AppSidebar({ ...props }: AppSidebarProps) {
+const AppSidebar = ({ ...props }: AppSidebarProps) => {
 
   const { open } = useSidebar();
+
+  const [user, setUser] = useState<any | null>(null);
+
+
+  useEffect(() => {
+    console.log('heoll-----------');
+
+
+    const savedUser = localStorage.getItem('currentUser');
+    console.log('savedUser -----', savedUser);
+
+    if (savedUser) {
+      try {
+        setUser(JSON.parse(savedUser));
+      } catch (e) {
+        console.error('Failed to parse saved user', e);
+      }
+    }
+
+  }, []);
+
+  console.log('u ---------------', user);
+
+
 
   return (
     <Sidebar collapsible="icon" {...props} className=" border-r border-card-border-color">
@@ -253,10 +278,18 @@ export function AppSidebar({ ...props }: AppSidebarProps) {
         {/* <NavMain items={data.navMain} /> */}
         <NavProjects projects={props.projects} />
       </SidebarContent>
-      {/* <SidebarFooter>
-        <NavUser user={data.user} />
-      </SidebarFooter> */}
-      {/* <SidebarRail /> */}
+      <SidebarFooter>
+        {user && <div className="lg:hidden">
+          <ComplexDropdownMenu user={user} />
+        </div>}
+        {/* <NavUser user={user} /> */}
+        {/* <div className="hidden lg:block">
+          <ComplexDropdownMenu user={user} />
+        </div> */}
+      </SidebarFooter>
+      <SidebarRail />
     </Sidebar>
   )
 }
+
+export default AppSidebar;

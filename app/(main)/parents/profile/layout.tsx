@@ -1,6 +1,6 @@
 'use client'
 
-import { AppSidebar } from "@/components/app-sidebar"
+import AppSidebar from "@/components/app-sidebar"
 import CustomNavbar from "@/components/global/CustomNavbar"
 import {
   SidebarInset,
@@ -45,7 +45,6 @@ const ParentProfileLayout = ({ children }: { children: React.ReactNode }) => {
       <PaperProvider>
         <AppSidebar projects={projects} />
         <SidebarInset>
-          {/* <ParentsNavbar /> */}
           <CustomNavbar role={'parent'} />
           <div className="flex flex-1 flex-col bg-primary-bg-color gap-4 p-4">
             {children}
