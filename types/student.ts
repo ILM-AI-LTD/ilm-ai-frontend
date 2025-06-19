@@ -2,6 +2,7 @@ export interface CountryResponse {
     id: string;
     image: string;
     label: string;
+    initial: string;
 }
 
 export interface BoardResponse {
@@ -16,6 +17,18 @@ export type SubChapter = {
     progress: number;
     icon: string;
 };
+
+export type Chapter = {
+    name: string;
+    icon: string;
+    data: SubChapter[];
+    progress: number;
+}
+
+export type Subject = {
+    name: string;
+    chapters: Chapter[];
+}
 
 export type Connection = {
     from: string;

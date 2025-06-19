@@ -25,7 +25,9 @@ import {
   useSidebar,
 } from "@/components/ui/sidebar"
 import Image from "next/image"
-import React from "react"
+import React, { useState } from "react"
+import { usePathname } from "next/navigation"
+import { cn } from "@/lib/utils"
 
 export function NavProjects({
   projects,
@@ -37,6 +39,11 @@ export function NavProjects({
   }[]
 }) {
   const { isMobile } = useSidebar()
+  const pathname = usePathname();
+
+  const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
+  console.log('selectedIndex ------------', selectedIndex);
+
 
   return (
     <SidebarGroup className="mt-4">
@@ -45,7 +52,7 @@ export function NavProjects({
         {projects.map((item, index: number) => (
           <React.Fragment key={item.name}>
             <SidebarMenuItem key={item.name}>
-              <SidebarMenuButton tooltip={item.name} asChild className="hover:bg-button-hover-color hover:text-white mb-2 rounded-lg p-4 h-12 text-base font-semibold">
+              <SidebarMenuButton tooltip={item.name} asChild onClick={() => setSelectedIndex(index)} className={cn("hover:bg-button-hover-color  hover:text-white mb-2 rounded-lg p-4 h-12 text-base font-semibold", selectedIndex === index ? "bg-button-hover-color text-white" : "")}>
                 <a href={item.url}>
                   {typeof item.icon === "string" ?
                     <Image

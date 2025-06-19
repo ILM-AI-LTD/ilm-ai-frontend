@@ -1,15 +1,14 @@
 import { subjects } from '@/constants/Helpers';
-// import SubjectCard from '@/feature/landing/components/subjectCover/SubjectCard';
 import ILMIAssistantv2 from '@/feature/parents/components/setup/common/ILMIAssistantv2';
 import SubjectCard from '@/feature/students/home/component/SubjectCard';
 import { EB_Garamond } from 'next/font/google';
 import Image from 'next/image';
 
-const eBGaramondfont = EB_Garamond({
-    subsets: ['latin'],
-    weight: "700",
+// const eBGaramondfont = EB_Garamond({
+//     subsets: ['latin'],
+//     weight: "700",
 
-})
+// })
 
 const page = () => {
     return (
