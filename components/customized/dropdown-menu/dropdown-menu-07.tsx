@@ -11,24 +11,29 @@ import {
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { boards, countries } from "@/constants/Helpers";
+import { BoardResponse, CountryResponse } from "@/types/student";
 import { AvatarImage } from "@radix-ui/react-avatar";
 import {
-  Bolt,
-  ExternalLink,
-  Filter,
-  LogIn,
   LogOut,
-  Rocket,
-  Settings2,
+  Settings,
   User,
-  ChevronDown
+  ChevronDown,
+  Globe,
+  LayoutDashboard
 } from "lucide-react";
+import Image from "next/image";
 
 interface Props {
   user: any;
+  country: CountryResponse | null;
+  setCountry: (value: CountryResponse) => void;
+  board: BoardResponse | null;
+  setBoard: (value: BoardResponse) => void;
+  role: string;
 }
 
-const ComplexDropdownMenu = ({ user }: Props) => {
+const ComplexDropdownMenu = ({ user, country, setCountry, board, setBoard, role }: Props) => {
 
   return (
     <DropdownMenu>
@@ -42,108 +47,82 @@ const ComplexDropdownMenu = ({ user }: Props) => {
         <div className="flex items-center gap-2">
           <div className="text-start flex flex-col">
             <p className="text-md font-semibold">{user?.name}</p>
-            {/* <p className="text-xl text-muted-foreground">myworkspace.slack.com</p> */}
             <p className="text-sm text-[#858D9D] font-medium">myworkspace.slack.com</p>
-
           </div>
           <ChevronDown />
         </div>
-
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="mt-2 w-72">
+      <DropdownMenuContent className="mt-2 w-56 bg-profile-dropdown-card border-card-border-color text-white">
         <DropdownMenuItem className="py-3">
-          <Avatar>
-            <AvatarFallback className="bg-primary text-primary-foreground">
-              MW
-            </AvatarFallback>
-          </Avatar>
-          <div className="ml-1 flex flex-col">
-            <p className="text-sm font-medium">My Workspace</p>
-            <p className="text-xs text-muted-foreground">
-              myworkspace.slack.com
-            </p>
-          </div>
+          <p className="font-semibold">My Account</p>
         </DropdownMenuItem>
         <DropdownMenuSeparator />
-        <DropdownMenuItem className="flex-col items-start">
-          <div className="flex items-center gap-1">
-            <Rocket className="mr-1 h-[18px] w-[18px]" />
-            <span className="font-medium leading-none">Upgrade</span>
-          </div>
-          <p className="text-muted-foreground">
-            You&apos;re on a free version of Slack.
-          </p>
+        <DropdownMenuItem className="group hover:text-black cursor-pointer">
+          <User className="mr-1 text-white group-hover:text-black" /> Profile
+        </DropdownMenuItem>
+        <DropdownMenuItem className="flex items-center group hover:text-black cursor-pointer">
+          <Settings className="mr-1 text-white group-hover:text-black" />Settings
         </DropdownMenuItem>
         <DropdownMenuSeparator />
-        <DropdownMenuItem>
-          <User className="mr-1" /> Invite people
-        </DropdownMenuItem>
-        <DropdownMenuSeparator />
-        <DropdownMenuItem>
-          <Settings2 className="mr-1" /> Preferences
-        </DropdownMenuItem>
-        <DropdownMenuSub>
-          <DropdownMenuSubTrigger>
-            <Filter className="mr-1" />
-            Filter sidebar
-          </DropdownMenuSubTrigger>
-          <DropdownMenuSubContent>
+        {role === 'student' && (
+          <>
             <DropdownMenuSub>
-              <DropdownMenuSubTrigger>Activity</DropdownMenuSubTrigger>
-              <DropdownMenuSubContent>
-                <DropdownMenuCheckboxItem checked>
-                  All activity
-                </DropdownMenuCheckboxItem>
-                <DropdownMenuCheckboxItem>
-                  Unread messaged only
-                </DropdownMenuCheckboxItem>
-                <DropdownMenuCheckboxItem>
-                  Mentions only
-                </DropdownMenuCheckboxItem>
-                <DropdownMenuCheckboxItem>
-                  Customize by section
-                </DropdownMenuCheckboxItem>
+              <DropdownMenuSubTrigger className="flex items-center ">
+                <Globe className="mr-2" size={16} />
+                Country
+                {country && (
+                  <span className="ml-2 px-2 py-0.5 rounded-full text-xs bg-button-color text-white">
+                    {country.initial}
+                  </span>
+                )}
+              </DropdownMenuSubTrigger>
+              <DropdownMenuSubContent className="bg-profile-dropdown-card border-card-border-color text-white">
+                <DropdownMenuSub>
+                  {countries.map((coun, index) => (
+                    <DropdownMenuCheckboxItem key={index}
+                      checked={country?.id === coun.id}
+                      onCheckedChange={() => setCountry(coun)}>
+                      <Image
+                        src={coun?.image || ''}
+                        width={16}
+                        height={10}
+                        alt="ILM Logo"
+                        className=' rounded-xs object-cover w-[16px] h-[10px]'
+                      />
+                      {coun.label}
+                    </DropdownMenuCheckboxItem>
+                  ))}
+                </DropdownMenuSub>
               </DropdownMenuSubContent>
             </DropdownMenuSub>
             <DropdownMenuSub>
-              <DropdownMenuSubTrigger>People</DropdownMenuSubTrigger>
-              <DropdownMenuSubContent>
-                <DropdownMenuCheckboxItem checked>
-                  Everyone
-                </DropdownMenuCheckboxItem>
-                <DropdownMenuCheckboxItem>
-                  Without external people
-                </DropdownMenuCheckboxItem>
-                <DropdownMenuCheckboxItem>
-                  Including external people
-                </DropdownMenuCheckboxItem>
+              <DropdownMenuSubTrigger className="flex items-center ">
+                <LayoutDashboard className="mr-2" size={16} />
+                Board
+                {board && (
+                  <span className="ml-2 px-2 py-0.5 rounded-full text-xs bg-button-color text-white">
+                    {board.name}
+                  </span>
+                )}
+              </DropdownMenuSubTrigger>
+              <DropdownMenuSubContent className="bg-profile-dropdown-card border-card-border-color text-white">
+                <DropdownMenuSub>
+                  {boards.map((b, index) => (
+                    <DropdownMenuCheckboxItem key={index}
+                      checked={board?.id === b.id}
+                      onCheckedChange={() => setBoard(b)}>
+                      {b.name}
+                    </DropdownMenuCheckboxItem>
+                  ))}
+                </DropdownMenuSub>
               </DropdownMenuSubContent>
             </DropdownMenuSub>
-          </DropdownMenuSubContent>
-        </DropdownMenuSub>
-        <DropdownMenuSub>
-          <DropdownMenuSubTrigger>
-            <Bolt className="mr-1" />
-            Tools & settings
-          </DropdownMenuSubTrigger>
-          <DropdownMenuSubContent className="w-52">
-            <DropdownMenuLabel>Tools</DropdownMenuLabel>
-            <DropdownMenuItem>Customize workspace</DropdownMenuItem>
-            <DropdownMenuItem>Workspace builder</DropdownMenuItem>
-            <DropdownMenuItem>
-              Workspace analytics <ExternalLink className="ml-auto" />
-            </DropdownMenuItem>
             <DropdownMenuSeparator />
-            <DropdownMenuLabel>Administration</DropdownMenuLabel>
-            <DropdownMenuItem>Manage apps</DropdownMenuItem>
-          </DropdownMenuSubContent>
-        </DropdownMenuSub>
-        <DropdownMenuSeparator />
-        <DropdownMenuItem>
-          <LogIn className="mr-1" /> Sign in on mobile
-        </DropdownMenuItem>
-        <DropdownMenuItem>
-          <LogOut className="mr-1" /> Sign out
+          </>
+        )}
+
+        <DropdownMenuItem className="group hover:text-black cursor-pointer">
+          <LogOut className="mr-1 text-white group-hover:text-black" /> Log out
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu >

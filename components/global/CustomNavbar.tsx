@@ -1,33 +1,21 @@
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
-import { DropdownMenu, DropdownMenuCheckboxItem, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuSub, DropdownMenuSubContent, DropdownMenuSubTrigger, DropdownMenuTrigger } from '@/components/ui/dropdown-menu'
 import { SidebarTrigger, StudentSidebarTrigger } from '@/components/ui/sidebar'
-import { Bolt, ChevronDown, ChevronsUpDown, ExternalLink, Filter, LogOut, Settings2, SunDim, User } from 'lucide-react'
-// import ButtonsWithBadge from './ButtonWithBadge'
-import CustomDropdown from '@/components/global/CustomDropdown'
-import { menuOptions, countries, boards } from '@/constants/Helpers'
+
 import { BoardResponse, CountryResponse } from '@/types/student'
 import { useEffect, useState } from 'react'
-import Image from 'next/image'
-import { Button } from '@/components/ui/button'
-import { Switch } from '@radix-ui/react-switch'
-import SwitchCustomizationDemo from '@/components/customized/switch/switch-07'
-import { useParams, useSearchParams } from 'next/navigation'
-import { usePaper } from '@/context/PaperContext'
+
 import CustomLogo from './CustomLogo'
 import ThemeToggleButton from '../customized/button/button-16'
 import ComplexDropdownMenu from '../customized/dropdown-menu/dropdown-menu-07'
-// import { Switch } from '@/components/ui/switch'
 
 interface Props {
     role: string;
 }
 const CustomNavbar = ({ role }: Props) => {
-    const { subject } = useParams();
 
     const [board, setBoard] = useState<BoardResponse | null>(null);
     const [country, setCountry] = useState<CountryResponse | null>(null);
     const [user, setUser] = useState<any | null>(null);
-    const { selectedPaper } = usePaper();
+    // const { selectedPaper } = usePaper();
 
     const handleSelectCountry = (value: CountryResponse) => {
         setCountry(value);
@@ -76,6 +64,9 @@ const CustomNavbar = ({ role }: Props) => {
 
                     />
                 </div>
+                <div className='hidden lg:block'>
+                    <SidebarTrigger className="" />
+                </div>
             </div>
 
             <div className="flex flex-row lg:gap-6 gap-4 lg:pr-5 items-center">
@@ -84,7 +75,14 @@ const CustomNavbar = ({ role }: Props) => {
                     <SidebarTrigger className="" />
                 </div>
                 <div className="hidden lg:block">
-                    <ComplexDropdownMenu user={user} />
+                    <ComplexDropdownMenu
+                        user={user}
+                        country={country}
+                        setCountry={handleSelectCountry}
+                        board={board}
+                        setBoard={handleSelectBoard}
+                        role={role}
+                    />
                 </div>
 
             </div>
