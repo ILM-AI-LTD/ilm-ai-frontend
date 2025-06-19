@@ -1,3 +1,5 @@
+import { progress } from "motion/react";
+
 export const physicsChapters = {
   paper1: {
     name: "Paper 1",
@@ -5,6 +7,7 @@ export const physicsChapters = {
       {
         name: "ENERGY",
         icon: "phy_energy",
+        progress: 40,
         data: [
           { id: "1", subChapter: "Energy Stores and Systems", href: "/chapters/energy/energy-stores-and-systems", progress: 70, icon: "phy_energy_store" },
           { id: "2", subChapter: "Kinetic and Potential Energy Stores", href: "/chapters/energy/kinetic-and-potential-energy-stores", progress: 20, icon: "phy_kinetic" },
@@ -24,6 +27,7 @@ export const physicsChapters = {
       {
         name: "ELECTRICITY",
         icon: "phy_electricity",
+        progress: 10,
         data: [
           { id: "1", subChapter: "Current and Circuit Symbols", href: "/chapters/electricity/current-and-circuit-symbols", progress: 0, icon: "phy_current" },
           { id: "2", subChapter: "Resistance and V=IR", href: "/chapters/electricity/resistance-and-V=IR", progress: 0, icon: "phy_resistanceVIR" },
@@ -44,6 +48,7 @@ export const physicsChapters = {
       {
         name: "PARTICLE MODEL OF MATTER",
         icon: "phy_matter",
+        progress: 10,
         data: [
           { id: "1", subChapter: "Density of Materials", href: "/chapters/particle-model-of-matter/density-of-materials", progress: 0, icon: "phy_density_materials" },
           { id: "2", subChapter: "Internal Energy and Changes of State", href: "/chapters/particle-model-of-matter/internal-energy-and-changes-of-state", progress: 0, icon: "phy_internal_energy" },
@@ -55,6 +60,7 @@ export const physicsChapters = {
       {
         name: "ATOMIC STRUCTURE",
         icon: "phy_atom",
+        progress: 10,
         data: [
           { id: "1", subChapter: "Developing the Model of the Atom", href: "/chapters/atomic-structure/developing-the-model-of-the-atom", progress: 0, icon: "phy_model_atom" },
           { id: "2", subChapter: "Isotopes and Nuclear Radiation", href: "/chapters/atomic-structure/isotopes-and-nuclear-radiation", progress: 0, icon: "phy_isotopes_nuclear" },
@@ -74,6 +80,7 @@ export const physicsChapters = {
       {
         name: "FORCES",
         icon: "phy_forces",
+        progress: 30,
         data: [
           { id: "1", subChapter: "Contact and Non-contact Forces", href: "/chapters/forces/contact-and-non-contact-forces", progress: 0, icon: "activity" },
           { id: "2", subChapter: "Weight, Mass, and Gravity", href: "/chapters/forces/weight-mass-resistance-and-virand-gravity", progress: 0, icon: "divide-square" },
@@ -94,6 +101,7 @@ export const physicsChapters = {
       {
         name: "WAVES",
         icon: "phy_waves",
+        progress: 10,
         data: [
           { id: "1", subChapter: "Current and Circuit Symbols", href: "/chapters/electricity/current-and-circuit-symbols", progress: 0, icon: "activity" },
           { id: "2", subChapter: "Resistance and V=IR", href: "/chapters/electricity/resistance-and-vir", progress: 0, icon: "divide-square" },
@@ -102,6 +110,7 @@ export const physicsChapters = {
       {
         name: "MAGNETISM AND ELECTROMAGNETISM",
         icon: "phy_magnetism",
+        progress: 10,
         data: [
           { id: "1", subChapter: "Current and Circuit Symbols", href: "/chapters/electricity/current-and-circuit-symbols", progress: 0, icon: "activity" },
           { id: "2", subChapter: "Resistance and V=IR", href: "/chapters/electricity/resistance-and-vir", progress: 0, icon: "divide-square" },
@@ -110,6 +119,7 @@ export const physicsChapters = {
       {
         name: "SPACE PHYSICS",
         icon: "phy_space_physics",
+        progress: 10,
         data: [
           { id: "1", subChapter: "Current and Circuit Symbols", href: "/chapters/electricity/current-and-circuit-symbols", progress: 0, icon: "activity" },
           { id: "2", subChapter: "Resistance and V=IR", href: "/chapters/electricity/resistance-and-vir", progress: 0, icon: "divide-square" },

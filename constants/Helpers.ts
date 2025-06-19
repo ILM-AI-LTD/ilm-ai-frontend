@@ -47,11 +47,13 @@ export const countries = [
         id: '1',
         image: "/country/uk.svg",
         label: "United Kingdom",
+        initial: "UK"
     },
     {
         id: '2',
         image: "/country/bangladesh.png",
         label: "Bangladesh",
+        initial: "BD"
     }
 ];
 
