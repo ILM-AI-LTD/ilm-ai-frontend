@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import {
   AudioWaveform,
@@ -17,12 +17,12 @@ import {
   Settings2,
   SquareTerminal,
   UserPlus,
-} from "lucide-react"
-import { useEffect, useState } from "react"
+} from "lucide-react";
+import { useEffect, useState } from "react";
 
-import { NavMain } from "@/components/nav-main"
-import { NavProjects } from "@/components/nav-projects"
-import { NavUser } from "@/components/nav-user"
+import { NavMain } from "@/components/nav-main";
+import { NavProjects } from "@/components/nav-projects";
+import { NavUser } from "@/components/nav-user";
 import {
   Sidebar,
   SidebarContent,
@@ -30,9 +30,9 @@ import {
   SidebarHeader,
   SidebarRail,
   useSidebar,
-} from "@/components/ui/sidebar"
-import CustomLogo from "./global/CustomLogo"
-import ComplexDropdownMenu from "./customized/dropdown-menu/dropdown-menu-07"
+} from "@/components/ui/sidebar";
+import CustomLogo from "./global/CustomLogo";
+import ComplexDropdownMenu from "./customized/dropdown-menu/dropdown-menu-07";
 
 // This is sample data.
 // const data = {
@@ -226,46 +226,38 @@ interface AppSidebarProps extends React.ComponentProps<typeof Sidebar> {
     url: string;
     icon: LucideIcon | string;
   }[];
+  role: string;
 }
 
 const AppSidebar = ({ ...props }: AppSidebarProps) => {
-
   const { open } = useSidebar();
 
-  const [user, setUser] = useState<any | null>(null);
+  // const [user, setUser] = useState<any | null>(null);
 
+  // useEffect(() => {
+  //   const savedUser = localStorage.getItem('currentUser');
 
-  useEffect(() => {
-    console.log('heoll-----------');
+  //   if (savedUser) {
+  //     try {
+  //       setUser(JSON.parse(savedUser));
+  //     } catch (e) {
+  //       console.error('Failed to parse saved user', e);
+  //     }
+  //   }
 
-
-    const savedUser = localStorage.getItem('currentUser');
-    console.log('savedUser -----', savedUser);
-
-    if (savedUser) {
-      try {
-        setUser(JSON.parse(savedUser));
-      } catch (e) {
-        console.error('Failed to parse saved user', e);
-      }
-    }
-
-  }, []);
-
-  console.log('u ---------------', user);
-
-
+  // }, []);
 
   return (
-    <Sidebar collapsible="icon" {...props} className=" border-r border-card-border-color">
+    <Sidebar
+      collapsible="icon"
+      {...props}
+      className=" border-r border-card-border-color"
+    >
       <SidebarHeader>
         {/* <TeamSwitcher teams={data.teams} /> */}
         {/* <div className=" gap-2 items-center mx-auto mt-3"> */}
         {/* <div> */}
-        <CustomLogo
-          logoSrc="/ILM_AI_Logo_deep_blue.png"
-
-        />
+        <CustomLogo logoSrc="/ILM_AI_Logo_deep_blue.png" />
         {/* {open && (
             <p className="animate-fade-slide-in font-bold text-[min(10vw,32px)]">
               ILM AI
@@ -274,14 +266,14 @@ const AppSidebar = ({ ...props }: AppSidebarProps) => {
         {/* </div> */}
       </SidebarHeader>
 
-      <SidebarContent >
+      <SidebarContent>
         {/* <NavMain items={data.navMain} /> */}
         <NavProjects projects={props.projects} />
       </SidebarContent>
       <SidebarFooter>
-        {user && <div className="lg:hidden">
-          <ComplexDropdownMenu user={user} />
-        </div>}
+        <div className="lg:hidden">
+          <ComplexDropdownMenu role={props.role} />
+        </div>
         {/* <NavUser user={user} /> */}
         {/* <div className="hidden lg:block">
           <ComplexDropdownMenu user={user} />
@@ -289,7 +281,7 @@ const AppSidebar = ({ ...props }: AppSidebarProps) => {
       </SidebarFooter>
       <SidebarRail />
     </Sidebar>
-  )
-}
+  );
+};
 
 export default AppSidebar;
