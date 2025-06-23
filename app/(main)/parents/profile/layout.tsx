@@ -1,15 +1,12 @@
-'use client'
+"use client";
 
-import AppSidebar from "@/components/app-sidebar"
-import CustomNavbar from "@/components/global/CustomNavbar"
-import {
-  SidebarInset,
-  SidebarProvider
-} from "@/components/ui/sidebar"
-import { PaperProvider } from "@/context/PaperContext"
-import ParentsNavbar from "@/feature/parents/components/profile/common/Navbar"
-import StudentsNavbar from "@/feature/students/home/component/Navbar"
-import { BookOpen, Home, ReceiptText, Settings, UserPlus } from "lucide-react"
+import AppSidebar from "@/components/app-sidebar";
+import CustomNavbar from "@/components/global/CustomNavbar";
+import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
+import { PaperProvider } from "@/context/PaperContext";
+// import ParentsNavbar from "@/feature/parents/components/profile/common/Navbar"
+// import StudentsNavbar from "@/feature/students/home/component/Navbar"
+import { BookOpen, Home, ReceiptText, Settings, UserPlus } from "lucide-react";
 
 const projects = [
   {
@@ -37,22 +34,22 @@ const projects = [
     url: "#",
     icon: Settings,
   },
-]
+];
 
 const ParentProfileLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <SidebarProvider>
       <PaperProvider>
-        <AppSidebar projects={projects} role={'parent'} />
+        <AppSidebar projects={projects} role={"parent"} />
         <SidebarInset>
-          <CustomNavbar role={'parent'} />
+          <CustomNavbar role={"parent"} />
           <div className="flex flex-1 flex-col bg-primary-bg-color gap-4 p-4">
             {children}
           </div>
         </SidebarInset>
       </PaperProvider>
     </SidebarProvider>
-  )
-}
+  );
+};
 
-export default ParentProfileLayout
+export default ParentProfileLayout;
