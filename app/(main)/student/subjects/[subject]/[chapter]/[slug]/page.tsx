@@ -49,7 +49,7 @@ export default function Page() {
         size="small"
         iconColor="#ffffff"
         placeholder="Type your message..."
-        offset={{ x: 40, y: 40 }}
+        offset={{ x: 20, y: 20 }}
       />
     </div>
   );
