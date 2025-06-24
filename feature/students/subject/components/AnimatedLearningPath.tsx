@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import React, { useMemo, useRef } from "react";
 import { IconComponent } from "./IconComponent";
@@ -19,20 +19,30 @@ interface Chapter {
 
 interface AnimatedLearningPathProps {
   chapter: Chapter;
+  subject: string;
 }
 
-export function AnimatedLearningPath({ chapter }: AnimatedLearningPathProps) {
+export function AnimatedLearningPath({ chapter, subject }: AnimatedLearningPathProps) {
+  const chapterSlug = chapter.name.toLowerCase().replace(/\s+/g, '-');
   const chapterData = chapter.data;
 
   const mainTopic = {
-    id: "0",
+    id: '0',
     subChapter: chapter.name,
     href: "#",
     progress: chapter.progress,
     icon: chapter.icon,
   };
 
-  const allTopics = [mainTopic, ...chapterData];
+  const allTopics = [
+    mainTopic,
+    ...chapterData.map((topic) => ({
+      ...topic,
+      href: `/student/subjects/${subject}/${chapterSlug}/${topic.subChapter
+        .toLowerCase()
+        .replace(/\s+/g, '-')}`,
+    })),
+  ];
 
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -86,7 +96,6 @@ export function AnimatedLearningPath({ chapter }: AnimatedLearningPathProps) {
         );
       }
 
-      // type === 'branch'
       const leftTopic = allTopics.find((t) => t.id === item.leftTopicId);
       if (!leftTopic) return null;
 
@@ -115,11 +124,11 @@ export function AnimatedLearningPath({ chapter }: AnimatedLearningPathProps) {
 
   const renderAnimatedBeams = () =>
     connections.map((connection, index) => {
-      const fromRef = connection.from.startsWith("junction")
+      const fromRef = connection.from.startsWith('junction')
         ? junctionRefs[connection.from]
         : topicRefs[connection.from];
 
-      const toRef = connection.to.startsWith("junction")
+      const toRef = connection.to.startsWith('junction')
         ? junctionRefs[connection.to]
         : topicRefs[connection.to];
 

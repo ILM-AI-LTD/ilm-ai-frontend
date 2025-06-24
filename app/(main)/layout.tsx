@@ -2,6 +2,8 @@
 
 import { PaperProvider } from "@/context/PaperContext";
 import { ThemeProvider } from "next-themes";
+import 'katex/dist/katex.min.css';
+
 
 // const eBGaramondfont = EB_Garamond({
 //   subsets: ['latin'],
