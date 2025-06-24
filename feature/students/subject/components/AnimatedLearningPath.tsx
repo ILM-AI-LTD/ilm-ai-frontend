@@ -2,7 +2,10 @@
 
 import React, { useMemo, useRef } from "react";
 import { IconComponent } from "./IconComponent";
-import { generateLayoutStructure, generateConnections } from "../utils/layoutUtils";
+import {
+  generateLayoutStructure,
+  generateConnections,
+} from "../utils/layoutUtils";
 import { AnimatedBeam } from "@/components/magicui/animated-beam";
 import { Circle } from "./Circle";
 import { SubChapter } from "@/types/student";
@@ -35,7 +38,7 @@ export function AnimatedLearningPath({ chapter }: AnimatedLearningPathProps) {
 
   const topicRefs = useMemo(() => {
     const refs: Record<string, React.RefObject<HTMLDivElement | null>> = {};
-    allTopics.forEach(topic => {
+    allTopics.forEach((topic) => {
       refs[topic.id] = React.createRef();
     });
     return refs;
@@ -50,15 +53,20 @@ export function AnimatedLearningPath({ chapter }: AnimatedLearningPathProps) {
     return refs;
   }, [chapterData.length]);
 
-  const layoutStructure = useMemo(() => generateLayoutStructure(chapterData), [chapterData]);
-  const connections = useMemo(() => generateConnections(chapterData), [chapterData]);
+  const layoutStructure = useMemo(
+    () => generateLayoutStructure(chapterData),
+    [chapterData]
+  );
+  const connections = useMemo(
+    () => generateConnections(chapterData),
+    [chapterData]
+  );
 
   const renderLayout = () =>
     layoutStructure.map((item, index) => {
       if (item.type === "single") {
-        const topic = allTopics.find(t => t.id === item.topicId);
+        const topic = allTopics.find((t) => t.id === item.topicId);
         if (!topic) return null;
-        console.log('topic --------------', topic);
 
         return (
           <div key={index} className="flex size-full flex-col items-center">
@@ -79,11 +87,14 @@ export function AnimatedLearningPath({ chapter }: AnimatedLearningPathProps) {
       }
 
       // type === 'branch'
-      const leftTopic = allTopics.find(t => t.id === item.leftTopicId);
+      const leftTopic = allTopics.find((t) => t.id === item.leftTopicId);
       if (!leftTopic) return null;
 
       return (
-        <div key={index} className="flex size-full flex-row items-start justify-between">
+        <div
+          key={index}
+          className="flex size-full flex-row items-start justify-between"
+        >
           <Circle
             ref={topicRefs[leftTopic.id]}
             title={leftTopic.subChapter}
@@ -93,7 +104,10 @@ export function AnimatedLearningPath({ chapter }: AnimatedLearningPathProps) {
           >
             <IconComponent iconName={leftTopic.icon} />
           </Circle>
-          <div ref={junctionRefs[item.junctionKey]} className="size-32 rounded-full" />
+          <div
+            ref={junctionRefs[item.junctionKey]}
+            className="size-32 rounded-full"
+          />
           <div className="size-32 rounded-full" />
         </div>
       );

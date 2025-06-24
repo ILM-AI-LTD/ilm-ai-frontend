@@ -23,17 +23,61 @@ import {
   LayoutDashboard
 } from "lucide-react";
 import Image from "next/image";
+import { useEffect, useState } from "react";
 
 interface Props {
-  user: any;
-  country: CountryResponse | null;
-  setCountry: (value: CountryResponse) => void;
-  board: BoardResponse | null;
-  setBoard: (value: BoardResponse) => void;
+  // user: any;
+  // country: CountryResponse | null;
+  // setCountry: (value: CountryResponse) => void;
+  // board: BoardResponse | null;
+  // setBoard: (value: BoardResponse) => void;
   role: string;
 }
 
-const ComplexDropdownMenu = ({ user, country, setCountry, board, setBoard, role }: Props) => {
+// const ComplexDropdownMenu = ({ user, country, setCountry, board, setBoard, role }: Props) => {
+const ComplexDropdownMenu = ({ role }: Props) => {
+
+  const [board, setBoard] = useState<BoardResponse | null>(null);
+  const [country, setCountry] = useState<CountryResponse | null>(null);
+  const [user, setUser] = useState<any | null>(null);
+  // const { selectedPaper } = usePaper();
+
+  const handleSelectCountry = (value: CountryResponse) => {
+    setCountry(value);
+    localStorage.setItem('selectedCountry', JSON.stringify(value));
+  };
+
+  const handleSelectBoard = (value: BoardResponse) => {
+    setBoard(value);
+    localStorage.setItem('selectedBoard', JSON.stringify(value));
+  };
+
+  useEffect(() => {
+    const savedCountry = localStorage.getItem('selectedCountry');
+    if (savedCountry) {
+      try {
+        setCountry(JSON.parse(savedCountry));
+      } catch (e) {
+        console.error('Failed to parse saved Country', e);
+      }
+    }
+    const savedBoard = localStorage.getItem('selectedBoard');
+    if (savedBoard) {
+      try {
+        setBoard(JSON.parse(savedBoard));
+      } catch (e) {
+        console.error('Failed to parse saved Board', e);
+      }
+    }
+    const savedUser = localStorage.getItem('currentUser');
+    if (savedUser) {
+      try {
+        setUser(JSON.parse(savedUser));
+      } catch (e) {
+        console.error('Failed to parse saved user', e);
+      }
+    }
+  }, []);
 
   return (
     <DropdownMenu>
@@ -81,7 +125,7 @@ const ComplexDropdownMenu = ({ user, country, setCountry, board, setBoard, role 
                   {countries.map((coun, index) => (
                     <DropdownMenuCheckboxItem key={index}
                       checked={country?.id === coun.id}
-                      onCheckedChange={() => setCountry(coun)}>
+                      onCheckedChange={() => handleSelectCountry(coun)}>
                       <Image
                         src={coun?.image || ''}
                         width={16}
@@ -110,7 +154,7 @@ const ComplexDropdownMenu = ({ user, country, setCountry, board, setBoard, role 
                   {boards.map((b, index) => (
                     <DropdownMenuCheckboxItem key={index}
                       checked={board?.id === b.id}
-                      onCheckedChange={() => setBoard(b)}>
+                      onCheckedChange={() => handleSelectBoard(b)}>
                       {b.name}
                     </DropdownMenuCheckboxItem>
                   ))}
@@ -120,7 +164,6 @@ const ComplexDropdownMenu = ({ user, country, setCountry, board, setBoard, role 
             <DropdownMenuSeparator />
           </>
         )}
-
         <DropdownMenuItem className="group hover:text-black cursor-pointer">
           <LogOut className="mr-1 text-white group-hover:text-black" /> Log out
         </DropdownMenuItem>
