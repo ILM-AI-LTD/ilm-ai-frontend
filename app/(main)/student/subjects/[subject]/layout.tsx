@@ -14,7 +14,7 @@ const SubjectLayout = ({ children }: { children: React.ReactNode }) => {
     return (
         <SidebarProvider>
             <PaperProvider>
-                <AppSidebar projects={studentSideMenu} />
+                <AppSidebar projects={studentSideMenu} role={'student'} />
                 <SidebarInset>
                     <div className="sticky top-0 z-50 ">
                         <CustomNavbar role={'student'} />

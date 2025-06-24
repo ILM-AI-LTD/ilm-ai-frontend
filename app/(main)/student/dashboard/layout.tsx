@@ -21,7 +21,7 @@ const ParentProfileLayout = ({ children }: { children: React.ReactNode }) => {
                 </div>
             </SidebarInset> */}
             <PaperProvider>
-                <AppSidebar projects={studentSideMenu} />
+                <AppSidebar projects={studentSideMenu} role={'student'} />
                 <SidebarInset>
                     <CustomNavbar role={'student'} />
                     <div className="flex flex-1 flex-col bg-primary-bg-color gap-4 p-4">
