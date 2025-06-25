@@ -1,6 +1,6 @@
 import AssistantCallout from './common/AssistantCallout'
 import FooterParents from './common/FooterParents'
-import ILMIAssistant from './common/ILMIAssistant'
+import ILMIAssistantv2 from './common/ILMIAssistantv2'
 
 interface GetStartedProps {
     onNext: () => void
@@ -15,7 +15,7 @@ const GetStarted = ({ onNext }: GetStartedProps) => {
                     orientation="bottom"
                 />
 
-                <ILMIAssistant
+                <ILMIAssistantv2
                     height={297}
                     width={270}
                     className='h-[160px] w-[144px] md:h-[213px] md:w-[193px] 2xl:h-[297px] 2xl:w-[270px]'
