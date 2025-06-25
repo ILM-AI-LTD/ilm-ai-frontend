@@ -16,7 +16,7 @@ const SubjectLayout = ({ children }: { children: React.ReactNode }) => {
             <PaperProvider>
                 <AppSidebar projects={studentSideMenu} role={'student'} />
                 <SidebarInset>
-                    <div className="sticky top-0 z-50 ">
+                    <div className="sticky top-0 z-50">
                         <CustomNavbar role={'student'} />
                     </div>
                     <div className="flex flex-1 flex-col bg-primary-bg-color gap-4 p-4">
@@ -29,3 +29,5 @@ const SubjectLayout = ({ children }: { children: React.ReactNode }) => {
 }
 
 export default SubjectLayout
+
+//TODO refactor sidebar components
