@@ -23,13 +23,13 @@ const FooterParents: React.FC<FooterParentsProps> = ({
     const justifyClass = leftButton ? 'justify-between' : 'justify-end';
 
     return (
-        <div className={`flex items-center border-t-1 border-brand-color-parent ${justifyClass} py-6 bg-transparent ${className}`}>
+        <div className={`flex items-center ${justifyClass} py-6 bg-transparent ${className}`}>
             {leftButton && (
                 <CustomButton
                     label={leftButton.label}
                     onClick={leftButton.onClick}
                     disabled={leftButton.disabled}
-                    className="h-[52px] bg-brand-color-parent text-white py-2 px-8 font-bold text-base rounded-full hover:bg-brand-color-parent disabled:opacity-50"
+                    className="h-[52px]  text-white py-2 px-8 font-bold text-base rounded-full disabled:opacity-70"
 
                 />
             )}
@@ -39,7 +39,7 @@ const FooterParents: React.FC<FooterParentsProps> = ({
                 onClick={rightButton.onClick}
                 disabled={rightButton.disabled}
                 isLoading={rightButton.isPending}
-                className="h-[52px] bg-brand-color-parent text-white py-2 px-8 font-bold text-base rounded-full hover:bg-parent-chatbox-color disabled:opacity-50"
+                className="h-[52px]  text-white py-2 px-8 font-bold text-base rounded-full disabled:opacity-70"
 
             />
         </div>
