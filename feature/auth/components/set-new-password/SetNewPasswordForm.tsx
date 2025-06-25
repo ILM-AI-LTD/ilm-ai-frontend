@@ -98,7 +98,7 @@ export default function SetNewPasswordForm() {
                 type="submit"
                 isLoading={isPending}
                 disabled={!(values.password.trim() && values.confirmPassword.trim())}
-                className={`rounded-full h-13 text-base font-semibold cursor-pointer ${(values.password.trim() && values.confirmPassword.trim()) ? "bg-brand-color hover:bg-brand-color" : "bg-button-disabled-color hover:bg-button-disabled-color cursor-not-allowed"}`}
+                className={`rounded-full h-13 text-base font-semibold cursor-pointer ${(values.password.trim() && values.confirmPassword.trim()) ? "" : "cursor-not-allowed"}`}
             />
 
         </form>

@@ -107,7 +107,7 @@ const SignUpForm = () => {
                 type="submit"
                 isLoading={isPending}
                 disabled={isPending}
-                className="rounded-full h-13 text-base font-semibold bg-brand-color hover:bg-brand-color cursor-pointer "
+                className="rounded-full h-13 text-base font-semibold"
             />
 
 

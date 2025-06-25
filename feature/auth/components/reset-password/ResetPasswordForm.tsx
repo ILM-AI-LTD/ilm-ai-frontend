@@ -66,7 +66,7 @@ export default function ResetPasswordForm() {
                 type="submit"
                 isLoading={isPending}
                 disabled={!values.email.trim()}
-                className={`rounded-full h-13 text-base font-semibold cursor-pointer ${values.email.trim() ? "bg-brand-color hover:bg-brand-color" : "bg-button-disabled-color hover:bg-button-disabled-color cursor-not-allowed"}`}
+                className={`rounded-full h-13 text-base font-semibold cursor-pointer ${values.email.trim() ? "" : "cursor-none"}`}
             />
 
         </form>

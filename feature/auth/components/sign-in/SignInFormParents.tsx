@@ -43,7 +43,7 @@ const SignInFormParents = () => {
                             if (hasChild) {
                                 router.push('/parents/profile')
                                 //TODO: redirect to dashboard
-                            }else{
+                            } else {
                                 router.push('/parents/setup')
                             }
                         },
@@ -109,7 +109,7 @@ const SignInFormParents = () => {
                 type="submit"
                 isLoading={isPending}
                 disabled={isPending}
-                className="rounded-full h-13 text-base font-semibold bg-brand-color hover:bg-brand-color cursor-pointer "
+                className="rounded-full h-13 text-base font-semibold"
             />
 
         </form>

@@ -99,10 +99,6 @@ const SignInFormStudents = () => {
                     />
                     <label htmlFor="remember-me" className="text-base text-label-color mb-1">Keep me logged in</label>
                 </div>
-                {/* 
-                <Link href="/auth/reset-password">
-                    <p className="text-base text-brand-color hover:text-brand-color font-semibold">Forgot password?</p>
-                </Link> */}
             </div>
 
             <CustomButton
@@ -110,7 +106,7 @@ const SignInFormStudents = () => {
                 type="submit"
                 isLoading={isPending}
                 disabled={isPending}
-                className="rounded-full h-13 text-base font-semibold bg-brand-color hover:bg-brand-color cursor-pointer "
+                className="rounded-full h-13 text-base font-semibold"
             />
 
         </form>
