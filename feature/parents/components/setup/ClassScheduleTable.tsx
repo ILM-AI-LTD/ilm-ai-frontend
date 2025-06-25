@@ -11,6 +11,7 @@ import {
 } from '@/components/ui/table'
 import { useState } from 'react'
 import { useParentsSetupStore } from '../../store/useParentsSetupStore'
+import CustomButton from '@/components/global/CustomButton'
 
 const days = [
   'Monday',
@@ -44,27 +45,28 @@ export default function ClassScheduleTable() {
         <p className='font-bold text-white text-[min(12vw,24px)]'>Class Registration</p>
         <div className='grid grid-cols-2 md:grid-cols-4 gap-6 '>
           {subjects.map((sub) => (
-            <Button
+            <CustomButton
               key={sub.id}
               onClick={() => setSelectedSubjectId(sub.id)}
-              className={`max-w-[120px] h-[min(10vw,40px)] text-[min(10vw,16px)] bg-primary-bg-color font-semibold text-white/70 border-1 border-parent-chatbox-color cursor-pointer ${selectedSubjectId === sub.id ? 'bg-brand-color-parent hover:bg-brand-color-parent' : 'bg-transparent hover:bg-transparent'}`}
+              active={selectedSubjectId === sub.id}
+              className={`max-w-[120px] h-[min(10vw,40px)] text-[min(10vw,16px)] font-semibold text-white cursor-pointer`}
             >
               {sub.subject_name}
-            </Button>
+            </CustomButton>
           ))}
         </div>
       </div>
 
       <Table>
         <TableHeader>
-          <TableRow className='bg-parent-inputField-color'>
-            <TableHead className='h-16 border-r-1 border-b-1 px-2 border-r-brand-color-parent border-b-brand-color-parent rounded-tl-lg w-[100px]'>
+          <TableRow className='bg-brand-color'>
+            <TableHead className='h-16 border-r-1 border-b-1 px-2 border-r-[#034663] border-b-[#034663] rounded-tl-lg w-[100px]'>
               Time/Day
             </TableHead>
             {days.map((d) => (
               <TableHead
                 key={d}
-                className={`w-[100px] h-16 border-r-1 border-b-0 px-2 border-r-brand-color-parent ${d === days[days.length - 1] ? 'rounded-tr-lg' : ''}`}
+                className={`w-[100px] h-16 border-r-1 border-b-0 px-2 border-r-[#034663] ${d === days[days.length - 1] ? 'rounded-tr-lg' : ''}`}
               >
                 {d}
               </TableHead>
@@ -75,7 +77,7 @@ export default function ClassScheduleTable() {
         <TableBody>
           {timeSlots.map(({ label, startTime, endTime }) => (
             <TableRow key={label}>
-              <TableCell className={`font-medium bg-parent-inputField-color h-12 text-white text-center border-b-1 border-b-brand-color-parent ${label === timeSlots[timeSlots.length - 1].label ? 'rounded-bl-lg' : ''}`}>
+              <TableCell className={`font-medium bg-brand-color h-12 text-white text-center border-b-1 border-b-[#034663] ${label === timeSlots[timeSlots.length - 1].label ? 'rounded-bl-lg' : ''}`}>
                 {label}
               </TableCell>
 
@@ -105,17 +107,19 @@ export default function ClassScheduleTable() {
                 }
 
                 return (
-                  <TableCell key={`${day}-${label}`} className="p-0 hover:bg-parent-chatbox-color">
+                  <TableCell key={`${day}-${label}`} className="p-0">
                     <div
                       onClick={handleClick}
                       className={[
                         'h-12 w-full transition-colors border-1',
                         isActive
-                          ? 'bg-brand-color-parent border-primary-bg-color'
-                          : 'bg-transparent border-brand-color-parent',
+                          ? 'bg-brand-color border-primary-bg-color'
+                          : 'bg-transparent border-brand-color',
+
+                          !isActive && !isTakenByOther && "hover:bg-brand-color hover:border-primary-bg-color",
 
                         isTakenByOther && !isActive
-                          ? 'cursor-not-allowed bg-white opacity-15'
+                          ? 'cursor-not-allowed bg-white opacity-15 hover:bg-white  hover:opacity-15'
                           : 'cursor-pointer',
                         (day === 'Sunday' && label === '16:00-17:00')
                           ? 'rounded-br-lg'
