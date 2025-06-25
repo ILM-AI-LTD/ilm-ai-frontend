@@ -6,7 +6,7 @@ import { useFormik } from 'formik'
 import { useParentsSetupStore } from '../../store/useParentsSetupStore'
 import AssistantCallout from './common/AssistantCallout'
 import FooterParents from './common/FooterParents'
-import ILMIAssistant from './common/ILMIAssistant'
+import ILMIAssistantv2 from './common/ILMIAssistantv2'
 
 interface ChildDetailsSectionProps {
     onNext: () => void
@@ -51,7 +51,7 @@ const ChildDetailsSection = ({ onNext, onBack }: ChildDetailsSectionProps) => {
         <div className='h-full max-w-[1770px] w-full flex flex-col py-3'>
             <div className='flex-1 flex flex-col overflow-auto'>
                 <div className='inline-flex  items-center'>
-                    <ILMIAssistant
+                    <ILMIAssistantv2
                         height={180}
                         width={140}
                         className='h-[180px] w-[140px]'
@@ -76,7 +76,7 @@ const ChildDetailsSection = ({ onNext, onBack }: ChildDetailsSectionProps) => {
                         onBlur={handleBlur}
                         errors={errors.fullName as any}
                         touched={!!touched.fullName}
-                        className='h-12 bg-parent-inputField-color border-0 placeholder:text-white/60'
+                        className='h-12 bg-brand-color border-0 placeholder:text-white/60'
                     />
                     <InputField
                         placeholder="Enter your child's username"
@@ -88,7 +88,7 @@ const ChildDetailsSection = ({ onNext, onBack }: ChildDetailsSectionProps) => {
                         onBlur={handleBlur}
                         errors={errors.username as any}
                         touched={!!touched.username}
-                        className='h-12 bg-parent-inputField-color border-0 placeholder:text-white/60'
+                        className='h-12 bg-brand-color border-0 placeholder:text-white/60'
                     />
                     <CustomSelect
                         label="Age Group"
@@ -118,7 +118,7 @@ const ChildDetailsSection = ({ onNext, onBack }: ChildDetailsSectionProps) => {
                         onBlur={handleBlur}
                         errors={errors.password as any}
                         touched={!!touched.password}
-                        className='h-12 bg-parent-inputField-color border-0 placeholder:text-white/60'
+                        className='h-12 bg-brand-color border-0 placeholder:text-white/60'
                     />
                     <InputField
                         placeholder={"\u2022  \u2022  \u2022  \u2022  \u2022  \u2022  \u2022  \u2022"}
@@ -130,7 +130,7 @@ const ChildDetailsSection = ({ onNext, onBack }: ChildDetailsSectionProps) => {
                         onBlur={handleBlur}
                         errors={errors.confirmPassword && errors.confirmPassword.length > 0 ? errors.confirmPassword[0] : undefined}
                         touched={touched.confirmPassword}
-                        className='h-12 bg-parent-inputField-color border-0 placeholder:text-white/60'
+                        className='h-12 bg-brand-color border-0 placeholder:text-white/60'
                     />
                 </form>
 
