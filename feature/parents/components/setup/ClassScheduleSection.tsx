@@ -5,7 +5,7 @@ import { useParentsSetupStore } from "../../store/useParentsSetupStore"
 import ClassScheduleTable from "./ClassScheduleTable"
 import AssistantCallout from "./common/AssistantCallout"
 import FooterParents from "./common/FooterParents"
-import ILMIAssistant from "./common/ILMIAssistant"
+import ILMIAssistantv2 from "./common/ILMIAssistantv2"
 
 interface ClassScheduleSectionProps {
     onNext: () => void
@@ -15,7 +15,7 @@ interface ClassScheduleSectionProps {
 const ClassScheduleSection = ({ onNext, onBack }: ClassScheduleSectionProps) => {
     const router = useRouter()
     const { mutate: completeSetup, isPending } = useParentsSetup()
-    const { childDetails, subjects,reset } = useParentsSetupStore()
+    const { childDetails, subjects, reset } = useParentsSetupStore()
 
 
     const handleRegisterChild = () => {
@@ -36,7 +36,7 @@ const ClassScheduleSection = ({ onNext, onBack }: ClassScheduleSectionProps) => 
         <div className='h-full max-w-[1770px] w-full flex flex-col py-3'>
             <div className='flex-1 flex flex-col overflow-auto'>
                 <div className='inline-flex  items-center'>
-                    <ILMIAssistant
+                    <ILMIAssistantv2
                         height={180}
                         width={140}
                         className='h-[180px] w-[140px]'
