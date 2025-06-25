@@ -13,20 +13,6 @@ const page = async ({ params }: PageProps) => {
   const progress = 50;
 
   return (
-    // <div>
-    //   <div className=" flex flex-col  mx-auto gap-3">
-    //     <ChapterList />
-
-    //     {/* <div className=" flex flex-col items-center gap-10 basis-1/3 flex-auto"> */}
-    //     <div className=" flex flex-col items-center gap-10 basis-1/3 sticky top-30 h-fit">
-    //       <NavigationCard />
-    //       <BadgeCard subject={subject} progress={progress} />
-    //     </div>
-    //   </div>
-
-    //   <ScrollToTopButton />
-    // </div>
-
     <div>
       <div className="flex flex-col lg:flex-row gap-4">
         <div className="order-2 lg:order-1 w-full lg:w-2/3">
