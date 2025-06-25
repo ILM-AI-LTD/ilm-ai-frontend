@@ -257,7 +257,7 @@ const AppSidebar = ({ ...props }: AppSidebarProps) => {
         {/* <TeamSwitcher teams={data.teams} /> */}
         {/* <div className=" gap-2 items-center mx-auto mt-3"> */}
         {/* <div> */}
-        <CustomLogo logoSrc="/ILM_AI_Logo_deep_blue.png" />
+        <CustomLogo logoSrc="/ilmino.svg" />
         {/* {open && (
             <p className="animate-fade-slide-in font-bold text-[min(10vw,32px)]">
               ILM AI

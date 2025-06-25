@@ -10,7 +10,7 @@ const SetNewPasswordPage = () => {
 
                 <CardHeader className="p-0 space-y-0 flex flex-col gap-6 justify-center items-center">
 
-                    <CustomLogo logoSrc="/ILM_AI_Logo.svg" />
+                    <CustomLogo logoSrc="/ilmino.svg" />
 
                     <div className="text-center flex flex-col gap-2">
                         <CardTitle className="text-2xl font-semibold text-primary-font-color">Create new password</CardTitle>
