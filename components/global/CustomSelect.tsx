@@ -6,8 +6,8 @@ import {
     SelectItem,
     SelectTrigger,
     SelectValue
-} from "@/components/ui/select"
-import { Label } from "../ui/label"
+} from "@/components/ui/select";
+import { Label } from "../ui/label";
 
 type CustomSelectProps = {
     label: string;
@@ -24,13 +24,15 @@ export function CustomSelect({ label, placeholder, options, value, onValueChange
                 {label}
             </Label>
             <Select value={value} onValueChange={onValueChange}>
-                <SelectTrigger className="w-full bg-parent-inputField-color data-[size=default]:h-12">
+                <SelectTrigger className="w-full bg-brand-color data-[size=default]:h-12">
                     <SelectValue placeholder={placeholder} />
                 </SelectTrigger>
-                <SelectContent className="bg-parent-inputField-color text-white">
+                <SelectContent className="bg-brand-color text-white">
                     <SelectGroup>
                         {options.map((option) => (
-                            <SelectItem className="focus:bg-parent-chatbox-color focus:text-white" key={option.value} value={option.value}>{option.label}</SelectItem>
+                            <SelectItem className="focus:bg-[#034663]/50 focus:text-white" key={option.value} value={option.value}>
+                                {option.label}
+                            </SelectItem>
                         ))}
                     </SelectGroup>
                 </SelectContent>
