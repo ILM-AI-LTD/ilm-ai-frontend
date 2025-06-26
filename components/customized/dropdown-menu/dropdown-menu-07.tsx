@@ -4,23 +4,22 @@ import {
   DropdownMenuCheckboxItem,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuSub,
   DropdownMenuSubContent,
   DropdownMenuSubTrigger,
-  DropdownMenuTrigger,
+  DropdownMenuTrigger
 } from "@/components/ui/dropdown-menu";
 import { boards, countries } from "@/constants/Helpers";
 import { BoardResponse, CountryResponse } from "@/types/student";
 import { AvatarImage } from "@radix-ui/react-avatar";
 import {
-  LogOut,
-  Settings,
-  User,
   ChevronDown,
   Globe,
-  LayoutDashboard
+  LayoutDashboard,
+  LogOut,
+  Settings,
+  User
 } from "lucide-react";
 import Image from "next/image";
 import { useEffect, useState } from "react";
