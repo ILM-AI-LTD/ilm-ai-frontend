@@ -10,10 +10,10 @@ export function ChapterList() {
     const current = physicsChapters[selectedPaper];
 
     return (
-        <div className='space-y-16 basis-2/3'>
+        <div className='my-5'>
             {current.chapters.map((chapter, index) => (
-                <div key={index} className='flex flex-col items-center' id={chapter.name.replace(/\s+/g, "-").toLowerCase()}>
-                    <div className='flex gap-4'>
+                <div key={index} className='flex flex-col items-center gap-6 my-10' id={chapter.name.replace(/\s+/g, "-").toLowerCase()}>
+                    <div className='flex flex-row items-center gap-4'>
                         <div className='flex flex-row flex-none gap-2'>
                             {[...Array(3)].map((_, i) => (
                                 <Image
@@ -23,10 +23,11 @@ export function ChapterList() {
                                     height={24}
                                     priority
                                     key={i}
+                                    className='size-5'
                                 />
                             ))}
                         </div>
-                        <div className='flex-initial text-center'><h2 className='text-4xl font-bold'>{chapter.name}</h2></div>
+                        <p className='text-[min(10vw,30px)] font-bold'>{chapter.name}</p>
                         <div className='flex flex-row flex-none gap-2'>
                             {[...Array(3)].map((_, i) => (
                                 <Image
@@ -36,6 +37,7 @@ export function ChapterList() {
                                     height={24}
                                     priority
                                     key={i}
+                                    className='size-5'
                                 />
                             ))}
                         </div>
