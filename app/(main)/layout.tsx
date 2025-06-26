@@ -1,21 +1,8 @@
-// import { EB_Garamond } from 'next/font/google';
-
-import { PaperProvider } from "@/context/PaperContext";
-import { ThemeProvider } from "next-themes";
 import 'katex/dist/katex.min.css';
-
-
-// const eBGaramondfont = EB_Garamond({
-//   subsets: ['latin'],
-//   weight: "700",
-
-// })
-
+import { ThemeProvider } from "next-themes";
 
 export default function MainLayout({ children }: { children: React.ReactNode }) {
   return (
-    // <div className={`${eBGaramondfont.className} min-h-screen flex justify-center items-center bg-primary-bg-color`}>
-    // <PaperProvider>
     <ThemeProvider
       attribute="class"
       defaultTheme="system"
@@ -25,8 +12,5 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
         {children}
       </div>
     </ThemeProvider>
-
-    // </PaperProvider>
-
   );
 }
