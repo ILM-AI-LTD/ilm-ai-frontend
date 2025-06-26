@@ -19,7 +19,7 @@ interface Chapter {
 
 interface AnimatedLearningPathProps {
   chapter: Chapter;
-  subject: string;
+  subject?: string;
 }
 
 export function AnimatedLearningPath({ chapter, subject }: AnimatedLearningPathProps) {
@@ -149,7 +149,7 @@ export function AnimatedLearningPath({ chapter, subject }: AnimatedLearningPathP
 
   return (
     <div
-      className="relative flex flex-col gap-20 w-full max-w-[900px] items-center justify-center overflow-hidden p-10"
+      className="relative flex flex-col gap-20 w-full max-w-[900px] items-center justify-center overflow-hidden"
       ref={containerRef}
     >
       {renderLayout()}
