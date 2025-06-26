@@ -1,10 +1,11 @@
 "use client";
 
+import CustomButton from "@/components/global/CustomButton";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
-import Image from "next/image";
-import { IconComponent } from "@/feature/students/subject/components/IconComponent";
 import { usePaper } from "@/context/PaperContext";
+import { IconComponent } from "@/feature/students/subject/components/IconComponent";
 import { physicsChapters } from "@/feature/students/subject/constants/physics";
+import Image from "next/image";
 
 export function NavigationCard() {
   const { selectedPaper, setSelectedPaper } = usePaper();
@@ -19,8 +20,8 @@ export function NavigationCard() {
   };
 
   return (
-    // <div className=" lg:w-[320px]">
-    <Card className="max-w-[320px] w-full p-3 md:p-6 rounded-[20px] flex flex-col gap-6 border border-card-border-color bg-primary-bg-color shadow-none">
+    <Card className="max-w-[320px] w-full p-3 md:p-6 rounded-[20px] flex flex-col gap-6 border border-card-border-color bg-primary-bg-color">
+
       <CardHeader className="p-0 space-y-0 flex flex-col gap-6 justify-center items-center">
         <Image
           src={"/subject/navigation.gif"}
@@ -29,29 +30,26 @@ export function NavigationCard() {
           alt="Navigation GIF"
         />
       </CardHeader>
+
       <CardContent className="p-0 w-full">
         <div className="flex justify-evenly items-center gap-2 mb-6">
-          <button
+          <CustomButton
+            label="Paper 1"
             onClick={() => setSelectedPaper("paper1")}
-            className={`px-6 py-3 transition-all duration-300 ease-in-out rounded-full text-lg ${
-              selectedPaper === "paper1"
-                ? "text-white bg-button-hover-color shadow-[0px_5px_0px_0px_#006D98]"
-                : "bg-[#020617] text-[#83899B] shadow-[0px_5px_0px_0px_#444] hover:scale-105 hover:text-white hover:bg-button-hover-color hover:shadow-[0px_5px_0px_0px_#006D98]"
-            }`}
-          >
-            Paper 1
-          </button>
-          <button
+            active={selectedPaper === "paper1"}
+            variant="outline"
+            className={`text-lg transition-all duration-300 ease-in-out`}
+          />
+
+          <CustomButton
+            label="Paper 2"
             onClick={() => setSelectedPaper("paper2")}
-            className={`px-6 py-3 transition-all duration-300 ease-in-out rounded-full text-lg ${
-              selectedPaper === "paper2"
-                ? "text-white bg-button-hover-color shadow-[0px_5px_0px_0px_#006D98]"
-                : "bg-[#020617] text-[#83899B] shadow-[0px_5px_0px_0px_#444] hover:scale-105 hover:text-white hover:bg-button-hover-color hover:shadow-[0px_5px_0px_0px_#006D98]"
-            }`}
-          >
-            Paper 2
-          </button>
+            active={selectedPaper === "paper2"}
+            variant="outline"
+            className={`text-lg transition-all duration-300 ease-in-out`}
+          />
         </div>
+
         {current.chapters.map((chapter, index) => (
           <div key={index} className="flex gap-6 mb-4">
             <div>
@@ -66,6 +64,7 @@ export function NavigationCard() {
           </div>
         ))}
       </CardContent>
+
     </Card>
     // </div>
   );
