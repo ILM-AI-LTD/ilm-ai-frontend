@@ -8,21 +8,25 @@ import {
   DropdownMenuSub,
   DropdownMenuSubContent,
   DropdownMenuSubTrigger,
-  DropdownMenuTrigger
+  DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { boards, countries } from "@/constants/Helpers";
+import { useUpdateCountryBoard } from "@/feature/students/setup/hooks/useUpdateCountryBoard";
+import { useStudentSetupStore } from "@/feature/students/setup/store/useStudentSetupStore";
 import { BoardResponse, CountryResponse } from "@/types/student";
 import { AvatarImage } from "@radix-ui/react-avatar";
+import { useQueryClient } from "@tanstack/react-query";
 import {
   ChevronDown,
   Globe,
   LayoutDashboard,
   LogOut,
   Settings,
-  User
+  User,
 } from "lucide-react";
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import { toast } from "sonner";
 
 interface Props {
   // user: any;
@@ -35,48 +39,90 @@ interface Props {
 
 // const ComplexDropdownMenu = ({ user, country, setCountry, board, setBoard, role }: Props) => {
 const ComplexDropdownMenu = ({ role }: Props) => {
+  // const [board, setBoard] = useState<BoardResponse | null>(null);
+  // const [country, setCountry] = useState<CountryResponse | null>(null);
+  const { mutate: completeSetup, isPending } = useUpdateCountryBoard();
+  const queryClient = useQueryClient();
 
-  const [board, setBoard] = useState<BoardResponse | null>(null);
-  const [country, setCountry] = useState<CountryResponse | null>(null);
   const [user, setUser] = useState<any | null>(null);
   // const { selectedPaper } = usePaper();
+  const { country, board, setCountry, setBoard } = useStudentSetupStore();
 
   const handleSelectCountry = (value: CountryResponse) => {
-    setCountry(value);
-    localStorage.setItem('selectedCountry', JSON.stringify(value));
+    // setCountry(value);
+    console.log("1-------");
+
+    completeSetup(
+      { id: user._id, country: value.label, board: board?.name || "" },
+      {
+        onSuccess: (res) => {
+          console.log("2-----", res);
+
+          const { country } = res.data.child;
+          const matchedCountry = countries.find((c) => country === c.label);
+          setCountry(matchedCountry || null);
+          toast.success("Country updated successfully");
+          queryClient.invalidateQueries({ queryKey: ["studentCountryBoard"] }); // adjust this key
+          console.log("3-------");
+        },
+        onError: () => {
+          toast.error("Failed to update country");
+        },
+      }
+    );
+    // localStorage.setItem('selectedCountry', JSON.stringify(value));
   };
 
   const handleSelectBoard = (value: BoardResponse) => {
     setBoard(value);
-    localStorage.setItem('selectedBoard', JSON.stringify(value));
+    completeSetup(
+      { id: user._id, country: country?.label || "", board: value.name || "" },
+      {
+        onSuccess: (res) => {
+          const { board } = res.data.child;
+          const matchedBoard = boards.find((b) => board === b.name);
+          setBoard(matchedBoard || null);
+          toast.success("Board updated successfully");
+          queryClient.invalidateQueries({ queryKey: ["studentCountryBoard"] }); // adjust this key
+        },
+        onError: () => {
+          toast.error("Failed to update board");
+        },
+      }
+    );
+    // localStorage.setItem('selectedBoard', JSON.stringify(value));
   };
 
   useEffect(() => {
-    const savedCountry = localStorage.getItem('selectedCountry');
-    if (savedCountry) {
-      try {
-        setCountry(JSON.parse(savedCountry));
-      } catch (e) {
-        console.error('Failed to parse saved Country', e);
-      }
-    }
-    const savedBoard = localStorage.getItem('selectedBoard');
-    if (savedBoard) {
-      try {
-        setBoard(JSON.parse(savedBoard));
-      } catch (e) {
-        console.error('Failed to parse saved Board', e);
-      }
-    }
-    const savedUser = localStorage.getItem('currentUser');
+    // const savedCountry = localStorage.getItem("selectedCountry");
+    // if (savedCountry) {
+    //   try {
+    //     setCountry(JSON.parse(savedCountry));
+    //   } catch (e) {
+    //     console.error("Failed to parse saved Country", e);
+    //   }
+    // }
+    // const savedBoard = localStorage.getItem("selectedBoard");
+    // if (savedBoard) {
+    //   try {
+    //     setBoard(JSON.parse(savedBoard));
+    //   } catch (e) {
+    //     console.error("Failed to parse saved Board", e);
+    //   }
+    // }
+    const savedUser = sessionStorage.getItem("currentStudents");
     if (savedUser) {
       try {
         setUser(JSON.parse(savedUser));
       } catch (e) {
-        console.error('Failed to parse saved user', e);
+        console.error("Failed to parse saved user", e);
       }
     }
   }, []);
+
+  useEffect(() => {
+    console.log("user -------", user);
+  }, [user]);
 
   return (
     <DropdownMenu>
@@ -90,7 +136,9 @@ const ComplexDropdownMenu = ({ role }: Props) => {
         <div className="flex items-center gap-2">
           <div className="text-start flex flex-col">
             <p className="text-md font-semibold">{user?.name}</p>
-            <p className="text-sm text-[#858D9D] font-medium">myworkspace.slack.com</p>
+            <p className="text-sm text-[#858D9D] font-medium">
+              myworkspace.slack.com
+            </p>
           </div>
           <ChevronDown />
         </div>
@@ -104,10 +152,11 @@ const ComplexDropdownMenu = ({ role }: Props) => {
           <User className="mr-1 text-white group-hover:text-black" /> Profile
         </DropdownMenuItem>
         <DropdownMenuItem className="flex items-center group hover:text-black cursor-pointer">
-          <Settings className="mr-1 text-white group-hover:text-black" />Settings
+          <Settings className="mr-1 text-white group-hover:text-black" />
+          Settings
         </DropdownMenuItem>
         <DropdownMenuSeparator />
-        {role === 'student' && (
+        {role === "student" && (
           <>
             <DropdownMenuSub>
               <DropdownMenuSubTrigger className="flex items-center ">
@@ -122,15 +171,17 @@ const ComplexDropdownMenu = ({ role }: Props) => {
               <DropdownMenuSubContent className="bg-profile-dropdown-card border-card-border-color text-white">
                 <DropdownMenuSub>
                   {countries.map((coun, index) => (
-                    <DropdownMenuCheckboxItem key={index}
+                    <DropdownMenuCheckboxItem
+                      key={index}
                       checked={country?.id === coun.id}
-                      onCheckedChange={() => handleSelectCountry(coun)}>
+                      onCheckedChange={() => handleSelectCountry(coun)}
+                    >
                       <Image
-                        src={coun?.image || ''}
+                        src={coun?.image || ""}
                         width={16}
                         height={10}
                         alt="ILM Logo"
-                        className=' rounded-xs object-cover w-[16px] h-[10px]'
+                        className=" rounded-xs object-cover w-[16px] h-[10px]"
                       />
                       {coun.label}
                     </DropdownMenuCheckboxItem>
@@ -151,9 +202,11 @@ const ComplexDropdownMenu = ({ role }: Props) => {
               <DropdownMenuSubContent className="bg-profile-dropdown-card border-card-border-color text-white">
                 <DropdownMenuSub>
                   {boards.map((b, index) => (
-                    <DropdownMenuCheckboxItem key={index}
+                    <DropdownMenuCheckboxItem
+                      key={index}
                       checked={board?.id === b.id}
-                      onCheckedChange={() => handleSelectBoard(b)}>
+                      onCheckedChange={() => handleSelectBoard(b)}
+                    >
                       {b.name}
                     </DropdownMenuCheckboxItem>
                   ))}
@@ -167,8 +220,8 @@ const ComplexDropdownMenu = ({ role }: Props) => {
           <LogOut className="mr-1 text-white group-hover:text-black" /> Log out
         </DropdownMenuItem>
       </DropdownMenuContent>
-    </DropdownMenu >
+    </DropdownMenu>
   );
-}
+};
 
 export default ComplexDropdownMenu;
