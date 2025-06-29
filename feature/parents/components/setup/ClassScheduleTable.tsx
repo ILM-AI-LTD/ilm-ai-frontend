@@ -1,6 +1,6 @@
 'use client'
 
-import { Button } from '@/components/ui/button'
+import CustomButton from '@/components/global/CustomButton'
 import {
   Table,
   TableBody,
@@ -11,7 +11,6 @@ import {
 } from '@/components/ui/table'
 import { useState } from 'react'
 import { useParentsSetupStore } from '../../store/useParentsSetupStore'
-import CustomButton from '@/components/global/CustomButton'
 
 const days = [
   'Monday',
@@ -42,14 +41,14 @@ export default function ClassScheduleTable() {
   return (
     <div className="space-y-6 w-full max-w-[1170px]">
       <div className="flex flex-col items-center gap-4">
-        <p className='font-bold text-white text-[min(12vw,24px)]'>Class Registration</p>
+        <p className='font-bold text-foreground text-[min(12vw,24px)]'>Class Registration</p>
         <div className='grid grid-cols-2 md:grid-cols-4 gap-6 '>
           {subjects.map((sub) => (
             <CustomButton
               key={sub.id}
               onClick={() => setSelectedSubjectId(sub.id)}
               active={selectedSubjectId === sub.id}
-              className={`max-w-[120px] h-[min(10vw,40px)] text-[min(10vw,16px)] font-semibold text-white cursor-pointer`}
+              className={`max-w-[120px] h-[min(10vw,40px)] text-[min(10vw,16px)] font-semibold cursor-pointer`}
             >
               {sub.subject_name}
             </CustomButton>
@@ -59,7 +58,7 @@ export default function ClassScheduleTable() {
 
       <Table>
         <TableHeader>
-          <TableRow className='bg-brand-color'>
+          <TableRow className='bg-primary'>
             <TableHead className='h-16 border-r-1 border-b-1 px-2 border-r-[#034663] border-b-[#034663] rounded-tl-lg w-[100px]'>
               Time/Day
             </TableHead>
@@ -77,7 +76,7 @@ export default function ClassScheduleTable() {
         <TableBody>
           {timeSlots.map(({ label, startTime, endTime }) => (
             <TableRow key={label}>
-              <TableCell className={`font-medium bg-brand-color h-12 text-white text-center border-b-1 border-b-[#034663] ${label === timeSlots[timeSlots.length - 1].label ? 'rounded-bl-lg' : ''}`}>
+              <TableCell className={`font-medium bg-primary h-12 text-white text-center border-b-1 border-b-[#034663] ${label === timeSlots[timeSlots.length - 1].label ? 'rounded-bl-lg' : ''}`}>
                 {label}
               </TableCell>
 
@@ -113,14 +112,15 @@ export default function ClassScheduleTable() {
                       className={[
                         'h-12 w-full transition-colors border-1',
                         isActive
-                          ? 'bg-brand-color border-primary-bg-color'
-                          : 'bg-transparent border-brand-color',
+                          ? 'bg-primary'
+                          : 'bg-transparent border-primary',
 
-                          !isActive && !isTakenByOther && "hover:bg-brand-color hover:border-primary-bg-color",
+                        (!isActive && !isTakenByOther) && "hover:bg-primary/50 hover:border",
 
-                        isTakenByOther && !isActive
-                          ? 'cursor-not-allowed bg-white opacity-15 hover:bg-white  hover:opacity-15'
+                        (isTakenByOther && !isActive)
+                          ? 'cursor-not-allowed bg-zinc-400'
                           : 'cursor-pointer',
+
                         (day === 'Sunday' && label === '16:00-17:00')
                           ? 'rounded-br-lg'
                           : '',
