@@ -1,13 +1,11 @@
-import React, { useEffect, useState } from "react";
-import * as RadioGroup from "@radix-ui/react-radio-group";
-import { CircleCheck, CpuIcon } from "lucide-react";
-import { cn } from "@/lib/utils";
-import Image from "next/image";
-import ILMIAssistantv2 from "@/feature/parents/components/setup/common/ILMIAssistantv2";
-import FooterStudents from "./common/FooterStudents";
-import AssistantCallout from "./common/AssistantCallout";
-import { CountryResponse } from "@/types/student";
 import { countries } from "@/constants/Helpers";
+import ILMIAssistantv2 from "@/feature/parents/components/setup/common/ILMIAssistantv2";
+import { CountryResponse } from "@/types/student";
+import { CircleCheck } from "lucide-react";
+import Image from "next/image";
+import { useEffect, useState } from "react";
+import AssistantCallout from "./common/AssistantCallout";
+import FooterStudents from "./common/FooterStudents";
 
 interface CountryProps {
     onNext: () => void
@@ -61,7 +59,7 @@ const Country = ({ onNext }: CountryProps) => {
                 </div>
 
                 <div
-                    className={`mx-auto max-w-[800px] grid bg-primary-bg-color rounded-4xl gap-4 order-2 md:order-1 
+                    className={`mx-auto max-w-[800px] grid  bg-background rounded-4xl gap-4 order-2 md:order-1 
                     ${countries.length === 1 ? 'grid-cols-1' : ''}
                     ${countries.length === 2 ? 'sm:grid-cols-2' : ''}
                     ${countries.length >= 3 ? 'sm:grid-cols-2 lg:grid-cols-3' : ''}`}

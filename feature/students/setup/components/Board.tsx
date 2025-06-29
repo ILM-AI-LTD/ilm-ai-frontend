@@ -8,15 +8,14 @@
 
 'use client'
 
-import React, { useEffect, useState } from "react";
-import * as RadioGroup from "@radix-ui/react-radio-group";
-import { CircleCheck, CpuIcon } from "lucide-react";
-import ILMIAssistantv2 from "@/feature/parents/components/setup/common/ILMIAssistantv2";
-import FooterStudents from "./common/FooterStudents";
-import AssistantCallout from "./common/AssistantCallout";
+import CustomButton from "@/components/global/CustomButton";
 import { boards } from "@/constants/Helpers";
-import { useRouter } from "next/navigation";
+import ILMIAssistantv2 from "@/feature/parents/components/setup/common/ILMIAssistantv2";
 import { BoardResponse } from "@/types/student";
+import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
+import AssistantCallout from "./common/AssistantCallout";
+import FooterStudents from "./common/FooterStudents";
 
 interface BoardProps {
     onNext: () => void
@@ -74,37 +73,46 @@ const Board = ({ onBack, onNext }: BoardProps) => {
 
 
                 <div
-                    className={`mx-auto max-w-[800px] grid bg-primary-bg-color rounded-4xl gap-4 lg:grid-cols-4`
+                    className={`mx-auto max-w-[800px] grid  bg-background rounded-4xl gap-4 lg:grid-cols-4`
                     }
                 >
                     {boards.map((option, index) => (
-                        <div
-                            key={index}
+                        // <div
+                        //     key={index}
+                        //     onClick={() => handleSelect(option)}
+                        //     // className={`relative p-4 cursor-pointer transition-all 
+                        //     //     duration-300 ease-in-out rounded-full bg-[#020617] 
+                        //     //     shadow-[0px_8px_0px_0px_#444]
+                        //     //     hover:scale-105 hover:bg-button-hover-color
+                        //     //     hover:shadow-[0px_8px_0px_0px_#006D98]
+                        //     //     ${selectedOption?.id === option.id ? 'ring-2 ring-white' : ''}`
+                        //     // }
+                        //     className={`
+                        //         relative p-4 cursor-pointer transition-all 
+                        //         duration-300 ease-in-out rounded-full 
+                        //         shadow-[0px_8px_0px_0px_#444]
+                        //         ${selectedOption?.id === option.id
+                        //             ? 'bg-button-hover-color shadow-[0px_8px_0px_0px_#006D98]'
+                        //             : 'bg-[#020617] hover:scale-105 hover:bg-button-hover-color hover:shadow-[0px_8px_0px_0px_#006D98]'
+                        //         }
+                        //     `}
+                        // >
+                        //     {/* {selectedOption?.id === option.id && (
+                        //         <CircleCheck className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/2 h-6 w-6 text-primary fill-blue-500 stroke-white z-10" />
+                        //     )} */}
+                        //     <div className=" text-white  flex items-center justify-center gap-2 text-lg font-semibold">
+                        //         {option.name}
+                        //     </div>
+                        // </div>
+
+
+                        <CustomButton
                             onClick={() => handleSelect(option)}
-                            // className={`relative p-4 cursor-pointer transition-all 
-                            //     duration-300 ease-in-out rounded-full bg-[#020617] 
-                            //     shadow-[0px_8px_0px_0px_#444]
-                            //     hover:scale-105 hover:bg-button-hover-color
-                            //     hover:shadow-[0px_8px_0px_0px_#006D98]
-                            //     ${selectedOption?.id === option.id ? 'ring-2 ring-white' : ''}`
-                            // }
-                            className={`
-                                relative p-4 cursor-pointer transition-all 
-                                duration-300 ease-in-out rounded-full 
-                                shadow-[0px_8px_0px_0px_#444]
-                                ${selectedOption?.id === option.id
-                                    ? 'bg-button-hover-color shadow-[0px_8px_0px_0px_#006D98]'
-                                    : 'bg-[#020617] hover:scale-105 hover:bg-button-hover-color hover:shadow-[0px_8px_0px_0px_#006D98]'
-                                }
-                            `}
-                        >
-                            {/* {selectedOption?.id === option.id && (
-                                <CircleCheck className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/2 h-6 w-6 text-primary fill-blue-500 stroke-white z-10" />
-                            )} */}
-                            <div className=" text-white  flex items-center justify-center gap-2 text-lg font-semibold">
-                                {option.name}
-                            </div>
-                        </div>
+                            key={index}
+                            active={selectedOption?.id === option.id}
+                            label={option.name}
+                            className="font-semibold text-sm h-11 px-10 py-6"
+                        />
                     ))}
                 </div>
 
@@ -116,7 +124,7 @@ const Board = ({ onBack, onNext }: BoardProps) => {
                 leftButton={{ label: "Back", onClick: onBack }}
                 rightButton={{
                     label: "Finish & View Dashboard",
-                    onClick: () => router.push('/student/dashboard'),
+                    onClick: () => router.push('/student/home'),
                     disabled: false,
                     isPending: false
                 }}

@@ -1,16 +1,11 @@
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
-import { DropdownMenu, DropdownMenuCheckboxItem, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuSub, DropdownMenuSubContent, DropdownMenuSubTrigger, DropdownMenuTrigger } from '@/components/ui/dropdown-menu'
-import { SidebarTrigger, StudentSidebarTrigger } from '@/components/ui/sidebar'
-import { Bolt, ChevronDown, ChevronsUpDown, ExternalLink, Filter, LogOut, Settings2, SunDim, User } from 'lucide-react'
-import ButtonsWithBadge from './ButtonWithBadge'
-import CustomDropdown from '@/components/global/CustomDropdown'
-import { menuOptions, countries, boards } from '@/constants/Helpers'
-import { BoardResponse, CountryResponse } from '@/types/student'
-import { useEffect, useState } from 'react'
-import Image from 'next/image'
-import { Button } from '@/components/ui/button'
-import { Switch } from '@radix-ui/react-switch'
 import SwitchCustomizationDemo from '@/components/customized/switch/switch-07'
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu'
+import { SidebarTrigger } from '@/components/ui/sidebar'
+import { boards, countries } from '@/constants/Helpers'
+import { BoardResponse, CountryResponse } from '@/types/student'
+import { ChevronDown, SunDim, User } from 'lucide-react'
+import Image from 'next/image'
+import { useEffect, useState } from 'react'
 // import { Switch } from '@/components/ui/switch'
 
 const StudentsNavbar = () => {
@@ -60,7 +55,7 @@ const StudentsNavbar = () => {
         }
     }, []);
     return (
-        <nav className='h-24 bg-primary-bg-color flex items-center justify-between z-10 px-6'>
+        <nav className='h-24  bg-background flex items-center justify-between z-10 px-6'>
             <SidebarTrigger className="-ml-1" />
             <div className="flex flex-row gap-6">
                 {/* <CustomDropdown title={'Board'} menuOptions={menuOptions} /> */}
@@ -81,7 +76,7 @@ const StudentsNavbar = () => {
                         </DropdownMenuTrigger>
                         <DropdownMenuContent
                             // sideOffset={5}
-                            className="bg-primary-bg-color border rounded shadow-md p-2"
+                            className=" bg-background border rounded shadow-md p-2"
                         >
                             {countries.map((option, index) => (
                                 <DropdownMenuItem
@@ -113,7 +108,7 @@ const StudentsNavbar = () => {
                         </DropdownMenuTrigger>
                         <DropdownMenuContent
                             // sideOffset={5}
-                            className="bg-primary-bg-color border rounded shadow-md p-2"
+                            className=" bg-background border rounded shadow-md p-2"
                         >
                             {boards.map((option, index) => (
                                 <DropdownMenuItem
@@ -152,7 +147,7 @@ const StudentsNavbar = () => {
                                 <ChevronsUpDown className="ml-6 h-4 w-4 text-muted-foreground" />
                             </div>
                         </DropdownMenuTrigger>
-                        <DropdownMenuContent className="mt-2 w-72 bg-primary-bg-color text-white">
+                        <DropdownMenuContent className="mt-2 w-72  bg-background text-white">
                             <DropdownMenuItem className="py-3">
                                 <Avatar>
                                     <AvatarImage src="https://github.com/shadcn.png" />
