@@ -79,16 +79,16 @@ const MarkdownRenderer: React.FC<MarkdownRendererProps> = React.memo(({ content,
   }, [content, isStreaming]);
 
   const markdownComponents = useMemo(() => ({
-    h1: ({ children }: { children: React.ReactNode }) => <h1 className="text-lg font-bold text-white mb-2 mt-1">{children}</h1>,
-    h2: ({ children }: { children: React.ReactNode }) => <h2 className="text-base font-semibold text-white mb-2 mt-1">{children}</h2>,
-    h3: ({ children }: { children: React.ReactNode }) => <h3 className="text-sm font-medium text-white mb-1 mt-1">{children}</h3>,
-    p: ({ children }: { children: React.ReactNode }) => <p className="text-sm text-white mb-2 leading-relaxed">{children}</p>,
-    strong: ({ children }: { children: React.ReactNode }) => <strong className="font-semibold text-white">{children}</strong>,
-    em: ({ children }: { children: React.ReactNode }) => <em className="italic text-white">{children}</em>,
+    h1: ({ children }: { children: React.ReactNode }) => <h1 className="text-lg font-bold text-foreground mb-2 mt-1">{children}</h1>,
+    h2: ({ children }: { children: React.ReactNode }) => <h2 className="text-base font-semibold text-foreground mb-2 mt-1">{children}</h2>,
+    h3: ({ children }: { children: React.ReactNode }) => <h3 className="text-sm font-medium text-foreground mb-1 mt-1">{children}</h3>,
+    p: ({ children }: { children: React.ReactNode }) => <p className="text-sm text-foreground mb-2 leading-relaxed">{children}</p>,
+    strong: ({ children }: { children: React.ReactNode }) => <strong className="font-semibold text-foreground">{children}</strong>,
+    em: ({ children }: { children: React.ReactNode }) => <em className="italic text-foreground">{children}</em>,
     del: ({ children }: { children: React.ReactNode }) => <del className="line-through text-gray-400">{children}</del>,
-    ul: ({ children }: { children: React.ReactNode }) => <ul className="list-disc list-inside text-sm text-white mb-2 space-y-1">{children}</ul>,
-    ol: ({ children }: { children: React.ReactNode }) => <ol className="list-decimal list-inside text-sm text-white mb-2 space-y-1">{children}</ol>,
-    li: ({ children }: { children: React.ReactNode }) => <li className="text-white">{children}</li>,
+    ul: ({ children }: { children: React.ReactNode }) => <ul className="list-disc list-inside text-sm text-foreground mb-2 space-y-1">{children}</ul>,
+    ol: ({ children }: { children: React.ReactNode }) => <ol className="list-decimal list-inside text-sm text-foreground mb-2 space-y-1">{children}</ol>,
+    li: ({ children }: { children: React.ReactNode }) => <li className="text-foreground">{children}</li>,
     a: ({ href, children }: { href?: string; children: React.ReactNode }) => (
       <a href={href} className="text-blue-400 hover:text-blue-300 underline" target="_blank" rel="noopener noreferrer">
         {children}
@@ -110,7 +110,7 @@ const MarkdownRenderer: React.FC<MarkdownRendererProps> = React.memo(({ content,
     hr: () => <hr className="border-gray-600 my-3" />,
     table: ({ children }: { children: React.ReactNode }) => (
       <div className="overflow-x-auto mb-2">
-        <table className="min-w-full text-sm text-white border border-gray-600">{children}</table>
+        <table className="min-w-full text-sm text-foreground border border-gray-600">{children}</table>
       </div>
     ),
     thead: ({ children }: { children: React.ReactNode }) => <thead className="bg-gray-700">{children}</thead>,
