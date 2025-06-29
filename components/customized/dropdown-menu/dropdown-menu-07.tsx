@@ -15,6 +15,7 @@ import { BoardResponse, CountryResponse } from "@/types/student";
 import { AvatarImage } from "@radix-ui/react-avatar";
 import {
   ChevronDown,
+  ChevronsUpDown,
   Globe,
   LayoutDashboard,
   LogOut,
@@ -25,21 +26,14 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 
 interface Props {
-  // user: any;
-  // country: CountryResponse | null;
-  // setCountry: (value: CountryResponse) => void;
-  // board: BoardResponse | null;
-  // setBoard: (value: BoardResponse) => void;
   role: string;
 }
 
-// const ComplexDropdownMenu = ({ user, country, setCountry, board, setBoard, role }: Props) => {
 const ComplexDropdownMenu = ({ role }: Props) => {
 
   const [board, setBoard] = useState<BoardResponse | null>(null);
   const [country, setCountry] = useState<CountryResponse | null>(null);
   const [user, setUser] = useState<any | null>(null);
-  // const { selectedPaper } = usePaper();
 
   const handleSelectCountry = (value: CountryResponse) => {
     setCountry(value);
@@ -83,54 +77,62 @@ const ComplexDropdownMenu = ({ role }: Props) => {
       <DropdownMenuTrigger className="flex items-center gap-3">
         <Avatar className="h-12 w-12">
           <AvatarImage src="https://github.com/shadcn.png" />
-          <AvatarFallback className="bg-primary text-primary-foreground">
+          <AvatarFallback className="bg-secondary text-secondary-foreground">
             MW
           </AvatarFallback>
         </Avatar>
         <div className="flex items-center gap-2">
           <div className="text-start flex flex-col">
-            <p className="text-md font-semibold">{user?.name}</p>
-            <p className="text-sm text-[#858D9D] font-medium">myworkspace.slack.com</p>
+            <p className="text-md font-semibold text-secondary-foreground">{user?.name}</p>
+            <p className="text-sm font-medium text-muted-foreground">myworkspace.slack.com</p>
           </div>
-          <ChevronDown />
+          <ChevronsUpDown className="text-muted-foreground" />
         </div>
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="mt-2 w-56 bg-profile-dropdown-card border-card-border-color text-white">
+
+      <DropdownMenuContent className="mt-2 w-56">
+
         <DropdownMenuItem className="py-3">
           <p className="font-semibold">My Account</p>
         </DropdownMenuItem>
+
         <DropdownMenuSeparator />
-        <DropdownMenuItem className="group hover:text-black cursor-pointer">
-          <User className="mr-1 text-white group-hover:text-black" /> Profile
+
+        <DropdownMenuItem className="cursor-pointer">
+          <User className="mr-1" /> Profile
         </DropdownMenuItem>
-        <DropdownMenuItem className="flex items-center group hover:text-black cursor-pointer">
-          <Settings className="mr-1 text-white group-hover:text-black" />Settings
+
+        <DropdownMenuItem className="cursor-pointer">
+          <Settings className="mr-1" />Settings
         </DropdownMenuItem>
+
         <DropdownMenuSeparator />
+
         {role === 'student' && (
           <>
             <DropdownMenuSub>
-              <DropdownMenuSubTrigger className="flex items-center ">
+              <DropdownMenuSubTrigger className="flex items-center cursor-pointer">
                 <Globe className="mr-2" size={16} />
                 Country
                 {country && (
-                  <span className="ml-2 px-2 py-0.5 rounded-full text-xs bg-button-color text-white">
+                  <span className="ml-2 px-2 py-0.5 rounded-full text-xs bg-primary text-primary-foreground">
                     {country.initial}
                   </span>
                 )}
               </DropdownMenuSubTrigger>
-              <DropdownMenuSubContent className="bg-profile-dropdown-card border-card-border-color text-white">
+
+              <DropdownMenuSubContent className="">
                 <DropdownMenuSub>
                   {countries.map((coun, index) => (
                     <DropdownMenuCheckboxItem key={index}
                       checked={country?.id === coun.id}
-                      onCheckedChange={() => handleSelectCountry(coun)}>
+                      onCheckedChange={() => handleSelectCountry(coun)} className="cursor-pointer">
                       <Image
                         src={coun?.image || ''}
                         width={16}
                         height={10}
                         alt="ILM Logo"
-                        className=' rounded-xs object-cover w-[16px] h-[10px]'
+                        className='rounded-xs object-cover w-[16px] h-[10px]'
                       />
                       {coun.label}
                     </DropdownMenuCheckboxItem>
@@ -138,22 +140,24 @@ const ComplexDropdownMenu = ({ role }: Props) => {
                 </DropdownMenuSub>
               </DropdownMenuSubContent>
             </DropdownMenuSub>
+
+
             <DropdownMenuSub>
-              <DropdownMenuSubTrigger className="flex items-center ">
+              <DropdownMenuSubTrigger className="flex items-center cursor-pointer">
                 <LayoutDashboard className="mr-2" size={16} />
                 Board
                 {board && (
-                  <span className="ml-2 px-2 py-0.5 rounded-full text-xs bg-button-color text-white">
+                  <span className="ml-2 px-2 py-0.5 rounded-full text-xs bg-primary text-primary-foreground">
                     {board.name}
                   </span>
                 )}
               </DropdownMenuSubTrigger>
-              <DropdownMenuSubContent className="bg-profile-dropdown-card border-card-border-color text-white">
+              <DropdownMenuSubContent className="">
                 <DropdownMenuSub>
                   {boards.map((b, index) => (
                     <DropdownMenuCheckboxItem key={index}
                       checked={board?.id === b.id}
-                      onCheckedChange={() => handleSelectBoard(b)}>
+                      onCheckedChange={() => handleSelectBoard(b)} className="cursor-pointer">
                       {b.name}
                     </DropdownMenuCheckboxItem>
                   ))}
@@ -163,8 +167,8 @@ const ComplexDropdownMenu = ({ role }: Props) => {
             <DropdownMenuSeparator />
           </>
         )}
-        <DropdownMenuItem className="group hover:text-black cursor-pointer">
-          <LogOut className="mr-1 text-white group-hover:text-black" /> Log out
+        <DropdownMenuItem className="cursor-pointer">
+          <LogOut className="mr-1" /> Log out
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu >

@@ -23,7 +23,7 @@ export const Circle = forwardRef<HTMLDivElement, {
         <Link href={href}>
             <div
                 className={cn(
-                    `relative size-32 z-1 flex flex-row justify-center items-center rounded-full `,
+                    `relative size-32 z-1 flex flex-row justify-center items-center rounded-full`,
                     isFirst ? "p-[14px]" : "p-[6px]",
                     !isFirst && "shadow-[0px_11px_1px_rgba(0,_46,_56,_1)]",
                     className
@@ -34,13 +34,13 @@ export const Circle = forwardRef<HTMLDivElement, {
             >
                 <div
                     ref={ref}
-                    className="relative flex size-full items-center justify-center rounded-full bg-primary-bg-color transition-transform"
+                    className="relative flex size-full items-center justify-center rounded-full  bg-background transition-transform"
                 >
                     {children}
                     {!hidden && (
                         <div
                             className={cn(
-                                "absolute size-2.5 rounded-full bg-white",
+                                "absolute size-2.5 rounded-full bg-muted-foreground",
                                 top ? "-top-4" : "-right-4"
                             )}
                         />
@@ -48,7 +48,7 @@ export const Circle = forwardRef<HTMLDivElement, {
                 </div>
             </div>
             {title && (
-                <p className="text-center w-32 text-lg font-bold mt-4 mx-auto">{title}</p>
+                <p className="text-foreground text-center w-32 text-lg font-bold mt-4 mx-auto">{title}</p>
             )}
         </Link>
     );
