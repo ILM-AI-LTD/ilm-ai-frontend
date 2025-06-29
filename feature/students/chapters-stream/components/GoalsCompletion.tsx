@@ -17,12 +17,12 @@ type GoalsCompletionProps = {
 const GoalsCompletion = ({ chapter, subChapters, goals }: GoalsCompletionProps) => {
 
     return (
-        <Card className='hidden md:block max-w-[320px] w-full sticky top-30 bg-transparent border-1 border-card-border-color gap-2'>
-            <CardHeader className='text-brand-color font-bold text-2xl capitalize'>
+        <Card className='hidden md:block max-w-[320px] w-full sticky top-30 bg-secondary border gap-2'>
+            <CardHeader className='text-primary font-bold text-2xl capitalize'>
                 {chapter}
             </CardHeader>
 
-            <CardDescription className='text-brand-color font-bold text-base capitalize px-6'>
+            <CardDescription className='text-primary font-bold text-base capitalize px-6'>
                 {subChapters.replace(/-/g, ' ')}
             </CardDescription>
 
@@ -42,12 +42,12 @@ const GoalsCompletion = ({ chapter, subChapters, goals }: GoalsCompletionProps) 
                                             <Check size={18} className="text-white" />
                                         </div>
                                     ) : (
-                                        <div className="w-6 h-6 border-2 border-gray-400 rounded-full bg-gray-900"></div>
+                                        <div className="w-6 h-6 border-2 border-gray-400 rounded-full bg-secondary"></div>
                                     )}
                                 </div>
 
                                 <Link href={'/#'} className="flex-1 pt-0.5">
-                                    <p className={`text-base sm:text-lg -mt-1 ${goal.isCompleted ? 'text-white' : 'text-gray-400'
+                                    <p className={`sm:text-lg -mt-1 ${goal.isCompleted ? 'text-foreground' : 'text-foreground/50'
                                         }`}>
                                         {goal.title}
                                     </p>
