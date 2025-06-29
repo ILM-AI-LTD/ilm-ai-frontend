@@ -23,13 +23,13 @@ const InputField = React.forwardRef<HTMLInputElement, InputFieldProps>(
 
     return (
       <div className="w-full flex flex-col justify-center items-start gap-2">
-        <Label className="text-base font-medium text-primary-font-color">{labelText}</Label>
+        <Label className="text-base font-bold text-foreground">{labelText}</Label>
 
         <div className="w-full relative">
           <Input
             ref={ref}
             className={twMerge(
-              `text-start text-primary-font-color border-border-color ${touched && errors ? "placeholder:text-destructive  border-solid border-destructive !ring-destructive" : ""}`,
+              `text-start input ${touched && errors ? "placeholder:text-destructive  border-solid border-destructive !ring-destructive" : ""}`,
               className
             )}
             {...restProps}
@@ -58,7 +58,7 @@ const InputField = React.forwardRef<HTMLInputElement, InputFieldProps>(
             <div className="flex justify-start mt-[2px]">
               <CircleAlert size={15} color="#F51714" />
             </div>
-            <p className="text-red-500 text-sm font-medium">{errors}</p>
+            <p className="text-destructive text-sm font-medium">{errors}</p>
           </div>
         ) : null}
       </div>
