@@ -8,7 +8,7 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
       defaultTheme="system"
       enableSystem
     >
-      <div className={`min-h-screen flex justify-center items-center bg-primary-bg-color`}>
+      <div className={`min-h-screen flex justify-center items-center  bg-background`}>
         {children}
       </div>
     </ThemeProvider>
