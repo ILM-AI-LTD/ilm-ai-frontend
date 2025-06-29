@@ -8,7 +8,7 @@ const page = () => {
   return (
     <div>
       <div className="flex gap-2 items-start mb-10">
-        <p className="text-white font-bold text-[min(10vw,36px)]">Subjects</p>
+        <p className="text-foreground font-bold text-[min(10vw,36px)]">Subjects</p>
 
         <Image
           src={"/Subject_logo.gif"}
@@ -28,7 +28,7 @@ const page = () => {
           />
         </div>
 
-        <div className="max-w-[1170px] grid col-span-2 sm:grid-cols-2 bg-primary-bg-color gap-8 order-2 md:order-1">
+        <div className="max-w-[1170px] grid col-span-2 sm:grid-cols-2 gap-8 order-2 md:order-1">
           {subjects.map((subject, index) => (
             <SubjectCard
               key={index}
