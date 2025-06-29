@@ -46,7 +46,7 @@ const testimonials = [
 ];
 
 export default function ReviewSection() {
-    const looped = [...testimonials, ...testimonials, ...testimonials,...testimonials,...testimonials]
+    const looped = [...testimonials, ...testimonials, ...testimonials, ...testimonials, ...testimonials]
 
     return (
         <section className='bg-secondary-bg-color w-full flex flex-col items-center justify-center py-20 px-6 md:px-10 2xl:px-[135px] gap-8'>
@@ -61,7 +61,7 @@ export default function ReviewSection() {
                     {looped.map((t, i) => (
                         <div
                             key={i}
-                            className={`flex-shrink-0 flex flex-col justify-between p-6 bg-primary-bg-color rounded-2xl border-1 border-border-color text-white ${(i % 2) !== 0 ? 'w-80' : 'w-96'}`}
+                            className={`flex-shrink-0 flex flex-col justify-between p-6  bg-background rounded-2xl border-1 border-border-color text-white ${(i % 2) !== 0 ? 'w-80' : 'w-96'}`}
                         >
                             <p className="text-base mb-4">“{t.quote}”</p>
                             <div className="flex items-center justify-between gap-3 mt-auto">
@@ -81,7 +81,7 @@ export default function ReviewSection() {
                     {looped.map((t, i) => (
                         <div
                             key={i}
-                            className={`flex-shrink-0 flex flex-col justify-between p-6 bg-primary-bg-color rounded-2xl border-1 border-border-color text-white ${(i % 2) === 0 ? 'w-80' : 'w-96'}`}
+                            className={`flex-shrink-0 flex flex-col justify-between p-6  bg-background rounded-2xl border-1 border-border-color text-white ${(i % 2) === 0 ? 'w-80' : 'w-96'}`}
                         >
                             <p className="text-base mb-4">“{t.quote}”</p>
 

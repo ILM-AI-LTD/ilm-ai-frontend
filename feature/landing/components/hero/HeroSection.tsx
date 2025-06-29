@@ -3,7 +3,7 @@ import Link from "next/link";
 
 const HeroSection = () => {
     return (
-        <div className="relative py-20 px-6 md:px-10 2xl:px-[135px] w-full h-dvh bg-primary-bg-color flex flex-col items-center justify-center overflow-hidden">
+        <div className="relative py-20 px-6 md:px-10 2xl:px-[135px] w-full h-dvh  bg-background flex flex-col items-center justify-center overflow-hidden">
 
             <video
                 className="absolute inset-0 object-cover w-full h-full z-0 mask-t-from-10% mask-b-from-10%"
