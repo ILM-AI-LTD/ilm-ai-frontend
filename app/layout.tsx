@@ -1,3 +1,4 @@
+import { ThemeProvider } from "@/components/theme-provider";
 import { Toaster } from "@/components/ui/sonner";
 import { AuthProvider } from "@/context/AuthContext";
 import ReactQueryProvider from "@/lib/react query/provider";
@@ -28,12 +29,19 @@ export default function RootLayout({
             <h1 className="mx-auto text-black text-[min(10vw,50px)] italic">Site is under maintenance.</h1>
           </main>
         ) : (
-          <ReactQueryProvider>
-            <AuthProvider>
-              {children}
-              <Toaster richColors />
-            </AuthProvider>
-          </ReactQueryProvider>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <ReactQueryProvider>
+              <AuthProvider>
+                {children}
+                <Toaster richColors />
+              </AuthProvider>
+            </ReactQueryProvider>
+          </ThemeProvider>
         )}
       </body>
     </html>
