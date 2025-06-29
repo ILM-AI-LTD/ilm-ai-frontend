@@ -65,7 +65,7 @@ export default function ResetPasswordForm() {
                 label="Reset Password"
                 type="submit"
                 isLoading={isPending}
-                disabled={!values.email.trim()}
+                // disabled={!values.email.trim()}
                 className={`rounded-full h-13 text-base font-semibold cursor-pointer ${values.email.trim() ? "" : "cursor-none"}`}
             />
 

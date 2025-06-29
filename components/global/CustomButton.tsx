@@ -1,7 +1,7 @@
-import React from "react";
-import { Button } from "@/components/ui/button"
-import { Loader2 } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { Loader2 } from "lucide-react";
+import React from "react";
 
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
@@ -34,7 +34,7 @@ const CustomButton: React.FC<ButtonProps> = ({
   return (
     <Button
       disabled={disabled}
-      className={cn(`rounded-3xl cursor-pointer border-none text-white hover:text-white ${active ? "bg-brand-color hover:bg-brand-color/90 shadow-[0px_6px_0px_0px_#004F6E] " : "bg-primary-bg-color hover:bg-primary-bg-color/70 shadow-[0px_6px_0px_0px_#373C4E]"}`, className)}
+      className={cn(`rounded-3xl cursor-pointer border-none  ${active ? " shadow-[0px_6px_0px_0px_#004F6E]" : "bg-secondary-button hover:bg-secondary-button/70 shadow-[0px_6px_0px_0px_#373C4E] text-primary hover:text-primary"}`, className)}
       variant={buttonVariant}
       {...rest}
       ref={ref}

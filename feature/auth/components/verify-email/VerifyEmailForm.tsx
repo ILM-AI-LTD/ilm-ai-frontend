@@ -14,7 +14,7 @@ const VerifyEmailForm = () => {
             {/* <FormError error={error} /> */}
 
             <div className="flex flex-col items-start gap-2">
-                <p className="text-base font-medium text-primary-font-color">Enter OTP </p>
+                <p className="text-base font-bold text-foreground">Enter OTP </p>
                 <div className="w-full flex flex-col gap-5">
 
                     <InputOTP
@@ -36,8 +36,8 @@ const VerifyEmailForm = () => {
                     <CustomButton
                         type="submit"
                         label="Verify OTP"
-                        disabled={!value.trim()}
-                        className={`rounded-full h-13 text-base font-semibold cursor-pointer ${value.trim() ? "" : "cursor-not-allowed"}`}
+                        // disabled={!value.trim()}
+                        className={`rounded-full h-13 text-base font-semibold cursor-pointer`}
                     />
                 </div>
             </div>

@@ -42,7 +42,7 @@ const SignInFormStudents = () => {
                             action.resetForm();
                             //TODO: redirect to appropriate page based on student workflow
                             if (flagBoardselected) {
-                                router.push('/student/dashboard')
+                                router.push('/student/home')
                                 //TODO: redirect to dashboard
                             } else {
                                 router.push('/student/setup')
@@ -97,7 +97,7 @@ const SignInFormStudents = () => {
                         onChange={handleChange}
                         className="size-4 rounded-full"
                     />
-                    <label htmlFor="remember-me" className="text-base text-label-color mb-1">Keep me logged in</label>
+                    <label htmlFor="remember-me" className="text-base text-muted-foreground mb-1">Keep me logged in</label>
                 </div>
             </div>
 

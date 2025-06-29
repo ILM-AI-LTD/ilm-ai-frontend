@@ -97,7 +97,7 @@ export default function SetNewPasswordForm() {
                 label="Reset Password"
                 type="submit"
                 isLoading={isPending}
-                disabled={!(values.password.trim() && values.confirmPassword.trim())}
+                // disabled={!(values.password.trim() && values.confirmPassword.trim())}
                 className={`rounded-full h-13 text-base font-semibold cursor-pointer ${(values.password.trim() && values.confirmPassword.trim()) ? "" : "cursor-not-allowed"}`}
             />
 
