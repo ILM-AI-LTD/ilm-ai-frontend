@@ -8,7 +8,6 @@ import { BoardResponse, CountryResponse } from '@/types/student'
 import Image from 'next/image'
 import { useParams } from 'next/navigation'
 import { useEffect, useState } from 'react'
-import ThemeToggleButton from '../customized/button/button-16'
 import CustomLogo from './CustomLogo'
 // import { Switch } from '@/components/ui/switch'
 
@@ -148,7 +147,7 @@ const CustomNavbar = ({ role }: Props) => {
                 )}
 
                 <div className=' flex items-center gap-8 border p-3 border-[#3A3A3A] rounded-full'>
-                    <ThemeToggleButton />
+                    {/* <ThemeToggleButton /> */}
                     <SwitchCustomizationDemo />
 
                     <div className=' justify-center'>

@@ -51,7 +51,7 @@ export function NavigationCard() {
         {current.chapters.map((chapter, index) => (
           <div key={index} className="flex gap-6 mb-4">
             <div>
-              <IconComponent iconName={chapter.icon} width={24} height={24} />
+              <IconComponent iconName={chapter.icon} width={20} height={20} />
             </div>
             <div
               className="text-foreground font-bold cursor-pointer"
