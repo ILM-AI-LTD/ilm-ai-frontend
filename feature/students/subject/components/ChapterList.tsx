@@ -27,7 +27,7 @@ export function ChapterList() {
                                 />
                             ))}
                         </div>
-                        <p className='text-[min(10vw,30px)] font-bold'>{chapter.name}</p>
+                        <p className='text-[min(10vw,30px)] font-bold text-foreground'>{chapter.name}</p>
                         <div className='flex flex-row flex-none gap-2'>
                             {[...Array(3)].map((_, i) => (
                                 <Image

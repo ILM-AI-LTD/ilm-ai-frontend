@@ -1,8 +1,6 @@
 'use client';
 
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
-import { useSearchParams } from 'next/navigation';
-import { useRouter } from 'next/router';
 import { useState } from 'react';
 
 interface Props {
@@ -33,7 +31,7 @@ const CustomDropdown: React.FC<Props> = ({ title, menuOptions }) => {
 
             <DropdownMenu.Content
                 sideOffset={5}
-                className="bg-primary-bg-color border rounded shadow-md p-2"
+                className=" bg-background border rounded shadow-md p-2"
             >
                 {menuOptions.map(option => (
                     <DropdownMenu.Item

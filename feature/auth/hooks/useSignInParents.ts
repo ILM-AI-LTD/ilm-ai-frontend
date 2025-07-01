@@ -18,6 +18,7 @@ export function useSignInParents() {
     mutationFn: ({ data }) => AuthService.signInParents(data),
     onSuccess: (res, { rememberMe }) => {
 
+
       const { user, token } = res.data
 
       qc.setQueryData<User>(['currentParents'], user)
@@ -25,7 +26,7 @@ export function useSignInParents() {
       setClientCookie('token', token, { expires: rememberMe ? 7 : undefined })
 
       const storage = rememberMe ? localStorage : sessionStorage
-      storage.setItem('currentParents', JSON.stringify(user))
+      storage.setItem('currentUser', JSON.stringify(user))
     },
   })
 }

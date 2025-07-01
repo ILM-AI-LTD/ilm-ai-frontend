@@ -1,4 +1,3 @@
-import { progress } from "motion/react";
 
 export const physicsChapters = {
   paper1: {
@@ -45,6 +44,35 @@ export const physicsChapters = {
           { id: "14", subChapter: "Revision Questions for Chapter 2", progress: 0, icon: "phy_ques" },
         ],
       },
+
+      {
+        name: "PARTICLE MODEL OF MATTER",
+        icon: "phy_matter",
+        progress: 10,
+        data: [
+          { id: "1", subChapter: "Density of Materials", progress: 0, icon: "phy_density_materials" },
+          { id: "2", subChapter: "Internal Energy and Changes of State", progress: 0, icon: "phy_internal_energy" },
+          { id: "3", subChapter: "Specific Latent Heat", progress: 0, icon: "phy_specific_latent" },
+          { id: "4", subChapter: "Particle Motion in Gases", progress: 0, icon: "phy_particle_motion" },
+          { id: "5", subChapter: "Revision Questions for Chapter 3", progress: 0, icon: "phy_ques" }
+        ],
+      },
+      {
+        name: "ATOMIC STRUCTURE",
+        icon: "phy_atom",
+        progress: 10,
+        data: [
+          { id: "1", subChapter: "Developing the Model of the Atom", progress: 0, icon: "phy_model_atom" },
+          { id: "2", subChapter: "Isotopes and Nuclear Radiation", progress: 0, icon: "phy_isotopes_nuclear" },
+          { id: "3", subChapter: "Nuclear Equations", progress: 0, icon: "phy_nuclear_equations" },
+          { id: "4", subChapter: "Half-Life", progress: 0, icon: "phy_half_life" },
+          { id: "5", subChapter: "Background Radiation and Contamination", progress: 0, icon: "phy_radiation_contamination" },
+          { id: "6", subChapter: "Uses and Risks", progress: 0, icon: "phy_uses_risks" },
+          { id: "7", subChapter: "Fission and Fusion", progress: 0, icon: "phy_fission_fusion" },
+          { id: "8", subChapter: "Revision Questions for Chapter 4", progress: 0, icon: "phy_ques" }
+        ],
+      },
+
     ],
   },
 

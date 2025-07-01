@@ -2,7 +2,7 @@ import CustomButton from "@/components/global/CustomButton"
 
 const CustomerService = () => {
     return (
-        <section className="bg-primary-bg-color py-20 px-6 md:px-10 2xl:px-[135px]">
+        <section className=" bg-background py-20 px-6 md:px-10 2xl:px-[135px]">
 
             <div className="max-w-[1170px] w-full bg-secondary-bg-color mx-auto p-6 md:p-10 flex flex-col lg:flex-row items-center lg:justify-between text-white rounded-3xl">
 

@@ -1,6 +1,6 @@
 "use client"
 import { setCookie as setClientCookie } from '@/lib/cookies/cookies-client'
-import type { AuthParentsResponse, AuthStudentsResponse, SignInStudentsDto, User } from '@/types/auth'
+import type { AuthStudentsResponse, SignInStudentsDto, User } from '@/types/auth'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { AuthService } from '../services/AuthService'
 
@@ -24,7 +24,8 @@ export function useSignInStudents() {
       setClientCookie('token', token, { expires: rememberMe ? 7 : undefined })
 
       const storage = rememberMe ? localStorage : sessionStorage
-      storage.setItem('currentStudents', JSON.stringify(user))
+      
+      storage.setItem('currentUser', JSON.stringify(user))
     },
   })
 }

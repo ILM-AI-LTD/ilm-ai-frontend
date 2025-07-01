@@ -76,7 +76,7 @@ const PricingCard = ({
         "w-full flex flex-col justify-between mx-auto sm:mx-0",
         "border border-transparent transition-colors duration-200",
         "[&:has(.btn-hover:hover)]:border-brand-color",
-        "bg-primary-bg-color text-white p-6 gap-6"
+        " bg-background text-white p-6 gap-6"
       )}
     >
       <div className="flex flex-col gap-6">
@@ -193,7 +193,7 @@ const PricingCard = ({
       <CardFooter className="flex flex-col gap-3 p-0">
 
         <CustomButton
-          className={`btn-hover inline-flex h-12 w-full items-center justify-center rounded-full bg-primary-bg-color text-white font-bold hover:bg-[#007AAC] hover:text-white border-1 border-brand-color `}
+          className={`btn-hover inline-flex h-12 w-full items-center justify-center rounded-full  bg-background text-white font-bold hover:bg-[#007AAC] hover:text-white border-1 border-brand-color `}
           label={actionLabel}
           variant='outline'
         // disabled={isPending || isCurrentSubscription}

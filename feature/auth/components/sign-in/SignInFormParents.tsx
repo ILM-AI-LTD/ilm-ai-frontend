@@ -96,11 +96,11 @@ const SignInFormParents = () => {
                         onChange={handleChange}
                         className="size-4 rounded-full"
                     />
-                    <label htmlFor="remember-me" className="text-base text-label-color mb-1">Keep me logged in</label>
+                    <label htmlFor="remember-me" className="text-base text-muted-foreground mb-1">Keep me logged in</label>
                 </div>
 
                 <Link href="/auth/reset-password">
-                    <p className="text-base text-brand-color hover:text-brand-color font-semibold">Forgot password?</p>
+                    <p className="text-base text-primary hover:text-primary/80 font-semibold">Forgot password?</p>
                 </Link>
             </div>
 

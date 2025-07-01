@@ -1,7 +1,5 @@
-/* @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap'); */
 @import "tailwindcss";
 @import "tw-animate-css";
-
 
 @custom-variant dark (&:is(.dark *));
 
@@ -64,52 +62,48 @@
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
 
-  /* custom colors */
-  --color-primary-bg-color: var(--primary-bg-color);
-  --color-secondary-bg-color: var(--secondary-bg-color);
-  --color-primary-font-color: var(--primary-font-color);
-  --color-label-color: var(--label-color);
-  --color-border-color: var(--border-color);
-  --color-button-disabled-color: var(--button-disabled-color);
-  --color-brand-color: var(--brand-color);
-  --color-faq-border-color: var(--faq-border-color);
-  --color-brand-color-parent: var(--brand-color-parent);
-  --color-parent-chatbox-color: var(--parent-chatbox-color);
-  --color-parent-inputField-color: var(--parent-inputField-color);
-  --color-button-color: var(--button-color);
-  --color-button-shadow-color: var(--button-shadow-color);
-  --color-button-hover-color: var(--button-hover-color);
-  --color-button-shadow-hover-color: var(--button-shadow-hover-color);
-  --color-card-border-color: var(--card-border-color);
-  --color-profile-dropdown-card: var(--profile-dropdown-card);
+  --color-secondary-button: var(--secondary-button);
 }
 
 :root {
   --radius: 0.625rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
-  --card: oklch(1 0 0);
+
+  --background: #fefefe;
+  --foreground: #202020;
+
+  --card: #f7f7f7;
   --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
+
+  --popover: #f7f7f7;
+  --popover-foreground: #202020;
+
+  --primary: #005e83;
+  --primary-foreground: #ffffff;
+
+  --secondary: #f7f7f7;
+  --secondary-foreground: #202020;
+
   --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
+  --muted-foreground: #858d9d;
+
   --accent: oklch(0.97 0 0);
   --accent-foreground: oklch(0.205 0 0);
+
   --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
+
+  --border: #d2d2d2;
+
   --input: oklch(0.922 0 0);
+
   --ring: oklch(0.708 0 0);
+
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
   --chart-4: oklch(0.828 0.189 84.429);
   --chart-5: oklch(0.769 0.188 70.08);
-  --sidebar: oklch(0.985 0 0);
+
+  --sidebar: #f7f7f7;
   --sidebar-foreground: oklch(0.145 0 0);
   --sidebar-primary: oklch(0.205 0 0);
   --sidebar-primary-foreground: oklch(0.985 0 0);
@@ -118,66 +112,49 @@
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
 
-  /* sidebar */
-  /* --sidebar: #0f172a; */
-  --sidebar: #060B1A;
-  --sidebar-foreground: #fff;
-  --sidebar-primary: hsl(240 5.9% 10%);
-  --sidebar-primary-foreground: hsl(0 0% 98%);
-  --sidebar-accent: hsl(240 4.8% 95.9%);
-  --sidebar-accent-foreground: hsl(240 5.9% 10%);
-  --sidebar-border: hsl(220 13% 91%);
-  --sidebar-ring: hsl(217.2 91.2% 59.8%);
-  /* custom colors */
-  /* --primary-bg-color: #020617; */
-  --primary-bg-color: #0B0E18;
-  --secondary-bg-color: #0f172a;
-  --primary-font-color: #ffffff;
-  --label-color: #818898;
-  --button-disabled-color: #848688;
-  --border-color: #525874;
-  --brand-color: #005E83;
-  --faq-border-color: #20294c;
-  --brand-color-parent: #4b2700;
-  --parent-chatbox-color: #7c4202;
-  --parent-inputField-color: #82521c;
-  --button-color: #005E83;
-  --button-shadow-color: #004F6E;
-  --button-hover-color: #017AAA;
-  --button-shadow-hover-color: #006D98;
-  --card-border-color: #393E55;
-  --profile-dropdown-card: #0F1321;
+  --secondary-button: #e8e8e8;
 
   /* custom font */
   --font-geist-sans: Inter, sans-serif;
-  /* --font-eb-garamond: "EB Garamond"; */
 }
 
 .dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.205 0 0);
+  --background: #0b0e18;
+  --foreground: #ffffff;
+
+  --card: #0f1321;
   --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.205 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.922 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
+
+  --popover: #0f1321;
+  --popover-foreground: #f6f6f6;
+
+  --primary: #005e83;
+  --primary-foreground: #ffffff;
+
+  --secondary: #0f1321;
+  --secondary-foreground: #f6f6f6;
+
   --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
+  --muted-foreground: #858d9d;
+
   --accent: oklch(0.269 0 0);
   --accent-foreground: oklch(0.985 0 0);
+
   --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
+
+  --border: #393e55;
+
   --input: oklch(1 0 0 / 15%);
+
   --ring: oklch(0.556 0 0);
+
   --chart-1: oklch(0.488 0.243 264.376);
   --chart-2: oklch(0.696 0.17 162.48);
   --chart-3: oklch(0.769 0.188 70.08);
   --chart-4: oklch(0.627 0.265 303.9);
   --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.205 0 0);
+
+  --sidebar: #0f1321;
   --sidebar-foreground: oklch(0.985 0 0);
   --sidebar-primary: oklch(0.488 0.243 264.376);
   --sidebar-primary-foreground: oklch(0.985 0 0);
@@ -186,36 +163,8 @@
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.556 0 0);
 
-  /* sidebar */
-  --sidebar: #0f172a;
-  --sidebar-foreground: #fff;
-  --sidebar-primary: hsl(224.3 76.3% 48%);
-  --sidebar-primary-foreground: hsl(0 0% 100%);
-  --sidebar-accent: hsl(240 3.7% 15.9%);
-  --sidebar-accent-foreground: hsl(240 4.8% 95.9%);
-  --sidebar-border: hsl(240 3.7% 15.9%);
-  --sidebar-ring: hsl(217.2 91.2% 59.8%);
+  --secondary-button: #020617;
 
-  /* custom colors */
-  /* --primary-bg-color: #020617; */
-  --primary-bg-color: #0B0E18;
-  --secondary-bg-color: #0f172a;
-  --primary-font-color: #ffffff;
-  --label-color: #818898;
-  --button-disabled-color: #848688;
-  --border-color: #525874;
-  --brand-color: #19bdff;
-  --faq-border-color: #20294c;
-  --brand-color-parent: #4b2700;
-  --parent-chatbox-color: #7c4202;
-  --parent-inputField-color: #82521c;
-  --button-color: #005E83;
-  --button-shadow-color: #004F6E;
-  --button-hover-color: #017AAA;
-  --button-shadow-hover-color: #006D98;
-  --card-border-color: #393E55;
-  --font-geist-sans: Inter, sans-serif;
-  --profile-dropdown-card: #0F1321;
 }
 
 @layer base {

@@ -76,7 +76,7 @@ const ChildDetailsSection = ({ onNext, onBack }: ChildDetailsSectionProps) => {
                         onBlur={handleBlur}
                         errors={errors.fullName as any}
                         touched={!!touched.fullName}
-                        className='h-12 bg-brand-color border-0 placeholder:text-white/60'
+                        className='h-12 bg-primary border-0 placeholder:text-white/60'
                     />
                     <InputField
                         placeholder="Enter your child's username"
@@ -88,7 +88,7 @@ const ChildDetailsSection = ({ onNext, onBack }: ChildDetailsSectionProps) => {
                         onBlur={handleBlur}
                         errors={errors.username as any}
                         touched={!!touched.username}
-                        className='h-12 bg-brand-color border-0 placeholder:text-white/60'
+                        className='h-12 bg-primary border-0 placeholder:text-white/60'
                     />
                     <CustomSelect
                         label="Age Group"
@@ -118,7 +118,7 @@ const ChildDetailsSection = ({ onNext, onBack }: ChildDetailsSectionProps) => {
                         onBlur={handleBlur}
                         errors={errors.password as any}
                         touched={!!touched.password}
-                        className='h-12 bg-brand-color border-0 placeholder:text-white/60'
+                        className='h-12 bg-primary border-0 placeholder:text-white/60'
                     />
                     <InputField
                         placeholder={"\u2022  \u2022  \u2022  \u2022  \u2022  \u2022  \u2022  \u2022"}
@@ -130,7 +130,7 @@ const ChildDetailsSection = ({ onNext, onBack }: ChildDetailsSectionProps) => {
                         onBlur={handleBlur}
                         errors={errors.confirmPassword && errors.confirmPassword.length > 0 ? errors.confirmPassword[0] : undefined}
                         touched={touched.confirmPassword}
-                        className='h-12 bg-brand-color border-0 placeholder:text-white/60'
+                        className='h-12 bg-primary border-0 placeholder:text-white/60'
                     />
                 </form>
 

@@ -2,8 +2,8 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { DropdownMenu, DropdownMenuCheckboxItem, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuSub, DropdownMenuSubContent, DropdownMenuSubTrigger, DropdownMenuTrigger } from '@/components/ui/dropdown-menu'
 import { SidebarTrigger } from '@/components/ui/sidebar'
 import { Bolt, ChevronsUpDown, ExternalLink, Filter, LogOut, Settings2, SunDim, User } from 'lucide-react'
-import ButtonsWithBadge from './ButtonWithBadge'
 import { useEffect, useState } from 'react'
+import ButtonsWithBadge from './ButtonWithBadge'
 
 const ParentsNavbar = () => {
 
@@ -26,7 +26,7 @@ const ParentsNavbar = () => {
     }, []);
 
     return (
-        <nav className='h-24 bg-primary-bg-color flex items-center justify-between z-10 px-6'>
+        <nav className='h-24  bg-background flex items-center justify-between z-10 px-6'>
             <SidebarTrigger className="-ml-1" />
 
             <div className="flex flex-row gap-4">
@@ -56,7 +56,7 @@ const ParentsNavbar = () => {
                             <ChevronsUpDown className="ml-6 h-4 w-4 text-muted-foreground" />
                         </div>
                     </DropdownMenuTrigger>
-                    <DropdownMenuContent className="mt-2 w-72 bg-primary-bg-color text-white">
+                    <DropdownMenuContent className="mt-2 w-72  bg-background text-white">
                         <DropdownMenuItem className="py-3">
                             <Avatar>
                                 <AvatarImage src="https://github.com/shadcn.png" />
