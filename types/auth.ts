@@ -39,7 +39,7 @@ export type AuthStudentsResponse = {
   status: string;
   message: string;
   data: {
-    child: Child;
+    user: Child;
     token: string;
   };
 };

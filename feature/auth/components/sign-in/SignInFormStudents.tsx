@@ -41,12 +41,11 @@ const SignInFormStudents = () => {
           },
           {
             onSuccess: (res) => {
-              const { hasCountryBoard, country, board } = res.data.child;
+              const { hasCountryBoard, country, board } = res.data.user;
               toast.success("Successfully Logged In.");
               action.resetForm();
               //TODO: redirect to appropriate page based on student workflow
               if (hasCountryBoard) {
-                console.log("res.data.child-----------", res.data.child);
 
                 const matchedCountry = countries.find(
                   (c) => country === c.label
