@@ -11,10 +11,10 @@ import {
   DropdownMenuTrigger
 } from "@/components/ui/dropdown-menu";
 import { boards, countries } from "@/constants/Helpers";
+import { useSignOut } from "@/feature/auth/hooks/useSignOut";
 import { BoardResponse, CountryResponse } from "@/types/student";
 import { AvatarImage } from "@radix-ui/react-avatar";
 import {
-  ChevronDown,
   ChevronsUpDown,
   Globe,
   LayoutDashboard,
@@ -23,6 +23,7 @@ import {
   User
 } from "lucide-react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 interface Props {
@@ -62,7 +63,7 @@ const ComplexDropdownMenu = ({ role }: Props) => {
         console.error('Failed to parse saved Board', e);
       }
     }
-    const savedUser = localStorage.getItem('currentUser');
+    const savedUser = localStorage.getItem('currentUser') || sessionStorage.getItem('currentUser');
     if (savedUser) {
       try {
         setUser(JSON.parse(savedUser));
@@ -71,6 +72,14 @@ const ComplexDropdownMenu = ({ role }: Props) => {
       }
     }
   }, []);
+
+  const router = useRouter()
+  const { signOut } = useSignOut()
+
+  const handleLogout = () => {
+    signOut()
+    router.push('/auth/sign-in')
+  }
 
   return (
     <DropdownMenu>
@@ -167,7 +176,7 @@ const ComplexDropdownMenu = ({ role }: Props) => {
             <DropdownMenuSeparator />
           </>
         )}
-        <DropdownMenuItem className="cursor-pointer">
+        <DropdownMenuItem className="cursor-pointer" onClick={handleLogout}>
           <LogOut className="mr-1" /> Log out
         </DropdownMenuItem>
       </DropdownMenuContent>
