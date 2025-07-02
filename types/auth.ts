@@ -6,7 +6,7 @@ export type User = {
 };
 
 export type Child = {
-  _id: string;
+  id: string;
   fullName: string;
   username: string;
   parentName: string;

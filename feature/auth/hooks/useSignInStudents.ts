@@ -21,14 +21,16 @@ export function useSignInStudents() {
   return useMutation<AuthStudentsResponse, Error, SignInStudentsVariables>({
     mutationFn: ({ data }) => AuthService.signInStudents(data),
     onSuccess: (res, { rememberMe }) => {
-      const { user, token } = res.data;
 
-      qc.setQueryData<Child>(["currentStudents"], user);
+      const { user, token } = res.data
+
+      qc.setQueryData<Child>(['currentStudents'], user)
 
       setClientCookie("token", token, { expires: rememberMe ? 7 : undefined });
 
-      const storage = rememberMe ? localStorage : sessionStorage;
-      storage.setItem("currentStudents", JSON.stringify(user));
+      const storage = rememberMe ? localStorage : sessionStorage
+      
+      storage.setItem('currentUser', JSON.stringify(user))
     },
   });
 }

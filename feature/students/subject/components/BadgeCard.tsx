@@ -12,14 +12,14 @@ export function BadgeCard({ subject, progress }: Props) {
 
 
     return (
-        <Card className="max-w-[320px] w-full p-3 md:p-6 rounded-[20px] flex flex-col gap-6 border border-card-border-color bg-primary-bg-color shadow-none">
+        <Card className="max-w-[320px] w-full p-3 md:p-6 rounded-[20px] flex flex-col gap-6 border bg-secondary">
 
             <CardHeader className="flex flex-col justify-center items-center">
-                <p className='text-2xl text-white flex items-center font-bold'>Badge</p>
+                <p className='text-2xl text-foreground flex items-center font-bold'>Badge</p>
             </CardHeader>
 
             <CardContent>
-                <div className=' bg-[#020617] p-11 rounded-full text-white shadow-md flex flex-col items-center gap-4 group'>
+                <div className='p-11 rounded-full text-foreground shadow-md flex flex-col items-center gap-4 group'>
                     <div className="relative size-20 group-hover:scale-105 transition-transform">
                         <Image
                             src="/subject/badge.svg"

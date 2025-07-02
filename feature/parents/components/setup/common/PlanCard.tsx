@@ -15,7 +15,7 @@ const PlanCard = ({ Icon, title, isSelected = false, onClick }: PlanCardProps) =
     return (
         <Card
             onClick={onClick}
-            className={`cursor-pointer bg-primary-bg-color max-w-[450px] w-full h-full flex flex-col items-center justify-center py-6 px-16 border-1 hover:scale-101 transform duration-300 border-parent-chatbox-color shadow-parent-chatbox-color shadow-md`}
+            className={`cursor-pointer  bg-background max-w-[450px] w-full h-full flex flex-col items-center justify-center py-6 px-16 border-1 hover:scale-101 transform duration-300 border-parent-chatbox-color shadow-parent-chatbox-color shadow-md`}
         >
             <Icon color={fillColor} />
 

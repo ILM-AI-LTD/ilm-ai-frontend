@@ -1,9 +1,9 @@
 'use client'
 
 import { useState } from 'react';
+import PricingCard from './PricingCard';
 import PricingSwitch from './PricingSwitch';
 import plans from './data';
-import PricingCard from './PricingCard';
 
 const SubscriptionSection = () => {
 
@@ -13,7 +13,7 @@ const SubscriptionSection = () => {
 
 
     return (
-        <section className='bg-primary-bg-color w-full flex flex-col items-center justify-center py-20 px-6 md:px-10 2xl:px-[135px] gap-8'>
+        <section className=' bg-background w-full flex flex-col items-center justify-center py-20 px-6 md:px-10 2xl:px-[135px] gap-8'>
 
             <div className='max-w-[1170px] w-full bg-secondary-bg-color rounded-3xl py-16 px-4 md:px-6  text-white flex flex-col items-center gap-8'>
 

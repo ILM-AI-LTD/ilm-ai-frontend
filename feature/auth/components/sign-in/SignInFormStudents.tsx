@@ -17,7 +17,7 @@ const SignInFormStudents = () => {
     signInStudents: { mutate: handleSignInStudents, isPending, error },
   } = useAuth();
 
-  const { country, board, setCountry, setBoard } = useStudentSetupStore();
+  const { setCountry, setBoard } = useStudentSetupStore();
 
   const { values, errors, touched, handleSubmit, handleChange, handleBlur } =
     useFormik({
@@ -44,7 +44,6 @@ const SignInFormStudents = () => {
               const { hasCountryBoard, country, board } = res.data.user;
               toast.success("Successfully Logged In.");
               action.resetForm();
-              //TODO: redirect to appropriate page based on student workflow
               if (hasCountryBoard) {
 
                 const matchedCountry = countries.find(
@@ -55,7 +54,6 @@ const SignInFormStudents = () => {
                 const matchedBoard = boards.find((b) => board === b.name);
                 setBoard(matchedBoard || null);
                 router.push("/student/home");
-                //TODO: redirect to dashboard
               } else {
                 router.push("/student/setup");
               }
@@ -102,23 +100,18 @@ const SignInFormStudents = () => {
         />
       </div>
 
-      <div className="flex justify-between items-center">
-        <div className="flex items-center gap-2">
-          <input
-            type="checkbox"
-            name="rememberMe"
-            checked={values.rememberMe}
-            onChange={handleChange}
-            className="size-4 rounded-full"
-          />
-          <label
-            htmlFor="remember-me"
-            className="text-base text-label-color mb-1"
-          >
-            Keep me logged in
-          </label>
-        </div>
-      </div>
+            <div className="flex justify-between items-center">
+                <div className="flex items-center gap-2">
+                    <input
+                        type="checkbox"
+                        name="rememberMe"
+                        checked={values.rememberMe}
+                        onChange={handleChange}
+                        className="size-4 rounded-full"
+                    />
+                    <label htmlFor="remember-me" className="text-base text-muted-foreground mb-1">Keep me logged in</label>
+                </div>
+            </div>
 
       <CustomButton
         label="Sign In"

@@ -11,6 +11,7 @@ import dedent from 'dedent';
 import { Bot, MessageSquare, Send, X } from 'lucide-react';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar';
+import { useTheme } from 'next-themes';
 
 interface Message {
     text: string;
@@ -21,7 +22,6 @@ interface Message {
 interface ChatbotWidgetProps {
     position?: 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right';
     size?: 'small' | 'medium' | 'large';
-    iconColor?: string;
     placeholder?: string;
     offset?: { x: number; y: number };
 }
@@ -29,7 +29,6 @@ interface ChatbotWidgetProps {
 function ChatbotWidget({
     position = 'bottom-right',
     size = 'medium',
-    iconColor = '#ffffff',
     placeholder = 'Type your message...',
     offset = { x: 20, y: 20 }
 }: ChatbotWidgetProps) {
@@ -68,10 +67,10 @@ function ChatbotWidget({
             if (scrollIntervalRef.current) {
                 clearInterval(scrollIntervalRef.current);
             }
-            
+
             // Set up new interval for streaming
             scrollIntervalRef.current = setInterval(scrollToBottom, 50); // Reduced frequency
-            
+
             return () => {
                 if (scrollIntervalRef.current) {
                     clearInterval(scrollIntervalRef.current);
@@ -100,7 +99,7 @@ function ChatbotWidget({
         if (input.trim() && !isStreaming) {
             const userMessageId = `user-${Date.now()}`;
             const botMessageId = `bot-${Date.now()}`;
-            
+
             // Add user message and empty bot message
             setMessages((prev) => [
                 ...prev,
@@ -313,7 +312,7 @@ function ChatbotWidget({
             print(f"Maximum height: {h_max:.2f} m")
             \`\`\`
             `);
-            
+
 
             let streamedText = '';
 
@@ -378,86 +377,81 @@ function ChatbotWidget({
         }
     };
 
+    const { theme } = useTheme();
+    const iconColor = theme === 'dark' ? 'white' : 'black';
+
     return (
         <>
             <div className="fixed z-50" style={getPositionStyle()}>
-                <Button onClick={toggleChat} size="icon" variant="ghost" className={`${getSizeClasses()} rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 hover:bg-transparent border-1 border-card-border-color px-0 py-0`}>
+                <Button onClick={toggleChat} size="icon" variant="ghost" className={`${getSizeClasses()} rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 border px-0 py-0`}>
                     {isOpen ? <X className={`${getIconSize()}`} style={{ color: iconColor }} /> : <Bot className={`${getIconSize()}`} style={{ color: iconColor }} />}
                 </Button>
             </div>
 
             {isOpen && (
-                <div className="fixed z-40 max-w-96 h-[600px]" style={getChatPositionStyle()}>
-                    <Card className="h-full flex flex-col shadow-2xl bg-primary-bg-color border-card-border-color p-4">
-                        <CardHeader className="flex flex-row items-center justify-between space-y-0 p-4 text-white">
-                            <div className="flex items-center space-x-2">
-                                <Avatar>
-                                    <AvatarImage src="https://github.com/shadcn.png" />
-                                    <AvatarFallback>CN</AvatarFallback>
-                                </Avatar>
-                                <h3 className="font-semibold text-sm">ILMI Bot</h3>
-                            </div>
-                            <Button variant="ghost" size="icon" onClick={toggleChat} className="h-4 w-4 rounded-full bg-brand-color hover:bg-brand-color p-1 cursor-pointer">
-                                <X className="size-3" />
-                            </Button>
-                        </CardHeader>
-
-                        <CardContent className="flex-1 p-0 overflow-y-hidden">
-                            <ScrollArea className="h-full" ref={scrollAreaRef}>
-                                <div className="p-4 space-y-4">
-                                    {messages.length === 0 && (
-                                        <div className="text-center text-muted-foreground py-8">
-                                            <MessageSquare className="w-12 h-12 mx-auto mb-4 opacity-50" />
-                                            <p className="text-sm">Start a conversation!</p>
-                                        </div>
-                                    )}
-                                    {messages.map((message) => (
-                                        <div key={message.id} className={`flex ${message.isUser ? 'justify-end' : 'justify-start'}`}>
-                                            {message.isUser ? (
-                                                <Badge variant="default" className="bg-brand-color rounded-none rounded-l-lg rounded-br-lg max-w-xs lg:max-w-md px-4 py-2 text-sm whitespace-pre-wrap h-auto text-white">
-                                                    {message.text}
-                                                </Badge>
-                                            ) : (
-                                                <div className="bg-secondary-bg-color rounded-r-lg rounded-bl-lg max-w-xs lg:max-w-md overflow-x-auto px-4 py-2 h-auto">
-                                                    <MarkdownRenderer 
-                                                        content={message.text} 
-                                                        isStreaming={isStreaming && message === messages[messages.length - 1]}
-                                                    />
-                                                </div>
-                                            )}
-                                        </div>
-                                    ))}
-                                </div>
-                            </ScrollArea>
-                        </CardContent>
-
-                        <div className="border-t border-card-border-color py-4">
-                            <div className="flex space-x-2">
-                                <Input
-                                    value={input}
-                                    onChange={(e) => setInput(e.target.value)}
-                                    placeholder={placeholder}
-                                    disabled={isStreaming}
-                                    onKeyPress={(e) => {
-                                        if (e.key === 'Enter' && !e.shiftKey) {
-                                            e.preventDefault();
-                                            handleSend();
-                                        }
-                                    }}
-                                    className="border-1 border-card-border-color text-white flex-1"
-                                />
-                                <Button
-                                    onClick={handleSend}
-                                    disabled={isStreaming || !input.trim()}
-                                    size="icon"
-                                    className="border-0 h-10 bg-brand-color"
-                                >
-                                    <Send className="w-4 h-4" style={{ color: iconColor }} />
-                                </Button>
-                            </div>
+                <Card className="fixed z-40 w-[450px] h-[650px] flex flex-col  bg-background p-0" style={getChatPositionStyle()}>
+                    <CardHeader className="flex flex-row items-center justify-between text-foreground border-b pt-4">
+                        <div className="flex items-center space-x-2">
+                            <Avatar>
+                                <AvatarImage src="https://github.com/shadcn.png" />
+                                <AvatarFallback>CN</AvatarFallback>
+                            </Avatar>
+                            <h3 className="font-semibold text-sm">ILMI Bot</h3>
                         </div>
-                    </Card>
-                </div>
+                        <Button variant="ghost" size="icon" onClick={toggleChat} className="h-6 w-6 rounded-full p-1 cursor-pointer bg-secondary">
+                            <X className="size-4" />
+                        </Button>
+                    </CardHeader>
+
+                    <CardContent className="flex-1 p-0 overflow-y-hidden">
+                        <ScrollArea className="h-full" ref={scrollAreaRef}>
+                            <div className="p-2">
+                                {messages.map((message) => (
+                                    <div key={message.id} className={`flex ${message.isUser ? 'justify-end' : 'justify-start'}`}>
+                                        {message.isUser ? (
+                                            <Badge variant="default" className="bg-primary rounded-none rounded-l-lg rounded-br-lg max-w-xs lg:max-w-md px-4 py-2 text-sm whitespace-pre-wrap h-auto text-white">
+                                                {message.text}
+                                            </Badge>
+                                        ) : (
+                                            <div className="bg-secondary rounded-r-lg rounded-bl-lg max-w-xs lg:max-w-md overflow-x-auto p-4 h-auto text-foreground">
+                                                <MarkdownRenderer
+                                                    content={message.text}
+                                                    isStreaming={isStreaming && message === messages[messages.length - 1]}
+                                                />
+                                            </div>
+                                        )}
+                                    </div>
+                                ))}
+                            </div>
+                        </ScrollArea>
+                    </CardContent>
+
+                    <div className="border-t border p-4 rounded-b-xl">
+                        <div className="flex space-x-2">
+                            <Input
+                                value={input}
+                                onChange={(e) => setInput(e.target.value)}
+                                placeholder={placeholder}
+                                disabled={isStreaming}
+                                onKeyPress={(e) => {
+                                    if (e.key === 'Enter' && !e.shiftKey) {
+                                        e.preventDefault();
+                                        handleSend();
+                                    }
+                                }}
+                                className="border text-foreground flex-1"
+                            />
+                            <Button
+                                onClick={handleSend}
+                                disabled={isStreaming || !input.trim()}
+                                size="icon"
+                                className="border-0 h-10"
+                            >
+                                <Send className="w-4 h-4" />
+                            </Button>
+                        </div>
+                    </div>
+                </Card>
             )}
         </>
     );

@@ -19,14 +19,15 @@ const SignInPage = () => {
 
     return (
         <div className="w-full max-w-[500px] flex flex-col items-center gap-10">
-            <Card className="w-full p-5 md:p-10 rounded-[20px] flex flex-col gap-6 bg-secondary-bg-color border-none shadow-none">
+
+            <Card className="w-full p-5 md:p-10 rounded-[20px] flex flex-col gap-6 bg-secondary border-none shadow-none">
                 <CardHeader className="p-0 space-y-0 flex flex-col gap-6 justify-center items-center">
                     <CustomLogo logoSrc="/ilmino.svg" />
                     <div className="text-center flex flex-col gap-2">
-                        <CardTitle className="text-2xl font-semibold text-primary-font-color">
+                        <CardTitle className="text-2xl font-semibold text-foreground">
                             Log In as a {role === "students" ? "Student" : "Parent"}
                         </CardTitle>
-                        <CardDescription className="font-normal text-base text-label-color">
+                        <CardDescription className="font-normal text-base text-muted-foreground">
                             Enter your details to login
                         </CardDescription>
                     </div>
@@ -40,7 +41,6 @@ const SignInPage = () => {
                             label="Parents"
                             onClick={() => setRole("parents")}
                             active={role === "parents"}
-                            variant="outline"
                             className="h-9 font-bold text-sm rounded-full px-8 py-6"
                         />
 
@@ -48,7 +48,6 @@ const SignInPage = () => {
                             label="Students"
                             onClick={() => setRole("students")}
                             active={role === "students"}
-                            variant="outline"
                             className="h-9 font-bold text-sm rounded-full px-8 py-6"
                         />
                     </div>
@@ -58,9 +57,9 @@ const SignInPage = () => {
                 </CardContent>
             </Card>
 
-            <p className="text-primary-font-color">
+            <p className="text-foreground font-bold">
                 Don’t have an account?{" "}
-                <Link href="/auth/sign-up" className="text-brand-color">
+                <Link href="/auth/sign-up" className="text-primary hover:text-primary/80">
                     Sign Up
                 </Link>{" "}
                 here

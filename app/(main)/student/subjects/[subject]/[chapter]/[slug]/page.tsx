@@ -47,8 +47,7 @@ export default function Page() {
       <ChatbotWidget
         position="bottom-right"
         size="small"
-        iconColor="#ffffff"
-        placeholder="Type your message..."
+        placeholder="Ask what's on your mind"
         offset={{ x: 20, y: 20 }}
       />
     </div>

@@ -20,7 +20,7 @@ export function NavigationCard() {
   };
 
   return (
-    <Card className="max-w-[320px] w-full p-3 md:p-6 rounded-[20px] flex flex-col gap-6 border border-card-border-color bg-primary-bg-color">
+    <Card className="max-w-[320px] w-full p-3 md:p-6 rounded-[20px] flex flex-col gap-6 border bg-secondary ">
 
       <CardHeader className="p-0 space-y-0 flex flex-col gap-6 justify-center items-center">
         <Image
@@ -37,7 +37,6 @@ export function NavigationCard() {
             label="Paper 1"
             onClick={() => setSelectedPaper("paper1")}
             active={selectedPaper === "paper1"}
-            variant="outline"
             className={`text-lg transition-all duration-300 ease-in-out`}
           />
 
@@ -45,7 +44,6 @@ export function NavigationCard() {
             label="Paper 2"
             onClick={() => setSelectedPaper("paper2")}
             active={selectedPaper === "paper2"}
-            variant="outline"
             className={`text-lg transition-all duration-300 ease-in-out`}
           />
         </div>
@@ -53,10 +51,10 @@ export function NavigationCard() {
         {current.chapters.map((chapter, index) => (
           <div key={index} className="flex gap-6 mb-4">
             <div>
-              <IconComponent iconName={chapter.icon} width={24} height={24} />
+              <IconComponent iconName={chapter.icon} width={20} height={20} />
             </div>
             <div
-              className="text-white font-bold cursor-pointer"
+              className="text-foreground font-bold cursor-pointer"
               onClick={() => scrollToMainChapter(chapter.name)}
             >
               {chapter.name}

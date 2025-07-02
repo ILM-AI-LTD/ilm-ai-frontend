@@ -23,13 +23,15 @@ const FooterStudents: React.FC<FooterStudentsProps> = ({
     const justifyClass = leftButton ? 'justify-between' : 'justify-end';
 
     return (
-        <div className={`flex items-center border-t-1 border-button-hover-color ${justifyClass} py-6 bg-transparent ${className}`}>
+        <div className={`flex items-center
+         ${justifyClass} py-6 bg-transparent ${className}`}>
             {leftButton && (
                 <CustomButton
                     label={leftButton.label}
                     onClick={leftButton.onClick}
                     disabled={leftButton.disabled}
-                    className="h-[52px] bg-button-color text-white py-2 px-8 font-bold text-base rounded-full hover:bg-button-hover-color disabled:opacity-50 shadow-[0px_8px_0px_0px_#004F6E] hover:shadow-[0px_8px_0px_0px_#006D98]"
+                    active={false}
+                    className="h-[52px] py-2 px-8 font-bold text-base rounded-full disabled:opacity-50"
 
                 />
             )}
@@ -39,7 +41,7 @@ const FooterStudents: React.FC<FooterStudentsProps> = ({
                 onClick={rightButton.onClick}
                 disabled={rightButton.disabled}
                 isLoading={rightButton.isPending}
-                className="h-[52px] bg-button-color text-white py-2 px-8 font-bold text-base rounded-full hover:bg-button-hover-color disabled:opacity-50 shadow-[0px_8px_0px_0px_#004F6E] hover:shadow-[0px_8px_0px_0px_#006D98]"
+                className="h-[52px] py-2 px-8 font-bold text-base rounded-full disabled:opacity-50"
 
             />
         </div>
