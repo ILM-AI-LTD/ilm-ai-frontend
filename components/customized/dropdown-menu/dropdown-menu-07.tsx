@@ -53,7 +53,7 @@ const ComplexDropdownMenu = ({ role }: Props) => {
           setCountry(matchedCountry || null);
           toast.success("Country updated successfully");
           queryClient.invalidateQueries({ queryKey: ["studentCountryBoard"] });
-          
+
         },
         onError: () => {
           toast.error("Failed to update country");
@@ -81,6 +81,8 @@ const ComplexDropdownMenu = ({ role }: Props) => {
     );
   };
 
+
+  console.log(user)
   useEffect(() => {
     const savedUser = localStorage.getItem('currentUser') || sessionStorage.getItem('currentUser');
     if (savedUser) {
@@ -112,7 +114,7 @@ const ComplexDropdownMenu = ({ role }: Props) => {
         <div className="flex items-center gap-2">
           <div className="text-start flex flex-col">
             <p className="text-md font-semibold text-secondary-foreground">{user?.name}</p>
-            <p className="text-sm font-medium text-muted-foreground">myworkspace.slack.com</p>
+            <p className="text-sm font-medium text-muted-foreground">{user?.email || user?.username}</p>
           </div>
           <ChevronsUpDown className="text-muted-foreground" />
         </div>
