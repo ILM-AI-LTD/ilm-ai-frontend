@@ -78,8 +78,6 @@ const HeroSectionv2 = () => {
             alt={"image"}
             height={288}
             width={1920}
-            // className="h-[601px] w-[1920px]"
-            // fill
             className="object-content rounded-t-4xl"
           /> */}
           <Image
