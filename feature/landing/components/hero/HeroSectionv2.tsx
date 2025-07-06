@@ -70,19 +70,35 @@ const HeroSectionv2 = () => {
             Free Trial
           </button>
         </div>
-        <div className="bg-gradient-to-b from-[#3389AD4D] border-3 border-[#1B2130] rounded-t-4xl p-4 relative overflow-hidden fade-bottom">
-          <div className="bg-secondary-background rounded-4xl p-4 overflow-hidden fade-bottom">
-            {/* <div style={{ position: "relative", height: "100%" }}> */}
-            <Image
-              src={"/landing/cover.png"}
-              alt={"image"}
-              height={288}
-              width={1920}
-              // className="h-[601px] w-[1920px]"
-              // fill
-              className="object-content"
-            />
-          </div>
+        <div className="bg-gradient-to-b from-[#3389AD4D] border-3 border-bg-border rounded-t-4xl px-4 pt-4 relative overflow-hidden fade-bottom">
+          {/* <div className="bg-secondary-background rounded-4xl p-4 overflow-hidden fade-bottom"> */}
+          {/* <div style={{ position: "relative", height: "100%" }}> */}
+          {/* <Image
+            src={"/landing/cover.png"}
+            alt={"image"}
+            height={288}
+            width={1920}
+            // className="h-[601px] w-[1920px]"
+            // fill
+            className="object-content rounded-t-4xl"
+          /> */}
+          <Image
+            src="/landing/cover_light2.png"
+            alt="light image"
+            width={1920}
+            height={288}
+            className="block dark:hidden object-content rounded-t-4xl"
+          />
+
+          {/* Dark mode image */}
+          <Image
+            src="/landing/cover_dark2.png"
+            alt="dark image"
+            width={1920}
+            height={288}
+            className="hidden dark:block object-content rounded-t-4xl"
+          />
+          {/* </div> */}
         </div>
       </div>
     </section>

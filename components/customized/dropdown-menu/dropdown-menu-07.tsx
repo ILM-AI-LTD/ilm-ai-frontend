@@ -42,18 +42,15 @@ const ComplexDropdownMenu = ({ role }: Props) => {
   const { country, board, setCountry, setBoard } = useStudentSetupStore();
 
   const handleSelectCountry = (value: CountryResponse) => {
-
     completeSetup(
       { id: user.id, country: value.label, board: board?.name || "" },
       {
         onSuccess: (res) => {
-
           const { country } = res.data.child;
           const matchedCountry = countries.find((c) => country === c.label);
           setCountry(matchedCountry || null);
           toast.success("Country updated successfully");
           queryClient.invalidateQueries({ queryKey: ["studentCountryBoard"] });
-          
         },
         onError: () => {
           toast.error("Failed to update country");
@@ -82,7 +79,9 @@ const ComplexDropdownMenu = ({ role }: Props) => {
   };
 
   useEffect(() => {
-    const savedUser = localStorage.getItem('currentUser') || sessionStorage.getItem('currentUser');
+    const savedUser =
+      localStorage.getItem("currentUser") ||
+      sessionStorage.getItem("currentUser");
     if (savedUser) {
       try {
         setUser(JSON.parse(savedUser));
@@ -92,13 +91,13 @@ const ComplexDropdownMenu = ({ role }: Props) => {
     }
   }, []);
 
-  const router = useRouter()
-  const { signOut } = useSignOut()
+  const router = useRouter();
+  const { signOut } = useSignOut();
 
   const handleLogout = () => {
-    signOut()
-    router.push('/auth/sign-in')
-  }
+    signOut();
+    router.push("/auth/sign-in");
+  };
 
   return (
     <DropdownMenu>
@@ -111,15 +110,18 @@ const ComplexDropdownMenu = ({ role }: Props) => {
         </Avatar>
         <div className="flex items-center gap-2">
           <div className="text-start flex flex-col">
-            <p className="text-md font-semibold text-secondary-foreground">{user?.name}</p>
-            <p className="text-sm font-medium text-muted-foreground">myworkspace.slack.com</p>
+            <p className="text-md font-semibold text-secondary-foreground">
+              {user?.name}
+            </p>
+            <p className="text-sm font-medium text-muted-foreground">
+              {user.username}
+            </p>
           </div>
           <ChevronsUpDown className="text-muted-foreground" />
         </div>
       </DropdownMenuTrigger>
 
       <DropdownMenuContent className="mt-2 w-56">
-
         <DropdownMenuItem className="py-3">
           <p className="font-semibold">My Account</p>
         </DropdownMenuItem>
@@ -131,7 +133,8 @@ const ComplexDropdownMenu = ({ role }: Props) => {
         </DropdownMenuItem>
 
         <DropdownMenuItem className="cursor-pointer">
-          <Settings className="mr-1" />Settings
+          <Settings className="mr-1" />
+          Settings
         </DropdownMenuItem>
 
         <DropdownMenuSeparator />
@@ -154,7 +157,9 @@ const ComplexDropdownMenu = ({ role }: Props) => {
                     <DropdownMenuCheckboxItem
                       key={index}
                       checked={country?.id === coun.id}
-                      onCheckedChange={() => handleSelectCountry(coun)} className="cursor-pointer">
+                      onCheckedChange={() => handleSelectCountry(coun)}
+                      className="cursor-pointer"
+                    >
                       <Image
                         src={coun?.image || ""}
                         width={16}
@@ -168,7 +173,6 @@ const ComplexDropdownMenu = ({ role }: Props) => {
                 </DropdownMenuSub>
               </DropdownMenuSubContent>
             </DropdownMenuSub>
-
 
             <DropdownMenuSub>
               <DropdownMenuSubTrigger className="flex items-center cursor-pointer">
@@ -186,7 +190,9 @@ const ComplexDropdownMenu = ({ role }: Props) => {
                     <DropdownMenuCheckboxItem
                       key={index}
                       checked={board?.id === b.id}
-                      onCheckedChange={() => handleSelectBoard(b)} className="cursor-pointer">
+                      onCheckedChange={() => handleSelectBoard(b)}
+                      className="cursor-pointer"
+                    >
                       {b.name}
                     </DropdownMenuCheckboxItem>
                   ))}

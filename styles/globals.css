@@ -125,6 +125,7 @@
 
   --secondary-button: #e8e8e8;
   /* --landing */
+  --fade-end-color: #ffffff;
 
   /* custom font */
   --font-geist-sans: Inter, sans-serif;
@@ -182,6 +183,7 @@
   --sidebar-ring: oklch(0.556 0 0);
 
   --secondary-button: #020617;
+  --fade-end-color: #0d111c;
 }
 
 @layer base {
@@ -254,8 +256,16 @@
   background: linear-gradient(
     to bottom,
     transparent,
-    #0d111c
+    var(--fade-end-color)
   ); /* match your background color */
   pointer-events: none;
   z-index: 10;
+}
+
+.fade-bottom-light::after {
+  background: linear-gradient(to bottom, transparent, #ffffff);
+}
+
+.fade-bottom-dark::after {
+  background: linear-gradient(to bottom, transparent, #0d111c);
 }
