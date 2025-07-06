@@ -8,7 +8,7 @@ type SubjectCardProps = {
 };
 const SubjectCard = ({ title, description, iconSrc }: SubjectCardProps) => {
   return (
-    <Card className="bg-gradient-to-t from-[#020617] border-3 border-[#1B2130] rounded-3xl py-8 px-6 justify-center items-center">
+    <Card className="bg-gradient-to-t from-[#ffffff] dark:from-[#020617] border-3 border-white dark:border-[#1b2130] rounded-3xl py-8 px-6 justify-center items-center shadow-lg">
       <Image
         src={iconSrc}
         alt={title}
@@ -19,7 +19,7 @@ const SubjectCard = ({ title, description, iconSrc }: SubjectCardProps) => {
 
       <CardTitle className="text-white text-2xl font-bold">{title}</CardTitle>
 
-      <CardDescription className="text-[#677489] text-lg text-center">
+      <CardDescription className="text-foreground-subtitle text-lg text-center">
         {description}
       </CardDescription>
     </Card>

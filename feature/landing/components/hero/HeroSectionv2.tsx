@@ -49,8 +49,8 @@ const HeroSectionv2 = () => {
         </div>
       </div> */}
 
-      <div className="max-w-[1170px] bg-secondary-background border border-border rounded-4xl px-4 pt-4 md:px-6 md:pt-6 2xl:px-20 gap-4 ">
-        <button className=" border border-bg-border text-foreground bg-transparent h-8 w-26 text-sm rounded-full cursor-pointer mt-8">
+      <div className="max-w-[1170px] bg-secondary-background border border-bg-border rounded-4xl px-4 pt-4 md:px-6 md:pt-6 2xl:px-20 gap-4 ">
+        <button className=" border border-border text-foreground bg-transparent h-8 w-26 text-sm rounded-full cursor-pointer mt-8">
           {`ILMINO ->`}
         </button>
         <h1 className="font-bold text-[min(10vw,64px)] text-foreground mb-4">

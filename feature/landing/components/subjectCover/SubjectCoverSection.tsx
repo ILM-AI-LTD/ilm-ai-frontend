@@ -3,8 +3,8 @@ import SubjectCard from "./SubjectCard";
 
 export default function SubjectCoverSection() {
   return (
-    <section className="bg-[#0F172A] w-full flex flex-col items-center justify-center py-20 px-6 md:px-10 2xl:px-[135px] gap-8">
-      <p className="text-white font-bold text-[min(10vw,36px)] text-center">
+    <section className="bg-secondary-background w-full flex flex-col items-center justify-center py-20 px-6 md:px-10 2xl:px-[135px] gap-8">
+      <p className="text-foreground font-bold text-[min(10vw,64px)] text-center">
         Explore Our <span className=" text-[#8E8E8E]">Subjects</span>
       </p>
 

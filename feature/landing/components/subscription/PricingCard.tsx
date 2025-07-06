@@ -27,6 +27,7 @@ interface PricingCardProps {
     monthly?: number;
     yearly?: number;
   };
+  idx: number;
 }
 
 // const calculateSubscriptionType = (
@@ -56,6 +57,7 @@ const PricingCard = ({
   actionLabel,
   popular,
   discountedPrice,
+  idx,
 }: // monthlyPriceId,
 // yearlyPriceId,
 PricingCardProps) => {
@@ -79,9 +81,10 @@ PricingCardProps) => {
     <Card
       className={cn(
         "w-full flex flex-col justify-between mx-auto sm:mx-0",
-        "border-3 border-[#111526] transition-colors duration-200",
+        "border-3 transition-colors duration-200",
         "[&:has(.btn-hover:hover)]:border-brand-color",
-        " bg-gradient-to-b from-[#0F172A] text-white p-6 gap-6"
+        " bg-gradient-to-b from-[#ffffff] dark:from-[#0F172A] text-foreground p-6 gap-6",
+        idx === 1 ? "border-[#006C98]" : "border-bg-border"
       )}
     >
       <div className="flex flex-col gap-6">
@@ -94,14 +97,14 @@ PricingCardProps) => {
 
               <div className="flex flex-row gap-2">
                 {popular ? (
-                  <div className="flex flex-row px-2.5 rounded-xl h-fit text-sm py-1 bg-gradient-to-r from-brand-500 to-[#FF5834] text-white">
+                  <div className="flex flex-row px-2.5 rounded-xl h-fit text-sm py-1 bg-gradient-to-r from-brand-500 to-[#FF5834] ">
                     <Zap size={12} className="mr-1 mt-1" />
                     Popular
                   </div>
                 ) : savings !== null ? (
                   <div
                     className={cn(
-                      "px-2.5 rounded-xl h-fit text-sm py-1 bg-zinc-200 text-black dark:bg-zinc-800 dark:text-white"
+                      "px-2.5 rounded-xl h-fit text-sm py-1 bg-zinc-200 text-black dark:bg-zinc-800 "
                     )}
                   >
                     Save ${savings ? savings * (isYearly ? 1 : 12) : 0}
@@ -112,7 +115,9 @@ PricingCardProps) => {
           ) : (
             <div className="flex justify-between items-center">
               <div className="flex items-center gap-2">
-                <CardTitle className="text-xl font-normal">{title}</CardTitle>
+                <CardTitle className="text-xl font-normal text-foreground">
+                  {title}
+                </CardTitle>
               </div>
 
               {popular && (
@@ -173,7 +178,7 @@ PricingCardProps) => {
             )}
           </div>
 
-          <CardDescription className="p-0 font-normal text-base text-white">
+          <CardDescription className="p-0 font-normal text-base">
             {description}
           </CardDescription>
         </CardHeader>
@@ -187,7 +192,12 @@ PricingCardProps) => {
 
       <CardFooter className="flex flex-col gap-3 p-0">
         <CustomButton
-          className={`btn-hover inline-flex h-12 w-full items-center justify-center rounded-full  bg-background text-white font-bold hover:bg-[#007AAC] hover:text-white border-1 border-brand-color `}
+          className={cn(
+            "btn-hover inline-flex h-12 w-full items-center justify-center rounded-full font-bold  text-foreground hover:bg-[#007AAC] border border-bg-border  hover:text-white",
+            idx === 1
+              ? "bg-gradient-to-b from-[#004D6C] to-[#006C98]  hover:border-0 text-white"
+              : "bg-gradient-to-b from-[#E8E8E8] dark:from-[#1D2840] dark:to-[#000000] dark:shadow-[0px_6px_0px_0px_#373C4E] "
+          )}
           label={actionLabel}
           variant="outline"
           // disabled={isPending || isCurrentSubscription}

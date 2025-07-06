@@ -3,7 +3,7 @@ import CompetitionForm from "./CompetitionForm";
 const CompetitionSection = () => {
   return (
     <section className=" bg-secondary-background w-full flex flex-col items-center justify-center py-20 px-6 md:px-10 2xl:px-[135px]">
-      <div className="max-w-[1170px] bg-background rounded-3xl py-16 p-4   text-white flex flex-col gap-8 items-center">
+      <div className="max-w-[1170px] bg-background rounded-3xl py-16 p-4 text-foreground flex flex-col gap-8 items-center">
         <div className="w-full flex flex-col gap-4 text-center">
           <p className="font-bold text-[min(10vw,64px)]">
             Join the ILM Lab Competition and{" "}
