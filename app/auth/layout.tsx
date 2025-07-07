@@ -1,4 +1,4 @@
-import ThemeToggleButton from "@/components/customized/button/button-16";
+import ThemeToggleButton from "@/components/customized/button/ThemeToggleButton";
 
 export default function AuthLayout({ children }: { children: React.ReactNode }) {
   return (
