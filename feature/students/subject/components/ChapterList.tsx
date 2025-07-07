@@ -4,10 +4,26 @@ import { AnimatedLearningPath } from '@/feature/students/subject/components/Anim
 import { usePaper } from '@/context/PaperContext';
 import Image from 'next/image';
 import { physicsChapters } from '@/feature/students/subject/constants/physics';
+import { chemistryChapters } from '../constants/chemistry';
+import { mathChapters } from '../constants/math';
+import { biologyChapters } from '../constants/biology';
 
-export function ChapterList() {
+
+interface ChapterListProps {
+    subject: 'physics' | 'chemistry' | 'math' | 'biology';
+}
+
+const subjectMap = {
+    physics: physicsChapters,
+    chemistry: chemistryChapters,
+    math: mathChapters,
+    biology: biologyChapters,
+};
+
+
+export function ChapterList({subject} : ChapterListProps) {
     const { selectedPaper } = usePaper();
-    const current = physicsChapters[selectedPaper];
+    const current = subjectMap[subject][selectedPaper];
 
     return (
         <div className='my-5'>
@@ -42,7 +58,7 @@ export function ChapterList() {
                             ))}
                         </div>
                     </div>
-                    <AnimatedLearningPath chapter={chapter} />
+                    <AnimatedLearningPath chapter={chapter} subject={subject}/>
                 </div>
             ))}
         </div>
