@@ -37,7 +37,6 @@ export interface BoardResponse {
 export type SubChapter = {
   id: string;
   subChapter: string;
-  href: string;
   progress: number;
   icon: string;
 };
@@ -62,10 +61,45 @@ export type Connection = {
 
 export type LayoutItem =
   | {
-      type: "single";
-      topicId: string;
-      hidden?: boolean;
-      className?: string;
-      top?: boolean;
-    }
+    type: "single";
+    topicId: string;
+    hidden?: boolean;
+    className?: string;
+    top?: boolean;
+  }
   | { type: "branch"; leftTopicId: string; junctionKey: string };
+
+
+export type StreamServiceParams = {
+  board: string
+  subject: string
+  paper: number
+  topic: string
+  subtopic: string
+  goal?: string
+}
+
+
+export type GetGoalsDTO = {
+  board: string
+  subject: string
+  paper: number
+  topic: string
+  subtopic: string
+}
+
+
+export interface Goals {
+  goal_name: string;
+  script_history: [];
+  is_completed: boolean;
+  is_started: boolean;
+}
+
+export interface GoalsApiResponse {
+  status: string;
+  message: string;
+  data: {
+    goals: Goals[];
+  };
+}

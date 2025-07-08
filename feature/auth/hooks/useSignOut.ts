@@ -13,6 +13,9 @@ export function useSignOut() {
         localStorage.removeItem('currentUser')
         sessionStorage.removeItem('currentUser')
 
+        localStorage.removeItem('parents-setup')
+        localStorage.removeItem('students-setup')
+
         qc.removeQueries({ queryKey: ['currentParents'] })
         qc.removeQueries({ queryKey: ['currentStudents'] })
     }

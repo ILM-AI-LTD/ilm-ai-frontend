@@ -82,7 +82,6 @@ const ComplexDropdownMenu = ({ role }: Props) => {
   };
 
 
-  console.log(user)
   useEffect(() => {
     const savedUser = localStorage.getItem('currentUser') || sessionStorage.getItem('currentUser');
     if (savedUser) {

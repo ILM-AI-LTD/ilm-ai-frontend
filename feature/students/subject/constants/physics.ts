@@ -19,8 +19,7 @@ export const physicsChapters = {
           { id: "9", subChapter: "Wind, Solar, and Geothermal", progress: 0, icon: "phy_wind_solar" },
           { id: "10", subChapter: "Hydro-electricity, Waves, and Tides", progress: 0, icon: "phy_hydro" },
           { id: "11", subChapter: "Bio-fuels and Non-renewables", progress: 0, icon: "phy_bio_fuels" },
-          { id: "12", subChapter: "Trends in Energy Resource Use", progress: 0, icon: "phy_trends_energy" },
-          { id: "13", subChapter: "Revision Questions for Chapter 1", progress: 0, icon: "phy_ques" },
+          { id: "12", subChapter: "Trends in Energy Resource Use", progress: 0, icon: "phy_trends_energy" }, 
         ],
       },
       {
@@ -41,7 +40,6 @@ export const physicsChapters = {
           { id: "11", subChapter: "The National Grid", progress: 0, icon: "phy_the_national_grid" },
           { id: "12", subChapter: "Static Electricity", progress: 0, icon: "phy_static_electricity" },
           { id: "13", subChapter: "Electric Fields", progress: 0, icon: "phy_electric_fields" },
-          { id: "14", subChapter: "Revision Questions for Chapter 2", progress: 0, icon: "phy_ques" },
         ],
       },
 
@@ -54,7 +52,6 @@ export const physicsChapters = {
           { id: "2", subChapter: "Internal Energy and Changes of State", progress: 0, icon: "phy_internal_energy" },
           { id: "3", subChapter: "Specific Latent Heat", progress: 0, icon: "phy_specific_latent" },
           { id: "4", subChapter: "Particle Motion in Gases", progress: 0, icon: "phy_particle_motion" },
-          { id: "5", subChapter: "Revision Questions for Chapter 3", progress: 0, icon: "phy_ques" }
         ],
       },
       {
@@ -69,7 +66,6 @@ export const physicsChapters = {
           { id: "5", subChapter: "Background Radiation and Contamination", progress: 0, icon: "phy_radiation_contamination" },
           { id: "6", subChapter: "Uses and Risks", progress: 0, icon: "phy_uses_risks" },
           { id: "7", subChapter: "Fission and Fusion", progress: 0, icon: "phy_fission_fusion" },
-          { id: "8", subChapter: "Revision Questions for Chapter 4", progress: 0, icon: "phy_ques" }
         ],
       },
 
@@ -97,7 +93,6 @@ export const physicsChapters = {
           { id: "11", subChapter: "Acceleration", progress: 0, icon: "globe" },
           { id: "12", subChapter: "Distance-Time and Velocity-Time Graphs", progress: 0, icon: "cloud-lightning" },
           { id: "13", subChapter: "Terminal Velocity", progress: 0, icon: "rss" },
-          { id: "14", subChapter: "Revision Questions for Chapter 1", progress: 0, icon: "file-question" },
         ],
       },
     ],

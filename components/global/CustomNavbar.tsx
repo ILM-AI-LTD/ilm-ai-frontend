@@ -1,7 +1,7 @@
 import { SidebarTrigger } from '@/components/ui/sidebar';
 
 
-import ThemeToggleButton from '../customized/button/button-16';
+import ThemeToggleButton from '../customized/button/ThemeToggleButton';
 import ComplexDropdownMenu from '../customized/dropdown-menu/dropdown-menu-07';
 import CustomLogo from './CustomLogo';
 
@@ -11,7 +11,7 @@ interface Props {
 const CustomNavbar = ({ role }: Props) => {
 
     return (
-        <nav className='h-24  bg-secondary flex items-center justify-between lg:justify-end z-10 px-6'>
+        <nav className='h-24  bg-secondary flex items-center justify-between lg:justify-end z-10 px-10'>
             <div className='lg:hidden'>
                 <CustomLogo
                     logoSrc="/ilmino.svg"

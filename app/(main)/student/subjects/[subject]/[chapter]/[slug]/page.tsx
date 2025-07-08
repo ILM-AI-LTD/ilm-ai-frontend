@@ -1,54 +1,70 @@
 'use client'
 
 import ChatbotWidget from '@/components/global/CustomChatbotWidget';
+import { usePaper } from '@/context/PaperContext';
 import GoalsCompletion from '@/feature/students/chapters-stream/components/GoalsCompletion';
+import { useGoals } from '@/feature/students/chapters-stream/hooks/useGoals';
 import { useParams } from 'next/navigation';
+import { Alert, AlertTitle, AlertDescription } from '@/components/ui/alert';
+import GoalsCompletionSkeleton from '@/feature/students/chapters-stream/components/GoalsCompletionSkeleton';
 
 export default function Page() {
   const { subject, chapter, slug } = useParams();
+  const { selectedPaper } = usePaper();
+  const paper = selectedPaper === 'paper1' ? 1 : 2;
+  const board = "AQA";
 
-  const goals = [
-    {
-      id: 1,
-      title: "State the law of conservation of energy",
-      isCompleted: true
-    },
-    {
-      id: 2,
-      title: "8 main types of energy",
-      isCompleted: true
-    },
-    {
-      id: 3,
-      title: "4 ways energy can be transferred",
-      isCompleted: false
-    },
-    {
-      id: 4,
-      title: "Show how energy converted",
-      isCompleted: true
-    },
-  ];
+  const {
+    data,
+    isLoading,
+    isError,
+    error,
+  } = useGoals({
+    board,
+    subject: subject as string,
+    paper: Number(paper),
+    topic: chapter as string,
+    subtopic: slug as string,
+  });
 
   return (
-    <div className="flex flex-row size-full p-4">
+    <div className="flex flex-row size-full px-10 py-4">
       <div className='flex-1 basis-3/4'>
-
+        {/* reserved for main content */}
       </div>
 
-      <div className='flex flex-col items-center basis-1/4'>
-        <GoalsCompletion
-          chapter={chapter as string}
-          subChapters={slug as string}
-          goals={goals}
-        />
+      <div className='flex flex-col items-end w-1/4'>
+        {isLoading && (
+          <GoalsCompletionSkeleton />
+        )}
+
+        {isError && (
+          <Alert variant="destructive">
+            <AlertTitle>Something went wrong</AlertTitle>
+            <AlertDescription>
+              {(error as Error)?.message || "Failed to load goals."}
+            </AlertDescription>
+          </Alert>
+        )}
+
+        {!isLoading && !isError && data?.data?.goals && (
+          <GoalsCompletion
+            chapter={chapter as string}
+            subChapters={slug as string}
+            goals={data.data.goals.map((goal: any, index: number) => ({
+              id: index + 1,
+              title: goal.goal_name,
+              isCompleted: goal.is_completed,
+            }))}
+          />
+        )}
       </div>
 
       <ChatbotWidget
         position="bottom-right"
         size="small"
         placeholder="Ask what's on your mind"
-        offset={{ x: 20, y: 20 }}
+        offset={{ x: 40, y: 20 }}
       />
     </div>
   );
