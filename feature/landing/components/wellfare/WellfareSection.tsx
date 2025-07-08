@@ -24,10 +24,16 @@ const WellfareSection = () => {
             {`📚 When you choose ILMINO, you're not just investing in innovation
             you're investing in a child's future.`}
           </p>
-          <CustomButton
+          {/* <CustomButton
             className={`btn-hover inline-flex h-12 w-2/4 items-center justify-center rounded-full  bg-gradient-to-b from-[#E8E8E8] dark:from-[#1D2840] dark:to-[#000000] dark:shadow-[0px_6px_0px_0px_#373C4E] text-foreground font-bold hover:bg-[#007AAC] hover:text-white border border-bg-border`}
             label={"Learn More About Our Mission"}
             variant="outline"
+          /> */}
+          <CustomButton
+            className={` inline-flex h-12 w-2/4 items-center justify-center rounded-full`}
+            label={"Learn More About Our Mission"}
+            variant="outline"
+            active={false}
           />
         </div>
       </div>

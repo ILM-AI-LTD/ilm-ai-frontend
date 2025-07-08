@@ -32,12 +32,12 @@ const SubscriptionSection = () => {
             onClick={() => {
               setIsYearly(false);
             }}
-            active={isYearly}
+            active={!isYearly}
             className={cn(
-              "h-9 font-bold text-sm rounded-full px-8 py-6 text-foreground",
-              !isYearly
-                ? "bg-gradient-to-b from-[#004D6C] to-[#006C98]  hover:border-0 text-white hover:text-white"
-                : "bg-gradient-to-b from-[#E8E8E8] dark:from-[#1D2840] dark:to-[#000000] dark:shadow-[0px_6px_0px_0px_#373C4E] "
+              "h-9 font-bold text-sm rounded-full px-8 py-6 text-foreground hover:text-white",
+              !isYearly && "text-white"
+              //   ? "bg-gradient-to-b from-[#004D6C] to-[#006C98]  hover:border-0 text-white hover:text-white"
+              //   : "bg-gradient-to-b from-[#E8E8E8] dark:from-[#1D2840] dark:to-[#000000] dark:shadow-[0px_6px_0px_0px_#373C4E] "
             )}
           />
 
@@ -46,10 +46,10 @@ const SubscriptionSection = () => {
             onClick={() => setIsYearly(true)}
             active={isYearly}
             className={cn(
-              "h-9 font-bold text-sm rounded-full px-8 py-6 text-foreground",
-              isYearly
-                ? "bg-gradient-to-b from-[#004D6C] to-[#006C98]  hover:border-0 text-white hover:text-white"
-                : "bg-gradient-to-b from-[#E8E8E8] dark:from-[#1D2840] dark:to-[#000000] dark:shadow-[0px_6px_0px_0px_#373C4E] "
+              "h-9 font-bold text-sm rounded-full px-8 py-6 text-foreground hover:text-white",
+              isYearly && "text-white"
+              //   ? "bg-gradient-to-b from-[#004D6C] to-[#006C98]  hover:border-0 text-white hover:text-white"
+              //   : "bg-gradient-to-b from-[#E8E8E8] dark:from-[#1D2840] dark:to-[#000000] dark:shadow-[0px_6px_0px_0px_#373C4E] "
             )}
           />
         </div>

@@ -38,10 +38,16 @@ const CompetitionForm = () => {
         className="placeholder:text-foreground placeholder:opacity-50"
       />
 
-      <CustomButton
+      {/* <CustomButton
         label="Join the Competition"
         className="w-full bg-gradient-to-b from-[#E8E8E8] dark:from-[#1D2840] dark:to-[#000000] dark:shadow-[0px_6px_0px_0px_#373C4E] hover:bg-[#007AAC] hover:border-0 h-14 py-4 px-8 rounded-full text-foreground"
         disabled
+      /> */}
+      <CustomButton
+        label="Join the Competition"
+        className="w-full h-14 py-4 px-8 rounded-full"
+        disabled
+        active={false}
       />
     </form>
   );

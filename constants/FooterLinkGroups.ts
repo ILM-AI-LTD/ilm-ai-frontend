@@ -5,7 +5,7 @@ export interface LinkGroup {
 
 export const linkGroups: LinkGroup[] = [
   {
-    title: "Explore ILMINO",
+    title: "Explore",
     links: [
       { label: "Home", href: "/" },
       { label: "Features", href: "/features" },

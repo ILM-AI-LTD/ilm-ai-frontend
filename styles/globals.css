@@ -65,6 +65,7 @@
   --color-secondary-button: var(--secondary-button);
   --color-secondary-background: var(--secondary-background);
   --color-foreground-subtitle: var(--foreground-subtitle);
+  --color-button-foreground: var(--button-foreground);
 
   --color-bg-border: var(--bg-border);
 }
@@ -75,6 +76,7 @@
   --background: #fefefe;
   --foreground: #202020;
   --foreground-subtitle: #677489;
+  --button-foreground: #005e83;
 
   /* --secondary-background: #f8fafb; */
   --secondary-background: #f6f6f6;
@@ -136,6 +138,7 @@
   --background: #080d17;
   --foreground: #ffffff;
   --foreground-subtitle: #677489;
+  --button-foreground: #ffffff;
 
   --secondary-background: #0e1526;
   --secondary-foreground: #ffffff;

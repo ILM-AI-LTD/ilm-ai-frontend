@@ -191,7 +191,7 @@ PricingCardProps) => {
       </div>
 
       <CardFooter className="flex flex-col gap-3 p-0">
-        <CustomButton
+        {/* <CustomButton
           className={cn(
             "btn-hover inline-flex h-12 w-full items-center justify-center rounded-full font-bold  text-foreground hover:bg-[#007AAC] border border-bg-border  hover:text-white",
             idx === 1
@@ -200,17 +200,14 @@ PricingCardProps) => {
           )}
           label={actionLabel}
           variant="outline"
-          // disabled={isPending || isCurrentSubscription}
-          // isLoading={isPending}
-          // onClick={() => {
-          //   if (!isAuthenticated) {
-          //     navigate("/signin");
-          //   } else {
-          //     console.log(isYearly ? yearlyPriceId : monthlyPriceId);
-          //     console.log("test");
-          //     mutate(isYearly ? yearlyPriceId : monthlyPriceId);
-          //   }
-          // }}
+        /> */}
+        <CustomButton
+          className={cn(
+            "btn-hover inline-flex h-12 w-full items-center justify-center rounded-full font-bold hover:text-white"
+          )}
+          label={actionLabel}
+          variant="outline"
+          active={idx === 1 ? true : false}
         />
       </CardFooter>
     </Card>

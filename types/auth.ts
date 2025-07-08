@@ -8,6 +8,7 @@ export type User = {
 export type Child = {
   id: string;
   fullName: string;
+  name: string;
   username: string;
   parentName: string;
   ageGroup: string;
