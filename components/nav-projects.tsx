@@ -29,7 +29,6 @@ export function NavProjects({
   const pathname = usePathname();
 
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
-  console.log('selectedIndex ------------', selectedIndex);
 
 
   return (
