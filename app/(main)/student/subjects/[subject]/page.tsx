@@ -21,7 +21,7 @@ const page = async ({ params }: PageProps) => {
         </div>
         <div className="order-1 lg:order-2 w-full lg:w-1/3">
           <div className="flex flex-col md:flex-row lg:flex-col gap-4 lg:sticky lg:top-30 h-fit justify-center items-center md:items-start">
-            <NavigationCard />
+            <NavigationCard subject={subject as "physics" | "chemistry" | "math" | "biology"}/>
             <BadgeCard subject={subject} progress={progress} />
           </div>
         </div>

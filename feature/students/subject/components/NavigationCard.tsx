@@ -6,10 +6,24 @@ import { usePaper } from "@/context/PaperContext";
 import { IconComponent } from "@/feature/students/subject/components/IconComponent";
 import { physicsChapters } from "@/feature/students/subject/constants/physics";
 import Image from "next/image";
+import { chemistryChapters } from "../constants/chemistry";
+import { mathChapters } from "../constants/math";
+import { biologyChapters } from "../constants/biology";
 
-export function NavigationCard() {
+interface ChapterListProps {
+  subject: 'physics' | 'chemistry' | 'math' | 'biology';
+}
+
+const subjectMap = {
+  physics: physicsChapters,
+  chemistry: chemistryChapters,
+  math: mathChapters,
+  biology: biologyChapters,
+};
+
+export function NavigationCard({subject} : ChapterListProps) {
   const { selectedPaper, setSelectedPaper } = usePaper();
-  const current = physicsChapters[selectedPaper];
+  const current = subjectMap[subject][selectedPaper];
 
   const scrollToMainChapter = (chapterName: string) => {
     const id = chapterName.replace(/\s+/g, "-").toLowerCase();
