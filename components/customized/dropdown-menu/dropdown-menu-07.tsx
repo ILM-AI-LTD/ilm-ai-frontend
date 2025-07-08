@@ -29,21 +29,22 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
+import { Child } from "@/types/auth";
 
 interface Props {
   role: string;
 }
 
 const ComplexDropdownMenu = ({ role }: Props) => {
-  const { mutate: completeSetup, isPending } = useUpdateCountryBoard();
+  const { mutate: completeSetup } = useUpdateCountryBoard();
   const queryClient = useQueryClient();
 
-  const [user, setUser] = useState<any | null>(null);
+  const [user, setUser] = useState<Child | null>(null);
   const { country, board, setCountry, setBoard } = useStudentSetupStore();
 
   const handleSelectCountry = (value: CountryResponse) => {
     completeSetup(
-      { id: user.id, country: value.label, board: board?.name || "" },
+      { id: user?.id || "", country: value.label, board: board?.name || "" },
       {
         onSuccess: (res) => {
           const { country } = res.data.child;
@@ -62,7 +63,11 @@ const ComplexDropdownMenu = ({ role }: Props) => {
   const handleSelectBoard = (value: BoardResponse) => {
     setBoard(value);
     completeSetup(
-      { id: user.id, country: country?.label || "", board: value.name || "" },
+      {
+        id: user?.id || "",
+        country: country?.label || "",
+        board: value.name || "",
+      },
       {
         onSuccess: (res) => {
           const { board } = res.data.child;
@@ -114,7 +119,7 @@ const ComplexDropdownMenu = ({ role }: Props) => {
               {user?.name}
             </p>
             <p className="text-sm font-medium text-muted-foreground">
-              {user.username}
+              {user?.username}
             </p>
           </div>
           <ChevronsUpDown className="text-muted-foreground" />
