@@ -1,5 +1,6 @@
 import { Card, CardContent, CardDescription, CardHeader } from '@/components/ui/card'
 import { ScrollArea } from '@/components/ui/scroll-area'
+import { kebabToTitleCase } from '@/lib/utils'
 import { Check } from 'lucide-react'
 import Link from 'next/link'
 import React from 'react'
@@ -17,7 +18,7 @@ type GoalsCompletionProps = {
 const GoalsCompletion = ({ chapter, subChapters, goals }: GoalsCompletionProps) => {
 
     return (
-        <Card className='hidden md:block max-w-[320px] w-full sticky top-30 bg-secondary border gap-2'>
+        <Card className='hidden md:block max-w-[320px] w-full sticky top-10 bg-secondary border gap-2'>
             <CardHeader className='text-primary font-bold text-2xl capitalize'>
                 {chapter}
             </CardHeader>
@@ -30,7 +31,7 @@ const GoalsCompletion = ({ chapter, subChapters, goals }: GoalsCompletionProps) 
                 <ScrollArea className='h-72 w-full'>
                     <div className='relative pr-4'>
                         {goals.map((goal, index) => (
-                            <div key={`${goal.id}-${index}`} className="relative flex items-start mb-6">
+                            <div key={`${goal.id}-${index}`} className="relative flex items-start mb-4">
                                 {index < goals.length - 1 && (
                                     <div className="absolute left-3 top-6 w-0.5 bg-gray-600"
                                         style={{ height: 'calc(100% + 1rem)' }}></div>
@@ -49,7 +50,7 @@ const GoalsCompletion = ({ chapter, subChapters, goals }: GoalsCompletionProps) 
                                 <Link href={'/#'} className="flex-1 pt-0.5">
                                     <p className={`sm:text-lg -mt-1 ${goal.isCompleted ? 'text-foreground' : 'text-foreground/50'
                                         }`}>
-                                        {goal.title}
+                                        {kebabToTitleCase(goal.title)}
                                     </p>
                                 </Link>
                             </div>
