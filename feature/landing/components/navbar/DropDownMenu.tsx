@@ -35,7 +35,7 @@ interface Props {
   role: string;
 }
 
-const ComplexDropdownMenu = ({ role }: Props) => {
+const LandingDropdownMenu = ({ role }: Props) => {
   const { mutate: completeSetup } = useUpdateCountryBoard();
   const queryClient = useQueryClient();
 
@@ -119,7 +119,7 @@ const ComplexDropdownMenu = ({ role }: Props) => {
               {user?.name}
             </p>
             <p className="text-sm font-medium text-muted-foreground">
-              {user?.email || user?.username}
+              {user?.username}
             </p>
           </div>
           <ChevronsUpDown className="text-muted-foreground" />
@@ -215,4 +215,4 @@ const ComplexDropdownMenu = ({ role }: Props) => {
   );
 };
 
-export default ComplexDropdownMenu;
+export default LandingDropdownMenu;

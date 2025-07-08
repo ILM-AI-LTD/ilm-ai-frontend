@@ -21,8 +21,10 @@ const Country = ({ onNext }: CountryProps) => {
   const handleSelect = (option: CountryResponse) => {
     if (country?.id === option.id) {
       setCountry(null);
+      setSelectedOption(null);
     } else {
       setCountry(option);
+      setSelectedOption(option);
     }
   };
 
@@ -44,21 +46,25 @@ const Country = ({ onNext }: CountryProps) => {
           </div>
         </div>
 
-                <div
-                    className={`mx-auto max-w-[800px] grid  bg-background rounded-4xl gap-4 order-2 md:order-1 
-                    ${countries.length === 1 ? 'grid-cols-1' : ''}
-                    ${countries.length === 2 ? 'sm:grid-cols-2' : ''}
-                    ${countries.length >= 3 ? 'sm:grid-cols-2 lg:grid-cols-3' : ''}`}
-                >
-                    {countries.map((option, index) => (
-                        <div
-                            key={index}
-                            onClick={() => handleSelect(option)}
-                            className="relative p-4 rounded-lg cursor-pointer transition-all group"
-                        >
-                            {selectedOption?.id === option.id && (
-                                <CircleCheck className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/2 h-6 w-6 text-primary fill-blue-500 stroke-white z-10" />
-                            )}
+        <div
+          className={`mx-auto max-w-[800px] grid  bg-background rounded-4xl gap-4 order-2 md:order-1 
+                    ${countries.length === 1 ? "grid-cols-1" : ""}
+                    ${countries.length === 2 ? "sm:grid-cols-2" : ""}
+                    ${
+                      countries.length >= 3
+                        ? "sm:grid-cols-2 lg:grid-cols-3"
+                        : ""
+                    }`}
+        >
+          {countries.map((option, index) => (
+            <div
+              key={index}
+              onClick={() => handleSelect(option)}
+              className="relative p-4 rounded-lg cursor-pointer transition-all group"
+            >
+              {selectedOption?.id === option.id && (
+                <CircleCheck className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/2 h-6 w-6 text-primary fill-blue-500 stroke-white z-10" />
+              )}
 
               <div className=" rounded-md">
                 <Image

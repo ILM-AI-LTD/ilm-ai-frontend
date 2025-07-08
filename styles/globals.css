@@ -63,6 +63,11 @@
   --color-sidebar-ring: var(--sidebar-ring);
 
   --color-secondary-button: var(--secondary-button);
+  --color-secondary-background: var(--secondary-background);
+  --color-foreground-subtitle: var(--foreground-subtitle);
+  --color-button-foreground: var(--button-foreground);
+
+  --color-bg-border: var(--bg-border);
 }
 
 :root {
@@ -70,6 +75,12 @@
 
   --background: #fefefe;
   --foreground: #202020;
+  --foreground-subtitle: #677489;
+  --button-foreground: #005e83;
+
+  /* --secondary-background: #f8fafb; */
+  --secondary-background: #f6f6f6;
+  --secondary-foreground: #202020;
 
   --card: #f7f7f7;
   --card-foreground: oklch(0.145 0 0);
@@ -92,6 +103,8 @@
   --destructive: oklch(0.577 0.245 27.325);
 
   --border: #d2d2d2;
+  /* --bg-border: #f6f6f6; */
+  --bg-border: #eceff3;
 
   --input: oklch(0.922 0 0);
 
@@ -113,14 +126,22 @@
   --sidebar-ring: oklch(0.708 0 0);
 
   --secondary-button: #e8e8e8;
+  /* --landing */
+  --fade-end-color: #ffffff;
 
   /* custom font */
   --font-geist-sans: Inter, sans-serif;
 }
 
 .dark {
-  --background: #0b0e18;
+  /* --background: #0b0e18; */
+  --background: #080d17;
   --foreground: #ffffff;
+  --foreground-subtitle: #677489;
+  --button-foreground: #ffffff;
+
+  --secondary-background: #0e1526;
+  --secondary-foreground: #ffffff;
 
   --card: #0f1321;
   --card-foreground: oklch(0.985 0 0);
@@ -143,6 +164,7 @@
   --destructive: oklch(0.704 0.191 22.216);
 
   --border: #393e55;
+  --bg-border: #1b2130;
 
   --input: oklch(1 0 0 / 15%);
 
@@ -164,7 +186,7 @@
   --sidebar-ring: oklch(0.556 0 0);
 
   --secondary-button: #020617;
-
+  --fade-end-color: #0d111c;
 }
 
 @layer base {
@@ -221,4 +243,32 @@
   .animate-fade-slide-in {
     animation: fadeSlideIn 0.1s ease-in 0.2s both;
   }
+}
+
+.font-bubbleGum {
+  font-family: var(--font-bubbleGum), sans-serif;
+}
+
+.fade-bottom::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100px; /* adjust based on how much fade you want */
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    var(--fade-end-color)
+  ); /* match your background color */
+  pointer-events: none;
+  z-index: 10;
+}
+
+.fade-bottom-light::after {
+  background: linear-gradient(to bottom, transparent, #ffffff);
+}
+
+.fade-bottom-dark::after {
+  background: linear-gradient(to bottom, transparent, #0d111c);
 }

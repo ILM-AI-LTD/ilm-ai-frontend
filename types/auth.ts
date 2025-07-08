@@ -8,6 +8,7 @@ export type User = {
 export type Child = {
   id: string;
   fullName: string;
+  name: string;
   username: string;
   parentName: string;
   ageGroup: string;
@@ -15,6 +16,7 @@ export type Child = {
   hasCountryBoard: boolean;
   country: string | null;
   board: string | null;
+  email?: string | null;
 };
 
 export type SignUpDto = {

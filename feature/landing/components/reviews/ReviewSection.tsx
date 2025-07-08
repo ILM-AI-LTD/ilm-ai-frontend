@@ -1,103 +1,81 @@
-import { User2Icon } from 'lucide-react';
-
-const testimonials = [
-    {
-        id: 1,
-        quote: "We used to manage our contacts using Google Sheets, and it was a nightmare of duplicates. Before folk, life was hard. Now it's very easy.",
-        name: "Cristiano Ronaldo",
-        position: "Co-Founder, Heroes Digital",
-        avatar: "/api/placeholder/32/32"
-    },
-    {
-        id: 2,
-        quote: "We used to manage our contacts using Google Sheets, and it was a nightmare of duplicates. Before folk, life was hard. Now it's very easy.",
-        name: "Liam Nelson",
-        position: "Co-Founder, Heroes Digital",
-        avatar: "/api/placeholder/32/32"
-    },
-    {
-        id: 3,
-        quote: "We used to manage our contacts using Google Sheets, and it was a nightmare of duplicates. Before folk, life was hard. Now it's very easy.",
-        name: "Mesut Ozil",
-        position: "Co-Founder, Heroes Digital",
-        avatar: "/api/placeholder/32/32"
-    },
-    {
-        id: 4,
-        quote: "We used to manage our contacts using Google Sheets, and it was a nightmare of duplicates. Before folk, life was hard. Now it's very easy.",
-        name: "Keylor Navas",
-        position: "Co-Founder, Heroes Digital",
-        avatar: "/api/placeholder/32/32"
-    },
-    {
-        id: 5,
-        quote: "We used to manage our contacts using Google Sheets, and it was a nightmare of duplicates. Before folk, life was hard. Now it's very easy.",
-        name: "Katona Beatrix",
-        position: "Co-Founder, Heroes Digital",
-        avatar: "/api/placeholder/32/32"
-    },
-    {
-        id: 6,
-        quote: "We used to manage our contacts using Google Sheets, and it was a nightmare of duplicates. Before folk, life was hard. Now it's very easy.",
-        name: "Charlotte Harper",
-        position: "Co-Founder, Heroes Digital",
-        avatar: "/api/placeholder/32/32"
-    }
-];
+import { User2Icon } from "lucide-react";
+import { testimonials } from "../../constants";
+import CustomButton from "@/components/global/CustomButton";
 
 export default function ReviewSection() {
-    const looped = [...testimonials, ...testimonials, ...testimonials, ...testimonials, ...testimonials]
+  const looped = [
+    ...testimonials,
+    ...testimonials,
+    ...testimonials,
+    ...testimonials,
+    ...testimonials,
+  ];
 
-    return (
-        <section className='bg-secondary-bg-color w-full flex flex-col items-center justify-center py-20 px-6 md:px-10 2xl:px-[135px] gap-8'>
+  return (
+    <section className=" w-full flex flex-col items-center justify-center py-20 px-6 md:px-10 2xl:px-[135px] gap-8">
+      <div className="text-foreground w-full md:w-[90%]">
+        <p className="font-bold text-[min(10vw,64px)] text-center mb-4">
+          Feedback From
+          <span className=" text-[#8E8E8E]"> Our Students</span>
+        </p>
+        <p className="font-medium text-lg text-center text-foreground-subtitle">
+          Strong relationships start with strong interactions.
+          <br />
+          Our feature lets you personalize customer experiences, building
+          loyalty and revenue.
+        </p>
+      </div>
 
-            <div className='text-white w-full md:w-[90%]'>
-                <p className='font-bold text-[min(10vw,40px)] text-center mb-4'>Feedback From Our Students</p>
-                <p className='font-medium text-lg text-center'>Strong relationships start with strong interactions. Our feature lets you personalize customer experiences, building loyalty and revenue.</p>
-            </div>
-
-            <div className="relative w-[90%] overflow-hidden rounded-3xl mask-l-from-70% mask-r-from-70%">
-                <div className="flex gap-8 animate-marquee-reverse will-change-transform mb-8">
-                    {looped.map((t, i) => (
-                        <div
-                            key={i}
-                            className={`flex-shrink-0 flex flex-col justify-between p-6  bg-background rounded-2xl border-1 border-border-color text-white ${(i % 2) !== 0 ? 'w-80' : 'w-96'}`}
-                        >
-                            <p className="text-base mb-4">“{t.quote}”</p>
-                            <div className="flex items-center justify-between gap-3 mt-auto">
-                                <div>
-                                    <p className="font-semibold text-sm">{t.name}</p>
-                                    <p className="text-xs opacity-80">{t.position}</p>
-                                </div>
-
-                                <User2Icon className="h-8 w-8 text-white" size={16} />
-
-                            </div>
-                        </div>
-                    ))}
+      <div className="relative w-[90%] overflow-hidden rounded-3xl mask-l-from-70% mask-r-from-70%">
+        <div className="flex gap-8 animate-marquee-reverse will-change-transform mb-8">
+          {looped.map((t, i) => (
+            <div
+              key={i}
+              className={`flex-shrink-0 flex flex-col justify-between p-6  bg-background rounded-2xl border-1 border-border-color text-foreground ${
+                i % 2 !== 0 ? "w-80" : "w-96"
+              }`}
+            >
+              <p className="text-base mb-4">“{t.quote}”</p>
+              <div className="flex items-center justify-between gap-3 mt-auto">
+                <div>
+                  <p className="font-semibold text-sm">{t.name}</p>
+                  <p className="text-xs opacity-80">{t.position}</p>
                 </div>
 
-                <div className="flex gap-8 animate-marquee will-change-transform">
-                    {looped.map((t, i) => (
-                        <div
-                            key={i}
-                            className={`flex-shrink-0 flex flex-col justify-between p-6  bg-background rounded-2xl border-1 border-border-color text-white ${(i % 2) === 0 ? 'w-80' : 'w-96'}`}
-                        >
-                            <p className="text-base mb-4">“{t.quote}”</p>
-
-                            <div className="flex items-center justify-between gap-3 mt-auto">
-                                <div>
-                                    <p className="font-semibold text-sm">{t.name}</p>
-                                    <p className="text-xs opacity-80">{t.position}</p>
-                                </div>
-
-                                <User2Icon className="h-8 w-8 text-white" size={16} />
-
-                            </div>
-                        </div>
-                    ))}
-                </div>
+                <User2Icon className="h-8 w-8 text-foreground" size={16} />
+              </div>
             </div>
-        </section>
-    )
+          ))}
+        </div>
+
+        <div className="flex gap-8 animate-marquee will-change-transform">
+          {looped.map((t, i) => (
+            <div
+              key={i}
+              className={`flex-shrink-0 flex flex-col justify-between p-6  bg-background rounded-2xl border-1 border-border-color text-foreground ${
+                i % 2 === 0 ? "w-80" : "w-96"
+              }`}
+            >
+              <p className="text-base mb-4">“{t.quote}”</p>
+
+              <div className="flex items-center justify-between gap-3 mt-auto">
+                <div>
+                  <p className="font-semibold text-sm">{t.name}</p>
+                  <p className="text-xs opacity-80">{t.position}</p>
+                </div>
+
+                <User2Icon className="h-8 w-8 text-foreground" size={16} />
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+      <CustomButton
+        className={`inline-flex h-12 w-1/4 items-center justify-center rounded-full hover:text-white`}
+        label={"See Customer Reviews"}
+        variant="outline"
+        active={false}
+      />
+    </section>
+  );
 }
