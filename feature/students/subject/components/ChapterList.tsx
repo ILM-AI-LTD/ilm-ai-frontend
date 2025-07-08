@@ -26,9 +26,9 @@ export function ChapterList({subject} : ChapterListProps) {
     const current = subjectMap[subject][selectedPaper];
 
     return (
-        <div className='my-5'>
+        <div>
             {current.chapters.map((chapter, index) => (
-                <div key={index} className='flex flex-col items-center gap-6 my-10' id={chapter.name.replace(/\s+/g, "-").toLowerCase()}>
+                <div key={index} className='flex flex-col items-center gap-8 mb-20' id={chapter.name.replace(/\s+/g, "-").toLowerCase()}>
                     <div className='flex flex-row items-center gap-4'>
                         <div className='flex flex-row flex-none gap-2'>
                             {[...Array(3)].map((_, i) => (
