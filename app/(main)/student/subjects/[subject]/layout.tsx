@@ -16,7 +16,7 @@ const SubjectLayout = ({ children }: { children: React.ReactNode }) => {
   const isSlugPage = /\/subjects\/[^\/]+\/[^\/]+\/[^\/]+$/.test(pathname || "");
 
   if (isSlugPage) {
-    return <>{children}</>; // Skip parent layout for [slug]
+    return <PaperProvider>{children}</PaperProvider>;
   }
 
   return (
@@ -27,7 +27,7 @@ const SubjectLayout = ({ children }: { children: React.ReactNode }) => {
           <div className="sticky top-0 z-50">
             <CustomNavbar role={'student'} />
           </div>
-          <div className="flex flex-1 flex-col bg-background gap-4 p-4">
+          <div className="flex flex-1 flex-col bg-background gap-4 px-10 py-4">
             {children}
           </div>
         </SidebarInset>
