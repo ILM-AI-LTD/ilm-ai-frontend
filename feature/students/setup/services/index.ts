@@ -1,15 +1,9 @@
-import { ParentsEndpoints, StudentsEndpoints } from "@/constants/Endpoints";
+import { StudentsEndpoints } from "@/constants/Endpoints";
 import {
-  GetChildSummaryResponse,
-  ParentsSetupDto,
-  ParentsSetupResponse,
-} from "@/types/parents";
-import {
-  CountryBoardDetails,
   CountryBoardPayload,
-  CountryBoardResponse,
+  CountryBoardResponse
 } from "@/types/student";
-import axiosInstance, { apiRequest } from "@/utils/axios";
+import { apiRequest } from "@/utils/axios";
 
 export const StudentsService = {
   completeSetup: async (

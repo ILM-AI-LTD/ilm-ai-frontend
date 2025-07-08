@@ -16,6 +16,7 @@ export type Child = {
   hasCountryBoard: boolean;
   country: string | null;
   board: string | null;
+  email?: string | null;
 };
 
 export type SignUpDto = {

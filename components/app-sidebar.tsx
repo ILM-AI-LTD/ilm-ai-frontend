@@ -1,35 +1,15 @@
 "use client";
 
 import {
-  AudioWaveform,
-  BookOpen,
-  Bot,
-  Command,
-  Frame,
-  GalleryVerticalEnd,
-  Home,
-  type LucideIcon,
-  Map,
-  PieChart,
-  ReceiptText,
-  Search,
-  Settings,
-  Settings2,
-  SquareTerminal,
-  UserPlus,
+  type LucideIcon
 } from "lucide-react";
-import { useEffect, useState } from "react";
 
-import { NavMain } from "@/components/nav-main";
 import { NavProjects } from "@/components/nav-projects";
-import { NavUser } from "@/components/nav-user";
 import {
   Sidebar,
   SidebarContent,
   SidebarFooter,
-  SidebarHeader,
-  SidebarRail,
-  useSidebar,
+  SidebarHeader, useSidebar
 } from "@/components/ui/sidebar";
 import CustomLogo from "./global/CustomLogo";
 import ComplexDropdownMenu from "./customized/dropdown-menu/dropdown-menu-07";

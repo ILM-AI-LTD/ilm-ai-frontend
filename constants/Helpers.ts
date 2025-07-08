@@ -60,7 +60,7 @@ export const countries = [
 export const studentSideMenu = [
     {
         name: "Start Learning",
-        url: "/student/dashboard",
+        url: "/student/home",
         icon: '/StudentMenuIcon/Start_learning_logo.svg',
     },
     // {

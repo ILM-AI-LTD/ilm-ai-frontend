@@ -1,33 +1,20 @@
 "use client"
 
 import {
-  Folder,
-  Forward,
-  MoreHorizontal,
-  Trash2,
-  type LucideIcon,
+  type LucideIcon
 } from "lucide-react"
 
 import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
-import {
   SidebarGroup,
-  SidebarGroupLabel,
   SidebarMenu,
-  SidebarMenuAction,
   SidebarMenuButton,
   SidebarMenuItem,
-  useSidebar,
+  useSidebar
 } from "@/components/ui/sidebar"
-import Image from "next/image"
-import React, { useState } from "react"
-import { usePathname } from "next/navigation"
 import { cn } from "@/lib/utils"
+import Image from "next/image"
+import { usePathname } from "next/navigation"
+import React, { useState } from "react"
 
 export function NavProjects({
   projects,
@@ -42,7 +29,6 @@ export function NavProjects({
   const pathname = usePathname();
 
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
-  console.log('selectedIndex ------------', selectedIndex);
 
 
   return (
@@ -52,7 +38,7 @@ export function NavProjects({
         {projects.map((item, index: number) => (
           <React.Fragment key={item.name}>
             <SidebarMenuItem key={item.name}>
-              <SidebarMenuButton tooltip={item.name} asChild onClick={() => setSelectedIndex(index)} className={cn("hover:bg-button-hover-color  hover:text-white mb-2 rounded-lg p-4 h-12 text-base font-semibold", selectedIndex === index ? "bg-button-hover-color text-white" : "")}>
+              <SidebarMenuButton tooltip={item.name} asChild onClick={() => setSelectedIndex(index)} className={cn("hover:bg-primary/80 hover:text-foreground mb-2 rounded-lg p-4 h-12 text-base font-semibold", selectedIndex === index ? "bg-primary text-foreground" : "")}>
                 <a href={item.url}>
                   {typeof item.icon === "string" ?
                     <Image

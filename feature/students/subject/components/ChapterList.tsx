@@ -4,15 +4,31 @@ import { AnimatedLearningPath } from '@/feature/students/subject/components/Anim
 import { usePaper } from '@/context/PaperContext';
 import Image from 'next/image';
 import { physicsChapters } from '@/feature/students/subject/constants/physics';
+import { chemistryChapters } from '../constants/chemistry';
+import { mathChapters } from '../constants/math';
+import { biologyChapters } from '../constants/biology';
 
-export function ChapterList() {
+
+interface ChapterListProps {
+    subject: 'physics' | 'chemistry' | 'math' | 'biology';
+}
+
+const subjectMap = {
+    physics: physicsChapters,
+    chemistry: chemistryChapters,
+    math: mathChapters,
+    biology: biologyChapters,
+};
+
+
+export function ChapterList({subject} : ChapterListProps) {
     const { selectedPaper } = usePaper();
-    const current = physicsChapters[selectedPaper];
+    const current = subjectMap[subject][selectedPaper];
 
     return (
-        <div className='my-5'>
+        <div>
             {current.chapters.map((chapter, index) => (
-                <div key={index} className='flex flex-col items-center gap-6 my-10' id={chapter.name.replace(/\s+/g, "-").toLowerCase()}>
+                <div key={index} className='flex flex-col items-center gap-8 mb-20' id={chapter.name.replace(/\s+/g, "-").toLowerCase()}>
                     <div className='flex flex-row items-center gap-4'>
                         <div className='flex flex-row flex-none gap-2'>
                             {[...Array(3)].map((_, i) => (
@@ -42,7 +58,7 @@ export function ChapterList() {
                             ))}
                         </div>
                     </div>
-                    <AnimatedLearningPath chapter={chapter} />
+                    <AnimatedLearningPath chapter={chapter} subject={subject}/>
                 </div>
             ))}
         </div>

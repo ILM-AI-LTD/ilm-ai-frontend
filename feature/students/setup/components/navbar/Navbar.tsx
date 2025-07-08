@@ -1,4 +1,4 @@
-import ThemeToggleButton from "@/components/customized/button/button-16";
+import ThemeToggleButton from "@/components/customized/button/ThemeToggleButton";
 import CustomLogo from "@/components/global/CustomLogo";
 
 const Navbar = () => {

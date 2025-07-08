@@ -15,5 +15,3 @@ export const ParentsEndpoints = {
 export const StudentsEndpoints = {
   updateCountryBoardInfo: "/children/update-country-board",
 };
-
-export const Protected_Endpoints = ["/parents/setup"];

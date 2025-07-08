@@ -119,7 +119,7 @@ const ComplexDropdownMenu = ({ role }: Props) => {
               {user?.name}
             </p>
             <p className="text-sm font-medium text-muted-foreground">
-              {user?.username}
+              {user?.email || user?.username}
             </p>
           </div>
           <ChevronsUpDown className="text-muted-foreground" />
