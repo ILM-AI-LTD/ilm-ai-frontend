@@ -1,6 +1,5 @@
 "use client";
 
-
 import React, { useEffect, useState } from "react";
 import ILMIAssistantv2 from "@/feature/parents/components/setup/common/ILMIAssistantv2";
 import FooterStudents from "./common/FooterStudents";
@@ -26,15 +25,17 @@ const Board = ({ onBack, onNext }: BoardProps) => {
     useStudentSetupStore();
   const { mutate: completeSetup, isPending } = useUpdateCountryBoard();
 
-  const [selectedOption, setSelectedOption] = useState<BoardResponse | null>(null)
+  const [selectedOption, setSelectedOption] = useState<BoardResponse | null>(
+    null
+  );
 
   const handleSelect = (option: BoardResponse) => {
     if (board?.id === option.id) {
       setBoard(null);
-      setSelectedOption(null)
+      setSelectedOption(null);
     } else {
       setBoard(option);
-      setSelectedOption(option)
+      setSelectedOption(option);
     }
   };
 
@@ -92,24 +93,20 @@ const Board = ({ onBack, onNext }: BoardProps) => {
           </div>
         </div>
 
-
-                <div
-                    className={`mx-auto max-w-[800px] grid  bg-background rounded-4xl gap-4 lg:grid-cols-4`
-                    }
-                >
-                    {boards.map((option, index) => (
-                        <CustomButton
-                            onClick={() => handleSelect(option)}
-                            key={index}
-                            active={selectedOption?.id === option.id}
-                            label={option.name}
-                            className="font-semibold text-sm h-11 px-10 py-6"
-                        />
-                    ))}
-                </div>
-
-
-            </div>
+        <div
+          className={`mx-auto max-w-[800px] grid  bg-background rounded-4xl gap-4 lg:grid-cols-4`}
+        >
+          {boards.map((option, index) => (
+            <CustomButton
+              onClick={() => handleSelect(option)}
+              key={index}
+              active={selectedOption?.id === option.id}
+              label={option.name}
+              className="font-semibold text-sm h-11 px-10 py-6"
+            />
+          ))}
+        </div>
+      </div>
 
       <FooterStudents
         leftButton={{ label: "Back", onClick: onBack }}

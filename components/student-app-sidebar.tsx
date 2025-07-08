@@ -1,38 +1,29 @@
-"use client"
+"use client";
 
 import {
-  AudioWaveform,
   BookOpen,
-  Bot,
-  Command,
-  Frame,
-  GalleryVerticalEnd,
   Home,
-  Map,
-  PieChart,
   ReceiptText,
   Search,
   Settings,
-  Settings2,
-  SquareTerminal,
   UserPlus,
-  Puzzle
-} from "lucide-react"
-import * as React from "react"
+} from "lucide-react";
+import * as React from "react";
 
-import { NavMain } from "@/components/nav-main"
-import { NavProjects, NavProjectStudents } from "@/components/nav-projects"
-import { NavUser } from "@/components/nav-user"
+// import { NavMain } from "@/components/nav-main"
+// import { NavProjects, NavProjectStudents } from "@/components/nav-projects"
+// import { NavUser } from "@/components/nav-user"
 import {
   Sidebar,
   SidebarContent,
-  SidebarFooter,
+  // SidebarFooter,
   SidebarHeader,
   SidebarRail,
-  StudentSidebar,
-  useSidebar,
-} from "@/components/ui/sidebar"
-import CustomLogo from "./global/CustomLogo"
+  // StudentSidebar,
+  // useSidebar,
+} from "@/components/ui/sidebar";
+import CustomLogo from "./global/CustomLogo";
+import { NavProjectStudents } from "./nav-projects";
 
 // This is sample data.
 const data = {
@@ -195,56 +186,54 @@ const data = {
     {
       name: "Start Learning",
       url: "#",
-      icon: '/StudentMenuIcon/Start_learning_logo.svg',
+      icon: "/StudentMenuIcon/Start_learning_logo.svg",
     },
     {
       name: "Submit Work",
       url: "#",
-      icon: '/StudentMenuIcon/Submit_logo.svg',
+      icon: "/StudentMenuIcon/Submit_logo.svg",
     },
     {
       name: "Practise & Test",
       url: "#",
-      icon: '/StudentMenuIcon/Practise_logo.svg',
+      icon: "/StudentMenuIcon/Practise_logo.svg",
     },
     {
       name: "ILM Hub",
       url: "#",
-      icon: '/StudentMenuIcon/ILM_hub_logo.svg',
+      icon: "/StudentMenuIcon/ILM_hub_logo.svg",
     },
     {
       name: "Leaderboard",
       url: "#",
-      icon: '/StudentMenuIcon/Leaderboard_logo.svg',
+      icon: "/StudentMenuIcon/Leaderboard_logo.svg",
     },
     {
       name: "Progress",
       url: "#",
-      icon: '/StudentMenuIcon/Progress_logo.svg',
+      icon: "/StudentMenuIcon/Progress_logo.svg",
     },
     {
       name: "Resume",
       url: "#",
-      icon: '/StudentMenuIcon/Resume_logo.svg',
+      icon: "/StudentMenuIcon/Resume_logo.svg",
     },
     {
       name: "Settings",
       url: "#",
-      icon: '/StudentMenuIcon/Setting_logo.svg',
+      icon: "/StudentMenuIcon/Setting_logo.svg",
     },
   ],
-}
+};
 
-export function StudentAppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
-
+export function StudentAppSidebar({
+  ...props
+}: React.ComponentProps<typeof Sidebar>) {
   return (
-    <StudentSidebar collapsible="icon" {...props}>
+    <StudentAppSidebar collapsible="icon" {...props}>
       <SidebarHeader>
         <div className="px-3">
-          <CustomLogo
-            logoSrc="/ILM_AI_Logo_deep_blue.png"
-
-          />
+          <CustomLogo logoSrc="/ILM_AI_Logo_deep_blue.png" />
           {/* {open && (
             <p className="animate-fade-slide-in font-bold text-[min(10vw,32px)]">
               ILM AI
@@ -256,6 +245,6 @@ export function StudentAppSidebar({ ...props }: React.ComponentProps<typeof Side
         <NavProjectStudents projects={data.projects} />
       </SidebarContent>
       <SidebarRail />
-    </StudentSidebar>
-  )
+    </StudentAppSidebar>
+  );
 }
