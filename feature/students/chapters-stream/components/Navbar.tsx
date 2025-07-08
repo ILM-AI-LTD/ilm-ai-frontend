@@ -11,9 +11,8 @@ const Navbar = () => {
     const router = useRouter();
 
     return (
-        <nav className='h-24 flex items-center justify-between  bg-secondary z-10 px-6'>
-            <div className="flex flex-row gap-2 items-center justify-between w-full">
-                <CustomLogo logoSrc="/ilmino.svg" />
+        <nav className='h-24 flex items-center justify-between bg-background z-10 px-10'>
+            <div className="flex flex-row gap-2 items-center justify-end w-full">
                 <div className="inline-flex gap-4">
                     <ThemeToggleButton />
                     <Button
