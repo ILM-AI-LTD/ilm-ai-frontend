@@ -1,25 +1,21 @@
-'use client'
+"use client";
 
-import ChatbotWidget from '@/components/global/CustomChatbotWidget';
-import { usePaper } from '@/context/PaperContext';
-import GoalsCompletion from '@/feature/students/chapters-stream/components/GoalsCompletion';
-import { useGoals } from '@/feature/students/chapters-stream/hooks/useGoals';
-import { useParams } from 'next/navigation';
-import { Alert, AlertTitle, AlertDescription } from '@/components/ui/alert';
-import GoalsCompletionSkeleton from '@/feature/students/chapters-stream/components/GoalsCompletionSkeleton';
+import ChatbotWidget from "@/components/global/CustomChatbotWidget";
+import { usePaper } from "@/context/PaperContext";
+import GoalsCompletion from "@/feature/students/chapters-stream/components/GoalsCompletion";
+import { useGoals } from "@/feature/students/chapters-stream/hooks/useGoals";
+import { useParams } from "next/navigation";
+import { Alert, AlertTitle, AlertDescription } from "@/components/ui/alert";
+import GoalsCompletionSkeleton from "@/feature/students/chapters-stream/components/GoalsCompletionSkeleton";
+import Test from "@/feature/students/chapters-stream/components/Test";
 
 export default function Page() {
   const { subject, chapter, slug } = useParams();
   const { selectedPaper } = usePaper();
-  const paper = selectedPaper === 'paper1' ? 1 : 2;
+  const paper = selectedPaper === "paper1" ? 1 : 2;
   const board = "AQA";
 
-  const {
-    data,
-    isLoading,
-    isError,
-    error,
-  } = useGoals({
+  const { data, isLoading, isError, error } = useGoals({
     board,
     subject: subject as string,
     paper: Number(paper),
@@ -29,14 +25,13 @@ export default function Page() {
 
   return (
     <div className="flex flex-row size-full px-10 py-4">
-      <div className='flex-1 basis-3/4'>
+      <div className="flex-1 basis-3/4">
         {/* reserved for main content */}
+        <Test></Test>
       </div>
 
-      <div className='flex flex-col items-end w-1/4'>
-        {isLoading && (
-          <GoalsCompletionSkeleton />
-        )}
+      <div className="flex flex-col items-end w-1/4">
+        {isLoading && <GoalsCompletionSkeleton />}
 
         {isError && (
           <Alert variant="destructive">
