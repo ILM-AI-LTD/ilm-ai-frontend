@@ -1,5 +1,6 @@
 // import CheckboxCardDemo from "@/components/customized/checkbox/checkbox-11";
 import CustomCheckboxCard from "@/components/global/CustomCheckBoxCard";
+import CustomTldrawEditor from "@/components/global/CustomTldrawEditor";
 // import { Card } from "@/components/ui/card";
 import React from "react";
 
@@ -25,14 +26,15 @@ const Test = () => {
     <div>
       {ques.questions.length > 0 &&
         ques.questions.map((q, index) => (
-          <div key={index} className="mb-4">
+          <div key={index} className="mb-4 p-6 rounded-2xl">
             {q.question_type === "descriptive" && (
               <>
-                <p className="font-semibold">{q.question_text}</p>
-                <textarea
+                {/* <p className="font-semibold">{q.question_text}</p> */}
+                {/* <textarea
                   className="border p-2 rounded w-full mt-2"
                   placeholder="Type your answer here..."
-                />
+                /> */}
+                <CustomTldrawEditor questions={q} />
               </>
             )}
 
