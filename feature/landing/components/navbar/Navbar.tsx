@@ -58,11 +58,11 @@ const Navbar = () => {
 
         {/* Desktop Actions */}
         <div className="hidden lg:flex items-center gap-4">
-          <ThemeToggleButton />
+          <ThemeToggleButton size="lg" />
           <Link href="/auth/sign-in">
             <CustomButton
               label="Login"
-              className=" font-bold text-base rounded-full hover:text-white transition-all duration-300 ease-in-out h-[52px] cursor-pointer"
+              className=" font-bold text-base rounded-full hover:text-white transition-all duration-300 ease-in-out h-[48px] w-[155px] cursor-pointer"
               icon={<LogIn />}
             />
           </Link>

@@ -77,11 +77,11 @@ export const faqItems = [
     answer:
       "We offer family and multi-learner plans that allow you to manage multiple profiles under one account.",
   },
-  {
-    question: "Will the platform work on tablets or mobile devices?",
-    answer:
-      "Absolutely. ILM AI is optimized for desktops, tablets, and smartphones, both Android and iOS.",
-  },
+  // {
+  //   question: "Will the platform work on tablets or mobile devices?",
+  //   answer:
+  //     "Absolutely. ILM AI is optimized for desktops, tablets, and smartphones, both Android and iOS.",
+  // },
   {
     question: "What subjects does the platform cover?",
     answer: "Currently, ILM AI covers Maths, Physics, Chemistry, and Biology",
@@ -106,17 +106,17 @@ export const faqItems = [
     answer:
       "Absolutely! You can personalise your learning experience by selecting specific topics or skills you wish to focus on, and adjust your pace accordingly.",
   },
-  {
-    question:
-      "How do I know if the script is too hard or too easy for my child?",
-    answer:
-      "The platform uses performance analytics to adjust difficulty automatically and alerts parents if changes are recommended.",
-  },
-  {
-    question: "How can I get started?",
-    answer:
-      "Simply sign up, create a profile, and select the subjects you want to study. You can begin exploring lessons and resources immediately!",
-  },
+  // {
+  //   question:
+  //     "How do I know if the script is too hard or too easy for my child?",
+  //   answer:
+  //     "The platform uses performance analytics to adjust difficulty automatically and alerts parents if changes are recommended.",
+  // },
+  // {
+  //   question: "How can I get started?",
+  //   answer:
+  //     "Simply sign up, create a profile, and select the subjects you want to study. You can begin exploring lessons and resources immediately!",
+  // },
 ];
 
 export const testimonials = [
