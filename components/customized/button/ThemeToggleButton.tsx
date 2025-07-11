@@ -8,11 +8,13 @@ import { useEffect, useState } from "react";
 
 type ThemeToggleButtonProps = {
   className?: string;
-  size?: "icon" | "sm" | "md" | "lg";
+  size?: "icon" | "sm" | "lg";
 };
 
-const ThemeToggleButton = ({ className, size }: ThemeToggleButtonProps) => {
-
+const ThemeToggleButton = ({
+  className,
+  size = "icon",
+}: ThemeToggleButtonProps) => {
   const [mounted, setMounted] = useState(false);
   const { resolvedTheme, setTheme } = useTheme();
   const toggleTheme = () => {
@@ -30,11 +32,22 @@ const ThemeToggleButton = ({ className, size }: ThemeToggleButtonProps) => {
 
   return (
     <Button
-      size="icon"
-      className={cn(`rounded-full ${resolvedTheme === "dark" ? 'bg-[#212638] hover:bg-[#212638]' : 'bg-[#E8E8E8] hover:bg-[#E8E8E8]'} cursor-pointer`, className)}
+      size={size}
+      className={cn(
+        `rounded-full ${
+          resolvedTheme === "dark"
+            ? "bg-[#212638] hover:bg-[#212638]"
+            : "bg-[#E8E8E8] hover:bg-[#E8E8E8]"
+        } cursor-pointer`,
+        className
+      )}
       onClick={toggleTheme}
     >
-      {resolvedTheme === "dark" ? <MoonIcon color="white" /> : <SunIcon color="black" />}
+      {resolvedTheme === "dark" ? (
+        <MoonIcon color="white" />
+      ) : (
+        <SunIcon color="black" />
+      )}
     </Button>
   );
 };

@@ -17,7 +17,9 @@ const SubjectCard = ({ title, description, iconSrc }: SubjectCardProps) => {
         className="w-[80px] h-[80px] 2xl:w-[100px] 2xl:h-[100px]"
       />
 
-      <CardTitle className="text-white text-2xl font-bold">{title}</CardTitle>
+      <CardTitle className="text-white text-[32px] font-semibold">
+        {title}
+      </CardTitle>
 
       <CardDescription className="text-foreground-subtitle text-lg text-center">
         {description}

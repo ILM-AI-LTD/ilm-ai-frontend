@@ -4,8 +4,8 @@ import { features } from "../../constants";
 
 const SmartToolsSection: React.FC = () => (
   // <section className="bg-secondary-bg-color py-20 px-6 md:px-10 2xl:px-[135px] text-center flex flex-col justify-center items-center">
-  <section className="bg-background py-20 px-6 md:px-10 2xl:px-[135px] text-center flex flex-col justify-center items-center">
-    <h1 className="font-bold text-[min(10vw,64px)] mb-16 text-foreground">
+  <section className="bg-background py-30 px-6 md:px-10 2xl:px-[135px] text-center flex flex-col justify-center items-center">
+    <h1 className="font-bold text-[min(10vw,64px)] mb-17 text-foreground">
       Smarter Tools, <span className=" text-[#8E8E8E]">Better Learning</span>
     </h1>
 

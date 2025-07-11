@@ -5,11 +5,21 @@ const WellfareSection = () => {
   return (
     <section className="bg-secondary-background py-20 px-6 md:px-10 2xl:px-[135px] flex flex-col items-center">
       <div className="max-w-[1170px] w-full grid grid-cols-1 lg:grid-cols-2 rounded-4xl  gap-4 ">
-        <div className="order-1 lg:order-2 relative h-[300px] sm:h-[400px] lg:h-full">
-          <Image src={"/landing/wellfare.svg"} alt={"image"} fill />
+        {/* <div className="order-1 lg:order-2 relative h-[300px] sm:h-[400px] lg:h-full"> */}
+        {/* <div className="order-1 lg:order-2 relative h-[300px] sm:h-[400px] lg:h-full lg:w-full">
+          <Image src={"/landing/wellfare2.svg"} alt={"image"} fill />
+        </div> */}
+        <div className="order-1 lg:order-2 relative w-full h-[300px] sm:h-[400px] md:h-[500px] lg:h-full ">
+          <Image
+            src={"/landing/wellfare2.svg"}
+            alt={"image"}
+            className="object-cover rounded-2xl"
+            fill
+          />
         </div>
+
         <div className=" order-2 lg:order-1">
-          <h1 className="font-bold text-[min(10vw,64px)] text-foreground mb-16">
+          <h1 className="font-bold text-[min(10vw,64px)] text-foreground mb-4">
             Education for a{" "}
             <span className=" text-[#8E8E8E]">Better Tomorrow!</span>
           </h1>
@@ -30,7 +40,7 @@ const WellfareSection = () => {
             variant="outline"
           /> */}
           <CustomButton
-            className={` inline-flex h-12 w-2/4 items-center justify-center rounded-full`}
+            className={` inline-flex h-12 w-[302px] items-center justify-center rounded-full`}
             label={"Learn More About Our Mission"}
             variant="outline"
             active={false}

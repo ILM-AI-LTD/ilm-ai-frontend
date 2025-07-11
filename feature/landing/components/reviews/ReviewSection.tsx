@@ -71,7 +71,7 @@ export default function ReviewSection() {
         </div>
       </div>
       <CustomButton
-        className={`inline-flex h-12 w-1/4 items-center justify-center rounded-full hover:text-white`}
+        className={`inline-flex h-[48px] w-[245px] items-center justify-center rounded-full hover:text-white`}
         label={"See Customer Reviews"}
         variant="outline"
         active={false}

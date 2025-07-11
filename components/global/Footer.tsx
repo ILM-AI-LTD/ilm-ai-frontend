@@ -22,7 +22,7 @@ const Footer: FC = () => {
                     <li key={link.href}>
                       <Link
                         href={link.href}
-                        className="hover:underline text-base font-semibold"
+                        className="hover:underline text-base  "
                       >
                         {link.label}
                       </Link>
