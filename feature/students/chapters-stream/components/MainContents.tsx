@@ -2,9 +2,9 @@ import ILMIAssistantv2 from '@/feature/parents/components/setup/common/ILMIAssis
 import { useGenerateScript } from '@/feature/students/chapters-stream/hooks/useGenerateScript';
 import { Play } from 'lucide-react';
 import React, { useState } from 'react';
-import CalloutHistoryContent from './CalloutHIstoryContent';
 import CalloutScriptStream from './CalloutScriptStream';
 import { useQueryClient } from '@tanstack/react-query';
+import CalloutHistoryContent from './CalloutHistoryContent';
 
 interface Goal {
     id: number;
