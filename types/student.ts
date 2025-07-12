@@ -103,3 +103,35 @@ export interface GoalsApiResponse {
     goals: Goals[];
   };
 }
+
+export interface ChatbotRequest {
+  board: string;
+  subject: string;
+  paper: number;
+  topic: string;
+  subtopic: string;
+  question: string;
+}
+
+export interface ChatbotResponse {
+  status: 'success' | 'error';
+  message: string;
+  data: {
+    answer: string;
+  };
+}
+
+export interface GenerateScriptRequest {
+  board: string;
+  subject: string;
+  paper: number;
+  topic: string;
+  subtopic: string;
+  goal: string;
+}
+
+export interface ScriptApiResponse {
+  status: string;
+  message: string;
+  data: string;
+}

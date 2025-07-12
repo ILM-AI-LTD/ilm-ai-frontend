@@ -1,66 +1,81 @@
+// ✅ Updated: page.tsx
 'use client'
 
 import ChatbotWidget from '@/components/global/CustomChatbotWidget';
+import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { usePaper } from '@/context/PaperContext';
 import GoalsCompletion from '@/feature/students/chapters-stream/components/GoalsCompletion';
+import GoalsCompletionSkeleton from '@/feature/students/chapters-stream/components/GoalsCompletionSkeleton';
+import MainContent from '@/feature/students/chapters-stream/components/MainContents';
 import { useGoals } from '@/feature/students/chapters-stream/hooks/useGoals';
 import { useParams } from 'next/navigation';
-import { Alert, AlertTitle, AlertDescription } from '@/components/ui/alert';
-import GoalsCompletionSkeleton from '@/feature/students/chapters-stream/components/GoalsCompletionSkeleton';
+import { useState } from 'react';
 
 export default function Page() {
   const { subject, chapter, slug } = useParams();
   const { selectedPaper } = usePaper();
   const paper = selectedPaper === 'paper1' ? 1 : 2;
   const board = "AQA";
+  const [selectedGoalId, setSelectedGoalId] = useState<number>(1);
 
   const {
     data,
     isLoading,
     isError,
     error,
-  } = useGoals({
-    board,
-    subject: subject as string,
-    paper: Number(paper),
-    topic: chapter as string,
-    subtopic: slug as string,
-  });
+  } = useGoals({ board, subject: subject as string, paper, topic: chapter as string, subtopic: slug as string });
+
+  const goals = !isLoading && !isError && data?.data?.goals
+    ? data.data.goals.map((goal: any, index: number) => ({
+      id: index + 1,
+      title: goal.goal_name,
+      goalHistory: goal.script_history,
+      isCompleted: goal.is_completed,
+      isStarted: goal.is_started,
+      hasHistory: Array.isArray(goal.script_history) && goal.script_history.length > 0
+    }))
+    : [];
+
+
 
   return (
-    <div className="flex flex-row size-full px-10 py-4">
-      <div className='flex-1 basis-3/4'>
-        {/* reserved for main content */}
+    <div className="flex flex-row w-full h-full mt-2">
+      <div className='basis-3/4 mr-4'>
+        <MainContent
+          subject={subject as string}
+          topic={chapter as string}
+          subtopic={slug as string}
+          paper={paper}
+          board={board}
+          goals={goals}
+          isLoading={isLoading}
+          selectedGoalId={selectedGoalId}
+        />
       </div>
 
-      <div className='flex flex-col items-end w-1/4'>
-        {isLoading && (
-          <GoalsCompletionSkeleton />
-        )}
+      <div className='basis-1/4 flex flex-col items-end'>
+        {isLoading && <GoalsCompletionSkeleton />}
 
         {isError && (
           <Alert variant="destructive">
             <AlertTitle>Something went wrong</AlertTitle>
-            <AlertDescription>
-              {(error as Error)?.message || "Failed to load goals."}
-            </AlertDescription>
+            <AlertDescription>{(error as Error)?.message || "Failed to load goals."}</AlertDescription>
           </Alert>
         )}
 
-        {!isLoading && !isError && data?.data?.goals && (
+        {!isLoading && !isError && goals.length > 0 && (
           <GoalsCompletion
             chapter={chapter as string}
             subChapters={slug as string}
-            goals={data.data.goals.map((goal: any, index: number) => ({
-              id: index + 1,
-              title: goal.goal_name,
-              isCompleted: goal.is_completed,
-            }))}
+            goals={goals}
+            selectedGoalId={selectedGoalId}
+            onSelectGoal={setSelectedGoalId}
           />
         )}
       </div>
 
       <ChatbotWidget
+        data={{ board, subject: subject as string, paper, topic: chapter as string, subtopic: slug as string }}
         position="bottom-right"
         size="small"
         placeholder="Ask what's on your mind"
