@@ -36,11 +36,9 @@ const requestInterceptor = (config: InternalAxiosRequestConfig): InternalAxiosRe
 const responseInterceptor = {
     onFulfilled: (response: AxiosResponse) => response,
     onRejected: (error: AxiosError) => {
-        // console.log(error)
-        // const message = (error.response?.data as any)?.message || error.message || 'Something went wrong'
-        // console.log(message)
-        // TODO: add toast
-        // return Promise.reject(new Error(message))
+        
+        const message = (error.response?.data as any)?.message || error.message || 'Something went wrong'
+        return Promise.reject(new Error(message))
     }
 }
 
