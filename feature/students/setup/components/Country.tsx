@@ -31,7 +31,7 @@ const Country = ({ onNext }: CountryProps) => {
   return (
     <div className="h-full max-w-[1770px] w-full flex flex-col py-3">
       <div className="flex-1 flex flex-col overflow-auto">
-        <div className="inline-flex  items-center">
+        <div className="inline-flex  items-start gap-2">
           <ILMIAssistantv2
             height={180}
             width={140}
