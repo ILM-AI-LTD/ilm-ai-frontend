@@ -272,3 +272,19 @@
 .fade-bottom-dark::after {
   background: linear-gradient(to bottom, transparent, #0d111c);
 }
+
+
+@layer utilities {
+  @keyframes typing-dot-bounce {
+    0%, 40% {
+      transform: translateY(0);
+    }
+    20% {
+      transform: translateY(-0.25rem); /* 4px bounce */
+    }
+  }
+
+  .animate-typing-dot-bounce {
+    animation: typing-dot-bounce 1.25s ease-out infinite;
+  }
+}

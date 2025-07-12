@@ -2,14 +2,13 @@ import Navbar from "@/feature/students/chapters-stream/components/Navbar";
 
 export default function StreamLayout({ children }: { children: React.ReactNode }) {
     return (
-        <div className="flex flex-col h-screen w-full  bg-background overflow-hidden">
+        <div className="min-h-screen w-full bg-background flex flex-col">
             <Navbar />
-
-            <main className="flex-1 flex flex-col items-center overflow-hidden ">
-                {children}
+            <main className="flex-1 flex">
+                <div className="pt-24 px-10 w-full">
+                    {children}
+                </div>
             </main>
-
         </div>
     );
 }
-
