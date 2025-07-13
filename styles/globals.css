@@ -253,6 +253,10 @@
   font-family: var(--font-khand), sans-serif;
 }
 
+.font-hkGrotesk {
+  font-family: var(--font-hkGrotesk), sans-serif;
+}
+
 .fade-bottom::after {
   content: "";
   position: absolute;

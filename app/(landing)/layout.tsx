@@ -1,5 +1,5 @@
 import Navbar from "@/feature/landing/components/navbar/Navbar";
-import { Bubblegum_Sans, Khand } from "next/font/google";
+import { Bubblegum_Sans, Khand, Hanken_Grotesk } from "next/font/google";
 
 const bubbleGum = Bubblegum_Sans({
   subsets: ["latin"],
@@ -13,6 +13,12 @@ const khand = Khand({
   variable: "--font-khand",
 });
 
+const hkGrotesk = Hanken_Grotesk({
+  subsets: ["latin"],
+  weight: ["500"],
+  variable: "--font-hkGrotesk",
+});
+
 export default function LandingLayout({
   children,
 }: {
@@ -20,7 +26,7 @@ export default function LandingLayout({
 }) {
   return (
     <div
-      className={`min-h-screen w-full  bg-background ${bubbleGum.variable} ${khand.variable}`}
+      className={`min-h-screen w-full  bg-background ${bubbleGum.variable} ${khand.variable} ${hkGrotesk.variable}`}
     >
       <Navbar />
       {children}
