@@ -1,10 +1,11 @@
+import CustomButton from '@/components/global/CustomButton';
 import ILMIAssistantv2 from '@/feature/parents/components/setup/common/ILMIAssistantv2';
 import { useGenerateScript } from '@/feature/students/chapters-stream/hooks/useGenerateScript';
+import { useQueryClient } from '@tanstack/react-query';
 import { Play } from 'lucide-react';
 import React, { useState } from 'react';
-import CalloutScriptStream from './CalloutScriptStream';
-import { useQueryClient } from '@tanstack/react-query';
 import CalloutHistoryContent from './CalloutHistoryContent';
+import CalloutScriptStream from './CalloutScriptStream';
 
 interface Goal {
     id: number;
@@ -39,6 +40,7 @@ const MainContent: React.FC<MainContentProps> = ({
     const selectedGoal = goals.find(g => g.id === selectedGoalId);
     const { mutate: generateScriptMutation, isPending, error } = useGenerateScript();
     const [scriptData, setScriptData] = useState<string>('');
+    const [showNextButton, setShowNextButton] = useState(false);
     const queryClient = useQueryClient();
 
     const handleGenerateScript = () => {
@@ -58,9 +60,9 @@ const MainContent: React.FC<MainContentProps> = ({
 
                 setTimeout(() => {
                     queryClient.invalidateQueries({
-                      queryKey: ['goals', board, subject, paper, topic, subtopic],
+                        queryKey: ['goals', board, subject, paper, topic, subtopic],
                     });
-                  }, 10000);
+                }, 10000);
             },
             onError: (err) => {
                 console.error('Script generation failed', err);
@@ -86,11 +88,11 @@ const MainContent: React.FC<MainContentProps> = ({
                                 <div className="h-8 w-8 border-4 border-primary border-t-transparent rounded-full animate-spin" />
                             ) : (
                                 <button
-                                className="size-20 bg-primary rounded-full cursor-pointer hover:scale-105 transition-transform duration-200 ease-in-out"
-                                onClick={handleGenerateScript}
-                              >
-                                <Play size={40} fill='white' className='mx-auto' />
-                              </button>
+                                    className="size-20 bg-primary rounded-full cursor-pointer hover:scale-105 transition-transform duration-200 ease-in-out"
+                                    onClick={handleGenerateScript}
+                                >
+                                    <Play size={40} fill='white' className='mx-auto' />
+                                </button>
                             )
                         }
                     </div>
@@ -105,8 +107,17 @@ const MainContent: React.FC<MainContentProps> = ({
                                     message={scriptData}
                                     orientation="left"
                                     className="w-full"
+                                    onStreamEnd={() => setShowNextButton(true)}
                                 />
                             </div>
+
+                            {showNextButton && (
+                                <div className="flex justify-end mt-4">
+                                    <CustomButton
+                                        label='Let’s go to question'
+                                    />
+                                </div>
+                            )}
                         </div>
                     </div>
 
@@ -120,18 +131,26 @@ const MainContent: React.FC<MainContentProps> = ({
             {selectedGoal && selectedGoal.goalHistory.length > 0 ? (
                 <div className="space-y-8">
                     {selectedGoal.goalHistory.map((entry, index) => (
-                        <div key={index} className="flex items-start gap-4">
-                            <ILMIAssistantv2 height={40} width={40} className="mt-2" />
-                            <CalloutHistoryContent
-                                title={selectedGoal.title}
-                                message={
-                                    typeof entry === 'string'
-                                        ? entry
-                                        : entry?.message || JSON.stringify(entry, null, 2)
-                                }
-                                orientation="left"
-                                className="w-full"
-                            />
+                        <div>
+                            <div key={index} className="flex items-start gap-4">
+                                <ILMIAssistantv2 height={40} width={40} className="mt-2" />
+                                <CalloutHistoryContent
+                                    title={selectedGoal.title}
+                                    message={
+                                        typeof entry === 'string'
+                                            ? entry
+                                            : entry?.message || JSON.stringify(entry, null, 2)
+                                    }
+                                    orientation="left"
+                                    className="w-full"
+                                />
+                            </div>
+
+                            <div className="flex justify-end mt-4">
+                                <CustomButton
+                                    label='Let’s go to question'
+                                />
+                            </div>
                         </div>
                     ))}
                 </div>

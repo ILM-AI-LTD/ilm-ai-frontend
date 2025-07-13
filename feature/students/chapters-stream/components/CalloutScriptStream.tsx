@@ -13,6 +13,7 @@ export interface CalloutHistoryContentProps {
     message: string;
     className?: string;
     orientation: 'top' | 'bottom' | 'left' | 'right';
+    onStreamEnd?: () => void;
 }
 
 const extractLatexBlocks = (text: string) => {
@@ -56,6 +57,7 @@ const CalloutScriptStream: React.FC<CalloutHistoryContentProps> = ({
     orientation,
     className = '',
     title,
+    onStreamEnd
 }) => {
     const [streamedContent, setStreamedContent] = useState('');
     const [isStreaming, setIsStreaming] = useState(false);
@@ -87,6 +89,10 @@ const CalloutScriptStream: React.FC<CalloutHistoryContentProps> = ({
             } else {
                 setIsStreaming(false);
                 if (timeoutRef.current) clearTimeout(timeoutRef.current);
+
+                if (typeof onStreamEnd === 'function') {
+                    onStreamEnd();
+                  }
             }
         };
 
