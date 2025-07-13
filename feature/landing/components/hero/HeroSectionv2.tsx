@@ -3,7 +3,7 @@ import CustomButton from "@/components/global/CustomButton";
 import CustomLogo from "@/components/global/CustomLogo";
 import { ArrowRight } from "lucide-react";
 import { useTheme } from "next-themes";
-import Image from "next/image";
+// import Image from "next/image";
 import Link from "next/link";
 
 const HeroSectionv2 = () => {
@@ -56,35 +56,54 @@ const HeroSectionv2 = () => {
             </CustomButton>
           </div>
         </div>
+        <div className="relative overflow-hidden fade-bottom">
+          <div className="bg-gradient-to-b from-[#3389AD4D] border-3 border-bg-border rounded-t-4xl px-4 pt-4 ">
+            <video
+              src="/landing/Light.mp4"
+              autoPlay
+              muted
+              loop
+              playsInline
+              className="block dark:hidden rounded-t-2xl"
+            />
+            <video
+              src="/landing/Dark.mp4"
+              autoPlay
+              muted
+              loop
+              playsInline
+              className="hidden dark:block rounded-t-2xl"
+            />
+          </div>
+        </div>
 
-        <div className="bg-gradient-to-b from-[#3389AD4D] border-3 border-bg-border rounded-t-4xl px-4 pt-4 relative overflow-hidden fade-bottom">
-          {/* <div className="bg-secondary-background rounded-4xl p-4 overflow-hidden fade-bottom"> */}
-          {/* <div style={{ position: "relative", height: "100%" }}> */}
-          {/* <Image
+        {/* <div className="bg-secondary-background rounded-4xl p-4 overflow-hidden fade-bottom"> */}
+        {/* <div style={{ position: "relative", height: "100%" }}> */}
+        {/* <Image
             src={"/landing/cover.png"}
             alt={"image"}
             height={288}
             width={1920}
             className="object-content rounded-t-4xl"
           /> */}
-          <Image
+        {/* <Image
             src="/landing/cover_light2.png"
             alt="light image"
             width={1920}
             height={288}
             className="block dark:hidden object-content rounded-t-4xl"
-          />
+          /> */}
 
-          {/* Dark mode image */}
-          <Image
+        {/* Dark mode image */}
+        {/* <Image
             src="/landing/cover_dark2.png"
             alt="dark image"
             width={1920}
             height={288}
             className="hidden dark:block object-content rounded-t-4xl"
-          />
-          {/* </div> */}
-        </div>
+          /> */}
+        {/* </div> */}
+        {/* </div> */}
       </div>
     </section>
   );
