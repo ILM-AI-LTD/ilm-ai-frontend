@@ -1,6 +1,7 @@
 "use client";
 import CustomButton from "@/components/global/CustomButton";
 import CustomLogo from "@/components/global/CustomLogo";
+import { ArrowRight } from "lucide-react";
 import { useTheme } from "next-themes";
 import Image from "next/image";
 import Link from "next/link";
@@ -16,19 +17,25 @@ const HeroSectionv2 = () => {
       <div className="max-w-[1170px] bg-secondary-background border border-bg-border rounded-4xl px-4 pt-4 md:px-6 md:pt-6 2xl:px-10 gap-4 ">
         <div className="mt-12 mb-10">
           <button className=" border border-border text-foreground bg-background h-8 w-26 text-sm rounded-full cursor-pointer mb-4">
-            {`ILMINO ->`}
+            <span className="flex flex-row gap-1 justify-center items-center">
+              ILMINO
+              <ArrowRight width={16} height={16} />
+            </span>
           </button>
           <h1 className="font-bold text-[min(10vw,64px)] text-foreground mb-4">
-            Innovative <span className=" text-[#006C98]">Learning</span>
+            Interactive <span className=" text-[#006C98]">Learning</span>
           </h1>
-          <p className="text-foreground mb-6">
+          <div className="flex flex-row text-foreground mb-6 justify-center w-[75%] mx-auto gap-2">
             {/* <span className="font-bubbleGum  text-xl">ILMIN0</span>- where
             learning becomes personal. */}
-            <span className="flex flex-row gap-2.5 justify-center items-center">
+            <div className="mt-1">
               <CustomLogo logoSrc={logoSrc} width={70} height={14} />
+            </div>
+            <p className="text-left">where learning becomes personal</p>
+            {/* <span className="flex flex-row gap-2.5 justify-center items-center">
               where learning becomes personal
-            </span>
-          </p>
+            </span> */}
+          </div>
           <div className="inline-flex gap-4">
             <Link href="/auth/sign-up">
               {/* <button className="text-foreground bg-gradient-to-b from-[#E8E8E8] dark:from-[#1D2840] dark:to-[#000000] hover:bg-[#007AAC] shadow-[0px_6px_0px_0px_#373C4E] hover:border-[#007AAC] h-14 w-32 rounded-full cursor-pointer">
