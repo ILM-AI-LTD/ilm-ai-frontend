@@ -85,8 +85,8 @@ PricingCardProps) => {
         "w-full flex flex-col justify-between mx-auto sm:mx-0",
         "border-3 transition-colors duration-200",
         "[&:has(.btn-hover:hover)]:border-brand-color",
-        " bg-gradient-to-b from-[#ffffff] dark:from-[#0F172A] text-foreground p-6 gap-6",
-        idx === 1 ? "border-[#006C98]" : "border-bg-border"
+        " bg-gradient-to-b from-[#ffffff] dark:from-[#0F172A] text-foreground p-6 gap-6 shadow-lg",
+        idx === 1 ? "border-[#006C98]" : "border-card-border-2 "
       )}
     >
       <div className="flex flex-col gap-6">

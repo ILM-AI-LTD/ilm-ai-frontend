@@ -20,7 +20,7 @@ export const GettingStartedCard: React.FC<GettingStartedCardProps> = ({
   description,
   imgSrc,
 }) => (
-  <Card className=" bg-gradient-to-b from-[#ffffff] dark:from-[#0F172A] border-3 border-bg-border p-6 shadow-lg">
+  <Card className=" bg-gradient-to-b from-[#ffffff] dark:from-[#0F172A] border-3 border-card-border-2 p-6 shadow-lg">
     <CardHeader className="inline-flex items-center justify-between px-0 py-0">
       <Image
         src={`${imgSrc}`}

@@ -14,7 +14,7 @@ const SubscriptionSection = () => {
 
   return (
     <section className=" bg-secondary-background w-full flex flex-col items-center justify-center py-30 px-6 md:px-10 2xl:px-[135px] gap-8">
-      <div className="max-w-[1170px] w-full bg-background rounded-3xl py-18 px-4 md:px-6 lg:px-10  text-foreground flex flex-col items-center gap-8">
+      <div className="max-w-[1170px] w-full bg-background rounded-3xl py-18 px-4 md:px-6 lg:px-10  text-foreground flex flex-col items-center gap-8 border border-card-border-3">
         <div className="flex flex-col gap-4 text-center">
           <h2 className="font-bold text-[min(10vw,64px)]">
             Choose Your <span className=" text-[#8E8E8E]">Perfect Plan</span>
