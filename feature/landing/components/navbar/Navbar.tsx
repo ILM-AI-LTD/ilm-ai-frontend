@@ -28,7 +28,9 @@ const Navbar = () => {
     <nav className="h-24 bg-background z-10 px-6 md:px-10 2xl:px-[135px]">
       <div className="max-w-[1170px] mx-auto w-full h-full flex items-center justify-between">
         <div className="flex flex-row gap-2 items-center">
-          <CustomLogo logoSrc="/ilmino.svg" />
+          <Link href="/">
+            <CustomLogo logoSrc="/ilmino.svg" />
+          </Link>
           {/* <h1 className="font-bold text-[32px] text-white ">ILM AI</h1> */}
         </div>
 
