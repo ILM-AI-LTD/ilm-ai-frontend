@@ -21,19 +21,19 @@ const plans = [
   },
   {
     title: "Family Plan",
-    description: "Ideal for siblings and family learning.",
+    description: "Great for siblings and learning families.",
     monthlyPrice: 45,
     yearlyPrice: 300,
     //   monthlyPriceId: import.meta.env.VITE_PRO_MONTHLY_PRICE_ID,
     //   yearlyPriceId: import.meta.env.VITE_PRO_YEARLY_PRICE_ID,
     featureTitle: "This Plan Includes:",
     features: [
-      "Up to 3 Students",
+      "Up to 3 Users (Students)",
       "Full Subject & AI Access",
       "Group Performance Analytics",
       "Dedicated Support",
     ],
-    actionLabel: "Join",
+    actionLabel: "Join Now",
     // popular: true,
     discountedPrice: {
       monthly: 20,
@@ -42,7 +42,7 @@ const plans = [
   },
   {
     title: "Scholarship Program",
-    description: "Application Based",
+    description: "Application-Based",
     monthlyPrice: 0,
     yearlyPrice: 0,
     //   monthlyPriceId: import.meta.env.VITE_ENTERPRISE_MONTHLY_PRICE_ID,
