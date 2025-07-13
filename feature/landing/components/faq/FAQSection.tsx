@@ -17,7 +17,7 @@ const FAQSection = () => {
           <h1 className="font-bold text-[min(10vw,64px)] mb-6">
             Frequently Asked <span className=" text-[#8E8E8E]">Questions!</span>
           </h1>
-          <Card className="bg-gradient-to-b from-[#ffffff] dark:from-[#0F172A] border-3 border-bg-border shadow-lg rounded-3xl py-8 px-6">
+          <Card className="bg-gradient-to-b from-[#F6F6F6] to-[#F6F6F6] dark:from-[#0F172A] dark:to-transparent border-3 border-card-border-1 shadow-lg rounded-3xl py-8 px-6">
             {/* <CardTitle className=" text-2xl font-semibold">
               Still have Questions?
             </CardTitle> */}
@@ -83,7 +83,8 @@ const FAQSection = () => {
               value={`item-${index}`}
               key={index}
               // className="border-1 border-faq-border-color rounded-[12px] mb-4 px-6 py-4"
-              className="bg-gradient-to-b from-[#ffffff] dark:from-[#0F172A] border-1 border-bg-border shadow-lg rounded-[12px] mb-4 px-6 py-4"
+              // className="bg-gradient-to-b from-[#ffffff] dark:from-[#0F172A] border-1 border-bg-border shadow-lg rounded-[12px] mb-4 px-6 py-4"
+              className="bg-[linear-gradient(to_bottom,_#F6F6F6_0%,_#F6F6F6_50%)] dark:bg-[linear-gradient(to_bottom,_#0F172A_0%,_transparent_100%)] border-1 border-bg-border shadow-lg rounded-[12px] mb-4 px-6 py-4"
             >
               <AccordionTrigger className="font-semibold text-xl cursor-pointer py-2">
                 {item.question}
