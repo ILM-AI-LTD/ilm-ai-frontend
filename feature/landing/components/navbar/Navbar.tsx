@@ -27,7 +27,7 @@ const Navbar = () => {
     <>
       {menuOpen && (
         <div
-          className="fixed inset-0 bg-black/10 bg-opacity-50 backdrop-blur-[2px] z-10 lg:hidden"
+          className="fixed inset-0 bg-black/10 backdrop-blur-[1px] z-10 lg:hidden"
           onClick={() => setMenuOpen(false)}
         />
       )}
