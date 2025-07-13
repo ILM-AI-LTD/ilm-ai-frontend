@@ -51,8 +51,8 @@ const Navbar = () => {
           </Link>
         </div> */}
         {/* Desktop Menu */}
-        <div className="hidden lg:flex font-bold gap-6 text-foreground items-center">
-          <h1>Home</h1>
+        <div className="hidden lg:flex font-normal gap-6 text-foreground items-center">
+          <h1 className="text-[#006C98] font-bold">Home</h1>
           <h1>Features</h1>
           <h1>How it Works</h1>
           <h1>About Us</h1>
@@ -85,9 +85,9 @@ const Navbar = () => {
 
       {/* Mobile Dropdown Menu */}
       {menuOpen && (
-        <div className="lg:hidden bg-background shadow-md px-6 py-4 absolute top-24 right-0 w-1/4 z-20">
-          <div className="flex flex-col gap-4 font-bold text-foreground">
-            <h1>Home</h1>
+        <div className="lg:hidden bg-background shadow-md px-6 py-4 absolute top-24 right-0 w-full z-20">
+          <div className="flex flex-col gap-4 font-normal text-foreground items-center">
+            <h1 className="text-[#006C98] font-bold">Home</h1>
             <h1>Features</h1>
             <h1>How it Works</h1>
             <h1>About Us</h1>
@@ -95,7 +95,7 @@ const Navbar = () => {
               <CustomButton
                 label="Login"
                 className="mt-2 font-bold text-base rounded-full 
-                hover:text-white transition-all duration-300 ease-in-out h-[52px] cursor-pointer"
+                hover:text-white transition-all duration-300 ease-in-out h-[48px] max-w-[350px] cursor-pointer"
                 icon={<LogIn />}
               />
             </Link>
