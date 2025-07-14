@@ -3,6 +3,7 @@ import CustomButton from "@/components/global/CustomButton";
 import CustomLogo from "@/components/global/CustomLogo";
 import { ArrowRight } from "lucide-react";
 import { useTheme } from "next-themes";
+import Image from "next/image";
 // import Image from "next/image";
 import Link from "next/link";
 
@@ -36,7 +37,21 @@ const HeroSectionv2 = () => {
 
           <div className="flex flex-col sm:flex-row items-center justify-center text-foreground mb-6 w-full max-w-[90%] mx-auto gap-1 text-sm sm:text-base">
             <div className="flex-shrink-0">
-              <CustomLogo logoSrc={logoSrc} width={70} height={14} />
+              {/* <CustomLogo logoSrc={logoSrc} width={70} height={14} /> */}
+              <Image
+                src="/landing/Vector.svg"
+                width={70}
+                height={14}
+                alt="ILM Logo"
+                className="hidden dark:block "
+              />
+              <Image
+                src="/landing/Vector2.svg"
+                width={70}
+                height={14}
+                alt="ILM Logo"
+                className="block dark:hidden"
+              />
             </div>
             <p className="text-center sm:text-left mt-1 sm:mt-0 sm:ml-2">
               where learning becomes personal
