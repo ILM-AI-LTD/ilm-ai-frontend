@@ -4,8 +4,8 @@ import { useGenerateScript } from '@/feature/students/chapters-stream/hooks/useG
 import { useQueryClient } from '@tanstack/react-query';
 import { Play } from 'lucide-react';
 import React, { useState } from 'react';
-import CalloutHistoryContent from './CalloutHistoryContent';
 import CalloutScriptStream from './CalloutScriptStream';
+import CalloutContentHistory from './CalloutContentHistory';
 
 interface Goal {
     id: number;
@@ -134,7 +134,7 @@ const MainContent: React.FC<MainContentProps> = ({
                         <div>
                             <div key={index} className="flex items-start gap-4">
                                 <ILMIAssistantv2 height={40} width={40} className="mt-2" />
-                                <CalloutHistoryContent
+                                <CalloutContentHistory
                                     title={selectedGoal.title}
                                     message={
                                         typeof entry === 'string'

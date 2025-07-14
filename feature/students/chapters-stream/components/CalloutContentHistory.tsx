@@ -4,13 +4,13 @@ import { kebabToTitleCase } from '@/lib/utils';
 import React from 'react';
 import MarkdownRenderer from './MarkdownRenderer';
 
-export interface CalloutHistoryContentProps {
+export interface CalloutContentHistoryProps {
     title: string;
     message: string;
     className?: string;
     orientation: 'top' | 'bottom' | 'left' | 'right';
 }
-const CalloutHistoryContent: React.FC<CalloutHistoryContentProps> = ({ message, orientation, className = '', title }) => {
+const CalloutContentHistory: React.FC<CalloutContentHistoryProps> = ({ message, orientation, className = '', title }) => {
 
     return (
         <div className={`relative ${className}`}>
@@ -34,4 +34,4 @@ const CalloutHistoryContent: React.FC<CalloutHistoryContentProps> = ({ message, 
     );
 };
 
-export default CalloutHistoryContent;
+export default CalloutContentHistory;
