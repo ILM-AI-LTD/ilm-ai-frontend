@@ -1,17 +1,33 @@
 "use client";
 import CustomButton from "@/components/global/CustomButton";
-import CustomLogo from "@/components/global/CustomLogo";
+// import CustomLogo from "@/components/global/CustomLogo";
 import { ArrowRight } from "lucide-react";
-import { useTheme } from "next-themes";
+// import { useTheme } from "next-themes";
 import Image from "next/image";
 // import Image from "next/image";
 import Link from "next/link";
+// import { useEffect, useState } from "react";
 
 const HeroSectionv2 = () => {
-  const { theme } = useTheme();
+  // const { theme } = useTheme();
 
-  const logoSrc =
-    theme === "dark" ? "/landing/Vector.svg" : "/landing/Vector2.svg";
+  // const logoSrc =
+  //   theme === "dark" ? "/landing/Vector.svg" : "/landing/Vector2.svg";
+  // const { theme, resolvedTheme } = useTheme();
+  // const [mounted, setMounted] = useState(false);
+
+  // useEffect(() => {
+  //   setMounted(true);
+  // }, []);
+
+  // if (!mounted) return null;
+
+  // const currentTheme = resolvedTheme || theme;
+
+  // const videoSrc =
+  //   currentTheme === "dark"
+  //     ? "/landing/dark_mode.mp4"
+  //     : "/landing/light_mode.mp4";
 
   return (
     <section className="py-2 px-6 md:px-10 2xl:px-[135px] text-center flex flex-col justify-center items-center">
@@ -83,23 +99,31 @@ const HeroSectionv2 = () => {
             </CustomButton>
           </div>
         </div>
-        <div className="relative overflow-hidden fade-bottom">
+        <div className="relative overflow-hidden fade-bottom ">
           <div className="bg-gradient-to-b from-[#3389AD4D] border-3 border-bg-border rounded-t-4xl px-4 pt-4 ">
-            <video
-              src="/landing/Light.mp4"
+            {/* <video
+              src={videoSrc}
               autoPlay
               muted
               loop
               playsInline
-              className="block dark:hidden rounded-t-2xl"
+              className="w-full h-full object-cover rounded-t-2xl"
+            /> */}
+            <video
+              src="/landing/light_mode.mp4"
+              autoPlay
+              muted
+              loop
+              playsInline
+              className="block dark:hidden rounded-t-2xl w-full h-full object-cover"
             />
             <video
-              src="/landing/Dark.mp4"
+              src="/landing/dark_mode.mp4"
               autoPlay
               muted
               loop
               playsInline
-              className="hidden dark:block rounded-t-2xl"
+              className="hidden dark:block rounded-t-2xl w-full h-full object-cover"
             />
           </div>
         </div>
