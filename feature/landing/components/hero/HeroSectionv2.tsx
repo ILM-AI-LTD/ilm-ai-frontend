@@ -99,9 +99,11 @@ const HeroSectionv2 = () => {
             </CustomButton>
           </div>
         </div>
-        <div className="relative overflow-hidden fade-bottom ">
-          <div className="bg-gradient-to-b from-[#3389AD4D] border-3 border-bg-border rounded-t-4xl px-4 pt-4 ">
-            {/* <video
+        {/* <div className="relative overflow-hidden fade-bottom "> */}
+        {/* <div className=""> */}
+        {/* <div className="bg-gradient-to-b from-[#3389AD4D] border-3 border-bg-border rounded-t-4xl px-4 pt-4 "> */}
+        <div className="bg-gradient-to-b from-[#3389AD4D] border-t-3 border-x-3 border-bg-border rounded-t-4xl px-4 pt-4 ">
+          {/* <video
               src={videoSrc}
               autoPlay
               muted
@@ -109,24 +111,24 @@ const HeroSectionv2 = () => {
               playsInline
               className="w-full h-full object-cover rounded-t-2xl"
             /> */}
-            <video
-              src="/landing/light_mode.mp4"
-              autoPlay
-              muted
-              loop
-              playsInline
-              className="block dark:hidden rounded-t-2xl w-full h-full object-cover"
-            />
-            <video
-              src="/landing/dark_mode.mp4"
-              autoPlay
-              muted
-              loop
-              playsInline
-              className="hidden dark:block rounded-t-2xl w-full h-full object-cover"
-            />
-          </div>
+          <video
+            src="/landing/lightv3.mp4"
+            autoPlay
+            muted
+            loop
+            playsInline
+            className="block dark:hidden rounded-t-2xl w-full h-full object-cover"
+          />
+          <video
+            src="/landing/darkv3.mp4"
+            autoPlay
+            muted
+            loop
+            playsInline
+            className="hidden dark:block rounded-t-2xl w-full h-full object-cover"
+          />
         </div>
+        {/* </div> */}
 
         {/* <div className="bg-secondary-background rounded-4xl p-4 overflow-hidden fade-bottom"> */}
         {/* <div style={{ position: "relative", height: "100%" }}> */}
