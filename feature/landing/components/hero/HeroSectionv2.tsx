@@ -112,7 +112,7 @@ const HeroSectionv2 = () => {
               className="w-full h-full object-cover rounded-t-2xl"
             /> */}
           <video
-            src="/landing/lightv3.mp4"
+            src="/landing/lightv4.mp4"
             autoPlay
             muted
             loop
@@ -120,7 +120,7 @@ const HeroSectionv2 = () => {
             className="block dark:hidden rounded-t-2xl w-full h-full object-cover"
           />
           <video
-            src="/landing/darkv3.mp4"
+            src="/landing/darkv4.mp4"
             autoPlay
             muted
             loop
