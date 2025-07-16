@@ -1,12 +1,13 @@
 'use client';
 
+import { Skeleton } from '@/components/ui/skeleton';
 import { kebabToTitleCase } from '@/lib/utils';
+import { useQueryClient } from '@tanstack/react-query';
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import Markdown from 'react-markdown';
 import rehypeKatex from 'rehype-katex';
 import remarkGfm from 'remark-gfm';
 import remarkMath from 'remark-math';
-import { Skeleton } from '@/components/ui/skeleton';
 
 export interface CalloutHistoryContentProps {
     title: string;
@@ -65,6 +66,8 @@ const CalloutScriptStream: React.FC<CalloutHistoryContentProps> = ({
     const indexRef = useRef(0);
     const timeoutRef = useRef<NodeJS.Timeout | null>(null);
     const streamingRef = useRef(true);
+    const queryClient = useQueryClient();
+
 
 
     // Start streaming only when message is initially passed in
@@ -88,11 +91,17 @@ const CalloutScriptStream: React.FC<CalloutHistoryContentProps> = ({
                 timeoutRef.current = setTimeout(stream, 10);
             } else {
                 setIsStreaming(false);
+
+
                 if (timeoutRef.current) clearTimeout(timeoutRef.current);
 
                 if (typeof onStreamEnd === 'function') {
-                    onStreamEnd();
-                  }
+                    queryClient.refetchQueries({
+                        queryKey: ['goals'],
+                    }).then(() => {
+                        onStreamEnd();
+                    });
+                }
             }
         };
 
@@ -152,11 +161,11 @@ const CalloutScriptStream: React.FC<CalloutHistoryContentProps> = ({
     }), []);
 
     return (
-        <div className={`relative ${className}`}>
-            <div className="bg-background border text-white px-6 py-4 rounded-lg">
-                <p className="text-[#049F6C] font-normal text-lg">{kebabToTitleCase(title)}</p>
+        <div className={`relative ${className} w-full min-w-0`}>
+            <div className="bg-background border text-white px-6 py-4 rounded-lg w-full min-h-[80px]">
+                <p className="text-[#049F6C] font-normal text-lg w-full">{kebabToTitleCase(title)}</p>
 
-                <div className="prose prose-sm prose-invert max-w-none space-y-4">
+                <div className="prose prose-sm prose-invert max-w-none w-full min-w-0 space-y-4">
                     {extractLatexBlocks(streamedContent).map((block, idx) => {
                         if (block.isLatex) {
                             return block.isComplete ? (
