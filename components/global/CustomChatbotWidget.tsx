@@ -215,7 +215,7 @@ function ChatbotWidget({
             </div>
 
             {isOpen && (
-                <Card className="fixed z-40 w-[450px] h-[650px] flex flex-col  bg-background p-0" style={getChatPositionStyle()}>
+                <Card className="fixed z-100 w-[450px] h-[650px] flex flex-col  bg-background p-0" style={getChatPositionStyle()}>
                     <CardHeader className="flex flex-row items-center justify-between text-foreground border-b pt-4">
                         <div className="flex items-center space-x-2">
                             <Avatar>
