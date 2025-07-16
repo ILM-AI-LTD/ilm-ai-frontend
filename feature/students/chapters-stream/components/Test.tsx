@@ -1,6 +1,7 @@
 // import CheckboxCardDemo from "@/components/customized/checkbox/checkbox-11";
 import CustomCheckboxCard from "@/components/global/CustomCheckBoxCard";
-import CustomTldrawEditor from "@/components/global/CustomTldrawEditor";
+// import CustomTldrawEditor from "@/components/global/CustomTldrawEditor";
+import CustomTldrawEditor from "@/components/global/TestCustomTldrawEditor";
 // import { Card } from "@/components/ui/card";
 import React from "react";
 
@@ -34,6 +35,7 @@ const Test = () => {
                   className="border p-2 rounded w-full mt-2"
                   placeholder="Type your answer here..."
                 /> */}
+                {/* <CustomTldrawEditor questions={q} /> */}
                 <CustomTldrawEditor questions={q} />
               </>
             )}
