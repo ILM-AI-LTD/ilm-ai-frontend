@@ -135,3 +135,69 @@ export interface ScriptApiResponse {
   message: string;
   data: string;
 }
+
+export interface SampleQuestionsRequest {
+  board: string;
+  subject: string;
+  paper: number;
+  topic: string;
+  subtopic: string;
+  goal: string;
+}
+
+export interface SampleQuestionsResponse {
+  status: string;
+  message: string;
+  data: {
+    questions: {
+      set: number;
+      question_type: string;
+      question_list: {
+        question: string;
+        answer: string;
+      }[];
+    }[];
+  };
+}
+
+export interface EvaluateAnswerDTO {
+  question: string,
+  student_answer: string, 
+  correct_answer: string
+}
+
+export interface EvaluateAnswerResponse {
+  status: string;
+  message: string;
+  data: {
+    score?: number;
+    explanation?: string;
+    is_correct?: boolean;
+  };
+}
+
+export interface SampleQuestionsRequest {
+  board: string;
+  subject: string;
+  paper: number;
+  topic: string;
+  subtopic: string;
+  goal: string;
+}
+
+export interface SampleQuestionsResponse {
+  status: string;
+  message: string;
+  data: {
+    questions: {
+      set: number;
+      question_type: string;
+      question_list: {
+        question: string;
+        answer: string;
+      }[];
+    }[];
+  };
+}
+
+
