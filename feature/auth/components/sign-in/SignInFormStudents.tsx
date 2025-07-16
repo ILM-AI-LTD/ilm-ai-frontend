@@ -107,7 +107,7 @@ const SignInFormStudents = () => {
                         name="rememberMe"
                         checked={values.rememberMe}
                         onChange={handleChange}
-                        className="size-4 rounded-full"
+                        className="size-4 rounded-full accent-primary"
                     />
                     <label htmlFor="remember-me" className="text-base text-muted-foreground mb-1">Keep me logged in</label>
                 </div>
