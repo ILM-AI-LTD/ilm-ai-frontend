@@ -5,7 +5,7 @@ import InputField from "@/components/global/CustomInput";
 const CompetitionForm = () => {
   return (
     // <form className='w-full px-8 py-10 flex flex-col gap-6 border-1 border-border-color rounded-2xl  bg-background'>
-    <form className="w-full px-8 py-10 flex flex-col gap-6 bg-gradient-to-b from-[#ffffff] dark:from-[#0F172A] border-3 border-bg-border rounded-2xl  shadw-lg">
+    <form className="w-full max-w-[687px] px-8 py-10 flex flex-col gap-6 bg-gradient-to-b from-[#F6F6F6] to-[#F6F6F6] dark:from-[#0F172A] dark:to-transparent border-3 border-card-border-1 rounded-2xl shadow-lg">
       <div className="flex flex-col sm:flex-row gap-4">
         <InputField
           labelText="First Name"
@@ -45,7 +45,7 @@ const CompetitionForm = () => {
       /> */}
       <CustomButton
         label="Join the Competition"
-        className="w-full h-14 py-4 px-8 rounded-full"
+        className="w-full h-[48px] py-4 px-8 rounded-full"
         disabled
         active={false}
       />

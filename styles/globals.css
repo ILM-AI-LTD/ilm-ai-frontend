@@ -68,6 +68,9 @@
   --color-button-foreground: var(--button-foreground);
 
   --color-bg-border: var(--bg-border);
+  --color-card-border-1: var(--card-border-1);
+  --color-card-border-2: var(--card-border-2);
+  --color-card-border-3: var(--card-border-3);
 }
 
 :root {
@@ -131,6 +134,10 @@
 
   /* custom font */
   --font-geist-sans: Inter, sans-serif;
+
+  --card-border-1: #ffffff;
+  --card-border-2: #f6f6f6;
+  --card-border-3: #d7d7d7;
 }
 
 .dark {
@@ -187,6 +194,10 @@
 
   --secondary-button: #020617;
   --fade-end-color: #0d111c;
+
+  --card-border-1: #1b2130;
+  --card-border-2: #1b2130;
+  --card-border-3: #1b2130;
 }
 
 @layer base {
@@ -247,6 +258,14 @@
 
 .font-bubbleGum {
   font-family: var(--font-bubbleGum), sans-serif;
+}
+
+.font-khand {
+  font-family: var(--font-khand), sans-serif;
+}
+
+.font-hkGrotesk {
+  font-family: var(--font-hkGrotesk), sans-serif;
 }
 
 .fade-bottom::after {

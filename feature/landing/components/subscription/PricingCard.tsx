@@ -18,6 +18,7 @@ interface PricingCardProps {
   monthlyPriceId?: string;
   yearlyPriceId?: string;
   description: string;
+  featureTitle: string;
   features: string[];
   actionLabel: string;
   popular?: boolean;
@@ -27,7 +28,7 @@ interface PricingCardProps {
     monthly?: number;
     yearly?: number;
   };
-  idx: number;
+  idx?: number;
 }
 
 // const calculateSubscriptionType = (
@@ -53,6 +54,7 @@ const PricingCard = ({
   monthlyPrice,
   yearlyPrice,
   description,
+  featureTitle,
   features,
   actionLabel,
   popular,
@@ -83,8 +85,9 @@ PricingCardProps) => {
         "w-full flex flex-col justify-between mx-auto sm:mx-0",
         "border-3 transition-colors duration-200",
         "[&:has(.btn-hover:hover)]:border-brand-color",
-        " bg-gradient-to-b from-[#ffffff] dark:from-[#0F172A] text-foreground p-6 gap-6",
-        idx === 1 ? "border-[#006C98]" : "border-bg-border"
+        " bg-gradient-to-b from-[#ffffff] dark:from-[#0F172A] text-foreground p-6 gap-6 shadow-lg",
+        // idx === 1 ? "border-[#006C98]" : "border-card-border-2 "
+        "border-card-border-2 group hover:border-[#006C98]"
       )}
     >
       <div className="flex flex-col gap-6">
@@ -92,7 +95,7 @@ PricingCardProps) => {
           {isYearly && yearlyPrice && monthlyPrice ? (
             <div className="flex justify-between items-center">
               <div className="flex items-center gap-2">
-                <CardTitle className="text-xl font-normal">{title}</CardTitle>
+                <CardTitle className="text-lg font-normal">{title}</CardTitle>
               </div>
 
               <div className="flex flex-row gap-2">
@@ -145,13 +148,13 @@ PricingCardProps) => {
                   </span> */}
                 </div>
 
-                <div className="inline-flex gap-1">
-                  <h3 className="text-[min(10vw,26px)] font-bold">
+                <div className="inline-flex gap-2">
+                  <h3 className="text-[min(10vw,40px)] font-bold">
                     {originalPrice - discountPrice === 0
                       ? "Free"
                       : `£${originalPrice - discountPrice}`}
                   </h3>
-                  <span className="flex flex-col justify-end text-sm mb-1">
+                  <span className="flex flex-col justify-end text-lg mb-1">
                     {originalPrice - discountPrice === 0
                       ? null
                       : yearlyPrice && isYearly
@@ -164,7 +167,7 @@ PricingCardProps) => {
               </div>
             ) : (
               <div className="inline-flex gap-1">
-                <h3 className="text-[min(10vw,26px)] font-bold">
+                <h3 className="text-[min(10vw,40px)] font-bold">
                   {originalPrice === 0 ? "Free" : `£${originalPrice}`}
                 </h3>
                 <span className="flex flex-col justify-end text-sm mb-1">
@@ -184,6 +187,7 @@ PricingCardProps) => {
         </CardHeader>
 
         <CardContent className="flex flex-col gap-4 p-0">
+          <p className="text-[16px] font-semibold">{featureTitle}</p>
           {features.map((feature: string) => (
             <CheckItem key={feature} text={feature} />
           ))}
@@ -202,12 +206,16 @@ PricingCardProps) => {
           variant="outline"
         /> */}
         <CustomButton
+          // className={cn(
+          //   "btn-hover inline-flex h-[40px] w-[263px] md:h-[44px] md:w-[173px] 2xl:h-[48px] 2xl:w-[293px] items-center justify-center rounded-full font-bold hover:text-white"
+          // )}
           className={cn(
-            "btn-hover inline-flex h-12 w-full items-center justify-center rounded-full font-bold hover:text-white"
+            "btn-hover inline-flex h-[40px] w-full md:h-[44px] 2xl:h-[48px] items-center justify-center rounded-full font-bold group-hover:text-white group-hover:from-[#018dc4] group-hover:to-[#018dc4] shadow-[0px_6px_0px_0px_#006C98] dark:group-hover:from-[#018dc4] dark:group-hover:to-[#018dc4]"
           )}
           label={actionLabel}
           variant="outline"
-          active={idx === 1 ? true : false}
+          // active={idx === 1 ? true : false}
+          active={false}
         />
       </CardFooter>
     </Card>
@@ -215,12 +223,17 @@ PricingCardProps) => {
 };
 
 const CheckItem = ({ text }: { text: string }) => (
-  <div className="flex flex-row items-start  gap-2">
-    <div className="flex justify-start mt-1">
-      <Check size={16} className=" text-brand-500" />
+  <>
+    <div className="flex flex-row items-start  gap-2">
+      <div className="flex justify-start mt-1">
+        <Check
+          size={14}
+          className="p-0.5 text-brand-500 rounded-full bg-[#E9E9E9] dark:bg-[#242C52]"
+        />
+      </div>
+      <p className="text-base font-medium">{text}</p>
     </div>
-    <p className="text-base font-medium">{text}</p>
-  </div>
+  </>
 );
 
 export default PricingCard;

@@ -5,11 +5,11 @@ import CustomLogo from "@/components/global/CustomLogo";
 const CustomerService = () => {
   return (
     <section className=" bg-background py-20 px-6 md:px-10 2xl:px-[135px]">
-      <div className="max-w-[1170px] w-full bg-secondary-background mx-auto p-6 md:p-10 flex flex-col lg:flex-row items-center lg:justify-between text-foreground rounded-3xl">
+      <div className="max-w-[1170px] w-full bg-secondary-background mx-auto p-6 md:p-10 flex flex-col lg:flex-row items-center lg:justify-between text-foreground rounded-3xl gap-10 lg:gap-20 ">
         <p className="text-[min(10vw,64px)] font-bold text-center lg:text-left w-full lg:w-[40%] justify-center items-center">
           Start today{" "}
           {/* <span className="font-bubbleGum font-[700px] text-[#006C98] "> */}
-          <span className="flex flex-row gap-2.5 ">
+          <span className="flex flex-row gap-2.5 justify-center items-center">
             {/* ILMIN0 */}
             with
             <CustomLogo logoSrc="/ilmino.svg" width={250} height={160} />

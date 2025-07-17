@@ -20,8 +20,8 @@ export const GettingStartedCard: React.FC<GettingStartedCardProps> = ({
   description,
   imgSrc,
 }) => (
-  <Card className=" bg-gradient-to-b from-[#ffffff] dark:from-[#0F172A] border-3 border-bg-border p-6 shadow-lg">
-    <CardHeader className="inline-flex items-center justify-between px-0">
+  <Card className="group bg-gradient-to-b from-[#ffffff] dark:from-[#0F172A] border-3 border-card-border-2 p-6 shadow-lg hover:bg-[#3389AD] hover:bg-none ">
+    <CardHeader className="inline-flex items-center justify-between px-0 py-0">
       <Image
         src={`${imgSrc}`}
         height={80}
@@ -29,16 +29,16 @@ export const GettingStartedCard: React.FC<GettingStartedCardProps> = ({
         alt={imgSrc}
         className="w-[60px] h-[60px] 2xl:w-[80px] 2xl:h-[80px]"
       />
-      <p className="text-brand-color opacity-20 text-7xl font-bold">
+      <h1 className="font-khand text-[#006C98] opacity-20 text-8xl ">
         {index + 1}
-      </p>
+      </h1>
     </CardHeader>
 
-    <CardTitle className="text-[28px] font-semibold text-foreground">
+    <CardTitle className="text-[24px] font-semibold text-foreground group-hover:text-white">
       {title}
     </CardTitle>
 
-    <CardDescription className="text-lg font-normal text-foreground">
+    <CardDescription className="text-lg font-normal text-foreground-subtitle group-hover:text-white">
       {description}
     </CardDescription>
   </Card>

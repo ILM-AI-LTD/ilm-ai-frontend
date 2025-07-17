@@ -21,9 +21,9 @@ export const FeatureCard: React.FC<FeatureCardProps> = ({
   imgSrc,
 }) => (
   // <Card className="bg-secondary-bg-color border-3 border-[#1B2130] p-4 md:p-6 2xl:p-10">
-  <Card className="bg-gradient-to-t from-[#FFFFFF] dark:from-[#020617] border-3 border-bg-border p-4 md:p-6 2xl:p-10">
+  <Card className=" group bg-gradient-to-t from-[#FFFFFF] dark:from-[#020617] border-3 border-card-border-1 p-4 md:p-6 2xl:p-10 shadow-lg hover:bg-[#3389AD] hover:bg-none">
     <CardHeader className="inline-flex items-center justify-between px-0">
-      <p className="text-brand-color opacity-20 text-[100px] font-bold">
+      <p className="font-khand text-[#006C98] opacity-20  text-8xl 2xl:text-9xl">
         {index + 1}
       </p>
       <Image
@@ -36,11 +36,11 @@ export const FeatureCard: React.FC<FeatureCardProps> = ({
       <div className="w-12"></div>
     </CardHeader>
 
-    <CardTitle className="text-[28px] font-semibold text-foreground">
+    <CardTitle className="text-[32px] font-semibold text-foreground group-hover:text-white">
       {title}
     </CardTitle>
 
-    <CardDescription className="text-lg font-normal text-[#677489]">
+    <CardDescription className="text-lg font-normal text-[#677489] group-hover:text-white">
       {description}
     </CardDescription>
   </Card>

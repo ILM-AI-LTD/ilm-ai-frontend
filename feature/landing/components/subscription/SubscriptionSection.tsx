@@ -13,13 +13,13 @@ const SubscriptionSection = () => {
   //   setIsYearly(parseInt(value) === 1);
 
   return (
-    <section className=" bg-secondary-background w-full flex flex-col items-center justify-center py-20 px-6 md:px-10 2xl:px-[135px] gap-8">
-      <div className="max-w-[1170px] w-full bg-background rounded-3xl py-16 px-4 md:px-6  text-foreground flex flex-col items-center gap-8">
+    <section className=" bg-secondary-background w-full flex flex-col items-center justify-center py-30 px-6 md:px-10 2xl:px-[135px] gap-8">
+      <div className="max-w-[1170px] w-full bg-background rounded-3xl py-18 px-4 md:px-6 lg:px-10  text-foreground flex flex-col items-center gap-8 border border-card-border-3">
         <div className="flex flex-col gap-4 text-center">
           <h2 className="font-bold text-[min(10vw,64px)]">
             Choose Your <span className=" text-[#8E8E8E]">Perfect Plan</span>
           </h2>
-          <p className="font-normal text-lg">
+          <p className="font-normal text-lg text-foreground-subtitle">
             Designed for every stage of your journey. Start today, no credit
             card required.
           </p>
@@ -34,7 +34,7 @@ const SubscriptionSection = () => {
             }}
             active={!isYearly}
             className={cn(
-              "h-9 font-bold text-sm rounded-full px-8 py-6 text-foreground hover:text-white",
+              "font-bold text-sm rounded-full px-8 py-6 text-foreground hover:text-white w-[120px] h-[38px]",
               !isYearly && "text-white"
               //   ? "bg-gradient-to-b from-[#004D6C] to-[#006C98]  hover:border-0 text-white hover:text-white"
               //   : "bg-gradient-to-b from-[#E8E8E8] dark:from-[#1D2840] dark:to-[#000000] dark:shadow-[0px_6px_0px_0px_#373C4E] "
@@ -42,11 +42,11 @@ const SubscriptionSection = () => {
           />
 
           <CustomButton
-            label="Yearly"
+            label="Anually"
             onClick={() => setIsYearly(true)}
             active={isYearly}
             className={cn(
-              "h-9 font-bold text-sm rounded-full px-8 py-6 text-foreground hover:text-white",
+              " font-bold text-sm rounded-full px-8 py-6 text-foreground hover:text-white w-[124px] h-[38px]",
               isYearly && "text-white"
               //   ? "bg-gradient-to-b from-[#004D6C] to-[#006C98]  hover:border-0 text-white hover:text-white"
               //   : "bg-gradient-to-b from-[#E8E8E8] dark:from-[#1D2840] dark:to-[#000000] dark:shadow-[0px_6px_0px_0px_#373C4E] "

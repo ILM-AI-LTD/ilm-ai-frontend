@@ -3,8 +3,8 @@ import { GettingStartedCard } from "./GettingStartCard";
 
 const GettingStartedSection = () => {
   return (
-    <section className="bg-secondary-bg-color py-20 px-6 md:px-10 2xl:px-[135px] flex flex-col items-center justify-center">
-      <h1 className="font-bold text-[min(10vw,64px)] text-foreground mb-16 text-center">
+    <section className="bg-secondary-bg-color py-30 px-6 md:px-10 2xl:px-[135px] flex flex-col items-center justify-center">
+      <h1 className="font-bold text-[min(10vw,64px)] text-foreground mb-17 text-center">
         Let’s Dive In, <span className=" text-[#8E8E8E]">It’s Super Easy!</span>
       </h1>
 

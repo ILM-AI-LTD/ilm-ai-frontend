@@ -1,6 +1,6 @@
 export const features = [
   {
-    title: "ILMI Vision",
+    title: "ILMINO Vision",
     description:
       " Step into the future of learning with ILMI where personalized education, real connections, and limitless growth begins.",
     imgSrc: "/landing/ilm-vision-icon.gif",
@@ -18,7 +18,7 @@ export const features = [
     imgSrc: "/landing/interactive-learning-flow-icon.gif",
   },
   {
-    title: "ILM Hub",
+    title: "ILMINO Hub",
     description:
       "Take charge with the ILM Hub track achievements, access resources, and connect with your learning community, all in one place.",
     imgSrc: "/landing/ilm-hub-icon.gif",
@@ -36,7 +36,7 @@ export const subjects = [
     title: "Biology",
     description:
       "Learn biology by diving into animated cells, body systems, and nature explorations that make the living world exciting and easy to grasp.",
-    iconSrc: "/landing/biology.gif",
+    iconSrc: "/landing/bio.gif",
   },
   {
     title: "Physics",
@@ -54,19 +54,21 @@ export const subjects = [
 
 export const steps = [
   {
-    title: "Choose your AI mode",
+    title: "Choose The Topic",
     description:
-      "Pick Mr. Classic or Mr. Sassy depending on your learning style.",
+      "Pick a subject and explore structured topics tailored to your level.",
     imgSrc: "/landing/mode.gif",
   },
   {
-    title: "Study your topic",
-    description: " Select lessons from a vast, structured curriculum.",
+    title: "Study Your Topic",
+    description:
+      "Learn through interactive lessons with our friendly AI tutor, ILMINO.",
     imgSrc: "/landing/topic.gif",
   },
   {
-    title: "Receive instant feedback",
-    description: "Get evaluated with AI-powered insight and corrections.",
+    title: "Receive Instant Feedback",
+    description:
+      "Submit your answers and get real-time, smart feedback to improve fast.",
     imgSrc: "/landing/feedback.gif",
   },
 ];
@@ -77,11 +79,11 @@ export const faqItems = [
     answer:
       "We offer family and multi-learner plans that allow you to manage multiple profiles under one account.",
   },
-  {
-    question: "Will the platform work on tablets or mobile devices?",
-    answer:
-      "Absolutely. ILM AI is optimized for desktops, tablets, and smartphones, both Android and iOS.",
-  },
+  // {
+  //   question: "Will the platform work on tablets or mobile devices?",
+  //   answer:
+  //     "Absolutely. ILM AI is optimized for desktops, tablets, and smartphones, both Android and iOS.",
+  // },
   {
     question: "What subjects does the platform cover?",
     answer: "Currently, ILM AI covers Maths, Physics, Chemistry, and Biology",
@@ -106,17 +108,17 @@ export const faqItems = [
     answer:
       "Absolutely! You can personalise your learning experience by selecting specific topics or skills you wish to focus on, and adjust your pace accordingly.",
   },
-  {
-    question:
-      "How do I know if the script is too hard or too easy for my child?",
-    answer:
-      "The platform uses performance analytics to adjust difficulty automatically and alerts parents if changes are recommended.",
-  },
-  {
-    question: "How can I get started?",
-    answer:
-      "Simply sign up, create a profile, and select the subjects you want to study. You can begin exploring lessons and resources immediately!",
-  },
+  // {
+  //   question:
+  //     "How do I know if the script is too hard or too easy for my child?",
+  //   answer:
+  //     "The platform uses performance analytics to adjust difficulty automatically and alerts parents if changes are recommended.",
+  // },
+  // {
+  //   question: "How can I get started?",
+  //   answer:
+  //     "Simply sign up, create a profile, and select the subjects you want to study. You can begin exploring lessons and resources immediately!",
+  // },
 ];
 
 export const testimonials = [

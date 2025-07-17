@@ -24,15 +24,25 @@ const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    // <nav className="h-24 flex items-center justify-between bg-background z-10 px-6 md:px-10 2xl:px-[135px]">
-    <nav className="h-24 bg-background z-10 px-6 md:px-10 2xl:px-[135px]">
-      <div className="max-w-[1170px] mx-auto w-full h-full flex items-center justify-between">
-        <div className="flex flex-row gap-2 items-center">
-          <CustomLogo logoSrc="/ilmino.svg" />
-          {/* <h1 className="font-bold text-[32px] text-white ">ILM AI</h1> */}
-        </div>
+    <>
+      {menuOpen && (
+        <div
+          className="fixed inset-0 bg-black/10 backdrop-blur-[1px] z-10 lg:hidden"
+          onClick={() => setMenuOpen(false)}
+        />
+      )}
 
-        {/* <div className="flex font-bold  gap-4 text-foreground">
+      {/* <nav className="h-24 flex items-center justify-between bg-background z-10 px-6 md:px-10 2xl:px-[135px]"> */}
+      <nav className="h-24 bg-background z-10 px-6 md:px-10 2xl:px-[135px] sticky top-0">
+        <div className="max-w-[1170px] mx-auto w-full h-full flex items-center justify-between">
+          <div className="flex flex-row gap-2 items-center">
+            <Link href="/">
+              <CustomLogo logoSrc="/ilmino.svg" />
+            </Link>
+            {/* <h1 className="font-bold text-[32px] text-white ">ILM AI</h1> */}
+          </div>
+
+          {/* <div className="flex font-bold  gap-4 text-foreground">
           <h1>Home</h1>
           <h1>Features</h1>
           <h1>How it Works</h1>
@@ -48,44 +58,44 @@ const Navbar = () => {
             />
           </Link>
         </div> */}
-        {/* Desktop Menu */}
-        <div className="hidden lg:flex font-bold gap-6 text-foreground items-center">
-          <h1>Home</h1>
-          <h1>Features</h1>
-          <h1>How it Works</h1>
-          <h1>About Us</h1>
+          {/* Desktop Menu */}
+          <div className="hidden lg:flex font-normal gap-6 text-foreground items-center">
+            <h1 className="text-[#006C98] font-bold">Home</h1>
+            <h1>Features</h1>
+            <h1>How it Works</h1>
+            <h1>About Us</h1>
+          </div>
+
+          {/* Desktop Actions */}
+          <div className="hidden lg:flex items-center gap-4">
+            <ThemeToggleButton size="lg" />
+            <Link href="/auth/sign-in">
+              <CustomButton
+                label="Login"
+                className=" font-bold text-base rounded-full hover:text-white transition-all duration-300 ease-in-out h-[48px] w-[155px] cursor-pointer"
+                icon={<LogIn />}
+              />
+            </Link>
+          </div>
+
+          {/* Hamburger Toggle */}
+          <div className="lg:hidden flex items-center gap-4">
+            <ThemeToggleButton />
+            <button onClick={() => setMenuOpen(!menuOpen)}>
+              {menuOpen ? (
+                <X className="w-6 h-6 text-black dark:text-white" />
+              ) : (
+                <AlignRight className="w-6 h-6  text-black dark:text-white" />
+              )}
+            </button>
+          </div>
         </div>
 
-        {/* Desktop Actions */}
-        <div className="hidden lg:flex items-center gap-4">
-          <ThemeToggleButton />
-          <Link href="/auth/sign-in">
-            <CustomButton
-              label="Login"
-              className=" font-bold text-base rounded-full hover:text-white transition-all duration-300 ease-in-out h-[52px] cursor-pointer"
-              icon={<LogIn />}
-            />
-          </Link>
-        </div>
-
-        {/* Hamburger Toggle */}
-        <div className="lg:hidden flex items-center gap-4">
-          <ThemeToggleButton />
-          <button onClick={() => setMenuOpen(!menuOpen)}>
-            {menuOpen ? (
-              <X className="w-6 h-6 text-black dark:text-white" />
-            ) : (
-              <AlignRight className="w-6 h-6  text-black dark:text-white" />
-            )}
-          </button>
-        </div>
-      </div>
-
-      {/* Mobile Dropdown Menu */}
-      {menuOpen && (
-        <div className="lg:hidden bg-background shadow-md px-6 py-4 absolute top-24 right-0 w-1/4 z-20">
-          <div className="flex flex-col gap-4 font-bold text-foreground">
-            <h1>Home</h1>
+        {/* Mobile Dropdown Menu */}
+        {/* {menuOpen && (
+        <div className="lg:hidden bg-background shadow-md px-6 py-4 absolute top-24 right-0 w-full z-20">
+          <div className="flex flex-col gap-4 font-normal text-foreground items-center">
+            <h1 className="text-[#006C98] font-bold">Home</h1>
             <h1>Features</h1>
             <h1>How it Works</h1>
             <h1>About Us</h1>
@@ -93,14 +103,38 @@ const Navbar = () => {
               <CustomButton
                 label="Login"
                 className="mt-2 font-bold text-base rounded-full 
-                hover:text-white transition-all duration-300 ease-in-out h-[52px] cursor-pointer"
+                hover:text-white transition-all duration-300 ease-in-out h-[48px] max-w-[350px] cursor-pointer"
                 icon={<LogIn />}
               />
             </Link>
           </div>
         </div>
-      )}
-    </nav>
+      )} */}
+
+        {menuOpen && (
+          <div className="lg:hidden bg-background shadow-md px-6 py-4 fixed top-24 left-0 right-0 z-30">
+            <div className="flex flex-col gap-4 font-normal text-foreground items-center">
+              <h1 className="text-[#006C98] font-bold">Home</h1>
+              <h1>Features</h1>
+              <h1>How it Works</h1>
+              <h1>About Us</h1>
+              <Link
+                href="/auth/sign-in"
+                className=" flex w-full items-center justify-center"
+              >
+                <CustomButton
+                  label="Login"
+                  className="mt-2 font-bold text-base rounded-full 
+                  hover:text-white transition-all duration-300 ease-in-out 
+                  h-[48px] w-full max-w-[350px] cursor-pointer"
+                  icon={<LogIn />}
+                />
+              </Link>
+            </div>
+          </div>
+        )}
+      </nav>
+    </>
   );
 };
 
