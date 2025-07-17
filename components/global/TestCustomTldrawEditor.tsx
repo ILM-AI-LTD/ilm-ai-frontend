@@ -727,7 +727,7 @@ function ToggleableStylePanel(props) {
 // Custom Submit Button Component
 function SubmitButton({ editor, onSubmit }) {
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [lastDownload, setLastDownload] = useState(null);
+  const [lastDownload, setLastDownload] = useState<any>(null);
 
   const handleSubmit = async () => {
     if (!editor || isSubmitting) return;
@@ -765,7 +765,7 @@ function SubmitButton({ editor, onSubmit }) {
       console.log("🖼️ Preview URL (paste in browser):", previewUrl);
 
       // Send to API (comment out if you want to test download only)
-      // await sendToAPI(pngBlob);
+      await sendToAPI(pngBlob);
 
       // Uncomment the line above and comment this one when ready for API
       console.log("🚀 API call skipped - testing download only");
@@ -992,7 +992,31 @@ async function sendToAPI(pngBlob) {
 }
 
 const components: TLUiComponents = {
-  StylePanel: ToggleableStylePanel, // Replace with our custom component
+  StylePanel: ToggleableStylePanel,
+  ContextMenu: null,
+  ActionsMenu: null,
+  HelpMenu: null,
+  ZoomMenu: null,
+  MainMenu: null,
+  Minimap: null,
+  PageMenu: null,
+  NavigationPanel: null,
+  // Toolbar: null,
+  RichTextToolbar: null,
+  ImageToolbar: null,
+  VideoToolbar: null,
+  KeyboardShortcutsDialog: null,
+  // QuickActions: null,
+  HelperButtons: null,
+  DebugPanel: null,
+  DebugMenu: null,
+  // MenuPanel: null,
+  TopPanel: null,
+  SharePanel: null,
+  CursorChatBubble: null,
+  Dialogs: null,
+  Toasts: null,
+  A11y: null,
 };
 
 const DEFAULT_CAMERA_STEPS = [0.05, 0.1, 0.25, 0.5, 1, 2, 4, 8];
@@ -1011,6 +1035,35 @@ const overrides: TLUiOverrides = {
     };
 
     return actions;
+  },
+  tools: (_editor, tools) => {
+    // console.log("Available tools:", Object.keys(tools));
+
+    delete tools.arrow;
+    delete tools.note;
+    delete tools.asset;
+    delete tools.rectangle;
+    delete tools.ellipse;
+    delete tools.triangle;
+    delete tools.diamond;
+    delete tools.oval;
+    delete tools.rhombus;
+    delete tools.hexagon;
+    delete tools.star;
+    delete tools.cloud;
+    delete tools.heart;
+    delete tools.line;
+    delete tools.highlight;
+    delete tools.laser;
+    delete tools.frame;
+
+    delete tools["x-box"];
+    delete tools["check-box"];
+    delete tools["arrow-left"];
+    delete tools["arrow-up"];
+    delete tools["arrow-down"];
+    delete tools["arrow-right"];
+    return tools;
   },
 };
 
