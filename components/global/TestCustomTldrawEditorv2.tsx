@@ -23,7 +23,7 @@ import {
 import "tldraw/tldraw.css";
 import { useState } from "react";
 import { Brush } from "lucide-react";
-import { apiRequest } from "@/utils/axios";
+// import { apiRequest } from "@/utils/axios";
 // import { useCallback } from "react";
 
 type Props = {
@@ -728,7 +728,7 @@ function ToggleableStylePanel(props) {
 // Custom Submit Button Component
 function SubmitButton({ editor, onSubmit }) {
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [lastDownload, setLastDownload] = useState<any>(null);
+  // const [lastDownload, setLastDownload] = useState<any>(null);
 
   const handleSubmit = async () => {
     if (!editor || isSubmitting) return;
@@ -748,18 +748,18 @@ function SubmitButton({ editor, onSubmit }) {
       });
 
       // Generate filename with timestamp
-      const timestamp = new Date().toISOString().replace(/[:.]/g, "-");
-      const filename = `drawing-${timestamp}.png`;
+      // const timestamp = new Date().toISOString().replace(/[:.]/g, "-");
+      // const filename = `drawing-${timestamp}.png`;
 
       // Download the PNG
       // downloadPNG(pngBlob, filename);
 
       // Update last download info for UI feedback
-      setLastDownload({
-        filename,
-        size: pngBlob.size,
-        time: new Date().toLocaleTimeString(),
-      });
+      // setLastDownload({
+      //   filename,
+      //   size: pngBlob.size,
+      //   time: new Date().toLocaleTimeString(),
+      // });
 
       // Optional: Create a preview URL for verification
       const previewUrl = URL.createObjectURL(pngBlob);
@@ -815,14 +815,14 @@ function SubmitButton({ editor, onSubmit }) {
       </button>
 
       {/* Download confirmation feedback */}
-      {lastDownload && (
+      {/* {lastDownload && (
         <div className="text-xs text-green-600 bg-green-50 p-2 rounded border">
           ✅ Downloaded: {lastDownload.filename}
           <br />
           📁 Size: {(lastDownload.size / 1024).toFixed(2)} KB
           <br />⏰ Time: {lastDownload.time}
         </div>
-      )}
+      )} */}
     </div>
   );
 }
@@ -943,29 +943,29 @@ async function convertSvgToPng(svgElement) {
 }
 
 // Function to download PNG with verification
-function downloadPNG(blob, filename) {
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement("a");
-  a.href = url;
-  a.download = filename;
+// function downloadPNG(blob, filename) {
+//   const url = URL.createObjectURL(blob);
+//   const a = document.createElement("a");
+//   a.href = url;
+//   a.download = filename;
 
-  // Add event listeners to verify download
-  a.addEventListener("click", () => {
-    console.log("✅ Download initiated for:", filename);
-    console.log("📁 File size:", (blob.size / 1024).toFixed(2) + " KB");
-    console.log("🔗 Download URL:", url);
-  });
+//   // Add event listeners to verify download
+//   a.addEventListener("click", () => {
+//     console.log("✅ Download initiated for:", filename);
+//     console.log("📁 File size:", (blob.size / 1024).toFixed(2) + " KB");
+//     console.log("🔗 Download URL:", url);
+//   });
 
-  document.body.appendChild(a);
-  a.click();
-  document.body.removeChild(a);
+//   document.body.appendChild(a);
+//   a.click();
+//   document.body.removeChild(a);
 
-  // Clean up the URL after a short delay
-  setTimeout(() => {
-    URL.revokeObjectURL(url);
-    console.log("🧹 Cleaned up download URL");
-  }, 1000);
-}
+//   // Clean up the URL after a short delay
+//   setTimeout(() => {
+//     URL.revokeObjectURL(url);
+//     console.log("🧹 Cleaned up download URL");
+//   }, 1000);
+// }
 
 // Function to send PNG to API
 async function sendToAPI(pngBlob) {
@@ -1165,16 +1165,19 @@ const CustomTldrawEditor = ({ questions }: Props) => {
           dangerouslySetInnerHTML={{ __html: questions.question_text }}
         />
       </div>
-      <div className="max-w-[1000px] h-[500px] ">
+      <div className="max-w-[1000px] h-[500px]">
         <Tldraw
           overrides={overrides}
           onMount={handleMount}
           components={components}
         />
         {/* Submit button positioned absolutely */}
-        <div className="absolute bottom-4 left-30 z-[99999]">
-          <SubmitButton editor={editor} onSubmit={handleSubmit} />
-          <div className="flex gap-1">
+        {/* <div className="absolute bottom-4 left-30 z-[99999]"> */}
+      </div>
+
+      <div className="flex justify-center ">
+        <SubmitButton editor={editor} onSubmit={handleSubmit} />
+        {/* <div className="flex gap-1">
             <button
               onClick={async () => {
                 if (!editor) return;
@@ -1228,8 +1231,7 @@ const CustomTldrawEditor = ({ questions }: Props) => {
             >
               📥 Test
             </button>
-          </div>
-        </div>
+          </div> */}
       </div>
     </Card>
   );
