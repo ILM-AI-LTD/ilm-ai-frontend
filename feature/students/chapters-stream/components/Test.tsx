@@ -2,7 +2,8 @@
 import CustomCheckboxCard from "@/components/global/CustomCheckBoxCard";
 // import CustomTldrawEditor from "@/components/global/CustomTldrawEditor";
 // import CustomTldrawEditor from "@/components/global/TestCustomTldrawEditor";
-import CustomTldrawEditor from "@/components/global/TestCustomTldrawEditorv2";
+// import CustomTldrawEditor from "@/components/global/TestCustomTldrawEditorv2";
+import CustomTldrawEditor from "@/components/global/TestCustomTldrawEditorv3";
 // import { Card } from "@/components/ui/card";
 import React from "react";
 
