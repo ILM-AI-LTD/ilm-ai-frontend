@@ -27,17 +27,14 @@ export default function Page() {
   const board = "AQA";
   const [selectedGoalId, setSelectedGoalId] = useState<number>(1);
 
-  // Evaluation state
   const [evaluationResult, setEvaluationResult] = useState<EvaluationResult | null>(null);
   const [showEvaluationButtons, setShowEvaluationButtons] = useState(false);
   const [currentQuestion, setCurrentQuestion] = useState<any>(null);
 
-  // *** FIX: Completion tracking with persistent refs ***
   const setCompletionStatusRef = useRef<Record<number, boolean>>({});
   const [setCompletionStatus, setSetCompletionStatus] = useState<Record<number, boolean>>({});
   const [totalSets, setTotalSets] = useState<number>(0);
 
-  // *** FIX: Use refs for completion flags to prevent them from being reset ***
   const allQuestionsCompletedRef = useRef<boolean>(false);
   const shouldMarkGoalCompletedRef = useRef<boolean>(false);
   const [allQuestionsCompleted, setAllQuestionsCompleted] = useState<boolean>(false);
