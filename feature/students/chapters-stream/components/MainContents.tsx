@@ -27,10 +27,17 @@ interface MainContentProps {
     goals: Goal[];
     isLoading: boolean;
     selectedGoalId: number;
-    onEvaluateAnswer: (selectedOption: string, questionData: any, onTryAgain: () => void, onMoveNext: () => void) => void;
+    onEvaluateAnswer: (selectedOption: string, questionData: any, onTryAgain: () => void, onMoveNext: () => void, currentSetIndex: number, totalSetsCount: number) => void;
     isEvaluating: boolean;
     evaluationResult?: { isCorrect: boolean; score?: number; feedback?: string; } | null;
     showEvaluationButtons?: boolean;
+    setCompletionStatus: Record<number, boolean>;
+    totalSets: number;
+    setTotalSets: (count: number) => void;
+    resetSetCompletion: () => void;
+    areAllSetsCompleted: () => boolean;
+    onAllQuestionsCompleted: (totalSets?: number) => void;
+    setSelectedGoalId: (id: number) => void; // *** FIX: Added prop ***
 }
 
 const MainContent: React.FC<MainContentProps> = ({
@@ -45,7 +52,14 @@ const MainContent: React.FC<MainContentProps> = ({
     onEvaluateAnswer,
     isEvaluating,
     evaluationResult,
-    showEvaluationButtons
+    showEvaluationButtons,
+    setCompletionStatus,
+    totalSets,
+    setTotalSets,
+    resetSetCompletion,
+    areAllSetsCompleted,
+    onAllQuestionsCompleted,
+    setSelectedGoalId // *** FIX: Added prop ***
 }) => {
     const allNotStarted = goals.every(g => !g.isStarted);
     const selectedGoal = goals.find(g => g.id === selectedGoalId);
@@ -58,6 +72,9 @@ const MainContent: React.FC<MainContentProps> = ({
     const [questionsMap, setQuestionsMap] = useState<Record<string, any>>({});
     const [currentSetIndex, setCurrentSetIndex] = useState(0);
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+    const [isStreamingNextGoal, setIsStreamingNextGoal] = useState(false);
+    const [streamingKey, setStreamingKey] = useState(0);
+    const [pendingNextGoal, setPendingNextGoal] = useState<any>(null);
 
     const bottomRef = useRef<HTMLDivElement | null>(null);
 
@@ -85,6 +102,7 @@ const MainContent: React.FC<MainContentProps> = ({
             {
                 onSuccess: (res) => {
                     setScriptData(res.data);
+                    setStreamingKey(prev => prev + 1);
                 },
                 onError: (err) => {
                     console.error('Script generation failed', err);
@@ -112,9 +130,13 @@ const MainContent: React.FC<MainContentProps> = ({
                         [selectedGoal.title]: res.data
                     }));
                     setShowNextButton(false);
-                    // Reset question navigation when fetching new questions
                     setCurrentSetIndex(0);
                     setCurrentQuestionIndex(0);
+
+                    const totalSetsCount = res.data?.questions?.length || 0;
+                    console.log('Total sets found:', totalSetsCount);
+                    setTotalSets(totalSetsCount);
+                    resetSetCompletion();
                 },
                 onError: (err) => {
                     console.error('Failed to load questions', err);
@@ -129,21 +151,23 @@ const MainContent: React.FC<MainContentProps> = ({
         const currentSet = currentQuestions.questions[currentSetIndex];
         const currentQuestion = currentSet.question_list[currentQuestionIndex];
 
+        const totalSetsCount = currentQuestions.questions.length;
+
         onEvaluateAnswer(
             selectedOption,
             currentQuestion,
             handleTryAgain,
-            handleMoveToNextSet
+            handleMoveToNextSet,
+            currentSetIndex,
+            totalSetsCount
         );
     };
 
     const handleTryAgain = () => {
-        // Move to next question in same set
         const currentSet = currentQuestions.questions[currentSetIndex];
         if (currentQuestionIndex < currentSet.question_list.length - 1) {
             setCurrentQuestionIndex(prev => prev + 1);
         } else {
-            // If no more questions in current set, move to next set
             handleMoveToNextSet();
         }
     };
@@ -153,12 +177,97 @@ const MainContent: React.FC<MainContentProps> = ({
             setCurrentSetIndex(prev => prev + 1);
             setCurrentQuestionIndex(0);
         } else {
-            // All questions completed
-            console.log('All questions completed!');
-            // You can add logic here for completion
+            console.log('All questions completed, notifying parent...');
+            console.log('Current completion status before notify:', setCompletionStatus);
+
+            const totalSetsFromData = currentQuestions.questions.length;
+            console.log('*** Passing total sets to parent:', totalSetsFromData);
+
+            onAllQuestionsCompleted(totalSetsFromData);
+
+            console.log('*** All questions completed - stopping navigation here ***');
         }
     };
 
+    // *** FIX: Updated startNextGoal function ***
+    const startNextGoal = () => {
+        if (!pendingNextGoal) {
+            console.log('*** No pending next goal ***');
+            return;
+        }
+
+        console.log('*** Starting next goal:', pendingNextGoal.title, 'ID:', pendingNextGoal.id);
+        setIsStreamingNextGoal(true);
+
+        generateScriptMutation(
+            {
+                board,
+                subject,
+                paper,
+                topic,
+                subtopic,
+                goal: pendingNextGoal.title, // *** FIX: Use pending goal title ***
+            },
+            {
+                onSuccess: (res) => {
+                    console.log('*** Script generated successfully for:', pendingNextGoal.title);
+
+                    // *** FIX: Update selectedGoalId AFTER script generation ***
+                    console.log('*** Updating selectedGoalId to:', pendingNextGoal.id);
+                    setSelectedGoalId(pendingNextGoal.id);
+
+                    // *** FIX: Clear all state and set new script ***
+                    setQuestionsMap({});
+                    setScriptData(res.data);
+                    setShowNextButton(false);
+                    setIsStreamingNextGoal(false);
+                    setStreamingKey(prev => prev + 1);
+
+                    // Reset state for new goal
+                    resetSetCompletion();
+                    setCurrentSetIndex(0);
+                    setCurrentQuestionIndex(0);
+
+                    console.log('*** UI updated for next goal:', pendingNextGoal.title);
+                },
+                onError: (err) => {
+                    console.error('Next goal script generation failed', err);
+                    setIsStreamingNextGoal(false);
+                },
+            }
+        );
+    };
+
+    // *** FIX: Expose startNextGoal function via useEffect to parent ***
+    useEffect(() => {
+        if (pendingNextGoal) {
+            startNextGoal();
+            setPendingNextGoal(null);
+        }
+    }, [pendingNextGoal]);
+
+    // *** FIX: Updated triggerNextGoal to accept goal info ***
+    const triggerNextGoal = (nextGoalInfo?: any) => {
+        console.log('*** triggerNextGoal called with:', nextGoalInfo);
+        if (nextGoalInfo) {
+            setPendingNextGoal(nextGoalInfo);
+        } else {
+            // Fallback to current logic
+            const currentGoalIndex = goals.findIndex(g => g.id === selectedGoalId);
+            const nextGoal = goals[currentGoalIndex + 1];
+            if (nextGoal) {
+                setPendingNextGoal(nextGoal);
+            }
+        }
+    };
+
+    // *** FIX: Expose triggerNextGoal to parent via window object ***
+    useEffect(() => {
+        (window as any).triggerNextGoal = triggerNextGoal;
+        return () => {
+            delete (window as any).triggerNextGoal;
+        };
+    }, [selectedGoalId, goals]);
 
     if (isLoading) {
         return (
@@ -168,50 +277,69 @@ const MainContent: React.FC<MainContentProps> = ({
         );
     }
 
-    if (allNotStarted) {
+    if (allNotStarted && !scriptData) {
         return (
-            <>
-                {!scriptData ? (
-                    <div className="w-full h-full flex items-center justify-center">
-                        {loadingScript ? (
-                            <div className="h-8 w-8 border-4 border-primary border-t-transparent rounded-full animate-spin" />
-                        ) : (
-                            <button
-                                className="size-20 bg-primary rounded-full cursor-pointer hover:scale-105 transition-transform duration-200 ease-in-out"
-                                onClick={handleGenerateScript}
-                            >
-                                <Play size={40} fill="white" className="mx-auto" />
-                            </button>
-                        )}
-                    </div>
+            <div className="w-full h-full flex items-center justify-center">
+                {loadingScript ? (
+                    <div className="h-8 w-8 border-4 border-primary border-t-transparent rounded-full animate-spin" />
                 ) : (
-                    <div className="flex-1 flex w-full flex-col items-start justify-center">
-                        <div className="space-y-8">
-                            <div className="flex items-start gap-4 w-full">
-                                <ILMIAssistantv2 height={40} width={40} className="mt-2" />
-                                <CalloutScriptStream
-                                    title={goals[0].title}
-                                    message={scriptData}
-                                    orientation="left"
-                                    className="flex-1 min-w-0"
-                                    onStreamEnd={() => setShowNextButton(true)}
+                    <button
+                        className="size-20 bg-primary rounded-full cursor-pointer hover:scale-105 transition-transform duration-200 ease-in-out"
+                        onClick={handleGenerateScript}
+                    >
+                        <Play size={40} fill="white" className="mx-auto" />
+                    </button>
+                )}
+            </div>
+        );
+    }
+
+    if (isStreamingNextGoal) {
+        return (
+            <div className="w-full h-full flex items-center justify-center">
+                <div className="text-center">
+                    <div className="h-8 w-8 border-4 border-primary border-t-transparent rounded-full animate-spin mx-auto mb-4" />
+                    <p className="text-lg text-primary">Starting next goal...</p>
+                </div>
+            </div>
+        );
+    }
+
+    // *** FIX: Updated render logic - prioritize streaming content ***
+    return (
+        <div className="w-full h-full flex flex-col justify-start">
+            {/* *** FIX: Show streaming content first priority *** */}
+            {scriptData && !isStreamingNextGoal ? (
+                <div className="pb-8">
+                    <div className="space-y-8">
+                        <div className="flex items-start gap-4">
+                            <ILMIAssistantv2 height={40} width={40} className="mt-2" />
+                            <CalloutScriptStream
+                                key={`goal-${selectedGoalId}-${streamingKey}`}
+                                title={selectedGoal?.title || 'Goal'}
+                                message={scriptData}
+                                orientation="left"
+                                className="grow"
+                                onStreamEnd={() => setShowNextButton(true)}
+                            />
+                        </div>
+
+                        {showNextButton && !currentQuestions && (
+                            <div className="flex justify-end mt-4">
+                                <CustomButton
+                                    label="Let's go to question"
+                                    isLoading={loadingQuestions}
+                                    onClick={handleFetchQuestions}
                                 />
                             </div>
+                        )}
 
-                            {showNextButton && !questionsMap[goals[0].title] && (
-                                <div className="flex justify-end mt-4">
-                                    <CustomButton
-                                        label="Let's go to question"
-                                        isLoading={loadingQuestions}
-                                        onClick={handleFetchQuestions}
-                                    />
-                                </div>
-                            )}
-
-                            {questionsMap[goals[0].title] && (
-                                <div className="mt-6 w-full">
+                        {currentQuestions && (
+                            <div className="mt-6 w-full">
+                                <div className="flex flex-row items-start gap-4">
+                                    <ILMIAssistantv2 height={40} width={40} className="mt-2" />
                                     <UniversalQuestionComponent
-                                        data={questionsMap[goals[0].title]}
+                                        data={currentQuestions}
                                         onEvaluate={handleEvaluateAnswer}
                                         isEvaluating={isEvaluating}
                                         currentSetIndex={currentSetIndex}
@@ -219,19 +347,14 @@ const MainContent: React.FC<MainContentProps> = ({
                                         evaluationResult={evaluationResult}
                                     />
                                 </div>
-                            )}
-                        </div>
-                        <div ref={bottomRef} />
+                            </div>
+                        )}
                     </div>
-                )}
-            </>
-        );
-    }
-
-    return (
-        <div className="w-full h-full flex flex-col justify-start">
-            {selectedGoal && selectedGoal.goalHistory.length > 0 ? (
-                <div className='pb-8' >
+                    <div ref={bottomRef} />
+                </div>
+            ) : selectedGoal && selectedGoal.goalHistory.length > 0 ? (
+                /* *** FIX: Show history only when no new script *** */
+                <div className='pb-8'>
                     {selectedGoal.goalHistory.map((entry, index) => (
                         <div key={index} className="space-y-8">
                             <div className="flex items-start gap-4">
@@ -279,6 +402,7 @@ const MainContent: React.FC<MainContentProps> = ({
                     <div ref={bottomRef} />
                 </div>
             ) : (
+                /* *** FIX: Default state *** */
                 <div className="flex-1 flex items-center justify-center">
                     <p className="text-muted">Select an available goal to see its content.</p>
                 </div>
