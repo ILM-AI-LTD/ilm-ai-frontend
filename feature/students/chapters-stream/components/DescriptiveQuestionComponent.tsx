@@ -55,7 +55,6 @@ const DescriptiveQuestionComponent: React.FC<DescriptiveQuestionComponentProps> 
         }
     };
 
-    // Reset answer when question changes
     useEffect(() => {
         setAnswer('');
     }, [currentSetIndex, currentQuestionIndex]);
@@ -93,7 +92,6 @@ const DescriptiveQuestionComponent: React.FC<DescriptiveQuestionComponentProps> 
                             className={getTextareaStyle()}
                         />
 
-                        {/* Character count */}
                         <div className="flex justify-between items-center text-sm text-gray-500">
                             <span>{answer.length} characters</span>
                             {!evaluationResult && answer.length > 0 && (

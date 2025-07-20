@@ -134,7 +134,6 @@ const MainContent: React.FC<MainContentProps> = ({
                     setCurrentQuestionIndex(0);
 
                     const totalSetsCount = res.data?.questions?.length || 0;
-                    console.log('Total sets found:', totalSetsCount);
                     setTotalSets(totalSetsCount);
                     resetSetCompletion();
                 },
@@ -166,37 +165,35 @@ const MainContent: React.FC<MainContentProps> = ({
     const handleTryAgain = () => {
         const currentSet = currentQuestions.questions[currentSetIndex];
         if (currentQuestionIndex < currentSet.question_list.length - 1) {
-            setCurrentQuestionIndex(prev => prev + 1);
+          setCurrentQuestionIndex(prev => prev + 1);
         } else {
-            handleMoveToNextSet();
+          handleMoveToNextSet();
         }
-    };
+      };
 
     const handleMoveToNextSet = () => {
         if (currentSetIndex < currentQuestions.questions.length - 1) {
-            setCurrentSetIndex(prev => prev + 1);
-            setCurrentQuestionIndex(0);
+          setCurrentSetIndex(prev => prev + 1);
+          setCurrentQuestionIndex(0);
         } else {
-            console.log('All questions completed, notifying parent...');
-            console.log('Current completion status before notify:', setCompletionStatus);
-
-            const totalSetsFromData = currentQuestions.questions.length;
-            console.log('*** Passing total sets to parent:', totalSetsFromData);
-
-            onAllQuestionsCompleted(totalSetsFromData);
-
-            console.log('*** All questions completed - stopping navigation here ***');
+      
+          const totalSetsFromData = currentQuestions.questions.length;
+          onAllQuestionsCompleted(totalSetsFromData);
         }
-    };
+      };
 
-    // *** FIX: Updated startNextGoal function ***
+      useEffect(() => {
+        if (currentQuestions && currentSetIndex === currentQuestions.questions.length - 1) {
+          const totalSetsFromData = currentQuestions.questions.length;
+          onAllQuestionsCompleted(totalSetsFromData);
+        }
+      }, [currentSetIndex, currentQuestions]);
+
     const startNextGoal = () => {
         if (!pendingNextGoal) {
-            console.log('*** No pending next goal ***');
             return;
         }
 
-        console.log('*** Starting next goal:', pendingNextGoal.title, 'ID:', pendingNextGoal.id);
         setIsStreamingNextGoal(true);
 
         generateScriptMutation(
@@ -210,35 +207,25 @@ const MainContent: React.FC<MainContentProps> = ({
             },
             {
                 onSuccess: (res) => {
-                    console.log('*** Script generated successfully for:', pendingNextGoal.title);
 
-                    // *** FIX: Update selectedGoalId AFTER script generation ***
-                    console.log('*** Updating selectedGoalId to:', pendingNextGoal.id);
                     setSelectedGoalId(pendingNextGoal.id);
-
-                    // *** FIX: Clear all state and set new script ***
                     setQuestionsMap({});
                     setScriptData(res.data);
                     setShowNextButton(false);
                     setIsStreamingNextGoal(false);
                     setStreamingKey(prev => prev + 1);
 
-                    // Reset state for new goal
                     resetSetCompletion();
                     setCurrentSetIndex(0);
                     setCurrentQuestionIndex(0);
-
-                    console.log('*** UI updated for next goal:', pendingNextGoal.title);
                 },
                 onError: (err) => {
-                    console.error('Next goal script generation failed', err);
                     setIsStreamingNextGoal(false);
                 },
             }
         );
     };
 
-    // *** FIX: Expose startNextGoal function via useEffect to parent ***
     useEffect(() => {
         if (pendingNextGoal) {
             startNextGoal();
@@ -246,13 +233,11 @@ const MainContent: React.FC<MainContentProps> = ({
         }
     }, [pendingNextGoal]);
 
-    // *** FIX: Updated triggerNextGoal to accept goal info ***
     const triggerNextGoal = (nextGoalInfo?: any) => {
         console.log('*** triggerNextGoal called with:', nextGoalInfo);
         if (nextGoalInfo) {
             setPendingNextGoal(nextGoalInfo);
         } else {
-            // Fallback to current logic
             const currentGoalIndex = goals.findIndex(g => g.id === selectedGoalId);
             const nextGoal = goals[currentGoalIndex + 1];
             if (nextGoal) {
@@ -261,7 +246,6 @@ const MainContent: React.FC<MainContentProps> = ({
         }
     };
 
-    // *** FIX: Expose triggerNextGoal to parent via window object ***
     useEffect(() => {
         (window as any).triggerNextGoal = triggerNextGoal;
         return () => {
@@ -305,10 +289,8 @@ const MainContent: React.FC<MainContentProps> = ({
         );
     }
 
-    // *** FIX: Updated render logic - prioritize streaming content ***
     return (
         <div className="w-full h-full flex flex-col justify-start">
-            {/* *** FIX: Show streaming content first priority *** */}
             {scriptData && !isStreamingNextGoal ? (
                 <div className="pb-8">
                     <div className="space-y-8">
@@ -353,7 +335,6 @@ const MainContent: React.FC<MainContentProps> = ({
                     <div ref={bottomRef} />
                 </div>
             ) : selectedGoal && selectedGoal.goalHistory.length > 0 ? (
-                /* *** FIX: Show history only when no new script *** */
                 <div className='pb-8'>
                     {selectedGoal.goalHistory.map((entry, index) => (
                         <div key={index} className="space-y-8">
@@ -402,7 +383,6 @@ const MainContent: React.FC<MainContentProps> = ({
                     <div ref={bottomRef} />
                 </div>
             ) : (
-                /* *** FIX: Default state *** */
                 <div className="flex-1 flex items-center justify-center">
                     <p className="text-muted">Select an available goal to see its content.</p>
                 </div>

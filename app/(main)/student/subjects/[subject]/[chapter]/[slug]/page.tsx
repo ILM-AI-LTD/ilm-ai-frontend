@@ -68,20 +68,16 @@ export default function Page() {
 
   const updateSetCompletion = useCallback((setIndex: number, isCorrect: boolean) => {
     if (isCorrect) {
-      console.log(`*** Marking set ${setIndex} as completed ***`);
       const newStatus = {
         ...setCompletionStatusRef.current,
         [setIndex]: true
       };
       setCompletionStatusRef.current = newStatus;
       setSetCompletionStatus(newStatus);
-      console.log('*** Updated completion status:', newStatus);
     }
   }, []);
 
   const checkIfAllSetsCompleted = useCallback((currentStatus: Record<number, boolean>, totalSetsCount: number) => {
-    console.log('*** Immediate check - totalSets:', totalSetsCount, 'currentStatus:', currentStatus);
-
     if (totalSetsCount === 0) return false;
 
     let completedCount = 0;
@@ -92,7 +88,6 @@ export default function Page() {
     }
 
     const result = completedCount === totalSetsCount;
-    console.log(`*** Immediate check result: ${completedCount}/${totalSetsCount} = ${result} ***`);
     return result;
   }, []);
 
@@ -116,9 +111,7 @@ export default function Page() {
             feedback: res.data?.explanation
           });
 
-          console.log(`*** Answer evaluation: setIndex=${currentSetIndex}, isCorrect=${isCorrect} ***`);
 
-          // *** FIX: Update completion status and check immediately ***
           if (isCorrect) {
             const newStatus = {
               ...setCompletionStatusRef.current,
@@ -127,10 +120,6 @@ export default function Page() {
             setCompletionStatusRef.current = newStatus;
             setSetCompletionStatus(newStatus);
 
-            console.log('*** Updated completion status:', newStatus);
-            console.log('*** Total sets:', totalSetsCount);
-
-            // *** FIX: Check if all sets are completed immediately ***
             let completedCount = 0;
             for (let i = 0; i < totalSetsCount; i++) {
               if (newStatus[i] === true) {
@@ -138,12 +127,9 @@ export default function Page() {
               }
             }
 
-            console.log(`*** Completion check: ${completedCount}/${totalSetsCount} ***`);
 
             if (completedCount === totalSetsCount) {
-              console.log('*** All sets completed! Calling goal completion API immediately ***');
 
-              // *** FIX: Call goal completion API immediately ***
               markGoalCompleted({
                 board,
                 subject: subject as string,
@@ -153,12 +139,10 @@ export default function Page() {
                 goalName: selectedGoal.title
               }, {
                 onSuccess: () => {
-                  console.log('*** Goal marked as completed successfully ***');
                   setAllQuestionsCompleted(true);
                   setShouldMarkGoalCompleted(true);
                 },
                 onError: (error: any) => {
-                  console.error('Failed to mark goal as completed:', error);
                   setAllQuestionsCompleted(true);
                   setShouldMarkGoalCompleted(false);
                 }
@@ -169,14 +153,12 @@ export default function Page() {
           setShowEvaluationButtons(true);
         },
         onError: (err) => {
-          console.error('Failed to evaluate answer', err);
           const isCorrect = selectedOption === questionData.answer;
           setEvaluationResult({
             isCorrect,
             feedback: "Unable to get feedback from server"
           });
 
-          // *** FIX: Same logic for error case ***
           if (isCorrect) {
             const newStatus = {
               ...setCompletionStatusRef.current,
@@ -193,7 +175,6 @@ export default function Page() {
             }
 
             if (completedCount === totalSetsCount) {
-              console.log('*** All sets completed! Calling goal completion API immediately (error case) ***');
 
               markGoalCompleted({
                 board,
@@ -204,12 +185,10 @@ export default function Page() {
                 goalName: selectedGoal.title
               }, {
                 onSuccess: () => {
-                  console.log('*** Goal marked as completed successfully ***');
                   setAllQuestionsCompleted(true);
                   setShouldMarkGoalCompleted(true);
                 },
                 onError: (error: any) => {
-                  console.error('Failed to mark goal as completed:', error);
                   setAllQuestionsCompleted(true);
                   setShouldMarkGoalCompleted(false);
                 }
@@ -224,9 +203,7 @@ export default function Page() {
   };
 
   const handleTryAgain = () => {
-    // *** FIX: Check ref instead of state ***
     if (allQuestionsCompletedRef.current) {
-      console.log('*** All questions completed - ignoring try again ***');
       return;
     }
 
@@ -238,17 +215,13 @@ export default function Page() {
   };
 
   const handleMoveNext = () => {
-    console.log('*** handleMoveNext called ***');
-    console.log('*** allQuestionsCompleted:', allQuestionsCompleted);
 
     setEvaluationResult(null);
     setShowEvaluationButtons(false);
 
     if (allQuestionsCompleted) {
-      console.log('*** All questions completed - starting next goal ***');
       finishAndStartNextGoal();
     } else {
-      console.log('*** Moving to next question ***');
       if (currentQuestion?.onMoveNext) {
         currentQuestion.onMoveNext();
       }
@@ -256,22 +229,12 @@ export default function Page() {
   };
 
   const finishAndStartNextGoal = () => {
-    console.log('*** Finishing current goal and starting next ***');
-    console.log('*** Current selectedGoalId:', selectedGoalId);
 
     const currentGoalIndex = goals.findIndex(g => g.id === selectedGoalId);
     const nextGoal = goals[currentGoalIndex + 1];
 
-    console.log('*** Current goal index:', currentGoalIndex);
-    console.log('*** Next goal:', nextGoal);
-
     if (nextGoal) {
-      console.log('*** Moving to next goal:', nextGoal.title, 'ID:', nextGoal.id);
 
-      // *** FIX: DON'T update selectedGoalId here ***
-      // setSelectedGoalId(nextGoal.id); // REMOVE THIS LINE
-
-      // Reset completion state
       allQuestionsCompletedRef.current = false;
       shouldMarkGoalCompletedRef.current = false;
       setCurrentQuestion(null);
@@ -281,7 +244,6 @@ export default function Page() {
       setCompletionStatusRef.current = {};
       setSetCompletionStatus({});
 
-      // *** FIX: Pass the next goal info to MainContent ***
       if ((window as any).triggerNextGoal) {
         (window as any).triggerNextGoal(nextGoal);
       }
@@ -290,36 +252,24 @@ export default function Page() {
     }
   };
 
-  // *** FIX: Updated to set both refs and state ***
   const handleAllQuestionsCompleted = (totalSetsFromQuestions?: number) => {
-    console.log('*** All questions completed callback received ***');
-    console.log('*** Current completion status at time of completion:', setCompletionStatusRef.current);
-    console.log('*** Total sets passed from MainContent:', totalSetsFromQuestions);
-    console.log('*** Total sets state at time of completion:', totalSets);
 
     const actualTotalSets = totalSetsFromQuestions || totalSets || 0;
-    console.log('*** Using total sets for completion check:', actualTotalSets);
 
     const shouldComplete = checkIfAllSetsCompleted(setCompletionStatusRef.current, actualTotalSets);
-    console.log('*** Should mark goal as completed?', shouldComplete);
 
-    // *** FIX: Set both refs and state ***
     allQuestionsCompletedRef.current = true;
     shouldMarkGoalCompletedRef.current = shouldComplete;
     setAllQuestionsCompleted(true);
     setShouldMarkGoalCompleted(shouldComplete);
 
-    console.log('*** Flags set - allQuestionsCompletedRef:', allQuestionsCompletedRef.current);
-    console.log('*** Flags set - shouldMarkGoalCompletedRef:', shouldMarkGoalCompletedRef.current);
   };
 
   const resetSetCompletion = useCallback(() => {
-    console.log('*** Resetting set completion status ***');
     setCompletionStatusRef.current = {};
     setSetCompletionStatus({});
     setTotalSets(0);
 
-    // *** FIX: Reset refs too ***
     allQuestionsCompletedRef.current = false;
     shouldMarkGoalCompletedRef.current = false;
     setAllQuestionsCompleted(false);
@@ -327,7 +277,7 @@ export default function Page() {
   }, []);
 
   const areAllSetsCompleted = useCallback(() => {
-    return false; // Not used anymore
+    return false; 
   }, []);
 
   const renderEvaluationFooter = () => {
@@ -452,10 +402,8 @@ export default function Page() {
         />
       </div>
 
-      {/* Evaluation Footer */}
       {renderEvaluationFooter()}
 
-      {/* Add padding to prevent content from being hidden behind footer */}
       {showEvaluationButtons && <div className="h-24" />}
     </div>
   );

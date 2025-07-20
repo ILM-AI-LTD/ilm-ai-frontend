@@ -42,7 +42,6 @@ const MCQQuestionComponent: React.FC<MCQQuestionComponentProps> = ({
         );
     }
 
-    // Parse the question
     const parseQuestion = (questionText: string) => {
         const parts = questionText.split(' -- ');
         const question = parts[0];
@@ -68,7 +67,7 @@ const MCQQuestionComponent: React.FC<MCQQuestionComponentProps> = ({
     const { question, options } = parseQuestion(currentQuestion.question);
 
     const handleOptionSelect = (optionValue: string) => {
-        if (!evaluationResult) { // Only allow selection if not evaluated yet
+        if (!evaluationResult) {
             setSelectedOption(optionValue);
         }
     };
@@ -79,7 +78,6 @@ const MCQQuestionComponent: React.FC<MCQQuestionComponentProps> = ({
         }
     };
 
-    // Reset selection when question changes
     useEffect(() => {
         setSelectedOption(null);
     }, [currentSetIndex, currentQuestionIndex]);
