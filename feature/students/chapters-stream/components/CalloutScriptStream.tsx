@@ -68,8 +68,6 @@ const CalloutScriptStream: React.FC<CalloutHistoryContentProps> = ({
     const streamingRef = useRef(true);
     const queryClient = useQueryClient();
 
-
-
     // Start streaming only when message is initially passed in
     useEffect(() => {
         if (!message || typeof message !== 'string') return;
@@ -92,7 +90,6 @@ const CalloutScriptStream: React.FC<CalloutHistoryContentProps> = ({
             } else {
                 setIsStreaming(false);
 
-
                 if (timeoutRef.current) clearTimeout(timeoutRef.current);
 
                 if (typeof onStreamEnd === 'function') {
@@ -113,7 +110,6 @@ const CalloutScriptStream: React.FC<CalloutHistoryContentProps> = ({
             if (timeoutRef.current) clearTimeout(timeoutRef.current);
         };
     }, [message]);
-
 
     const markdownComponents = useMemo(() => ({
         h1: ({ children }: { children: React.ReactNode }) => <h1 className="text-lg font-bold text-foreground mb-2 mt-1">{children}</h1>,
@@ -161,11 +157,10 @@ const CalloutScriptStream: React.FC<CalloutHistoryContentProps> = ({
     }), []);
 
     return (
-        <div className={`relative ${className} w-full min-w-0`}>
-            <div className="bg-background border text-white px-6 py-4 rounded-lg w-full min-h-[80px]">
-                <p className="text-[#049F6C] font-normal text-lg w-full">{kebabToTitleCase(title)}</p>
+        <div className={`relative ${className}`}>
+            <div className="bg-background border text-white px-6 py-4 rounded-lg">
+                <p className="text-[#049F6C] font-normal text-lg">{kebabToTitleCase(title)}</p>
 
-                <div className="prose prose-sm prose-invert max-w-none w-full min-w-0 space-y-4">
                     {extractLatexBlocks(streamedContent).map((block, idx) => {
                         if (block.isLatex) {
                             return block.isComplete ? (
@@ -196,7 +191,6 @@ const CalloutScriptStream: React.FC<CalloutHistoryContentProps> = ({
                             );
                         }
                     })}
-                </div>
             </div>
 
             <div
@@ -213,3 +207,4 @@ const CalloutScriptStream: React.FC<CalloutHistoryContentProps> = ({
 };
 
 export default CalloutScriptStream;
+
