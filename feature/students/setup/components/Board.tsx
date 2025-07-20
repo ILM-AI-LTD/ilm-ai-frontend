@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import ILMIAssistantv2 from "@/feature/parents/components/setup/common/ILMIAssistantv2";
 import FooterStudents from "./common/FooterStudents";
 import AssistantCallout from "./common/AssistantCallout";

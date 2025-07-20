@@ -1,10 +1,9 @@
-// components/MarkdownRenderer.tsx
-import React, { useMemo, useState, useEffect, useRef } from 'react';
+import { Skeleton } from '@/components/ui/skeleton';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import Markdown from 'react-markdown';
 import rehypeKatex from 'rehype-katex';
 import remarkGfm from 'remark-gfm';
 import remarkMath from 'remark-math';
-import { Skeleton } from '@/components/ui/skeleton';
 
 interface MarkdownRendererProps {
   content: string;
@@ -110,12 +109,12 @@ const MarkdownRenderer: React.FC<MarkdownRendererProps> = React.memo(({ content,
     hr: () => <hr className="border-gray-600 my-3" />,
     table: ({ children }: { children: React.ReactNode }) => (
       <div className="overflow-x-auto mb-2">
-        <table className="min-w-full text-sm text-foreground border border-gray-600">{children}</table>
+        <table className="min-w-full text-sm text-foreground border">{children}</table>
       </div>
     ),
-    thead: ({ children }: { children: React.ReactNode }) => <thead className="bg-gray-700">{children}</thead>,
-    tbody: ({ children }: { children: React.ReactNode }) => <tbody className="bg-gray-800">{children}</tbody>,
-    tr: ({ children }: { children: React.ReactNode }) => <tr className="border-b border-gray-600">{children}</tr>,
+    thead: ({ children }: { children: React.ReactNode }) => <thead className="bg-secondary">{children}</thead>,
+    tbody: ({ children }: { children: React.ReactNode }) => <tbody className="bg-secondary/10">{children}</tbody>,
+    tr: ({ children }: { children: React.ReactNode }) => <tr className="border-b border">{children}</tr>,
     th: ({ children }: { children: React.ReactNode }) => <th className="px-3 py-2 text-left font-medium">{children}</th>,
     td: ({ children }: { children: React.ReactNode }) => <td className="px-3 py-2">{children}</td>,
     img: ({ src, alt }: { src?: string; alt?: string }) => (
@@ -131,14 +130,16 @@ const MarkdownRenderer: React.FC<MarkdownRendererProps> = React.memo(({ content,
       {extractLatexBlocks(renderedContent).map((block, idx) => {
         if (block.isLatex) {
           return block.isComplete ? (
-            <Markdown
-              key={idx}
-              remarkPlugins={remarkPlugins}
-              rehypePlugins={rehypePlugins}
-              components={markdownComponents as any}
-            >
-              {block.content}
-            </Markdown>
+            <div className='text-foreground'>
+              <Markdown
+                key={idx}
+                remarkPlugins={remarkPlugins}
+                rehypePlugins={rehypePlugins}
+                components={markdownComponents as any}
+              >
+                {block.content}
+              </Markdown>
+            </div>
           ) : (
             <div key={idx} className="space-y-2">
               <Skeleton className="h-6 w-11/12 bg-gray-400" />

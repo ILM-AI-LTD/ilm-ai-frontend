@@ -30,7 +30,11 @@ export function useStreamedMessage() {
                     timeoutRef.current = setTimeout(resolve, 10); // Slightly increased delay for better performance
                 });
                 
-                onAppend(response[i]);
+                const char = response[i];
+                if (typeof char === 'string') {
+                  onAppend(char);
+                }
+              
             }
         } catch (error) {
             console.error('Error during streaming:', error);

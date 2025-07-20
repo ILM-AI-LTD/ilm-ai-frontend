@@ -12,13 +12,16 @@ type GoalsCompletionProps = {
         id: number;
         title: string;
         isCompleted: boolean;
+        isStarted?: boolean;
+        hasHistory?: boolean;
     }[];
+    selectedGoalId: number;
+    onSelectGoal: (id: number) => void;
 }
 
-const GoalsCompletion = ({ chapter, subChapters, goals }: GoalsCompletionProps) => {
-
+const GoalsCompletion = ({ chapter, subChapters, goals, selectedGoalId, onSelectGoal }: GoalsCompletionProps) => {
     return (
-        <Card className='hidden md:block max-w-[320px] w-full sticky top-10 bg-secondary border gap-2'>
+        <Card className='hidden md:block max-w-[320px] w-full sticky top-24 bg-secondary border gap-2'>
             <CardHeader className='text-primary font-bold text-2xl capitalize'>
                 {chapter}
             </CardHeader>
@@ -33,26 +36,30 @@ const GoalsCompletion = ({ chapter, subChapters, goals }: GoalsCompletionProps) 
                         {goals.map((goal, index) => (
                             <div key={`${goal.id}-${index}`} className="relative flex items-start mb-4">
                                 {index < goals.length - 1 && (
-                                    <div className="absolute left-3 top-6 w-0.5 bg-gray-600"
-                                        style={{ height: 'calc(100% + 1rem)' }}></div>
+                                    <div className="absolute left-[7px] top-4 w-0.5 bg-gray-600" style={{ height: 'calc(100% + 1rem)' }}></div>
                                 )}
 
                                 <div className="relative z-10 flex-shrink-0 mr-3 sm:mr-4">
                                     {goal.isCompleted ? (
-                                        <div className="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center">
-                                            <Check size={18} className="text-white" />
+                                        <div className="w-4 h-4 bg-green-500 rounded-full flex items-center justify-center">
+                                            <Check size={12} className="text-white" />
                                         </div>
+                                    ) : goal.isStarted ? (
+                                        <div className="w-4 h-4 border-2 bg-yellow-500 rounded-full flex items-center justify-center" />
                                     ) : (
-                                        <div className="w-6 h-6 border-2 border-gray-400 rounded-full bg-secondary"></div>
+                                        <div className="w-4 h-4 border-2 border-gray-400 rounded-full bg-secondary"></div>
                                     )}
                                 </div>
 
-                                <Link href={'/#'} className="flex-1 pt-0.5">
-                                    <p className={`sm:text-lg -mt-1 ${goal.isCompleted ? 'text-foreground' : 'text-foreground/50'
-                                        }`}>
+                                <button
+                                    disabled={!goal.hasHistory}
+                                    onClick={() => onSelectGoal(goal.id)}
+                                    className={`flex-1 pt-0.5 text-left ${goal.hasHistory ? 'cursor-pointer' : 'cursor-not-allowed opacity-50'}`}
+                                >
+                                    <p className={`sm:text-lg -mt-[7px] ${goal.isCompleted ? 'text-foreground' : 'text-foreground/50'}`}>
                                         {kebabToTitleCase(goal.title)}
                                     </p>
-                                </Link>
+                                </button>
                             </div>
                         ))}
                     </div>
@@ -62,4 +69,4 @@ const GoalsCompletion = ({ chapter, subChapters, goals }: GoalsCompletionProps) 
     )
 }
 
-export default GoalsCompletion
+export default GoalsCompletion;
