@@ -11,7 +11,7 @@ interface Props {
 const CustomNavbar = ({ role }: Props) => {
 
     return (
-        <nav className='h-24  bg-secondary flex items-center justify-between lg:justify-end z-10 px-10'>
+        <nav className='h-24 bg-transparent flex items-center justify-between lg:justify-end z-10 px-6 md:px-10'>
             <div className='lg:hidden'>
                 <CustomLogo
                     logoSrc="/ilmino.svg"

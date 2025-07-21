@@ -6,7 +6,7 @@ export const generateLayoutStructure = (chapterData: SubChapter[]): LayoutItem[]
         type: "single",
         topicId: "0",
         hidden: true,
-        className: "size-48",
+        className: "size-40 md:size-48",
     }];
 
     for (let i = 0; i < chapterData.length; i++) {

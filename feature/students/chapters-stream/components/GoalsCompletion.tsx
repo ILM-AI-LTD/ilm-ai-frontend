@@ -21,7 +21,7 @@ type GoalsCompletionProps = {
 
 const GoalsCompletion = ({ chapter, subChapters, goals, selectedGoalId, onSelectGoal }: GoalsCompletionProps) => {
     return (
-        <Card className='hidden md:block max-w-[320px] w-full sticky top-24 bg-secondary border gap-2'>
+        <Card className='max-w-[320px] w-full sticky top-24 bg-secondary border gap-2'>
             <CardHeader className='text-primary font-bold text-2xl capitalize'>
                 {chapter}
             </CardHeader>
