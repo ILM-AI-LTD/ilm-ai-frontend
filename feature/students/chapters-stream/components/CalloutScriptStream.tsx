@@ -158,7 +158,7 @@ const CalloutScriptStream: React.FC<CalloutHistoryContentProps> = ({
 
     return (
         <div className={`relative ${className}`}>
-            <div className="bg-background border text-white px-6 py-4 rounded-lg">
+            <div className="bg-background border text-white px-4 py-4 rounded-lg">
                 <p className="text-[#049F6C] font-normal text-lg">{kebabToTitleCase(title)}</p>
 
                     {extractLatexBlocks(streamedContent).map((block, idx) => {

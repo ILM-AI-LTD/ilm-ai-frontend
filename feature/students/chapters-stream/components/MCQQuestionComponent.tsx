@@ -161,7 +161,7 @@ const MCQQuestionComponent: React.FC<MCQQuestionComponentProps> = ({
 
   return (
     <div className="w-full">
-      <Card className="p-8 w-full">
+      <Card className="p-4 w-full">
         <CardTitle className="text-2xl font-semibold mb-6">
           {question}
         </CardTitle>

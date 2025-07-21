@@ -3,6 +3,11 @@
 import CustomButton from "@/components/global/CustomButton";
 import ChatbotWidget from "@/components/global/CustomChatbotWidget";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 import { usePaper } from "@/context/PaperContext";
 import GoalsCompletion from "@/feature/students/chapters-stream/components/GoalsCompletion";
 import GoalsCompletionSkeleton from "@/feature/students/chapters-stream/components/GoalsCompletionSkeleton";
@@ -319,7 +324,7 @@ export default function Page() {
 
     return (
       <div className="fixed bottom-0 left-0 right-0 bg-background border-t shadow-lg z-50">
-        <div className="w- mx-auto px-10 py-4">
+        <div className="w-full mx-auto px-4 md:px-6 lg:px-10 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
               {evaluationResult.isCorrect ? (
@@ -348,7 +353,7 @@ export default function Page() {
                 <CustomButton
                   onClick={handleMoveNext}
                   isLoading={isMarkingCompleted}
-                  className="px-8 py-3 bg-[#049F6C] text-white rounded-lg hover:bg-[#049F6C] transition-colors duration-200 font-medium shadow-[0px_6px_0px_0px_#007851] text-base"
+                  className="px-4 md:px-8 py-3 bg-[#049F6C] text-white rounded-lg hover:bg-[#049F6C] transition-colors duration-200 font-medium shadow-[0px_6px_0px_0px_#007851] text-base"
                 >
                   {isMarkingCompleted ? "Processing..." : "Let's Move"}
                 </CustomButton>
@@ -356,14 +361,14 @@ export default function Page() {
                 <>
                   <CustomButton
                     onClick={handleTryAgain}
-                    className="px-6 py-3 bg-[#DF1C41] text-white rounded-lg hover:bg-[#DF1C41] transition-colors duration-200 font-medium shadow-[0px_6px_0px_0px_#A20825] text-base"
+                    className="px-4 md:px-8 py-3 bg-[#DF1C41] text-white rounded-lg hover:bg-[#DF1C41] transition-colors duration-200 font-medium shadow-[0px_6px_0px_0px_#A20825] text-base"
                   >
-                    Let's Try Again
+                    Try Again
                   </CustomButton>
                   <CustomButton
                     onClick={handleMoveNext}
                     isLoading={isMarkingCompleted}
-                    className="px-6 py-3 bg-[#049F6C] text-white rounded-lg hover:bg-[#049F6C] transition-colors duration-200 font-medium shadow-[0px_6px_0px_0px_#007851] text-base"
+                    className="px-4 md:px-8 py-3 bg-[#049F6C] text-white rounded-lg hover:bg-[#049F6C] transition-colors duration-200 font-medium shadow-[0px_6px_0px_0px_#007851] text-base"
                   >
                     {isMarkingCompleted ? "Processing..." : "Let's Move"}
                   </CustomButton>
@@ -378,8 +383,31 @@ export default function Page() {
 
   return (
     <div className="flex flex-col w-full h-full">
-      <div className="flex flex-row w-full flex-1 mt-2">
-        <div className="basis-3/4 mr-4">
+      <div className="flex flex-col md:flex-row w-full flex-1 mt-2 gap-4 md:gap-0">
+        <div className="md:hidden flex flex-row justify-end relative overflow-visible">
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <CustomButton label="Goals" active={false} />
+            </DropdownMenuTrigger>
+            <DropdownMenuContent
+              align="end"
+              side="bottom"
+              sideOffset={8}
+              avoidCollisions={true}
+              collisionPadding={16}
+              className="p-0 rounded-2xl"
+            >
+              <GoalsCompletion
+                chapter={chapter as string}
+                subChapters={slug as string}
+                goals={goals}
+                selectedGoalId={selectedGoalId}
+                onSelectGoal={setSelectedGoalId}
+              />
+            </DropdownMenuContent>
+          </DropdownMenu>
+        </div>
+        <div className="basis-4/4 md:basis-3/4 md:mr-4">
           <MainContent
             subject={subject as string}
             topic={chapter as string}
@@ -399,11 +427,11 @@ export default function Page() {
             resetSetCompletion={resetSetCompletion}
             areAllSetsCompleted={areAllSetsCompleted}
             onAllQuestionsCompleted={handleAllQuestionsCompleted}
-            setSelectedGoalId={setSelectedGoalId} // *** FIX: Add this prop ***
+            setSelectedGoalId={setSelectedGoalId}
           />
         </div>
 
-        <div className="basis-1/4 flex flex-col items-end">
+        <div className="hidden md:basis-1/4 md:flex flex-col items-end">
           {isLoading && <GoalsCompletionSkeleton />}
 
           {isError && (
@@ -437,7 +465,7 @@ export default function Page() {
           position="bottom-right"
           size="small"
           placeholder="Ask what's on your mind"
-          offset={{ x: 40, y: 90 }}
+          offset={{ x: 30, y: 75 }}
         />
       </div>
 

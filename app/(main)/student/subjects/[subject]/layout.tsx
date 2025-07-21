@@ -27,7 +27,7 @@ const SubjectLayout = ({ children }: { children: React.ReactNode }) => {
           <div className="sticky top-0 z-50">
             <CustomNavbar role={'student'} />
           </div>
-          <div className="flex flex-1 flex-col bg-background gap-4 px-10 py-4">
+          <div className="flex flex-1 flex-col bg-background gap-4 px-6 md:px-10 py-4">
             {children}
           </div>
         </SidebarInset>
