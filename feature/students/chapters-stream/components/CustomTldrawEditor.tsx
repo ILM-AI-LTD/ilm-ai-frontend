@@ -191,16 +191,38 @@ async function exportToPNG(editor: Editor): Promise<Blob> {
 }
 
 // Helper function to create blank PNG
-function createBlankPNG(width: number, height: number) {
-  return new Promise((resolve) => {
+function createBlankPNG(width: number, height: number): Promise<Blob> {
+  // return new Promise((resolve) => {
+  //   const canvas = document.createElement("canvas");
+  //   canvas.width = width;
+  //   canvas.height = height;
+  //   const ctx = canvas.getContext("2d");
+  //   ctx.fillStyle = "white";
+  //   ctx.fillRect(0, 0, width, height);
+
+  //   canvas.toBlob(resolve, "image/png");
+  // });
+  return new Promise((resolve, reject) => {
     const canvas = document.createElement("canvas");
     canvas.width = width;
     canvas.height = height;
     const ctx = canvas.getContext("2d");
+
+    if (!ctx) {
+      reject(new Error("Failed to get canvas context"));
+      return;
+    }
+
     ctx.fillStyle = "white";
     ctx.fillRect(0, 0, width, height);
 
-    canvas.toBlob(resolve, "image/png");
+    canvas.toBlob((blob) => {
+      if (blob) {
+        resolve(blob);
+      } else {
+        reject(new Error("Failed to create blank PNG blob"));
+      }
+    }, "image/png");
   });
 }
 

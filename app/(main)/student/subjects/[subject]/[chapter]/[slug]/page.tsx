@@ -323,7 +323,7 @@ export default function Page() {
     if (!showEvaluationButtons || !evaluationResult) return null;
 
     return (
-      <div className="fixed bottom-0 left-0 right-0 bg-background border-t shadow-lg z-50">
+      <div className="fixed bottom-0 left-0 right-0 bg-background border-t shadow-lg z-[99999]">
         <div className="w-full mx-auto px-4 md:px-6 lg:px-10 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
