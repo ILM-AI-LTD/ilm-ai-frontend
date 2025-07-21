@@ -65,12 +65,12 @@ const MainContent: React.FC<MainContentProps> = ({
   onEvaluateAnswer,
   isEvaluating,
   evaluationResult,
-  showEvaluationButtons,
-  setCompletionStatus,
-  totalSets,
+  // showEvaluationButtons,
+  // setCompletionStatus,
+  // totalSets,
   setTotalSets,
   resetSetCompletion,
-  areAllSetsCompleted,
+  // areAllSetsCompleted,
   onAllQuestionsCompleted,
   setSelectedGoalId, // *** FIX: Added prop ***
 }) => {

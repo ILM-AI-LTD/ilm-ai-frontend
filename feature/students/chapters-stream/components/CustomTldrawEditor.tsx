@@ -12,9 +12,9 @@ import {
   //   track,
   useEditor,
   TLUiComponents,
-  DefaultStylePanel,
-  DefaultStylePanelContent,
-  useRelevantStyles,
+  // DefaultStylePanel,
+  // DefaultStylePanelContent,
+  // useRelevantStyles,
   Editor,
   //   // useLocalStorageState,
   //   NoteShapeUtil,
@@ -22,12 +22,12 @@ import {
 import "tldraw/tldraw.css";
 import {
   useState,
-  MouseEvent,
-  PointerEvent,
+  // MouseEvent,
+  // PointerEvent,
   forwardRef,
   useImperativeHandle,
 } from "react";
-import { Brush } from "lucide-react";
+// import { Brush } from "lucide-react";
 // import { Card } from "@/components/ui/card";
 
 // type Props = {
@@ -42,65 +42,65 @@ import { Brush } from "lucide-react";
 //   onSubmit?: (pngBlob: Blob) => void;
 // }
 
-function ToggleableStylePanel() {
-  const [isMinimized, setIsMinimized] = useState<boolean>(false);
-  const styles = useRelevantStyles();
+// function ToggleableStylePanel() {
+//   const [isMinimized, setIsMinimized] = useState<boolean>(false);
+//   const styles = useRelevantStyles();
 
-  const handleExpand = (event: MouseEvent | PointerEvent) => {
-    // console.log("ee ---", event);
+//   const handleExpand = (event: MouseEvent | PointerEvent) => {
+//     // console.log("ee ---", event);
 
-    event.preventDefault();
-    event.stopPropagation();
-    // console.log("Expand button clicked");
-    setIsMinimized(false);
-  };
+//     event.preventDefault();
+//     event.stopPropagation();
+//     // console.log("Expand button clicked");
+//     setIsMinimized(false);
+//   };
 
-  const handleMinimize = (event: MouseEvent | PointerEvent) => {
-    event.preventDefault();
-    event.stopPropagation();
-    // console.log("Minimize button clicked");
-    setIsMinimized(true);
-  };
+//   const handleMinimize = (event: MouseEvent | PointerEvent) => {
+//     event.preventDefault();
+//     event.stopPropagation();
+//     // console.log("Minimize button clicked");
+//     setIsMinimized(true);
+//   };
 
-  if (isMinimized) {
-    // Minimized state - show only toggle button
-    return (
-      <div className="fixed right-2 top-4 z-[99999] bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-2 shadow-lg pointer-events-auto">
-        <button
-          onPointerDown={handleExpand}
-          onMouseDown={handleExpand}
-          className="bg-transparent border-none cursor-pointer text-base p-1 text-gray-700 dark:text-gray-300 flex items-center justify-center hover:bg-gray-100 dark:hover:bg-gray-700 rounded transition-colors pointer-events-auto"
-          title="Expand style panel"
-        >
-          <Brush />
-        </button>
-      </div>
-    );
-  }
+//   if (isMinimized) {
+//     // Minimized state - show only toggle button
+//     return (
+//       <div className="fixed right-2 top-4 z-[99999] bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-2 shadow-lg pointer-events-auto">
+//         <button
+//           onPointerDown={handleExpand}
+//           onMouseDown={handleExpand}
+//           className="bg-transparent border-none cursor-pointer text-base p-1 text-gray-700 dark:text-gray-300 flex items-center justify-center hover:bg-gray-100 dark:hover:bg-gray-700 rounded transition-colors pointer-events-auto"
+//           title="Expand style panel"
+//         >
+//           <Brush />
+//         </button>
+//       </div>
+//     );
+//   }
 
-  // Expanded state - show full style panel with minimize button
-  return (
-    <DefaultStylePanel>
-      {/* Custom header with minimize button */}
-      <div className="flex justify-between items-center px-3 py-2 border-b border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800">
-        <span className="text-xs font-medium text-gray-600 dark:text-gray-400">
-          Style
-        </span>
-        <button
-          onPointerDown={handleMinimize}
-          onMouseDown={handleMinimize}
-          className="bg-transparent border-none cursor-pointer text-sm px-1 py-0.5 text-gray-500 dark:text-gray-400 rounded hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors pointer-events-auto"
-          title="Minimize style panel"
-        >
-          ✕
-        </button>
-      </div>
+//   // Expanded state - show full style panel with minimize button
+//   return (
+//     <DefaultStylePanel>
+//       {/* Custom header with minimize button */}
+//       <div className="flex justify-between items-center px-3 py-2 border-b border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800">
+//         <span className="text-xs font-medium text-gray-600 dark:text-gray-400">
+//           Style
+//         </span>
+//         <button
+//           onPointerDown={handleMinimize}
+//           onMouseDown={handleMinimize}
+//           className="bg-transparent border-none cursor-pointer text-sm px-1 py-0.5 text-gray-500 dark:text-gray-400 rounded hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors pointer-events-auto"
+//           title="Minimize style panel"
+//         >
+//           ✕
+//         </button>
+//       </div>
 
-      {/* Default style panel content */}
-      <DefaultStylePanelContent styles={styles} />
-    </DefaultStylePanel>
-  );
-}
+//       {/* Default style panel content */}
+//       <DefaultStylePanelContent styles={styles} />
+//     </DefaultStylePanel>
+//   );
+// }
 
 // Custom Submit Button Component
 // function SubmitButton({ editor, onSubmit }: SubmitButtonProps) {
@@ -441,64 +441,6 @@ function configureEditor(editor: ReturnType<typeof useEditor>) {
     zoomSteps: [editor.getZoomLevel()],
   });
 }
-
-// interface CustomTldrawEditorProps {
-//   onSubmit?: (pngBlob: Blob) => void;
-//   showFloatingSubmitButton?: boolean; // Option to show floating submit button
-// }
-
-// // const CustomTldrawEditor = ({ questions }: Props) => {
-// const CustomTldrawEditor = ({
-//   onSubmit,
-//   showFloatingSubmitButton = false,
-// }: CustomTldrawEditorProps) => {
-//   const [editor, setEditor] = useState<Editor | null>(null);
-
-//   const handleMount = (editorInstance: Editor) => {
-//     setEditor(editorInstance);
-//     configureEditor(editorInstance);
-//   };
-
-//   const handleSubmit = (pngBlob: Blob) => {
-//     console.log("Drawing submitted successfully!");
-//     if (onSubmit) {
-//       onSubmit(pngBlob);
-//     }
-//     // You can add additional logic here, like showing a success message
-//   };
-
-//   return (
-//     <>
-//       <div className="max-w-[1000px] h-[500px]">
-//         <Tldraw
-//           overrides={overrides}
-//           onMount={handleMount}
-//           components={components}
-//         />
-//       </div>
-//       {showFloatingSubmitButton && (
-//         <SubmitButton editor={editor} onSubmit={handleSubmit} />
-//       )}
-
-//       {/* <div className="flex justify-center ">
-//         <SubmitButton editor={editor} onSubmit={handleSubmit} />
-//       </div> */}
-//     </>
-
-//     // <Card>
-//     //   {/* <div className="w-full p-8">
-//     //     <div
-//     //       className="prose prose-sm max-w-none text-foreground pb-6 text-2xl font-bold"
-//     //       dangerouslySetInnerHTML={{ __html: questions.question_text }}
-//     //     />
-//     //   </div> */}
-
-//     // {/* // </Card> */}
-//   );
-// };
-
-// export default CustomTldrawEditor;
-
 export interface CustomTldrawEditorRef {
   exportToPNG: () => Promise<Blob>;
 }
