@@ -61,33 +61,30 @@ export type Connection = {
 
 export type LayoutItem =
   | {
-    type: "single";
-    topicId: string;
-    hidden?: boolean;
-    className?: string;
-    top?: boolean;
-  }
+      type: "single";
+      topicId: string;
+      hidden?: boolean;
+      className?: string;
+      top?: boolean;
+    }
   | { type: "branch"; leftTopicId: string; junctionKey: string };
 
-
 export type StreamServiceParams = {
-  board: string
-  subject: string
-  paper: number
-  topic: string
-  subtopic: string
-  goal?: string
-}
-
+  board: string;
+  subject: string;
+  paper: number;
+  topic: string;
+  subtopic: string;
+  goal?: string;
+};
 
 export type GetGoalsDTO = {
-  board: string
-  subject: string
-  paper: number
-  topic: string
-  subtopic: string
-}
-
+  board: string;
+  subject: string;
+  paper: number;
+  topic: string;
+  subtopic: string;
+};
 
 export interface Goals {
   goal_name: string;
@@ -114,7 +111,7 @@ export interface ChatbotRequest {
 }
 
 export interface ChatbotResponse {
-  status: 'success' | 'error';
+  status: "success" | "error";
   message: string;
   data: {
     answer: string;
@@ -161,9 +158,11 @@ export interface SampleQuestionsResponse {
 }
 
 export interface EvaluateAnswerDTO {
-  question: string,
-  student_answer: string, 
-  correct_answer: string
+  question: string;
+  student_answer: string;
+  correct_answer: string;
+  question_type: string;
+  image: Blob | null;
 }
 
 export interface EvaluateAnswerResponse {
@@ -199,5 +198,3 @@ export interface SampleQuestionsResponse {
     }[];
   };
 }
-
-
