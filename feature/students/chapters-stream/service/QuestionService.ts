@@ -5,7 +5,13 @@ import {
   SampleQuestionsRequest,
   SampleQuestionsResponse,
 } from "@/types/student";
-import { streamingApiRequest } from "@/utils/axios";
+import {
+  streamingApiEvaluationRequest,
+  streamingApiRequest,
+  streamingAxiosInstance,
+} from "@/utils/axios";
+import { getYourAuthToken } from "@/utils/tokens";
+import axios from "axios";
 
 export const QuestionsService = {
   getSampleQuestions: (
@@ -16,7 +22,7 @@ export const QuestionsService = {
       data: body,
     }),
 
-  evaluateAnswer: (
+  evaluateAnswer: async (
     body: EvaluateAnswerDTO
   ): Promise<EvaluateAnswerResponse> => {
     const formData = new FormData();
@@ -35,18 +41,54 @@ export const QuestionsService = {
     // }
 
     if (body.image) {
-      // Append Blob with filename - this is another way to do it
-      formData.append("image", body.image, "drawing.png");
+      console.log("Original blob:", body.image); // Should show Blob {size: 36968, type: 'image/png'}
+
+      const imageFile = new File([body.image], "drawing.png", {
+        type: "image/png",
+      });
+
+      console.log("Created file:", imageFile); // Should show File object
+      formData.append("image", imageFile);
+
+      // Debug FormData contents
+      // console.log("FormData entries:");
+      // for (let pair of formData.entries()) {
+      //   console.log(pair[0], pair[1]);
+      // }
     }
 
-    return streamingApiRequest("/questions/evaluate-answer-hybrid", {
+    return streamingApiEvaluationRequest("/questions/evaluate-answer-hybrid", {
       method: "POST",
       data: formData,
     });
 
-    // streamingApiRequest('/questions/evaluate-answer', {
-    //   method: 'POST',
+    // const response = await fetch(
+    //   `${process.env.NEXT_PUBLIC_API_STREAM_URL}/questions/evaluate-answer-hybrid`,
+    //   {
+    //     method: "POST",
+    //     body: formData, // Don't use 'data', use 'body'
+    //     headers: {
+    //       // Authorization: `Bearer ${"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2ODZhNDdkOGRiZGM3NWRhYjZiNjZjMTAiLCJ0eXBlIjoiY2hpbGQiLCJpYXQiOjE3NTMxMDI1NjcsImV4cCI6MTc1MzcwNzM2N30.7-y-PkbO7duTsPqqRz6VftLIQzkRjncsl2FjmotbwGo"}`,
+    //       Authorization: `Bearer ${getYourAuthToken()}`, // Add your auth header
+    //       // DO NOT set Content-Type - let browser set it automatically for FormData
+    //     },
+    //   }
+    // );
+
+    // if (!response.ok) {
+    //   const errorText = await response.text();
+    //   throw new Error(
+    //     `HTTP error! status: ${response.status}, message: ${errorText}`
+    //   );
+    // }
+
+    // return await response.json();
+
+    // ----------------------------------------------
+
+    // streamingApiRequest("/questions/evaluate-answer", {
+    //   method: "POST",
     //   data: body,
-    // })
+    // });
   },
 };

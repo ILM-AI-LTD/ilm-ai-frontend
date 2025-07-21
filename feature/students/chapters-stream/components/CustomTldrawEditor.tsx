@@ -344,7 +344,8 @@ async function convertSvgElementToPng(svgElement: SVGElement): Promise<Blob> {
 // }
 
 const components: TLUiComponents = {
-  StylePanel: ToggleableStylePanel,
+  // StylePanel: ToggleableStylePanel,
+  StylePanel: null,
   ContextMenu: null,
   ActionsMenu: null,
   HelpMenu: null,
@@ -358,7 +359,7 @@ const components: TLUiComponents = {
   ImageToolbar: null,
   VideoToolbar: null,
   KeyboardShortcutsDialog: null,
-  // QuickActions: null,
+  QuickActions: null,
   HelperButtons: null,
   DebugPanel: null,
   DebugMenu: null,
@@ -522,7 +523,7 @@ const CustomTldrawEditor = forwardRef<CustomTldrawEditorRef>((props, ref) => {
 
   return (
     <div className="relative">
-      <div className="max-w-[1000px] h-[500px]">
+      <div className="w-full h-[500px]">
         <Tldraw
           overrides={overrides}
           onMount={handleMount}
