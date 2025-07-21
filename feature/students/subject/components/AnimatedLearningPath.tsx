@@ -115,9 +115,9 @@ export function AnimatedLearningPath({ chapter, subject }: AnimatedLearningPathP
           </Circle>
           <div
             ref={junctionRefs[item.junctionKey]}
-            className="size-32 rounded-full"
+            className="size-28 md:size-32 rounded-full"
           />
-          <div className="size-32 rounded-full" />
+          <div className="size-28 md:size-32 rounded-full" />
         </div>
       );
     });

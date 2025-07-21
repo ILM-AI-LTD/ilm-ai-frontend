@@ -40,14 +40,6 @@ const CustomButton: React.FC<ButtonProps> = ({
   return (
     <Button
       disabled={disabled}
-      // className={cn(
-      //   `rounded-3xl cursor-pointer border-none  ${
-      //     active
-      //       ? "bg-gradient-to-t from-[#004D6C] to-[#006C98] shadow-[0px_6px_0px_0px_#006C98]"
-      //       : "bg-secondary-button hover:bg-secondary-button/70 shadow-[0px_6px_0px_0px_##004F6E] text-primary hover:text-primary"
-      //   }`,
-      //   className
-      // )}
       className={cn(
         `rounded-3xl cursor-pointer border-none  ${active
           ? "text-white bg-gradient-to-t from-[#004D6C] to-[#006C98] hover:from-[#018dc4] hover:to-[#018dc4] shadow-[0px_6px_0px_0px_#006C98]"
