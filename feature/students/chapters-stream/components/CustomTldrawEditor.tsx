@@ -175,7 +175,7 @@ async function exportToPNG(editor: Editor): Promise<Blob> {
       background: true,
       padding: 16,
       scale: 2, // Higher scale for better quality
-      bounds: null,
+      // bounds: null,
     });
 
     if (!svgElement) {
@@ -230,8 +230,8 @@ async function convertSvgElementToPng(svgElement: SVGElement): Promise<Blob> {
   return new Promise((resolve, reject) => {
     try {
       // Get dimensions from SVG
-      const width = parseInt(svgElement.getAttribute("width")) || 800;
-      const height = parseInt(svgElement.getAttribute("height")) || 600;
+      const width = parseInt(svgElement.getAttribute("width") ?? "800");
+      const height = parseInt(svgElement.getAttribute("height") ?? "600");
 
       console.log("🖼️ Converting SVG to PNG, dimensions:", { width, height });
 
@@ -248,12 +248,11 @@ async function convertSvgElementToPng(svgElement: SVGElement): Promise<Blob> {
         try {
           console.log("✅ SVG image loaded successfully");
 
-          // Fill white background
-          ctx.fillStyle = "white";
-          ctx.fillRect(0, 0, width, height);
-
-          // Draw the SVG
-          ctx.drawImage(img, 0, 0, width, height);
+          if (ctx) {
+            ctx.fillStyle = "white";
+            ctx.fillRect(0, 0, width, height);
+            ctx.drawImage(img, 0, 0, width, height);
+          }
 
           console.log("🎨 Image drawn to canvas");
 
@@ -275,7 +274,7 @@ async function convertSvgElementToPng(svgElement: SVGElement): Promise<Blob> {
           );
         } catch (drawError) {
           console.error("❌ Error drawing to canvas:", drawError);
-          reject(new Error(`Failed to draw SVG: ${drawError.message}`));
+          reject(new Error(`Failed to draw SVG: ${drawError}`));
         }
       };
 
@@ -289,9 +288,9 @@ async function convertSvgElementToPng(svgElement: SVGElement): Promise<Blob> {
         // Clone the SVG to avoid modifying the original
         const clonedSvg = svgElement.cloneNode(true);
 
-        // Ensure proper SVG namespace
-        clonedSvg.setAttribute("xmlns", "http://www.w3.org/2000/svg");
-        clonedSvg.setAttribute("xmlns:xlink", "http://www.w3.org/1999/xlink");
+        // // Ensure proper SVG namespace
+        // clonedSvg.setAttribute("xmlns", "http://www.w3.org/2000/svg");
+        // clonedSvg.setAttribute("xmlns:xlink", "http://www.w3.org/1999/xlink");
 
         // Serialize to string
         const svgString = new XMLSerializer().serializeToString(clonedSvg);
@@ -306,11 +305,11 @@ async function convertSvgElementToPng(svgElement: SVGElement): Promise<Blob> {
         img.src = svgDataUrl;
       } catch (serializeError) {
         console.error("❌ Error serializing SVG:", serializeError);
-        reject(new Error(`Failed to serialize SVG: ${serializeError.message}`));
+        reject(new Error(`Failed to serialize SVG: ${serializeError}`));
       }
     } catch (setupError) {
       console.error("❌ Error setting up conversion:", setupError);
-      reject(new Error(`Setup failed: ${setupError.message}`));
+      reject(new Error(`Setup failed: ${setupError}`));
     }
   });
 }
