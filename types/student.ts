@@ -34,23 +34,38 @@ export interface BoardResponse {
   name: string;
 }
 
-export type SubChapter = {
-  id: string;
-  subChapter: string;
-  progress: number;
-  icon: string;
-};
+// export type SubChapter = {
+//   id: string;
+//   subChapter: string;
+//   progress: number;
+//   icon: string;
+// };
 
-export type Chapter = {
-  name: string;
-  icon: string;
-  data: SubChapter[];
+export interface SubTopic {
+  subTopic_id: string;
+  subTopic_name: string;
   progress: number;
-};
+  icon: string;
+}
+
+// export type Chapter = {
+//   name: string;
+//   icon: string;
+//   data: SubChapter[];
+//   progress: number;
+// };
+
+export interface Topic {
+  topic_id: string;
+  topic_name: string;
+  icon: string;
+  progress: number;
+  data: SubTopic[];
+}
 
 export type Subject = {
   name: string;
-  chapters: Chapter[];
+  chapters: Topic[];
 };
 
 export type Connection = {
@@ -198,3 +213,25 @@ export interface SampleQuestionsResponse {
     }[];
   };
 }
+
+export interface SubtopicProgress {
+  subtopic_name: string;
+  is_completed: boolean;
+  progress: number;
+}
+
+export interface TopicProgress {
+  topic_name: string;
+  is_completed: boolean;
+  progress: number;
+  subtopics: SubtopicProgress[];
+}
+
+export interface SubjectProgressResponse {
+  status: string;
+  message: string;
+  data: {
+    topics: TopicProgress[];
+  };
+}
+

@@ -1,250 +1,255 @@
-export const physicsChapters = {
+export const physicsTopics = {
   paper1: {
     name: "Paper 1",
-    chapters: [
+    topics: [
       {
-        name: "ENERGY",
+        topic_id: "energy",
+        topic_name: "ENERGY",
         icon: "phy_energy",
         progress: 40,
         data: [
           {
-            id: "1",
-            subChapter: "Energy Stores and Systems",
-            progress: 70,
-            icon: "phy_energy_store",
+            subTopic_id: "energy-stores-and-systems",
+            subTopic_name: "Energy Stores and Systems",
+            progress: 100,
+            icon: "phy_energy_store"
           },
           {
-            id: "2",
-            subChapter: "Kinetic and Potential Energy Stores",
+            subTopic_id: "kinetic-and-potential-energy-stores",
+            subTopic_name: "Kinetic and Potential Energy Stores",
             progress: 20,
-            icon: "phy_kinetic",
+            icon: "phy_kinetic"
           },
           {
-            id: "3",
-            subChapter: "Specific Heat Capacity",
+            subTopic_id: "specific-heat-capacity",
+            subTopic_name: "Specific Heat Capacity",
             progress: 20,
-            icon: "phy_specific_heat",
+            icon: "phy_specific_heat"
           },
           {
-            id: "4",
-            subChapter: "Conservation of Energy and Power",
+            subTopic_id: "conservation-of-energy-and-power",
+            subTopic_name: "Conservation of Energy and Power",
             progress: 0,
-            icon: "phy_conservation_energy",
+            icon: "phy_conservation_energy"
           },
           {
-            id: "5",
-            subChapter: "Conduction and Convection",
+            subTopic_id: "conduction-and-convection",
+            subTopic_name: "Conduction and Convection",
             progress: 0,
-            icon: "phy_conduction",
+            icon: "phy_conduction"
           },
           {
-            id: "6",
-            subChapter: "Reducing Unwanted Energy Transfers",
+            subTopic_id: "reducing-unwanted-energy-transfers",
+            subTopic_name: "Reducing Unwanted Energy Transfers",
             progress: 0,
-            icon: "phy_energy_transfers",
+            icon: "phy_energy_transfers"
           },
           {
-            id: "7",
-            subChapter: "Efficiency",
+            subTopic_id: "efficiency",
+            subTopic_name: "Efficiency",
             progress: 0,
-            icon: "phy_efficiency",
+            icon: "phy_efficiency"
           },
           {
-            id: "8",
-            subChapter: "Energy Resources and Their Uses",
+            subTopic_id: "energy-resources-and-their-uses",
+            subTopic_name: "Energy Resources and Their Uses",
             progress: 0,
-            icon: "phy_energy_resource",
+            icon: "phy_energy_resource"
           },
           {
-            id: "9",
-            subChapter: "Wind, Solar, and Geothermal",
+            subTopic_id: "wind-solar-and-geothermal",
+            subTopic_name: "Wind, Solar, and Geothermal",
             progress: 0,
-            icon: "phy_wind_solar",
+            icon: "phy_wind_solar"
           },
           {
-            id: "10",
-            subChapter: "Hydro-electricity, Waves, and Tides",
+            subTopic_id: "hydro-electricity-waves-and-tides",
+            subTopic_name: "Hydro-electricity, Waves, and Tides",
             progress: 0,
-            icon: "phy_hydro",
+            icon: "phy_hydro"
           },
           {
-            id: "11",
-            subChapter: "Bio-fuels and Non-renewables",
+            subTopic_id: "bio-fuels-and-non-renewables",
+            subTopic_name: "Bio-fuels and Non-renewables",
             progress: 0,
-            icon: "phy_bio_fuels",
+            icon: "phy_bio_fuels"
           },
           {
-            id: "12",
-            subChapter: "Trends in Energy Resource Use",
+            subTopic_id: "trends-in-energy-resource-use",
+            subTopic_name: "Trends in Energy Resource Use",
             progress: 0,
-            icon: "phy_trends_energy",
-          },
+            icon: "phy_trends_energy"
+          }
         ],
       },
       {
-        name: "ELECTRICITY",
+        topic_id: "electricity",
+        topic_name: "ELECTRICITY",
         icon: "phy_electricity",
         progress: 10,
         data: [
           {
-            id: "1",
-            subChapter: "Current and Circuit Symbols",
+            subTopic_id: "current-and-circuit-symbols",
+            subTopic_name: "Current and Circuit Symbols",
             progress: 0,
-            icon: "phy_current",
+            icon: "phy_current"
           },
           {
-            id: "2",
-            subChapter: "Resistance and V=IR",
+            subTopic_id: "resistance-and-v-ir",
+            subTopic_name: "Resistance and V=IR",
             progress: 0,
-            icon: "phy_resistanceVIR",
+            icon: "phy_resistanceVIR"
           },
           {
-            id: "3",
-            subChapter: "Resistance and I-V Characteristics",
+            subTopic_id: "resistance-and-i-v-characteristics",
+            subTopic_name: "Resistance and I-V Characteristics",
             progress: 0,
-            icon: "phy_resistanceIV",
+            icon: "phy_resistanceIV"
           },
           {
-            id: "4",
-            subChapter: "Circuit Devices",
+            subTopic_id: "circuit-devices",
+            subTopic_name: "Circuit Devices",
             progress: 0,
-            icon: "phy_circuit_devices",
+            icon: "phy_circuit_devices"
           },
           {
-            id: "5",
-            subChapter: "Series Circuits",
+            subTopic_id: "series-circuits",
+            subTopic_name: "Series Circuits",
             progress: 0,
-            icon: "phy_series_circuits",
+            icon: "phy_series_circuits"
           },
           {
-            id: "6",
-            subChapter: "Parallel Circuits",
+            subTopic_id: "parallel-circuits",
+            subTopic_name: "Parallel Circuits",
             progress: 0,
-            icon: "phy_parallel_circuits",
+            icon: "phy_parallel_circuits"
           },
           {
-            id: "7",
-            subChapter: "Investigating Resistance",
+            subTopic_id: "investigating-resistance",
+            subTopic_name: "Investigating Resistance",
             progress: 0,
-            icon: "phy_investigating_resistance",
+            icon: "phy_investigating_resistance"
           },
           {
-            id: "8",
-            subChapter: "Electricity in the Home",
+            subTopic_id: "electricity-in-the-home",
+            subTopic_name: "Electricity in the Home",
             progress: 0,
-            icon: "phy_electricity_home",
+            icon: "phy_electricity_home"
           },
           {
-            id: "9",
-            subChapter: "Power of Electrical Appliances",
+            subTopic_id: "power-of-electrical-appliances",
+            subTopic_name: "Power of Electrical Appliances",
             progress: 0,
-            icon: "phy_power_electrical_appliances",
+            icon: "phy_power_electrical_appliances"
           },
           {
-            id: "10",
-            subChapter: "More on Power",
+            subTopic_id: "more-on-power",
+            subTopic_name: "More on Power",
             progress: 0,
-            icon: "phy_more_power",
+            icon: "phy_more_power"
           },
           {
-            id: "11",
-            subChapter: "The National Grid",
+            subTopic_id: "the-national-grid",
+            subTopic_name: "The National Grid",
             progress: 0,
-            icon: "phy_the_national_grid",
+            icon: "phy_the_national_grid"
           },
           {
-            id: "12",
-            subChapter: "Static Electricity",
+            subTopic_id: "static-electricity",
+            subTopic_name: "Static Electricity",
             progress: 0,
-            icon: "phy_static_electricity",
+            icon: "phy_static_electricity"
           },
           {
-            id: "13",
-            subChapter: "Electric Fields",
+            subTopic_id: "electric-fields",
+            subTopic_name: "Electric Fields",
             progress: 0,
-            icon: "phy_electric_fields",
-          },
+            icon: "phy_electric_fields"
+          }
         ],
       },
 
       {
-        name: "PARTICLE MODEL OF MATTER",
+        topic_id: "particle-model-of-matter",
+        topic_name: "PARTICLE MODEL OF MATTER",
         icon: "phy_matter",
         progress: 10,
         data: [
           {
-            id: "1",
-            subChapter: "Density of Materials",
+            subTopic_id: "density-of-materials",
+            subTopic_name: "Density of Materials",
             progress: 0,
-            icon: "phy_density_materials",
+            icon: "phy_density_materials"
           },
           {
-            id: "2",
-            subChapter: "Internal Energy and Changes of State",
+            subTopic_id: "internal-energy-and-changes-of-state",
+            subTopic_name: "Internal Energy and Changes of State",
             progress: 0,
-            icon: "phy_internal_energy",
+            icon: "phy_internal_energy"
           },
           {
-            id: "3",
-            subChapter: "Specific Latent Heat",
+            subTopic_id: "specific-latent-heat",
+            subTopic_name: "Specific Latent Heat",
             progress: 0,
-            icon: "phy_specific_latent",
+            icon: "phy_specific_latent"
           },
           {
-            id: "4",
-            subChapter: "Particle Motion in Gases",
+            subTopic_id: "particle-motion-in-gases",
+            subTopic_name: "Particle Motion in Gases",
             progress: 0,
-            icon: "phy_particle_motion",
-          },
-        ],
+            icon: "phy_particle_motion"
+          }
+        ]
+        ,
       },
       {
-        name: "ATOMIC STRUCTURE",
+        topic_id: "atomic-structure",
+        topic_name: "ATOMIC STRUCTURE",
         icon: "phy_atom",
         progress: 10,
         data: [
           {
-            id: "1",
-            subChapter: "Developing the Model of the Atom",
+            subTopic_id: "developing-the-model-of-the-atom",
+            subTopic_name: "Developing the Model of the Atom",
             progress: 0,
-            icon: "phy_model_atom",
+            icon: "phy_model_atom"
           },
           {
-            id: "2",
-            subChapter: "Isotopes and Nuclear Radiation",
+            subTopic_id: "isotopes-and-nuclear-radiation",
+            subTopic_name: "Isotopes and Nuclear Radiation",
             progress: 0,
-            icon: "phy_isotopes_nuclear",
+            icon: "phy_isotopes_nuclear"
           },
           {
-            id: "3",
-            subChapter: "Nuclear Equations",
+            subTopic_id: "nuclear-equations",
+            subTopic_name: "Nuclear Equations",
             progress: 0,
-            icon: "phy_nuclear_equations",
+            icon: "phy_nuclear_equations"
           },
           {
-            id: "4",
-            subChapter: "Half-Life",
+            subTopic_id: "half-life",
+            subTopic_name: "Half-Life",
             progress: 0,
-            icon: "phy_half_life",
+            icon: "phy_half_life"
           },
           {
-            id: "5",
-            subChapter: "Background Radiation and Contamination",
+            subTopic_id: "background-radiation-and-contamination",
+            subTopic_name: "Background Radiation and Contamination",
             progress: 0,
-            icon: "phy_radiation_contamination",
+            icon: "phy_radiation_contamination"
           },
           {
-            id: "6",
-            subChapter: "Uses and Risks",
+            subTopic_id: "uses-and-risks",
+            subTopic_name: "Uses and Risks",
             progress: 0,
-            icon: "phy_uses_risks",
+            icon: "phy_uses_risks"
           },
           {
-            id: "7",
-            subChapter: "Fission and Fusion",
+            subTopic_id: "fission-and-fusion",
+            subTopic_name: "Fission and Fusion",
             progress: 0,
-            icon: "phy_fission_fusion",
-          },
+            icon: "phy_fission_fusion"
+          }
         ],
       },
     ],
@@ -252,85 +257,91 @@ export const physicsChapters = {
 
   paper2: {
     name: "Paper 2",
-    chapters: [
+    topics: [
       {
-        name: "FORCES",
+        topic_id: "forces",
+        topic_name: "FORCES",
         icon: "phy_forces",
         progress: 30,
         data: [
           {
-            id: "1",
-            subChapter: "Contact and Non-contact Forces",
+            subTopic_id: "contact-and-non-contact-forces",
+            subTopic_name: "Contact and Non-contact Forces",
             progress: 0,
-            icon: "phy_contact",
+            icon: "phy_contact"
           },
           {
-            id: "2",
-            subChapter: "Weight, Mass, and Gravity",
+            subTopic_id: "weight-mass-and-gravity",
+            subTopic_name: "Weight, Mass, and Gravity",
             progress: 0,
-            icon: "phy_gravity",
+            icon: "phy_gravity"
           },
           {
-            id: "3",
-            subChapter: "Resultant Force and Work Done",
+            subTopic_id: "resultant-force-and-work-done",
+            subTopic_name: "Resultant Force and Work Done",
             progress: 0,
-            icon: "phy_resultant",
+            icon: "phy_resultant"
           },
           {
-            id: "4",
-            subChapter: "Calculating Forces",
+            subTopic_id: "calculating-forces",
+            subTopic_name: "Calculating Forces",
             progress: 0,
-            icon: "phy_calculating",
+            icon: "phy_calculating"
           },
           {
-            id: "5",
-            subChapter: "Forces and Elasticity",
+            subTopic_id: "forces-and-elasticity",
+            subTopic_name: "Forces and Elasticity",
             progress: 0,
-            icon: "phy_elasticity",
+            icon: "phy_elasticity"
           },
           {
-            id: "6",
-            subChapter: "Investigating Springs",
+            subTopic_id: "investigating-springs",
+            subTopic_name: "Investigating Springs",
             progress: 0,
-            icon: "phy_springs",
-          },
-          { id: "7", subChapter: "Moments", progress: 0, icon: "phy_moments" },
-          {
-            id: "8",
-            subChapter: "Fluid Pressure",
-            progress: 0,
-            icon: "phy_pressure",
+            icon: "phy_springs"
           },
           {
-            id: "9",
-            subChapter: "Upthrust and Atmospheric Pressure",
+            subTopic_id: "moments",
+            subTopic_name: "Moments",
             progress: 0,
-            icon: "phy_upthrust",
+            icon: "phy_moments"
           },
           {
-            id: "10",
-            subChapter: "Distance, Displacement, Speed, and Velocity",
+            subTopic_id: "fluid-pressure",
+            subTopic_name: "Fluid Pressure",
             progress: 0,
-            icon: "phy_distance",
+            icon: "phy_pressure"
           },
           {
-            id: "11",
-            subChapter: "Acceleration",
+            subTopic_id: "upthrust-and-atmospheric-pressure",
+            subTopic_name: "Upthrust and Atmospheric Pressure",
             progress: 0,
-            icon: "phy_acceleration",
+            icon: "phy_upthrust"
           },
           {
-            id: "12",
-            subChapter: "Distance-Time and Velocity-Time Graphs",
+            subTopic_id: "distance-displacement-speed-and-velocity",
+            subTopic_name: "Distance, Displacement, Speed, and Velocity",
             progress: 0,
-            icon: "phy_distance_time",
+            icon: "phy_distance"
           },
           {
-            id: "13",
-            subChapter: "Terminal Velocity",
+            subTopic_id: "acceleration",
+            subTopic_name: "Acceleration",
             progress: 0,
-            icon: "phy_terminal",
+            icon: "phy_acceleration"
           },
+          {
+            subTopic_id: "distance-time-and-velocity-time-graphs",
+            subTopic_name: "Distance-Time and Velocity-Time Graphs",
+            progress: 0,
+            icon: "phy_distance_time"
+          },
+          {
+            subTopic_id: "terminal-velocity",
+            subTopic_name: "Terminal Velocity",
+            progress: 0,
+            icon: "phy_terminal"
+          }
         ],
       },
     ],
