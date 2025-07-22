@@ -16,3 +16,23 @@ export function kebabToTitleCase(input: string): string {
     .map(word => word.charAt(0).toUpperCase() + word.slice(1))
     .join(' ');
 }
+
+export const mergeProgress = (original: any, apiData: any) => {
+  const updatedTopics = original.topics.map((topic: any) => {
+    const matchedTopic = apiData.find((t: any) => t.topic_name === topic.topic_id);
+    if (!matchedTopic) return topic;
+
+    const updatedSubTopics = topic.data.map((sub: any) => {
+      const matchedSub = matchedTopic.subtopics.find((s: any) => s.subtopic_name === sub.subTopic_id);
+      return matchedSub ? { ...sub, progress: matchedSub.progress } : sub;
+    });
+
+    return {
+      ...topic,
+      progress: matchedTopic.progress,
+      data: updatedSubTopics
+    };
+  });
+
+  return { ...original, topics: updatedTopics };
+};
