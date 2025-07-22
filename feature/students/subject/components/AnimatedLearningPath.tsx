@@ -8,37 +8,30 @@ import {
 } from "../utils/layoutUtils";
 import { AnimatedBeam } from "@/components/magicui/animated-beam";
 import { Circle } from "./Circle";
-import { SubChapter } from "@/types/student";
-
-interface Chapter {
-  name: string;
-  icon: string;
-  data: SubChapter[];
-  progress: number;
-}
+import { Topic } from "@/types/student";
 
 interface AnimatedLearningPathProps {
-  chapter: Chapter;
+  topic: Topic;
   subject?: string;
 }
 
-export function AnimatedLearningPath({ chapter, subject }: AnimatedLearningPathProps) {
-  const chapterSlug = chapter.name.toLowerCase().replace(/\s+/g, '-');
-  const chapterData = chapter.data;
+export function AnimatedLearningPath({ topic, subject }: AnimatedLearningPathProps) {
+  const topicSlug = topic.topic_name.toLowerCase().replace(/\s+/g, '-');
+  const topicData = topic.data;
 
   const mainTopic = {
-    id: '0',
-    subChapter: chapter.name,
+    subTopic_id: '0',
+    subTopic_name: topic.topic_name,
     href: "#",
-    progress: chapter.progress,
-    icon: chapter.icon,
+    progress: topic.progress,
+    icon: topic.icon,
   };
 
   const allTopics = [
     mainTopic,
-    ...chapterData.map((topic) => ({
+    ...topicData.map((topic) => ({
       ...topic,
-      href: `/student/subjects/${subject}/${chapterSlug}/${topic.subChapter
+      href: `/student/subjects/${subject}/${topicSlug}/${topic.subTopic_name
         .toLowerCase()
         .replace(/\s+/g, '-')}`,
     })),
@@ -48,44 +41,44 @@ export function AnimatedLearningPath({ chapter, subject }: AnimatedLearningPathP
 
   const topicRefs = useMemo(() => {
     const refs: Record<string, React.RefObject<HTMLDivElement | null>> = {};
-    allTopics.forEach((topic) => {
-      refs[topic.id] = React.createRef();
+    allTopics.forEach((subTopic) => {
+      refs[subTopic.subTopic_id] = React.createRef();
     });
     return refs;
   }, [allTopics]);
 
   const junctionRefs = useMemo(() => {
     const refs: Record<string, React.RefObject<HTMLDivElement | null>> = {};
-    const count = Math.ceil(chapterData.length / 2);
+    const count = Math.ceil(topicData.length / 2);
     for (let i = 1; i <= count; i++) {
       refs[`junction${i}`] = React.createRef();
     }
     return refs;
-  }, [chapterData.length]);
+  }, [topicData.length]);
 
   const layoutStructure = useMemo(
-    () => generateLayoutStructure(chapterData),
-    [chapterData]
+    () => generateLayoutStructure(topicData),
+    [topicData]
   );
   const connections = useMemo(
-    () => generateConnections(chapterData),
-    [chapterData]
+    () => generateConnections(topicData),
+    [topicData]
   );
 
   const renderLayout = () =>
     layoutStructure.map((item, index) => {
       if (item.type === "single") {
-        const topic = allTopics.find((t) => t.id === item.topicId);
+        const topic = allTopics.find((st) => st.subTopic_id === item.topicId);
         if (!topic) return null;
 
         return (
           <div key={index} className="flex size-full flex-col items-center">
             <Circle
-              ref={topicRefs[topic.id]}
+              ref={topicRefs[topic.subTopic_id]}
               hidden={item.hidden}
               top={item.top}
               className={item.className}
-              title={topic.subChapter}
+              title={topic.subTopic_name}
               href={topic.href}
               progress={topic.progress}
               index={index}
@@ -96,7 +89,7 @@ export function AnimatedLearningPath({ chapter, subject }: AnimatedLearningPathP
         );
       }
 
-      const leftTopic = allTopics.find((t) => t.id === item.leftTopicId);
+      const leftTopic = allTopics.find((st) => st.subTopic_id === item.leftTopicId);
       if (!leftTopic) return null;
 
       return (
@@ -105,8 +98,8 @@ export function AnimatedLearningPath({ chapter, subject }: AnimatedLearningPathP
           className="flex size-full flex-row items-start justify-between"
         >
           <Circle
-            ref={topicRefs[leftTopic.id]}
-            title={leftTopic.subChapter}
+            ref={topicRefs[leftTopic.subTopic_id]}
+            title={leftTopic.subTopic_name}
             href={leftTopic.href}
             progress={leftTopic.progress}
             index={index}
