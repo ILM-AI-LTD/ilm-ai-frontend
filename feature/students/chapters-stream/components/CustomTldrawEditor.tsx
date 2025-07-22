@@ -494,7 +494,8 @@ function NextThemesDetector() {
         themeToUse = systemIsDark ? "dark" : "light";
       }
 
-      const oppositeTheme = themeToUse === "dark" ? "light" : "dark";
+      // const oppositeTheme = themeToUse === "dark" ? "light" : "dark";
+      const oppositeTheme = themeToUse === "dark" ? "dark" : "light";
 
       editor.user.updateUserPreferences({
         colorScheme: oppositeTheme,
@@ -512,7 +513,8 @@ function NextThemesDetector() {
     const currentTheme = resolvedTheme || theme;
     if (!currentTheme) return;
 
-    const oppositeTheme = currentTheme === "dark" ? "light" : "dark";
+    // const oppositeTheme = currentTheme === "dark" ? "light" : "dark";
+    const oppositeTheme = currentTheme === "dark" ? "dark" : "light";
     const currentIsDark = editor.user.getIsDarkMode();
     const shouldBeDark = oppositeTheme === "dark";
 
@@ -548,7 +550,7 @@ const CustomTldrawEditor = forwardRef<CustomTldrawEditorRef>((props, ref) => {
 
   return (
     <div className="relative">
-      <div className="w-full h-[500px]">
+      <div className="w-full h-[500px] border-2 border-bg-border">
         <Tldraw
           overrides={overrides}
           onMount={handleMount}
