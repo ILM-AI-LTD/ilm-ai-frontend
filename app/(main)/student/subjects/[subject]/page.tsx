@@ -11,9 +11,10 @@ import { mathTopics } from "@/feature/students/subject/constants/math";
 import { biologyTopics } from "@/feature/students/subject/constants/biology";
 import { useSubjectProgress } from "@/feature/students/chapters-stream/hooks/useSubjectProgress";
 import { mergeProgress } from "@/lib/utils";
+import { use } from 'react';
 
 interface PageProps {
-  params: { subject: string };
+  params: Promise<{ subject: string }>;
 }
 
 const subjectMap = {
@@ -24,7 +25,7 @@ const subjectMap = {
 };
 
 const page = ({ params }: PageProps) => {
-  const { subject } = params;
+  const { subject } = use(params);
   const progress = 0;
 
   const { selectedPaper } = usePaper();
@@ -35,6 +36,7 @@ const page = ({ params }: PageProps) => {
   const rawData = subjectMap[subject as keyof typeof subjectMap][selectedPaper];
 
   const mergedData = data?.data?.topics ? mergeProgress(rawData, data.data.topics) : rawData;
+  
   if (isLoading) {
     return (
       <div className="w-full h-full flex items-center justify-center">
@@ -42,6 +44,7 @@ const page = ({ params }: PageProps) => {
       </div>
     );
   }
+  
   return (
     <div>
       <div className="flex flex-col lg:flex-row gap-4">
