@@ -17,7 +17,7 @@ export const Circle = forwardRef<HTMLDivElement, {
     const progressColor = isFirst ? "#91C83C" : "#005E83";
     const baseColor = isFirst ? "#005E83" : "#929292";
 
-    const borderFill = `conic-gradient(${progressColor} ${progress * 3.6}deg, ${baseColor} 0deg)`;
+    const borderFill = `conic-gradient(from 0deg, ${baseColor} ${360 - progress * 3.6}deg, ${progressColor} 0deg)`;
 
     return (
         <Link href={href}>
