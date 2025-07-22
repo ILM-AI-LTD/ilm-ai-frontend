@@ -26,7 +26,10 @@ import {
   // PointerEvent,
   forwardRef,
   useImperativeHandle,
+  useEffect,
+  useRef,
 } from "react";
+import { useTheme } from "next-themes";
 // import { Brush } from "lucide-react";
 // import { Card } from "@/components/ui/card";
 
@@ -385,7 +388,7 @@ const components: TLUiComponents = {
   DebugPanel: null,
   DebugMenu: null,
   // MenuPanel: null,
-  TopPanel: null,
+  TopPanel: NextThemesDetector,
   SharePanel: null,
   CursorChatBubble: null,
   Dialogs: null,
@@ -462,8 +465,67 @@ function configureEditor(editor: ReturnType<typeof useEditor>) {
     zoomSteps: [editor.getZoomLevel()],
   });
 }
+
 export interface CustomTldrawEditorRef {
   exportToPNG: () => Promise<Blob>;
+}
+
+function NextThemesDetector() {
+  const editor = useEditor();
+  const { theme, resolvedTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+  const initialSetupDone = useRef(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (!mounted || !editor || initialSetupDone.current) return;
+
+    const timer = setTimeout(() => {
+      const currentTheme = resolvedTheme || theme;
+
+      let themeToUse = currentTheme;
+      if (!themeToUse) {
+        const systemIsDark = window.matchMedia(
+          "(prefers-color-scheme: dark)"
+        ).matches;
+        themeToUse = systemIsDark ? "dark" : "light";
+      }
+
+      const oppositeTheme = themeToUse === "dark" ? "light" : "dark";
+
+      editor.user.updateUserPreferences({
+        colorScheme: oppositeTheme,
+      });
+
+      initialSetupDone.current = true;
+    }, 150);
+
+    return () => clearTimeout(timer);
+  }, [mounted, editor, resolvedTheme, theme]);
+
+  useEffect(() => {
+    if (!mounted || !editor) return;
+
+    const currentTheme = resolvedTheme || theme;
+    if (!currentTheme) return;
+
+    const oppositeTheme = currentTheme === "dark" ? "light" : "dark";
+    const currentIsDark = editor.user.getIsDarkMode();
+    const shouldBeDark = oppositeTheme === "dark";
+
+    if (shouldBeDark !== currentIsDark) {
+      editor.user.updateUserPreferences({
+        colorScheme: oppositeTheme,
+      });
+    }
+  }, [mounted, editor, resolvedTheme, theme]);
+
+  if (!mounted) return null;
+
+  return null;
 }
 
 const CustomTldrawEditor = forwardRef<CustomTldrawEditorRef>((props, ref) => {
