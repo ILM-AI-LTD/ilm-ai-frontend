@@ -14,9 +14,10 @@ export const Circle = forwardRef<HTMLDivElement, {
 }>(({ className, children, hidden, top = false, title, href = "/#", progress = 0, index = 0 }, ref) => {
     // const borderFill = `conic-gradient(#005E83 ${progress * 3.6}deg, #929292 0deg)`;
     const isFirst = index === 0;
-    const progressColor = isFirst ? "#91C83C" : "#005E83";
+    const progressColor = (isFirst || progress === 100) ? "#91C83C" : "#005E83";
     const baseColor = isFirst ? "#005E83" : "#929292";
 
+    // const borderFill = `conic-gradient(${progressColor} ${progress * 3.6}deg, ${baseColor} 0deg)`; ======> clockwise
     const borderFill = `conic-gradient(from 0deg, ${baseColor} ${360 - progress * 3.6}deg, ${progressColor} 0deg)`;
 
     return (
