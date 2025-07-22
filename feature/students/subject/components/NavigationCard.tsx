@@ -4,21 +4,21 @@ import CustomButton from "@/components/global/CustomButton";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { usePaper } from "@/context/PaperContext";
 import { IconComponent } from "@/feature/students/subject/components/IconComponent";
-import { physicsChapters } from "@/feature/students/subject/constants/physics";
 import Image from "next/image";
-import { chemistryChapters } from "../constants/chemistry";
-import { mathChapters } from "../constants/math";
-import { biologyChapters } from "../constants/biology";
+import { physicsTopics } from "../constants/physics";
+import { chemistryTopics } from "../constants/chemistry";
+import { mathTopics } from "../constants/math";
+import { biologyTopics } from "../constants/biology";
 
 interface ChapterListProps {
   subject: 'physics' | 'chemistry' | 'math' | 'biology';
 }
 
 const subjectMap = {
-  physics: physicsChapters,
-  chemistry: chemistryChapters,
-  math: mathChapters,
-  biology: biologyChapters,
+  physics: physicsTopics,
+  chemistry: chemistryTopics,
+  math: mathTopics,
+  biology: biologyTopics,
 };
 
 export function NavigationCard({subject} : ChapterListProps) {
@@ -62,16 +62,16 @@ export function NavigationCard({subject} : ChapterListProps) {
           />
         </div>
 
-        {current.chapters.map((chapter, index) => (
+        {current.topics.map((topic, index) => (
           <div key={index} className="flex gap-6 mb-4">
             <div>
-              <IconComponent iconName={chapter.icon} width={20} height={20} />
+              <IconComponent iconName={topic.icon} width={20} height={20} />
             </div>
             <div
               className="text-foreground font-bold cursor-pointer"
-              onClick={() => scrollToMainChapter(chapter.name)}
+              onClick={() => scrollToMainChapter(topic.topic_name)}
             >
-              {chapter.name}
+              {topic.topic_name}
             </div>
           </div>
         ))}
