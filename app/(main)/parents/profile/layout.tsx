@@ -8,39 +8,15 @@ import { PaperProvider } from "@/context/PaperContext";
 // import StudentsNavbar from "@/feature/students/home/component/Navbar"
 import { BookOpen, Home, ReceiptText, Settings, UserPlus } from "lucide-react";
 
-const projects = [
-  {
-    name: "Dashboard",
-    url: "#",
-    icon: Home,
-  },
-  {
-    name: "Upcoming Classes",
-    url: "#",
-    icon: BookOpen,
-  },
-  {
-    name: "Add Child",
-    url: "#",
-    icon: UserPlus,
-  },
-  {
-    name: "Billing",
-    url: "#",
-    icon: ReceiptText,
-  },
-  {
-    name: "Settings",
-    url: "#",
-    icon: Settings,
-  },
-];
+import { parentSideMenu } from "@/constants/Helpers";
+
+
 
 const ParentProfileLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <SidebarProvider>
       <PaperProvider>
-        <AppSidebar projects={projects} role={"parent"} />
+        <AppSidebar projects={parentSideMenu} role={"parent"} />
         <SidebarInset>
           <CustomNavbar role={"parent"} />
           <div className="flex flex-1 flex-col  bg-background gap-4 p-4">

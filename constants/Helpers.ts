@@ -57,45 +57,93 @@ export const countries = [
     }
 ];
 
+export const parentSideMenu = [
+      {
+        name: "Dashboard",
+        url: "#",
+        icon: '/SidebarMenuIcon/Dashboard_logo.svg',
+      },
+      {
+        name: "Children",
+        url: "#",
+        icon: '/SidebarMenuIcon/Children_logo.svg',
+      },
+      {
+        name: "Reports",
+        url: "#",
+        icon: '/SidebarMenuIcon/Reports_logo.svg',
+      },
+      {
+        name: "Tests",
+        url: "#",
+        icon: '/SidebarMenuIcon/Practise_logo.svg',
+      },
+      {
+        name: "Badges",
+        url: "#",
+        icon: '/SidebarMenuIcon/Badge_logo.svg',
+      },
+      {
+        name: "Messages",
+        url: "#",
+        icon: '/SidebarMenuIcon/Messages_logo.svg',
+      },
+      {
+        name: "Settings",
+        url: "#",
+        icon: '/SidebarMenuIcon/Setting_logo.svg'
+      },
+]
+
 export const studentSideMenu = [
     {
         name: "Start Learning",
         url: "/student/home",
-        icon: '/StudentMenuIcon/Start_learning_logo.svg',
+        icon: '/SidebarMenuIcon/Start_learning_logo.svg',
     },
-    // {
-    //     name: "Submit Work",
-    //     url: "#",
-    //     icon: '/StudentMenuIcon/Submit_logo.svg',
-    // },
+    {
+        name: "Dashboard",
+        url: "#",
+        icon: '/SidebarMenuIcon/Dashboard_logo.svg',
+    },
     {
         name: "Practise & Test",
         url: "#",
-        icon: '/StudentMenuIcon/Practise_logo.svg',
+        icon: '/SidebarMenuIcon/Practise_logo.svg',
     },
     {
-        name: "ILM Hub",
+        name: "My Progress",
         url: "#",
-        icon: '/StudentMenuIcon/ILM_hub_logo.svg',
+        icon: '/SidebarMenuIcon/Progress_logo.svg',
+    },
+    {
+        name: "ILMINO Hub",
+        url: "#",
+        icon: '/SidebarMenuIcon/ILM_hub_logo.svg',
     },
     {
         name: "Leaderboard",
         url: "#",
-        icon: '/StudentMenuIcon/Leaderboard_logo.svg',
+        icon: '/SidebarMenuIcon/Leaderboard_logo.svg',
     },
     {
-        name: "Progress",
+        name: "Messages",
         url: "#",
-        icon: '/StudentMenuIcon/Progress_logo.svg',
+        icon: '/SidebarMenuIcon/Messages_logo.svg',
     },
     {
-        name: "Resume",
+        name: "ILMINO Canvas",
         url: "#",
-        icon: '/StudentMenuIcon/Resume_logo.svg',
+        icon: '/SidebarMenuIcon/Canvas_logo.svg',
+    },
+    {
+        name: "ILMINO Social",
+        url: "#",
+        icon: '/SidebarMenuIcon/Socials_logo.svg',
     },
     {
         name: "Settings",
         url: "#",
-        icon: '/StudentMenuIcon/Setting_logo.svg',
+        icon: '/SidebarMenuIcon/Setting_logo.svg',
     },
 ]
