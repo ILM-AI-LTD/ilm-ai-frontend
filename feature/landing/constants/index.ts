@@ -1,12 +1,12 @@
 export const features = [
   {
-    title: "ILMINO Vision",
+    title: "Vision Technology",
     description:
       " Step into the future of learning with ILMI where personalized education, real connections, and limitless growth begins.",
     imgSrc: "/landing/ilm-vision-icon.gif",
   },
   {
-    title: "Adaptive Tutor",
+    title: "Adaptive Tutoring",
     description:
       "Unlock a learning path that evolves with you, guided by your Adaptive Tutor to fit your strengths and challenges.",
     imgSrc: "/landing/adaptive-tutor-icon.gif",
@@ -18,7 +18,7 @@ export const features = [
     imgSrc: "/landing/interactive-learning-flow-icon.gif",
   },
   {
-    title: "ILMINO Hub",
+    title: "My Hub",
     description:
       "Take charge with the ILM Hub track achievements, access resources, and connect with your learning community, all in one place.",
     imgSrc: "/landing/ilm-hub-icon.gif",
@@ -54,7 +54,7 @@ export const subjects = [
 
 export const steps = [
   {
-    title: "Choose The Topic",
+    title: "Choose The Subject",
     description:
       "Pick a subject and explore structured topics tailored to your level.",
     imgSrc: "/landing/mode.gif",
@@ -75,18 +75,13 @@ export const steps = [
 
 export const faqItems = [
   {
+    question: "What subjects does the platform cover?",
+    answer: "Currently ILMINO covers Maths, Physics, Chemistry, and Biology",
+  },
+  {
     question: "Can multiple children use the same account?",
     answer:
-      "We offer family and multi-learner plans that allow you to manage multiple profiles under one account.",
-  },
-  // {
-  //   question: "Will the platform work on tablets or mobile devices?",
-  //   answer:
-  //     "Absolutely. ILM AI is optimized for desktops, tablets, and smartphones, both Android and iOS.",
-  // },
-  {
-    question: "What subjects does the platform cover?",
-    answer: "Currently, ILM AI covers Maths, Physics, Chemistry, and Biology",
+      "No, they can't. We offer family and multi-learner plans that allow you to manage multiple profiles under one account.",
   },
   {
     question: "What makes your platform different from others?",
@@ -94,20 +89,24 @@ export const faqItems = [
       "Our platform combines interactive lessons, smart progress tracking, and personalised learning paths to create a truly engaging and adaptive learning experience.",
   },
   {
-    question: "Can I set goals or schedules for my child?",
-    answer:
-      "Yes! Our platform allows parents to set learning goals and timetables to build healthy learning habits.",
+    question: "Will the platform work on tablets or mobile devices?",
+    answer: "Yes. ILMINO is optimized for desktops, tablets, and smartphones.",
   },
-  {
-    question: "Can I set goals or schedules for my child?",
-    answer:
-      "Yes! Our platform allows parents to set learning goals and timetables to build healthy learning habits.",
-  },
-  {
-    question: "Can I customize my learning path?",
-    answer:
-      "Absolutely! You can personalise your learning experience by selecting specific topics or skills you wish to focus on, and adjust your pace accordingly.",
-  },
+  // {
+  //   question: "Can I set goals or schedules for my child?",
+  //   answer:
+  //     "Yes! Our platform allows parents to set learning goals and timetables to build healthy learning habits.",
+  // },
+  // {
+  //   question: "Can I set goals or schedules for my child?",
+  //   answer:
+  //     "Yes! Our platform allows parents to set learning goals and timetables to build healthy learning habits.",
+  // },
+  // {
+  //   question: "Can I customize my learning path?",
+  //   answer:
+  //     "Absolutely! You can personalise your learning experience by selecting specific topics or skills you wish to focus on, and adjust your pace accordingly.",
+  // },
   // {
   //   question:
   //     "How do I know if the script is too hard or too easy for my child?",

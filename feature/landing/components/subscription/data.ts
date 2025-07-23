@@ -47,7 +47,7 @@ const plans = [
     yearlyPrice: 0,
     //   monthlyPriceId: import.meta.env.VITE_ENTERPRISE_MONTHLY_PRICE_ID,
     //   yearlyPriceId: import.meta.env.VITE_ENTERPRISE_YEARLY_PRICE_ID,
-    featureTitle: "Everything in Standard & Pro, plus:",
+    featureTitle: "This Plan Includes:",
     features: [
       "For Underprivileged Students",
       "Access To All Features",
