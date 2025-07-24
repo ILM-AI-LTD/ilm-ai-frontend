@@ -84,7 +84,7 @@ const FAQSection = () => {
               key={index}
               // className="border-1 border-faq-border-color rounded-[12px] mb-4 px-6 py-4"
               // className="bg-gradient-to-b from-[#ffffff] dark:from-[#0F172A] border-1 border-bg-border shadow-lg rounded-[12px] mb-4 px-6 py-4"
-              className="bg-[linear-gradient(to_bottom,_#F6F6F6_0%,_#F6F6F6_50%)] dark:bg-[linear-gradient(to_bottom,_#0F172A_0%,_transparent_100%)] border-1 border-bg-border shadow-lg rounded-[12px] mb-4 px-6 py-4"
+              className="bg-[linear-gradient(to_bottom,_#F6F6F6_0%,_#F6F6F6_50%)] dark:bg-[linear-gradient(to_bottom,_#0F172A_0%,_transparent_100%)] border-1 border-bg-border shadow-lg rounded-[12px] mb-6 px-6 py-5"
             >
               <AccordionTrigger className="font-semibold text-xl cursor-pointer py-2">
                 {item.question}
