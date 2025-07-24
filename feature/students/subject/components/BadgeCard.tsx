@@ -19,7 +19,7 @@ export function BadgeCard({ subject, progress }: Props) {
             </CardHeader>
 
             <CardContent>
-                <div className='p-11 rounded-full text-foreground shadow-md flex flex-col items-center gap-4 group'>
+                <div className='p-11 rounded-full text-foreground flex flex-col items-center gap-4 group'>
                     <div className="relative size-20 group-hover:scale-105 transition-transform">
                         <Image
                             src="/subject/badge.svg"

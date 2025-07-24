@@ -56,7 +56,7 @@ const Board = ({ onBack, onNext }: BoardProps) => {
           const matchedBoard = boards.find((b) => board === b.name);
           if (matchedBoard) setBoard(matchedBoard);
           toast.success("Your child has been successfully registered.");
-          router.push("/student/home");
+          router.push("/student/start-learning");
         },
         onError: () => {
           toast.error("Something went wrong");

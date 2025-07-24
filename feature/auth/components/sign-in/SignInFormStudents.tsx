@@ -53,7 +53,7 @@ const SignInFormStudents = () => {
 
                 const matchedBoard = boards.find((b) => board === b.name);
                 setBoard(matchedBoard || null);
-                router.push("/student/home");
+                router.push("/student/start-learning");
               } else {
                 router.push("/student/setup");
               }
