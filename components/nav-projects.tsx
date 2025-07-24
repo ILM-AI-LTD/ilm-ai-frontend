@@ -47,8 +47,9 @@ export function NavProjects({
                   asChild
                   onClick={() => setSelectedIndex(index)}
                   className={cn(
-                    "hover:bg-primary/70 hover:text-white mb-2 rounded-lg p-4 h-12 text-base font-semibold",
-                    isActive && "bg-primary text-white"
+                    isActive && "bg-primary text-white hover:bg-primary",
+                    !isActive && "hover:bg-primary/70",
+                    "hover:text-white mb-2 rounded-lg p-4 h-12 text-base font-semibold"
                   )}
                 >
                   <Link href={item.url}>
