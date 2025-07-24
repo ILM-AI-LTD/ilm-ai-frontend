@@ -29,6 +29,9 @@ const page = ({ params }: PageProps) => {
   const progress = 0;
 
   const { selectedPaper } = usePaper();
+
+  console.log("first render  " + selectedPaper);
+
   const paper = selectedPaper === 'paper1' ? 1 : 2;
 
   const { data, isLoading } = useSubjectProgress("AQA", subject, paper);

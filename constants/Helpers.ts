@@ -3,22 +3,22 @@ export const menuOptions = ['Paper 1', 'Paper 2', 'Paper 3', 'Paper 4']
 export const subjects = [
     {
         title: "Physics",
-        description: "Chapter 8",
+        description: "8 Chapters",
         iconSrc: "/Physics_logo.gif"
     },
     {
         title: "Chemistry",
-        description: "Chapter 8",
+        description: "8 Chapters",
         iconSrc: "/Chemistry_logo.gif"
     },
     {
         title: "Biology",
-        description: "Chapter 8",
+        description: "8 Chapters",
         iconSrc: "/Biology_logo.gif"
     },
     {
-        title: "Mathematics",
-        description: "Chapter 8",
+        title: "Math",
+        description: "8 Chapters",
         iconSrc: "/Mathematics_logo.gif"
     }
 ]
@@ -98,52 +98,52 @@ export const parentSideMenu = [
 export const studentSideMenu = [
     {
         name: "Start Learning",
-        url: "/student/home",
+        url: "/student/start-learning",
         icon: '/SidebarMenuIcon/Start_learning_logo.svg',
     },
     {
         name: "Dashboard",
-        url: "#",
+        url: "/student/dashboard",
         icon: '/SidebarMenuIcon/Dashboard_logo.svg',
     },
     {
         name: "Practise & Test",
-        url: "#",
+        url: "/student/practise-and-test",
         icon: '/SidebarMenuIcon/Practise_logo.svg',
     },
     {
         name: "My Progress",
-        url: "#",
+        url: "/student/my-progress",
         icon: '/SidebarMenuIcon/Progress_logo.svg',
     },
     {
         name: "ILMINO Hub",
-        url: "#",
+        url: "/student/ilmino-hub",
         icon: '/SidebarMenuIcon/ILM_hub_logo.svg',
     },
     {
         name: "Leaderboard",
-        url: "#",
+        url: "/student/leaderboard",
         icon: '/SidebarMenuIcon/Leaderboard_logo.svg',
     },
     {
         name: "Messages",
-        url: "#",
+        url: "/student/messages",
         icon: '/SidebarMenuIcon/Messages_logo.svg',
     },
     {
         name: "ILMINO Canvas",
-        url: "#",
+        url: "/student/ilmino-canvas",
         icon: '/SidebarMenuIcon/Canvas_logo.svg',
     },
     {
         name: "ILMINO Social",
-        url: "#",
+        url: "/student/ilmino-social",
         icon: '/SidebarMenuIcon/Socials_logo.svg',
     },
     {
         name: "Settings",
-        url: "#",
+        url: "/student/settings",
         icon: '/SidebarMenuIcon/Setting_logo.svg',
     },
 ]
