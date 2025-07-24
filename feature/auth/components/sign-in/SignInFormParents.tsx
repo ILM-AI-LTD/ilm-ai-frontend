@@ -41,8 +41,7 @@ const SignInFormParents = () => {
                             toast.success("Successfully Logged In.");
                             action.resetForm();
                             if (hasChild) {
-                                router.push('/parents/profile')
-                                //TODO: redirect to dashboard
+                                router.push('/parents/dashboard')
                             } else {
                                 router.push('/parents/setup')
                             }

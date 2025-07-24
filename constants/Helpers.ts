@@ -60,37 +60,37 @@ export const countries = [
 export const parentSideMenu = [
       {
         name: "Dashboard",
-        url: "#",
+        url: "/parents/dashboard",
         icon: '/SidebarMenuIcon/Dashboard_logo.svg',
       },
       {
         name: "Children",
-        url: "#",
+        url: "/parents/children",
         icon: '/SidebarMenuIcon/Children_logo.svg',
       },
       {
         name: "Reports",
-        url: "#",
+        url: "/parents/reports",
         icon: '/SidebarMenuIcon/Reports_logo.svg',
       },
       {
         name: "Tests",
-        url: "#",
+        url: "/parents/tests",
         icon: '/SidebarMenuIcon/Practise_logo.svg',
       },
       {
         name: "Badges",
-        url: "#",
+        url: "/parents/badges",
         icon: '/SidebarMenuIcon/Badge_logo.svg',
       },
       {
         name: "Messages",
-        url: "#",
+        url: "/parents/messages",
         icon: '/SidebarMenuIcon/Messages_logo.svg',
       },
       {
         name: "Settings",
-        url: "#",
+        url: "/parents/settings",
         icon: '/SidebarMenuIcon/Setting_logo.svg'
       },
 ]

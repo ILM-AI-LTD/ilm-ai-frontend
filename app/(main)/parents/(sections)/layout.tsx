@@ -1,18 +1,14 @@
-"use client";
+"use client"
 
 import AppSidebar from "@/components/app-sidebar";
 import CustomNavbar from "@/components/global/CustomNavbar";
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
 import { PaperProvider } from "@/context/PaperContext";
-// import ParentsNavbar from "@/feature/parents/components/profile/common/Navbar"
-// import StudentsNavbar from "@/feature/students/home/component/Navbar"
-import { BookOpen, Home, ReceiptText, Settings, UserPlus } from "lucide-react";
-
 import { parentSideMenu } from "@/constants/Helpers";
 
 
 
-const ParentProfileLayout = ({ children }: { children: React.ReactNode }) => {
+const ParentsLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <SidebarProvider>
       <PaperProvider>
@@ -28,4 +24,4 @@ const ParentProfileLayout = ({ children }: { children: React.ReactNode }) => {
   );
 };
 
-export default ParentProfileLayout;
+export default ParentsLayout;

@@ -66,7 +66,7 @@ export function NavProjects({
                 </SidebarMenuButton>
 
               </SidebarMenuItem>
-              {index === projects.length - 3 && (
+              {index === projects.length - 2 && (
                 <hr className="my-2 mx-1 border-primary" />
 
               )}
