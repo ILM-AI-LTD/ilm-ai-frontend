@@ -13,6 +13,7 @@ import {
 } from "@/components/ui/sidebar"
 import { cn } from "@/lib/utils"
 import Image from "next/image"
+import Link from "next/link"
 import { usePathname } from "next/navigation"
 import React, { useState } from "react"
 
@@ -34,31 +35,44 @@ export function NavProjects({
   return (
     <SidebarGroup className="mt-4">
       <SidebarMenu>
-        {projects.map((item, index: number) => (
-          <React.Fragment key={item.name}>
-            <SidebarMenuItem key={item.name}>
-              <SidebarMenuButton tooltip={item.name} asChild onClick={() => setSelectedIndex(index)} className={cn("hover:bg-primary/80 hover:text-foreground mb-2 rounded-lg p-4 h-12 text-base font-semibold", selectedIndex === index ? "bg-primary text-foreground" : "")}>
-                <a href={item.url}>
-                  {typeof item.icon === "string" ?
-                    <Image
-                      src={item.icon}
-                      height={24}
-                      width={24}
-                      alt="ILMI Assistant"
-                    /> :
-                    <item.icon />
-                  }
-                  <span>{item.name}</span>
-                </a>
-              </SidebarMenuButton>
+        {projects.map((item, index: number) => {
 
-            </SidebarMenuItem>
-            {index === projects.length - 3 && (
-              <hr className="my-2 mx-1 border-primary" />
+          const isActive = pathname?.startsWith(item.url);
 
-            )}
-          </React.Fragment>
-        ))}
+          return (
+            <React.Fragment key={item.name}>
+              <SidebarMenuItem key={item.name}>
+                <SidebarMenuButton
+                  tooltip={item.name}
+                  asChild
+                  onClick={() => setSelectedIndex(index)}
+                  className={cn(
+                    "hover:bg-primary/70 hover:text-white mb-2 rounded-lg p-4 h-12 text-base font-semibold",
+                    isActive && "bg-primary text-white"
+                  )}
+                >
+                  <Link href={item.url}>
+                    {typeof item.icon === "string" ?
+                      <Image
+                        src={item.icon}
+                        height={24}
+                        width={24}
+                        alt="ILMI Assistant"
+                      /> :
+                      <item.icon />
+                    }
+                    <span>{item.name}</span>
+                  </Link>
+                </SidebarMenuButton>
+
+              </SidebarMenuItem>
+              {index === projects.length - 3 && (
+                <hr className="my-2 mx-1 border-primary" />
+
+              )}
+            </React.Fragment>
+          )
+        })}
       </SidebarMenu>
     </SidebarGroup>
   )
