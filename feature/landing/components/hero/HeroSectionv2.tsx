@@ -55,22 +55,22 @@ const HeroSectionv2 = () => {
             <div className="flex-shrink-0">
               {/* <CustomLogo logoSrc={logoSrc} width={70} height={14} /> */}
               <Image
-                src="/landing/Vector.svg"
+                src="/landing/platformLight.svg"
                 width={70}
                 height={14}
                 alt="ILM Logo"
                 className="hidden dark:block "
               />
               <Image
-                src="/landing/Vector2.svg"
+                src="/landing/platformDark.svg"
                 width={70}
                 height={14}
                 alt="ILM Logo"
                 className="block dark:hidden"
               />
             </div>
-            <p className="text-center sm:text-left mt-1 sm:mt-0 sm:ml-2">
-              where learning becomes personal
+            <p className="text-center sm:text-left mt-1 sm:mt-0 sm:ml-1">
+              Where learning becomes personal
             </p>
           </div>
 
@@ -94,7 +94,7 @@ const HeroSectionv2 = () => {
             {/* <button className=" text-brand-color bg-gradient-to-t from-[#004D6C] to-[#006C98] shadow-[0px_6px_0px_0px_#006C98] hover:bg-[#007AAC] hover:border-0 hover:text-white h-[48px] w-[155px] rounded-full cursor-pointer">
             Free Trial
           </button> */}
-            <CustomButton className="  hover:text-white h-[48px] w-[127px] rounded-full cursor-pointer">
+            <CustomButton className=" font-semibold hover:text-white h-[48px] w-[127px] rounded-full cursor-pointer">
               Free Trial
             </CustomButton>
           </div>
