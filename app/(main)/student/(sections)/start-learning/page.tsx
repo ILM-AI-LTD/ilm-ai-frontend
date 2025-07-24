@@ -3,12 +3,13 @@ import ILMIAssistantv2 from "@/feature/parents/components/setup/common/ILMIAssis
 import SubjectCard from "@/feature/students/home/component/SubjectCard";
 import Image from "next/image";
 
-
 const page = () => {
   return (
     <div>
       <div className="flex gap-2 items-start mb-10">
-        <p className="text-foreground font-bold text-[min(10vw,36px)]">Subjects</p>
+        <p className="text-foreground font-bold text-[min(10vw,36px)]">
+          Subjects
+        </p>
 
         <Image
           src={"/Subject_logo.gif"}
@@ -16,15 +17,14 @@ const page = () => {
           height={58}
           width={58}
         />
-
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         <div className="flex justify-end items-end md:justify-center md:items-center order-1 md:order-2">
           <ILMIAssistantv2
-            height={326}
-            width={151}
-            className="h-[326px] w-[151px]"
+            height={351}
+            width={210}
+            className="h-[351px] w-[232px]"
           />
         </div>
 
