@@ -1,24 +1,27 @@
-import Image from 'next/image';
-import React from 'react'
+import Image from "next/image";
+import React from "react";
 
 type ILMIAssistantProps = {
   height?: number;
   width?: number;
   className?: string;
-}
+};
 
-const ILMIAssistantv2 = ({ height = 500, width = 500, className }: ILMIAssistantProps) => {
+const ILMIAssistantv2 = ({
+  height = 500,
+  width = 500,
+  className,
+}: ILMIAssistantProps) => {
   return (
-
     <Image
-      src="/ILMIAssistant_still.svg"
+      src="/student/home/ILMIAssistant.gif"
       height={height}
       width={width}
       alt="ILMI Assistant"
       className={`${className}`}
       priority
     />
-  )
-}
+  );
+};
 
-export default ILMIAssistantv2
+export default ILMIAssistantv2;
