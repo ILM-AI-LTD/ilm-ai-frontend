@@ -31,6 +31,7 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
 import { Child } from "@/types/auth";
+import { truncateText } from "@/lib/utils";
 
 interface Props {
   role: string;
@@ -120,7 +121,7 @@ const ComplexDropdownMenu = ({ role }: Props) => {
               {user?.name}
             </p>
             <p className="text-sm font-medium text-muted-foreground">
-              {user?.email || user?.username}
+            {truncateText(user?.email || user?.username || "", 25)}
             </p>
           </div>
           <ChevronsUpDown className="text-muted-foreground" />
