@@ -84,7 +84,7 @@ export default function SuccessfulSetup() {
             <FooterParents
                 rightButton={{
                     label: "Finish & View Dashboard",
-                    onClick: () => router.push('/parents/dashboa'),
+                    onClick: () => router.push('/parents/dashboard'),
                     disabled: false,
                     isPending: false
                 }}
