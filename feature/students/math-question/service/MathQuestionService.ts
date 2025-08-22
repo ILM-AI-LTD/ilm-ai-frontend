@@ -29,7 +29,8 @@ export const MathQuestionService = {
     const formData = new FormData();
     formData.append("question", body.question);
     formData.append("currentStepCount", body.currentStepCount);
-    formData.append("correct_answer", body.correctAnswer);
+    // formData.append("correct_answer", body.correctAnswer);
+    formData.append("correct_answer", "abc");
     // console.log("image", body.image);
     // formData.append("image", body.image);
 
@@ -44,8 +45,8 @@ export const MathQuestionService = {
     //   method: "POST",
     //   data: formData,
     // });
-    // return streamingMathApiEvaluationRequest("/api/full_evaluation", {
-    return streamingMathApiEvaluationRequest("/math/evaluate-math", {
+    return streamingMathApiEvaluationRequest("/api/full_evaluation", {
+      // return streamingMathApiEvaluationRequest("/math/evaluate-math", {
       method: "POST",
       data: formData,
     });
