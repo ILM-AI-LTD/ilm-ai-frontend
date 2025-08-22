@@ -899,11 +899,11 @@ export default function Page() {
                 </div>
               )} */}
 
-              <div className="space-y-6">
+              <div className="">
                 {attempts.map((attempt, index) => (
                   <Card
                     key={attempt.id}
-                    className={`
+                    className={` p-0
                     ${
                       attempt.isCorrect === false
                         ? "border-red-500 bg-red-50/5"
@@ -916,14 +916,14 @@ export default function Page() {
                     }
                   `}
                   >
-                    <CardContent className="p-4">
-                      <div className="mb-4">
-                        <h3 className="font-semibold text-blue-400 mb-2">
+                    <CardContent className="px-0">
+                      {/* <div> */}
+                      {/* <h3 className="font-semibold text-blue-400 mb-2">
                           Step {attempt.currentStep} - Attempt {index + 1}
-                        </h3>
+                        </h3> */}
 
-                        {/* Show evaluation result if this attempt has been evaluated */}
-                        {attempt.evaluation && (
+                      {/* Show evaluation result if this attempt has been evaluated */}
+                      {/* {attempt.evaluation && (
                           <div
                             className={`mb-4 p-3 rounded-lg border ${
                               attempt.isCorrect
@@ -960,10 +960,10 @@ export default function Page() {
                               {attempt.evaluation}
                             </p>
                           </div>
-                        )}
-                      </div>
+                        )} */}
+                      {/* </div> */}
 
-                      <div className="mb-4">
+                      <div>
                         <DescriptiveQuestionComponent
                           data={{
                             ...currentQuestion,
@@ -1005,7 +1005,7 @@ export default function Page() {
         </div>
 
         {/* Right Sidebar - Progress */}
-        <div className="w-80 p-6 bg-slate-800 border-l border-slate-700">
+        <div className="w-80 h-[75%] p-6 bg-slate-800 border-l border-slate-700 border-r-4">
           <div className="mb-6">
             <h3 className="font-semibold text-white mb-2">Progress Goal</h3>
             <p className="text-slate-400 text-sm">You have 10 Goals</p>
