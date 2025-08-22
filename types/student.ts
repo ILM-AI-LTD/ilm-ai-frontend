@@ -235,3 +235,35 @@ export interface SubjectProgressResponse {
   };
 }
 
+export interface MathFormattedQuestion {
+  id: string;
+  questionText: string;
+  stepCount: number;
+  hint: string;
+  createdAt: string;
+  correctAnswer: string;
+}
+
+export interface MathSampleQuestionsResponse {
+  status: string;
+  message: string;
+  data: MathFormattedQuestion[];
+}
+
+export interface MathEvaluateAnswerDTO {
+  question: string;
+  image: Blob | null;
+  currentStepCount: string;
+  correctAnswer: string;
+}
+
+export interface EvaluateMathAnswerResponse {
+  status: string;
+  message: string;
+  data: {
+    nextStepCount: string | number;
+    evaluation: string;
+    hint: string;
+    isCorrect: boolean;
+  };
+}
