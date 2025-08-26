@@ -2,10 +2,10 @@
 import CustomButton from "@/components/global/CustomButton";
 import { Card, CardContent, CardTitle } from "@/components/ui/card";
 import CustomTldrawEditor from "@/feature/students/math-question/components/CustomTldrawEditor";
-import MarkdownRenderer from "@/feature/students/math-question/components/MarkdownRenderer";
+// import MarkdownRenderer from "@/feature/students/math-question/components/MarkdownRenderer";
 import { MathFormattedQuestion } from "@/types/student";
-import { Lightbulb } from "lucide-react";
-import { useEffect, useRef } from "react";
+// import { Lightbulb } from "lucide-react";
+import { useRef } from "react";
 // import MarkdownRenderer from "./MarkdownRenderer";
 // import CustomTldrawEditor from "./CustomTldrawEditor";
 
@@ -13,7 +13,8 @@ interface DescriptiveQuestionComponentProps {
   data: MathFormattedQuestion;
   onEvaluate: (image: Blob | null) => void;
   currentStep: number;
-  // isEvaluating: boolean;
+  isEvaluating: boolean;
+  index: number;
   // evaluationResult?: {
   //   isCorrect: boolean;
   //   score?: number;
@@ -26,29 +27,18 @@ const DescriptiveQuestionComponent: React.FC<
 > = ({
   data,
   onEvaluate,
-  currentStep,
-  // isEvaluating,
+  // currentStep,
+  isEvaluating,
+  index,
   // evaluationResult,
 }) => {
+  // console.log("evaluation-----------", data.evaluation);
+  // const isCorrect: boolean = data.is_finished ? true : false;
+  // console.log("evaluation-----------", data.evaluation);
+
   const tldrawRef = useRef<{ exportToPNG: () => Promise<Blob> } | null>(null);
 
   const bottomRef = useRef<HTMLDivElement | null>(null);
-
-  // if (!currentQuestion) {
-  //   return (
-  //     <Card className="p-8 w-full">
-  //       <CardContent className="p-0">
-  //         <p className="text-muted">No question available.</p>
-  //       </CardContent>
-  //     </Card>
-  //   );
-  // }
-
-  // useEffect(() => {
-  //   if (bottomRef.current) {
-  //     bottomRef.current.scrollIntoView({ behavior: "smooth" });
-  //   }
-  // }, [evaluationResult]);
 
   const handleEvaluate = async () => {
     if (!tldrawRef.current) {
@@ -70,7 +60,8 @@ const DescriptiveQuestionComponent: React.FC<
     <div className="w-full">
       <Card className="p-4 w-full">
         <CardTitle className=" mb-4">
-          Step {currentStep}: {data.hint}
+          {/* Step {currentStep}: {data.hint} */}
+          Step {index + 1}: {data.hint}
         </CardTitle>
 
         <CardContent className="p-0">
@@ -82,15 +73,17 @@ const DescriptiveQuestionComponent: React.FC<
           </div>
         </CardContent>
 
-        <div className="flex justify-end mt-6">
+        <div className="flex justify-between mt-6 gap-2">
+          {/* <p>{data.evaluation}</p> */}
+          <p></p>
           <CustomButton
             onClick={handleEvaluate}
-            // disabled={isEvaluating}
-            // isLoading={isEvaluating}
+            disabled={isEvaluating}
+            isLoading={isEvaluating}
             className="px-6 py-2 bg-primary text-white rounded-lg hover:bg-primary/90 disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-200"
           >
-            {/* {isEvaluating ? "Evaluating..." : "Evaluate"} */}
-            Evaluate
+            {isEvaluating ? "Evaluating..." : "Evaluate"}
+            {/* Evaluate */}
           </CustomButton>
         </div>
       </Card>

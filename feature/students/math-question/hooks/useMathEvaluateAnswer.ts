@@ -1,11 +1,11 @@
 import { useMutation } from "@tanstack/react-query";
 import {
-  EvaluateAnswerDTO,
-  EvaluateAnswerResponse,
+  // EvaluateAnswerDTO,
+  // EvaluateAnswerResponse,
   EvaluateMathAnswerResponse,
   MathEvaluateAnswerDTO,
 } from "@/types/student";
-import { QuestionsService } from "../service/QuestionService";
+// import { QuestionsService } from "../service/QuestionService";
 import { MathQuestionService } from "../service/MathQuestionService";
 
 export const useMathEvaluateAnswer = () => {

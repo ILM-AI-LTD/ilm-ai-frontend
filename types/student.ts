@@ -235,6 +235,7 @@ export interface SubjectProgressResponse {
   };
 }
 
+
 export interface MathFormattedQuestion {
   id: string;
   questionText: string;
@@ -242,6 +243,9 @@ export interface MathFormattedQuestion {
   hint: string;
   createdAt: string;
   correctAnswer: string;
+  nextStepCount?: string | number;
+  evaluation?: string;
+  is_finished?: boolean;
 }
 
 export interface MathSampleQuestionsResponse {
@@ -261,9 +265,12 @@ export interface EvaluateMathAnswerResponse {
   status: string;
   message: string;
   data: {
+    error: null;
+    extracted_text: string;
     nextStepCount: string | number;
     evaluation: string;
     hint: string;
-    isCorrect: boolean;
+    is_finished: boolean;
+    success: true;
   };
 }

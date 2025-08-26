@@ -6,7 +6,7 @@ import {
   ScriptApiResponse,
 } from "@/types/student";
 import {
-  streamingApiEvaluationRequest,
+  // streamingApiEvaluationRequest,
   streamingApiRequest,
   streamingMathApiEvaluationRequest,
 } from "@/utils/axios";
@@ -45,8 +45,8 @@ export const MathQuestionService = {
     //   method: "POST",
     //   data: formData,
     // });
-    return streamingMathApiEvaluationRequest("/api/full_evaluation", {
-      // return streamingMathApiEvaluationRequest("/math/evaluate-math", {
+    // return streamingMathApiEvaluationRequest("/api/full_evaluation", {
+    return streamingMathApiEvaluationRequest("/math/evaluate-math", {
       method: "POST",
       data: formData,
     });

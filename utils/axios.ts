@@ -31,8 +31,8 @@ const streamingEvaluationAxiosInstance = axios.create({
 });
 
 const streamingMathEvaluationAxiosInstance = axios.create({
-  // baseURL: process.env.NEXT_PUBLIC_API_STREAM_URL || "",
-  baseURL: "https://ilm-mathai-v0ws.onrender.com",
+  baseURL: process.env.NEXT_PUBLIC_API_STREAM_URL || "",
+  // baseURL: "https://ilm-mathai-v0ws.onrender.com",
   headers: {
     "Content-Type": "multipart/form-data",
     // Accept: "application/json",
