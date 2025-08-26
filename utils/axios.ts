@@ -29,6 +29,16 @@ const streamingEvaluationAxiosInstance = axios.create({
   },
   withCredentials: true,
 });
+
+const streamingMathEvaluationAxiosInstance = axios.create({
+  baseURL: process.env.NEXT_PUBLIC_API_STREAM_URL || "",
+  // baseURL: "https://ilm-mathai-v0ws.onrender.com",
+  headers: {
+    "Content-Type": "multipart/form-data",
+    // Accept: "application/json",
+  },
+  withCredentials: true,
+});
 // Shared request interceptor function
 const requestInterceptor = (
   config: InternalAxiosRequestConfig
@@ -76,6 +86,14 @@ streamingEvaluationAxiosInstance.interceptors.response.use(
   responseInterceptor.onFulfilled,
   responseInterceptor.onRejected
 );
+streamingMathEvaluationAxiosInstance.interceptors.request.use(
+  requestInterceptor,
+  (error) => Promise.reject(error)
+);
+streamingMathEvaluationAxiosInstance.interceptors.response.use(
+  responseInterceptor.onFulfilled,
+  responseInterceptor.onRejected
+);
 // Main API request function
 export async function apiRequest<T>(
   url: string,
@@ -98,6 +116,18 @@ export async function streamingApiEvaluationRequest<T>(
   config: AxiosRequestConfig = {}
 ): Promise<T> {
   const response = await streamingEvaluationAxiosInstance({ url, ...config });
+  return response.data;
+}
+
+//=========== Math Streaming API request function ==============
+export async function streamingMathApiEvaluationRequest<T>(
+  url: string,
+  config: AxiosRequestConfig = {}
+): Promise<T> {
+  const response = await streamingMathEvaluationAxiosInstance({
+    url,
+    ...config,
+  });
   return response.data;
 }
 // Generic API request function with custom base URL
