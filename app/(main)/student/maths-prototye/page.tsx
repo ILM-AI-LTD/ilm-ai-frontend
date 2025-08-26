@@ -406,13 +406,13 @@ export default function Page() {
                     // `}
                   >
                     <CardContent className="px-0">
-                      <div>
+                      {/* <div> */}
                         {/* <h3 className="font-semibold text-blue-400 mb-2">
                           Step {attempt.currentStep} - Attempt {index + 1}
                         </h3> */}
 
                         {/* Show evaluation result if this attempt has been evaluated */}
-                        {attempt.evaluation && (
+                        {/* {attempt.evaluation && (
                           <div
                             className={`mb-4 p-3 rounded-lg border ${
                               attempt.is_finished
@@ -450,7 +450,7 @@ export default function Page() {
                             </p>
                           </div>
                         )}
-                      </div>
+                      </div> */}
 
                       <div >
                         <DescriptiveQuestionComponent
