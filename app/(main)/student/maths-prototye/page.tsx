@@ -34,6 +34,7 @@ import { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
 import DescriptiveQuestionComponent from "./DescriptiveQuestionComponent";
 import { useMathEvaluateAnswer } from "@/feature/students/math-question/hooks/useMathEvaluateAnswer";
+import MarkdownRenderer from "@/feature/students/math-question/components/MarkdownRenderer";
 
 // interface EvaluationResult {
 //   is_finished: boolean;
@@ -163,10 +164,10 @@ export default function Page() {
     );
   }
 
-  const DynamicMathRenderer = dynamic(() => import("./markdown"), {
-    ssr: false,
-    loading: () => <div>Loading math...</div>,
-  });
+  // const DynamicMathRenderer = dynamic(() => import("./markdown"), {
+  //   ssr: false,
+  //   loading: () => <div>Loading math...</div>,
+  // });
 
   const handleEvaluateAnswer = (image: Blob | null) => {
     console.log(image);
@@ -383,7 +384,10 @@ export default function Page() {
               <div className=" mb-6">
                 <div className=" mb-2">
                   {/* {currentQuestion.questionText} */}
-                  <DynamicMathRenderer content={currentQuestion.questionText} />
+                  {/* <DynamicMathRenderer content={currentQuestion.questionText} /> */}
+                  <MarkdownRenderer
+                     content={currentQuestion.questionText}
+                   />
                 </div>
               </div>
               {/* <div className="text-slate-300 mb-4"></div> */}
