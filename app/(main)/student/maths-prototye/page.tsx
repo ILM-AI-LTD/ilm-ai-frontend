@@ -62,6 +62,10 @@ export default function Page() {
   const [attempts, setAttempts] = useState<AttemptData[]>([]);
   const [canProceedToNext, setCanProceedToNext] = useState(false);
 
+  const [completedQuestions, setCompletedQuestions] = useState<Set<number>>(
+    new Set()
+  );
+
   const { mutate: evaluateAnswer, isPending: isEvaluating } =
     useMathEvaluateAnswer();
 
@@ -90,6 +94,12 @@ export default function Page() {
       // setStepStatus("pending");
     }
   }, [currentQuestionIndex, currentQuestion]);
+
+  const handleQuestionSelect = (questionIndex: number) => {
+    setCurrentQuestionIndex(questionIndex);
+    setCurrentStep(1);
+    setCanProceedToNext(false);
+  };
 
   // const handleAnswerChange = (field, value) => {
   //   setUserAnswers((prev) => ({
@@ -143,6 +153,7 @@ export default function Page() {
       ]);
       setCanProceedToNext(false);
     } else {
+      setCompletedQuestions((prev) => new Set([...prev, currentQuestionIndex]));
       // Move to next question
       if (currentQuestionIndex < questions.length - 1) {
         setCurrentQuestionIndex((prev) => prev + 1);
@@ -385,9 +396,7 @@ export default function Page() {
                 <div className=" mb-2">
                   {/* {currentQuestion.questionText} */}
                   {/* <DynamicMathRenderer content={currentQuestion.questionText} /> */}
-                  <MarkdownRenderer
-                     content={currentQuestion.questionText}
-                   />
+                  <MarkdownRenderer content={currentQuestion.questionText} />
                 </div>
               </div>
               {/* <div className="text-slate-300 mb-4"></div> */}
@@ -411,12 +420,12 @@ export default function Page() {
                   >
                     <CardContent className="px-0">
                       {/* <div> */}
-                        {/* <h3 className="font-semibold text-blue-400 mb-2">
+                      {/* <h3 className="font-semibold text-blue-400 mb-2">
                           Step {attempt.currentStep} - Attempt {index + 1}
                         </h3> */}
 
-                        {/* Show evaluation result if this attempt has been evaluated */}
-                        {/* {attempt.evaluation && (
+                      {/* Show evaluation result if this attempt has been evaluated */}
+                      {/* {attempt.evaluation && (
                           <div
                             className={`mb-4 p-3 rounded-lg border ${
                               attempt.is_finished
@@ -456,7 +465,7 @@ export default function Page() {
                         )}
                       </div> */}
 
-                      <div >
+                      <div>
                         <DescriptiveQuestionComponent
                           data={{
                             ...currentQuestion,
@@ -503,7 +512,7 @@ export default function Page() {
         </div>
 
         {/* Right Sidebar - Progress */}
-        <div className="w-80 h-[75%] p-6 bg-slate-800 border-l border-slate-700 border-r-4">
+        {/* <div className="w-80 h-[75%] p-6 bg-slate-800 border-l border-slate-700 border-r-4">
           <div className="mb-6">
             <h3 className="font-semibold text-white mb-2">Progress Goal</h3>
             <p className="text-slate-400 text-sm">You have 10 Goals</p>
@@ -568,9 +577,88 @@ export default function Page() {
             </div>
             <p className="text-xs text-slate-400">question is asking for.</p>
           </div>
+        </div> */}
+
+        <div className="w-80 h-[75%] p-6 bg-slate-800 border-l border-slate-700 border-r-4 rounded-md">
+          <div className="mb-6">
+            <h3 className="font-semibold text-white mb-2">Questions</h3>
+            <p className="text-slate-400 text-sm">
+              You have {questions.length} Questions
+            </p>
+          </div>
+
+          <div className="space-y-3 max-h-[calc(100vh-200px)] overflow-y-auto">
+            {questions.map((question, index) => {
+              const isCompleted = completedQuestions.has(index);
+              const isCurrent = currentQuestionIndex === index;
+
+              return (
+                <div
+                  key={index}
+                  onClick={() => handleQuestionSelect(index)}
+                  className={`
+                    flex items-center gap-3 p-3 rounded-lg cursor-pointer transition-colors
+                    ${
+                      isCurrent
+                        ? "bg-blue-900/40 border border-blue-600"
+                        : isCompleted
+                        ? "bg-green-900/20 border border-green-700 hover:bg-green-900/30"
+                        : "bg-slate-700 hover:bg-slate-600"
+                    }
+                  `}
+                >
+                  {isCompleted ? (
+                    <CheckCircle
+                      className="text-green-400 flex-shrink-0"
+                      size={20}
+                    />
+                  ) : isCurrent ? (
+                    <Circle className="text-blue-400 flex-shrink-0" size={20} />
+                  ) : (
+                    <Circle
+                      className="text-slate-500 flex-shrink-0"
+                      size={20}
+                    />
+                  )}
+                  <div className="flex-1">
+                    <div
+                      className={`text-sm font-medium ${
+                        isCurrent
+                          ? "text-blue-300"
+                          : isCompleted
+                          ? "text-green-300"
+                          : "text-white"
+                      }`}
+                    >
+                      Question {index + 1}
+                    </div>
+                    <div className="text-xs text-slate-400 truncate">
+                      {question.questionText?.substring(0, 50) ||
+                        "Math Question"}
+                      ...
+                    </div>
+                  </div>
+                  {isCurrent && (
+                    <div className="text-xs text-blue-400 font-medium">
+                      Current
+                    </div>
+                  )}
+                </div>
+              );
+            })}
+          </div>
+
+          <div className="mt-8 p-4 bg-slate-700 rounded-lg">
+            <div className="flex items-center gap-2 mb-2">
+              <AlertCircle className="text-blue-400" size={16} />
+              <span className="text-sm font-medium text-blue-400">
+                Click any question
+              </span>
+            </div>
+            <p className="text-xs text-slate-400">to navigate and solve it.</p>
+          </div>
         </div>
       </div>
     </div>
   );
 }
-
