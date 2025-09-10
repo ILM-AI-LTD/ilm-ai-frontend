@@ -374,7 +374,7 @@ export default function Page() {
     //   {showEvaluationButtons && <div className="h-24" />}
     // </div>
     <div className="min-h-screen text-white">
-      <div className="flex">
+      <div className="flex ">
         {/* Left Section - Mascot */}
         <div className="p-8 flex flex-col items-center justify-start pt-20">
           <div className="mb-6">
@@ -579,7 +579,7 @@ export default function Page() {
           </div>
         </div> */}
 
-        <div className="w-80 h-[75%] p-6 bg-slate-800 border-l border-slate-700 border-r-4 rounded-md">
+        <div className=" max-w-80 h-[50%] p-6 bg-slate-800 border-l border-slate-700 border-r-4 rounded-md">
           <div className="mb-6">
             <h3 className="font-semibold text-white mb-2">Questions</h3>
             <p className="text-slate-400 text-sm">
@@ -587,7 +587,8 @@ export default function Page() {
             </p>
           </div>
 
-          <div className="space-y-3 max-h-[calc(100vh-200px)] overflow-y-auto">
+          {/* <div className="space-y-3 max-h-[calc(100vh-200px)] overflow-y-auto"> */}
+          <div className="space-y-3 max-h-[450px] overflow-y-auto">
             {questions.map((question, index) => {
               const isCompleted = completedQuestions.has(index);
               const isCurrent = currentQuestionIndex === index;
@@ -630,19 +631,23 @@ export default function Page() {
                           : "text-white"
                       }`}
                     >
-                      Question {index + 1}
+                      {index + 1}
+                      {". "}
+                      {question.name?.substring(0, 70) || "Math Question"}
                     </div>
-                    <div className="text-xs text-slate-400 truncate">
-                      {question.questionText?.substring(0, 50) ||
-                        "Math Question"}
-                      ...
-                    </div>
+
+                    {/* <div className="text-xs text-slate-400 truncate"> */}
+                    {/* {question.questionText?.substring(0, 50) ||
+                        "Math Question"} */}
+                    {/* {question.name?.substring(0, 70) || "Math Question"} */}
+                    {/* ...
+                    </div> */}
                   </div>
-                  {isCurrent && (
+                  {/* {isCurrent && (
                     <div className="text-xs text-blue-400 font-medium">
                       Current
                     </div>
-                  )}
+                  )} */}
                 </div>
               );
             })}
