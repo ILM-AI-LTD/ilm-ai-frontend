@@ -35,6 +35,7 @@ import dynamic from "next/dynamic";
 import DescriptiveQuestionComponent from "./DescriptiveQuestionComponent";
 import { useMathEvaluateAnswer } from "@/feature/students/math-question/hooks/useMathEvaluateAnswer";
 import MarkdownRenderer from "@/feature/students/math-question/components/MarkdownRenderer";
+import QuestionsNavbar from "@/feature/students/math-question/components/QuestionsNavbar";
 
 // interface EvaluationResult {
 //   is_finished: boolean;
@@ -380,7 +381,8 @@ export default function Page() {
 
     <div className="flex ">
       {/* Left Section - Mascot */}
-      <div className="p-8 flex flex-col items-center justify-start pt-20">
+      {/* <div className="p-8 flex flex-col items-center justify-start pt-20"> */}
+      <div className="flex flex-col items-center justify-start pt-20">
         <div className="mb-6">
           {/* <ILMIAssistantv2 height={40} width={40} className="mt-2" /> */}
           <ILMIAssistantv2
@@ -517,83 +519,25 @@ export default function Page() {
       </div>
 
       {/* Right Sidebar - Progress */}
-      {/* <div className="w-80 h-[75%] p-6 bg-slate-800 border-l border-slate-700 border-r-4">
-          <div className="mb-6">
-            <h3 className="font-semibold text-white mb-2">Progress Goal</h3>
-            <p className="text-slate-400 text-sm">You have 10 Goals</p>
-          </div>
 
-          <div className="space-y-4">
-            <div className="flex items-center gap-3 p-3 bg-slate-700 rounded-lg">
-              <CheckCircle className="text-green-400" size={20} />
-              <div>
-                <div className="text-sm font-medium">
-                  Linear equations in math
-                </div>
-                <div className="text-xs text-slate-400">1</div>
-              </div>
-            </div>
+      <QuestionsNavbar
+        questions={questions}
+        completedQuestions={completedQuestions}
+        currentQuestionIndex={currentQuestionIndex}
+        onQuestionSelect={handleQuestionSelect}
+      />
 
-            <div className="flex items-center gap-3 p-3 bg-blue-900/20 border border-blue-700 rounded-lg">
-              <Circle className="text-yellow-400" size={20} />
-              <div>
-                <div className="text-sm font-medium">Quadratic function</div>
-                <div className="text-xs text-slate-400">2</div>
-              </div>
-            </div>
-
-            <div className="flex items-center gap-3 p-3 bg-slate-700 rounded-lg opacity-50">
-              <Circle className="text-slate-500" size={20} />
-              <div>
-                <div className="text-sm font-medium">
-                  Learn the solutions of quadratic function
-                </div>
-                <div className="text-xs text-slate-400">3</div>
-              </div>
-            </div>
-
-            <div className="flex items-center gap-3 p-3 bg-slate-700 rounded-lg opacity-50">
-              <Circle className="text-slate-500" size={20} />
-              <div>
-                <div className="text-sm font-medium">
-                  Identify domain and range of a function
-                </div>
-                <div className="text-xs text-slate-400">4</div>
-              </div>
-            </div>
-
-            <div className="flex items-center gap-3 p-3 bg-slate-700 rounded-lg opacity-50">
-              <Circle className="text-slate-500" size={20} />
-              <div>
-                <div className="text-sm font-medium">
-                  Use function notation f(x)
-                </div>
-                <div className="text-xs text-slate-400">5</div>
-              </div>
-            </div>
-          </div>
-
-          <div className="mt-8 p-4 bg-slate-700 rounded-lg">
-            <div className="flex items-center gap-2 mb-2">
-              <AlertCircle className="text-red-400" size={16} />
-              <span className="text-sm font-medium text-red-400">
-                Always follow what the
-              </span>
-            </div>
-            <p className="text-xs text-slate-400">question is asking for.</p>
-          </div>
-        </div> */}
-
-      <div className=" max-w-80 h-[50%] p-6 mt-1 bg-slate-800 border-l border-slate-700 border-r-4 rounded-md">
-        <div className="mb-6">
+      {/* <div className=" max-w-80 h-[50%] p-6 mt-1 bg-slate-800 border-l border-slate-700 border-r-4 rounded-md"> */}
+      {/* <div className="mb-6">
           <h3 className="font-semibold text-white mb-2">Questions</h3>
           <p className="text-slate-400 text-sm">
             You have {questions.length} Questions
           </p>
-        </div>
+        </div> */}
 
-        {/* <div className="space-y-3 max-h-[calc(100vh-200px)] overflow-y-auto"> */}
-        <div className="space-y-3 max-h-[450px] overflow-y-auto pb-2">
+      {/* <div className="space-y-3 max-h-[calc(100vh-200px)] overflow-y-auto"> */}
+
+      {/* <div className="space-y-3 max-h-[450px] overflow-y-auto pb-2">
           {questions.map((question, index) => {
             const isCompleted = completedQuestions.has(index);
             const isCurrent = currentQuestionIndex === index;
@@ -636,26 +580,28 @@ export default function Page() {
                     {index + 1}
                     {". "}
                     {question.name?.substring(0, 70) || "Math Question"}
-                  </div>
+                  </div> */}
 
-                  {/* <div className="text-xs text-slate-400 truncate"> */}
-                  {/* {question.questionText?.substring(0, 50) ||
+      {/* <div className="text-xs text-slate-400 truncate"> */}
+      {/* {question.questionText?.substring(0, 50) ||
                         "Math Question"} */}
-                  {/* {question.name?.substring(0, 70) || "Math Question"} */}
-                  {/* ...
+      {/* {question.name?.substring(0, 70) || "Math Question"} */}
+      {/* ...
                     </div> */}
-                </div>
-                {/* {isCurrent && (
+
+      {/* </div> */}
+
+      {/* {isCurrent && (
                     <div className="text-xs text-blue-400 font-medium">
                       Current
                     </div>
                   )} */}
-              </div>
+      {/* </div>
             );
           })}
-        </div>
+        </div> */}
 
-        {/* <div className="mt-8 p-4 bg-slate-700 rounded-lg">
+      {/* <div className="mt-8 p-4 bg-slate-700 rounded-lg">
             <div className="flex items-center gap-2 mb-2">
               <AlertCircle className="text-blue-400" size={16} />
               <span className="text-sm font-medium text-blue-400">
@@ -664,7 +610,7 @@ export default function Page() {
             </div>
             <p className="text-xs text-slate-400">to navigate and solve it.</p>
           </div> */}
-      </div>
+      {/* </div> */}
     </div>
   );
 }
