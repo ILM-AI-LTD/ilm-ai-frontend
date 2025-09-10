@@ -15,7 +15,7 @@ export default function QuestionsNavbar({
   onQuestionSelect,
 }: QuestionsNavbarProps) {
   return (
-    <div className="max-w-80 h-[50%] p-6 mt-1 bg-slate-800 border-l border-slate-700 border-r-4 rounded-md">
+    <div className="max-w-80 p-6 mt-1 bg-slate-800 border-l border-slate-700 border-r-4 rounded-md">
       <div className="mb-6">
         <h3 className="font-semibold text-white mb-2">Questions</h3>
         <p className="text-slate-400 text-sm">
@@ -23,7 +23,7 @@ export default function QuestionsNavbar({
         </p>
       </div>
 
-      <div className="space-y-3 max-h-[450px] overflow-y-auto pb-2">
+      <div className="space-y-3 max-h-[300px] overflow-y-auto pb-2">
         {questions.map((question, index) => {
           const isCompleted = completedQuestions.has(index);
           const isCurrent = currentQuestionIndex === index;
