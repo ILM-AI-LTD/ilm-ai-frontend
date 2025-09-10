@@ -235,9 +235,9 @@ export interface SubjectProgressResponse {
   };
 }
 
-
 export interface MathFormattedQuestion {
   id: string;
+  name: string;
   questionText: string;
   stepCount: number;
   hint: string;
@@ -259,6 +259,7 @@ export interface MathEvaluateAnswerDTO {
   image: Blob | null;
   currentStepCount: string;
   correctAnswer: string;
+  // chat_history: null | string
 }
 
 export interface EvaluateMathAnswerResponse {
