@@ -63,7 +63,8 @@ const DescriptiveQuestionComponent: React.FC<
       <Card className="p-4 w-full">
         <CardTitle className=" mb-4">
           {/* Step {currentStep}: {data.hint} */}
-          Step {index + 1}: {data.hint}
+          {/* Step {index + 1}: {data.hint} */}
+          Step {index + 1}: <MarkdownRenderer content={data.hint} />
         </CardTitle>
 
         <CardContent className="p-0">

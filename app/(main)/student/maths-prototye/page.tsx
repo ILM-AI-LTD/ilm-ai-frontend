@@ -373,59 +373,64 @@ export default function Page() {
 
     //   {showEvaluationButtons && <div className="h-24" />}
     // </div>
-    <div className="min-h-screen text-white">
-      <div className="flex ">
-        {/* Left Section - Mascot */}
-        <div className="p-8 flex flex-col items-center justify-start pt-20">
-          <div className="mb-6">
-            {/* <ILMIAssistantv2 height={40} width={40} className="mt-2" /> */}
-            <ILMIAssistantv2
-              height={80}
-              width={80}
-              // className="h-[351px] w-[232px]"
-            />
-          </div>
-        </div>
 
-        {/* Main Content */}
-        <div className="flex-1 p-8 max-w-5xl">
-          <div className="mb-8">
-            {/* <div className="border-slate-600 rounded-lg p-6 mb-6"> */}
+    //=========================================================================
+
+    // <div className="min-h-screen text-white">
+
+    <div className="flex ">
+      {/* Left Section - Mascot */}
+      <div className="p-8 flex flex-col items-center justify-start pt-20">
+        <div className="mb-6">
+          {/* <ILMIAssistantv2 height={40} width={40} className="mt-2" /> */}
+          <ILMIAssistantv2
+            height={80}
+            width={80}
+            // className="h-[351px] w-[232px]"
+          />
+        </div>
+      </div>
+
+      {/* Main Content */}
+      {/* <div className="flex-1 p-8 max-w-5xl"> */}
+      <div className="flex-1 p-8">
+        <div className="mb-8">
+          {/* <div className="border-slate-600 rounded-lg p-6 mb-6"> */}
+          <div className=" mb-6">
             <div className=" mb-6">
-              <div className=" mb-6">
-                <div className=" mb-2">
-                  {/* {currentQuestion.questionText} */}
-                  {/* <DynamicMathRenderer content={currentQuestion.questionText} /> */}
-                  <MarkdownRenderer content={currentQuestion.questionText} />
-                </div>
+              <div className=" mb-2">
+                {/* {currentQuestion.questionText} */}
+                {/* <DynamicMathRenderer content={currentQuestion.questionText} /> */}
+                <MarkdownRenderer content={currentQuestion.questionText} />
               </div>
-              {/* <div className="text-slate-300 mb-4"></div> */}
-              <div>
-                {attempts.map((attempt, index) => (
-                  <Card
-                    key={attempt.id}
-                    className="border-0 p-0 mb-4"
-                    //   className={` p-0
-                    //   ${
-                    //     attempt.is_finished === false
-                    //       ? "border-red-500 bg-red-50/5"
-                    //       : ""
-                    //   }
-                    //   ${
-                    //     attempt.is_finished === true
-                    //       ? "border-green-500 bg-green-50/5"
-                    //       : ""
-                    //   }
-                    // `}
-                  >
-                    <CardContent className="px-0">
-                      {/* <div> */}
-                      {/* <h3 className="font-semibold text-blue-400 mb-2">
+            </div>
+            {/* <div className="text-slate-300 mb-4"></div> */}
+            <div>
+              {attempts.map((attempt, index) => (
+                <Card
+                  key={attempt.id}
+                  className="border-0 p-0 mb-4"
+                  //   className={` p-0
+                  //   ${
+                  //     attempt.is_finished === false
+                  //       ? "border-red-500 bg-red-50/5"
+                  //       : ""
+                  //   }
+                  //   ${
+                  //     attempt.is_finished === true
+                  //       ? "border-green-500 bg-green-50/5"
+                  //       : ""
+                  //   }
+                  // `}
+                >
+                  <CardContent className="px-0">
+                    {/* <div> */}
+                    {/* <h3 className="font-semibold text-blue-400 mb-2">
                           Step {attempt.currentStep} - Attempt {index + 1}
                         </h3> */}
 
-                      {/* Show evaluation result if this attempt has been evaluated */}
-                      {/* {attempt.evaluation && (
+                    {/* Show evaluation result if this attempt has been evaluated */}
+                    {/* {attempt.evaluation && (
                           <div
                             className={`mb-4 p-3 rounded-lg border ${
                               attempt.is_finished
@@ -465,54 +470,54 @@ export default function Page() {
                         )}
                       </div> */}
 
-                      <div>
-                        <DescriptiveQuestionComponent
-                          data={{
-                            ...currentQuestion,
-                            hint: attempt.hint,
-                            evaluation: attempt.evaluation,
-                            is_finished: attempt.is_finished,
-                            stepCount:
-                              Number(attempt.nextStepCount) ||
-                              currentQuestion.stepCount,
-                          }}
-                          onEvaluate={handleEvaluateAnswer}
-                          currentStep={attempt.currentStep}
-                          isEvaluating={isEvaluating}
-                          index={index}
+                    <div>
+                      <DescriptiveQuestionComponent
+                        data={{
+                          ...currentQuestion,
+                          hint: attempt.hint,
+                          evaluation: attempt.evaluation,
+                          is_finished: attempt.is_finished,
+                          stepCount:
+                            Number(attempt.nextStepCount) ||
+                            currentQuestion.stepCount,
+                        }}
+                        onEvaluate={handleEvaluateAnswer}
+                        currentStep={attempt.currentStep}
+                        isEvaluating={isEvaluating}
+                        index={index}
 
-                          // Disable interaction for previous attempts
-                          // disabled={
-                          //   index < attempts.length - 1 ||
-                          //   attempt.is_finished === true
-                          // }
-                        />
-                      </div>
-                    </CardContent>
-                  </Card>
-                ))}
-              </div>
-
-              {/* Show "Next Step" or "Let's Move" button when answer is correct */}
-              {canProceedToNext && (
-                <div className="mt-6 flex justify-center">
-                  <Button
-                    onClick={handleNextStep}
-                    className="bg-green-600 hover:bg-green-700 flex items-center gap-2"
-                  >
-                    {currentStep < currentQuestion?.stepCount
-                      ? "Next Step"
-                      : "Let's move"}
-                    <ArrowRight size={16} />
-                  </Button>
-                </div>
-              )}
+                        // Disable interaction for previous attempts
+                        // disabled={
+                        //   index < attempts.length - 1 ||
+                        //   attempt.is_finished === true
+                        // }
+                      />
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
             </div>
+
+            {/* Show "Next Step" or "Let's Move" button when answer is correct */}
+            {canProceedToNext && (
+              <div className="mt-6 flex justify-center">
+                <Button
+                  onClick={handleNextStep}
+                  className="bg-green-600 hover:bg-green-700 flex items-center gap-2"
+                >
+                  {currentStep < currentQuestion?.stepCount
+                    ? "Next Step"
+                    : "Let's move"}
+                  <ArrowRight size={16} />
+                </Button>
+              </div>
+            )}
           </div>
         </div>
+      </div>
 
-        {/* Right Sidebar - Progress */}
-        {/* <div className="w-80 h-[75%] p-6 bg-slate-800 border-l border-slate-700 border-r-4">
+      {/* Right Sidebar - Progress */}
+      {/* <div className="w-80 h-[75%] p-6 bg-slate-800 border-l border-slate-700 border-r-4">
           <div className="mb-6">
             <h3 className="font-semibold text-white mb-2">Progress Goal</h3>
             <p className="text-slate-400 text-sm">You have 10 Goals</p>
@@ -579,25 +584,25 @@ export default function Page() {
           </div>
         </div> */}
 
-        <div className=" max-w-80 h-[50%] p-6 bg-slate-800 border-l border-slate-700 border-r-4 rounded-md">
-          <div className="mb-6">
-            <h3 className="font-semibold text-white mb-2">Questions</h3>
-            <p className="text-slate-400 text-sm">
-              You have {questions.length} Questions
-            </p>
-          </div>
+      <div className=" max-w-80 h-[50%] p-6 mt-1 bg-slate-800 border-l border-slate-700 border-r-4 rounded-md">
+        <div className="mb-6">
+          <h3 className="font-semibold text-white mb-2">Questions</h3>
+          <p className="text-slate-400 text-sm">
+            You have {questions.length} Questions
+          </p>
+        </div>
 
-          {/* <div className="space-y-3 max-h-[calc(100vh-200px)] overflow-y-auto"> */}
-          <div className="space-y-3 max-h-[450px] overflow-y-auto">
-            {questions.map((question, index) => {
-              const isCompleted = completedQuestions.has(index);
-              const isCurrent = currentQuestionIndex === index;
+        {/* <div className="space-y-3 max-h-[calc(100vh-200px)] overflow-y-auto"> */}
+        <div className="space-y-3 max-h-[450px] overflow-y-auto pb-2">
+          {questions.map((question, index) => {
+            const isCompleted = completedQuestions.has(index);
+            const isCurrent = currentQuestionIndex === index;
 
-              return (
-                <div
-                  key={index}
-                  onClick={() => handleQuestionSelect(index)}
-                  className={`
+            return (
+              <div
+                key={index}
+                onClick={() => handleQuestionSelect(index)}
+                className={`
                     flex items-center gap-3 p-3 rounded-lg cursor-pointer transition-colors
                     ${
                       isCurrent
@@ -607,53 +612,50 @@ export default function Page() {
                         : "bg-slate-700 hover:bg-slate-600"
                     }
                   `}
-                >
-                  {isCompleted ? (
-                    <CheckCircle
-                      className="text-green-400 flex-shrink-0"
-                      size={20}
-                    />
-                  ) : isCurrent ? (
-                    <Circle className="text-blue-400 flex-shrink-0" size={20} />
-                  ) : (
-                    <Circle
-                      className="text-slate-500 flex-shrink-0"
-                      size={20}
-                    />
-                  )}
-                  <div className="flex-1">
-                    <div
-                      className={`text-sm font-medium ${
-                        isCurrent
-                          ? "text-blue-300"
-                          : isCompleted
-                          ? "text-green-300"
-                          : "text-white"
-                      }`}
-                    >
-                      {index + 1}
-                      {". "}
-                      {question.name?.substring(0, 70) || "Math Question"}
-                    </div>
-
-                    {/* <div className="text-xs text-slate-400 truncate"> */}
-                    {/* {question.questionText?.substring(0, 50) ||
-                        "Math Question"} */}
-                    {/* {question.name?.substring(0, 70) || "Math Question"} */}
-                    {/* ...
-                    </div> */}
+              >
+                {isCompleted ? (
+                  <CheckCircle
+                    className="text-green-400 flex-shrink-0"
+                    size={20}
+                  />
+                ) : isCurrent ? (
+                  <Circle className="text-blue-400 flex-shrink-0" size={20} />
+                ) : (
+                  <Circle className="text-slate-500 flex-shrink-0" size={20} />
+                )}
+                <div className="flex-1">
+                  <div
+                    className={`text-sm font-medium ${
+                      isCurrent
+                        ? "text-blue-300"
+                        : isCompleted
+                        ? "text-green-300"
+                        : "text-white"
+                    }`}
+                  >
+                    {index + 1}
+                    {". "}
+                    {question.name?.substring(0, 70) || "Math Question"}
                   </div>
-                  {/* {isCurrent && (
+
+                  {/* <div className="text-xs text-slate-400 truncate"> */}
+                  {/* {question.questionText?.substring(0, 50) ||
+                        "Math Question"} */}
+                  {/* {question.name?.substring(0, 70) || "Math Question"} */}
+                  {/* ...
+                    </div> */}
+                </div>
+                {/* {isCurrent && (
                     <div className="text-xs text-blue-400 font-medium">
                       Current
                     </div>
                   )} */}
-                </div>
-              );
-            })}
-          </div>
+              </div>
+            );
+          })}
+        </div>
 
-          <div className="mt-8 p-4 bg-slate-700 rounded-lg">
+        {/* <div className="mt-8 p-4 bg-slate-700 rounded-lg">
             <div className="flex items-center gap-2 mb-2">
               <AlertCircle className="text-blue-400" size={16} />
               <span className="text-sm font-medium text-blue-400">
@@ -661,8 +663,7 @@ export default function Page() {
               </span>
             </div>
             <p className="text-xs text-slate-400">to navigate and solve it.</p>
-          </div>
-        </div>
+          </div> */}
       </div>
     </div>
   );
