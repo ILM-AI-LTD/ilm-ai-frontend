@@ -68,6 +68,7 @@ export default function Page() {
   const [loading, setLoading] = useState(true);
   const [attempts, setAttempts] = useState<AttemptData[]>([]);
   const [canProceedToNext, setCanProceedToNext] = useState(false);
+  const [newChatHistory, setNewChatHistory] = useState("");
 
   const [completedQuestions, setCompletedQuestions] = useState<Set<number>>(
     new Set()
@@ -152,16 +153,22 @@ export default function Page() {
     evaluateAnswer(
       {
         question: currentQuestion.questionText,
-        // correctAnswer: currentQuestion.correctAnswer,
-        correctAnswer: "",
+        correctAnswer: currentQuestion.correctAnswer,
+        // correctAnswer: "",
         currentStepCount: currentQuestion.stepCount.toString(),
         image: image,
+        // chatHistory: currentQuestion.chatHistory
+        //   ? currentQuestion.chatHistory
+        //   : "",
+        chatHistory: newChatHistory,
       },
       {
         onSuccess: (res) => {
           // console.log("res ---------- ", res);
-          const { is_finished, evaluation, hint, nextStepCount } = res.data;
+          const { is_finished, evaluation, hint, nextStepCount, chatHistory } =
+            res.data;
 
+          setNewChatHistory(chatHistory ?? "");
           // Update current attempt with evaluation result
           setAttempts((prevAttempts) => {
             const updatedAttempts = [...prevAttempts];

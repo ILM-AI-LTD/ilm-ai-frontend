@@ -30,7 +30,8 @@ export const MathQuestionService = {
     formData.append("question", body.question);
     formData.append("currentStepCount", body.currentStepCount);
     // formData.append("correct_answer", body.correctAnswer);
-    formData.append("correct_answer", "abc");
+    formData.append("correctAnswer", body.correctAnswer);
+    formData.append("chatHistory", body.chatHistory);
     // console.log("image", body.image);
     // formData.append("image", body.image);
 

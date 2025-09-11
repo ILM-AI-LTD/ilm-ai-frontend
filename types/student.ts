@@ -246,6 +246,7 @@ export interface MathFormattedQuestion {
   nextStepCount?: string | number;
   evaluation?: string;
   is_finished?: boolean;
+  chatHistory: null | string;
 }
 
 export interface MathSampleQuestionsResponse {
@@ -259,7 +260,7 @@ export interface MathEvaluateAnswerDTO {
   image: Blob | null;
   currentStepCount: string;
   correctAnswer: string;
-  // chat_history: null | string
+  chatHistory: string;
 }
 
 export interface EvaluateMathAnswerResponse {
@@ -273,5 +274,6 @@ export interface EvaluateMathAnswerResponse {
     hint: string;
     is_finished: boolean;
     success: true;
+    chatHistory: null | string;
   };
 }
