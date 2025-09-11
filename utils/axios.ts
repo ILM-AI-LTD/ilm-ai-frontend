@@ -28,6 +28,7 @@ const streamingEvaluationAxiosInstance = axios.create({
     // Accept: "application/json",
   },
   withCredentials: true,
+  timeout: 240000,
 });
 
 const streamingMathEvaluationAxiosInstance = axios.create({
