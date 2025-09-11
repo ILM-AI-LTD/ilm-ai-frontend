@@ -72,7 +72,7 @@ const MainContent: React.FC<MainContentProps> = ({
   resetSetCompletion,
   // areAllSetsCompleted,
   onAllQuestionsCompleted,
-  setSelectedGoalId, // *** FIX: Added prop ***
+  setSelectedGoalId,
 }) => {
   const allNotStarted = goals.every((g) => !g.isStarted);
   const selectedGoal = goals.find((g) => g.id === selectedGoalId);
@@ -234,7 +234,7 @@ const MainContent: React.FC<MainContentProps> = ({
         paper,
         topic,
         subtopic,
-        goal: pendingNextGoal.title, // *** FIX: Use pending goal title ***
+        goal: pendingNextGoal.title,
       },
       {
         onSuccess: (res) => {
@@ -264,7 +264,6 @@ const MainContent: React.FC<MainContentProps> = ({
   }, [pendingNextGoal]);
 
   const triggerNextGoal = (nextGoalInfo?: any) => {
-    console.log("*** triggerNextGoal called with:", nextGoalInfo);
     if (nextGoalInfo) {
       setPendingNextGoal(nextGoalInfo);
     } else {
@@ -358,7 +357,6 @@ const MainContent: React.FC<MainContentProps> = ({
                     currentQuestionIndex={currentQuestionIndex}
                     evaluationResult={evaluationResult}
                   />
-                  {/* <DescriptiveQuestionComponent {...props} /> */}
                 </div>
               </div>
             )}

@@ -13,7 +13,7 @@ export function ChapterList({ topics, subject }: TopicListProps) {
       {topics.map((topic, index) => (
         <div
           key={topic.topic_id}
-          className="flex flex-col items-center gap-8 mb-20"
+          className="flex flex-col items-center gap-8 mb-20 md:min-w-[700px]"
           id={topic.topic_name.replace(/\s+/g, "-").toLowerCase()}
         >
           <div className="flex flex-row items-center gap-4">

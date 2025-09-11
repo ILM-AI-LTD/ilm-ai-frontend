@@ -79,19 +79,6 @@ export default function Page() {
 
   const selectedGoal = goals.find((g) => g.id === selectedGoalId);
 
-  const updateSetCompletion = useCallback(
-    (setIndex: number, isCorrect: boolean) => {
-      if (isCorrect) {
-        const newStatus = {
-          ...setCompletionStatusRef.current,
-          [setIndex]: true,
-        };
-        setCompletionStatusRef.current = newStatus;
-        setSetCompletionStatus(newStatus);
-      }
-    },
-    []
-  );
 
   const checkIfAllSetsCompleted = useCallback(
     (currentStatus: Record<number, boolean>, totalSetsCount: number) => {
@@ -120,8 +107,6 @@ export default function Page() {
     question_type: string,
     image: Blob | null
   ) => {
-    console.log("image ----", image);
-    console.log("question_type ----", question_type);
 
     if (!selectedGoal) return;
 
@@ -180,7 +165,7 @@ export default function Page() {
                     setAllQuestionsCompleted(true);
                     setShouldMarkGoalCompleted(true);
                   },
-                  onError: (error: any) => {
+                  onError: () => {
                     setAllQuestionsCompleted(true);
                     setShouldMarkGoalCompleted(false);
                   },
@@ -191,7 +176,7 @@ export default function Page() {
 
           setShowEvaluationButtons(true);
         },
-        onError: (err) => {
+        onError: () => {
           const isCorrect = selectedOption === questionData.answer;
           setEvaluationResult({
             isCorrect,
@@ -228,7 +213,7 @@ export default function Page() {
                     setAllQuestionsCompleted(true);
                     setShouldMarkGoalCompleted(true);
                   },
-                  onError: (error: any) => {
+                  onError: () => {
                     setAllQuestionsCompleted(true);
                     setShouldMarkGoalCompleted(false);
                   },
