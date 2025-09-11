@@ -193,10 +193,14 @@ export default function Page() {
     evaluateAnswer(
       {
         question: currentQuestion.questionText,
-        // correctAnswer: currentQuestion.correctAnswer,
-        correctAnswer: "",
+        correctAnswer: currentQuestion.correctAnswer,
+        // correctAnswer: "",
         currentStepCount: currentQuestion.stepCount.toString(),
         image: image,
+        // chatHistory: currentQuestion.chatHistory
+        //   ? currentQuestion.chatHistory
+        //   : "",
+        chatHistory: "",
       },
       {
         onSuccess: (res) => {
