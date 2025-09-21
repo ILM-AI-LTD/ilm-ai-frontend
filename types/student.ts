@@ -247,6 +247,7 @@ export interface MathFormattedQuestion {
   evaluation?: string;
   is_finished?: boolean;
   chatHistory: null | string;
+  verdict?: string;
 }
 
 export interface MathSampleQuestionsResponse {
@@ -275,5 +276,6 @@ export interface EvaluateMathAnswerResponse {
     is_finished: boolean;
     success: true;
     chatHistory: null | string;
+    verdict: string;
   };
 }
