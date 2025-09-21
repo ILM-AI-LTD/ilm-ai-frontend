@@ -84,7 +84,7 @@ const DescriptiveQuestionComponent: React.FC<
                                   </h3> */}
 
             {/* Show evaluation result if this attempt has been evaluated */}
-            {data.evaluation && (
+            {/* {data.evaluation && (
               <div
                 className={`mb-4 p-3 rounded-lg border ${
                   data.is_finished
@@ -111,7 +111,49 @@ const DescriptiveQuestionComponent: React.FC<
                     data.is_finished ? "text-green-300" : "text-red-300"
                   }`}
                 >
-                  {/* {data.evaluation} */}
+                  <MarkdownRenderer content={data.evaluation} />
+                </p>
+              </div>
+            )} */}
+            {data.evaluation && (
+              <div
+                className={`mb-4 p-3 rounded-lg border ${
+                  data.verdict === "correct"
+                    ? "border-green-500 bg-green-900/20"
+                    : data.verdict === "on track"
+                    ? "border-yellow-500 bg-yellow-900/20"
+                    : "border-red-500 bg-red-900/20"
+                }`}
+              >
+                {/* Only show status header for correct/incorrect, not for "on track" */}
+                {data.verdict !== "on track" && (
+                  <div className="flex items-center gap-2 mb-2">
+                    {data.verdict === "correct" ? (
+                      <CheckCircle className="text-green-400" size={16} />
+                    ) : (
+                      <XCircle className="text-red-400" size={16} />
+                    )}
+                    <span
+                      className={`font-medium ${
+                        data.verdict === "correct"
+                          ? "text-green-400"
+                          : "text-red-400"
+                      }`}
+                    >
+                      {data.verdict === "correct" ? "Correct!" : "Incorrect"}
+                    </span>
+                  </div>
+                )}
+
+                <p
+                  className={`text-sm ${
+                    data.verdict === "correct"
+                      ? "text-green-300"
+                      : data.verdict === "on track"
+                      ? "text-yellow-300"
+                      : "text-red-300"
+                  }`}
+                >
                   <MarkdownRenderer content={data.evaluation} />
                 </p>
               </div>

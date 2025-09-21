@@ -56,6 +56,7 @@ interface AttemptData {
   evaluation?: string;
   is_finished?: boolean;
   nextStepCount?: string | number;
+  verdict?: string;
 }
 
 export default function Page() {
@@ -165,8 +166,14 @@ export default function Page() {
       {
         onSuccess: (res) => {
           // console.log("res ---------- ", res);
-          const { is_finished, evaluation, hint, nextStepCount, chatHistory } =
-            res.data;
+          const {
+            is_finished,
+            evaluation,
+            hint,
+            nextStepCount,
+            chatHistory,
+            verdict,
+          } = res.data;
 
           setNewChatHistory(chatHistory ?? "");
           // Update current attempt with evaluation result
@@ -179,6 +186,7 @@ export default function Page() {
               evaluation,
               is_finished,
               nextStepCount,
+              verdict,
             };
 
             return updatedAttempts;
@@ -305,6 +313,7 @@ export default function Page() {
                                   hint: attempt.hint,
                                   evaluation: attempt.evaluation,
                                   is_finished: attempt.is_finished,
+                                  verdict: attempt.verdict,
                                   stepCount:
                                     Number(attempt.nextStepCount) ||
                                     currentQuestion.stepCount,
