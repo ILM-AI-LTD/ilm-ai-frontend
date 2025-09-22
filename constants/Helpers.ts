@@ -112,6 +112,11 @@ export const studentSideMenu = [
     icon: "/SidebarMenuIcon/Practise_logo.svg",
   },
   {
+    name: "Questions",
+    url: "/student/questions",
+    icon: "/SidebarMenuIcon/Practise_logo.svg",
+  },
+  {
     name: "My Progress",
     url: "/student/my-progress",
     icon: "/SidebarMenuIcon/Progress_logo.svg",

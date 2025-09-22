@@ -186,42 +186,47 @@ const data = {
     {
       name: "Start Learning",
       url: "#",
-      icon: "/StudentMenuIcon/Start_learning_logo.svg",
+      icon: "/SidebarMenuIcon/Start_learning_logo.svg",
     },
     {
       name: "Submit Work",
       url: "#",
-      icon: "/StudentMenuIcon/Submit_logo.svg",
+      icon: "/SidebarMenuIcon/Submit_logo.svg",
     },
     {
       name: "Practise & Test",
       url: "#",
-      icon: "/StudentMenuIcon/Practise_logo.svg",
+      icon: "/SidebarMenuIcon/Practise_logo.svg",
+    },
+    {
+      name: "Questions",
+      url: "/student/questions",
+      icon: "/SidebarMenuIcon/Practise_logo.svg",
     },
     {
       name: "ILM Hub",
       url: "#",
-      icon: "/StudentMenuIcon/ILM_hub_logo.svg",
+      icon: "/SidebarMenuIcon/ILM_hub_logo.svg",
     },
     {
       name: "Leaderboard",
       url: "#",
-      icon: "/StudentMenuIcon/Leaderboard_logo.svg",
+      icon: "/SidebarMenuIcon/Leaderboard_logo.svg",
     },
     {
       name: "Progress",
       url: "#",
-      icon: "/StudentMenuIcon/Progress_logo.svg",
+      icon: "/SidebarMenuIcon/Progress_logo.svg",
     },
     {
       name: "Resume",
       url: "#",
-      icon: "/StudentMenuIcon/Resume_logo.svg",
+      icon: "/SidebarMenuIcon/Resume_logo.svg",
     },
     {
       name: "Settings",
       url: "#",
-      icon: "/StudentMenuIcon/Setting_logo.svg",
+      icon: "/SidebarMenuIcon/Setting_logo.svg",
     },
   ],
 };
