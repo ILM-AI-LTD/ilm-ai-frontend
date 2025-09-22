@@ -1,93 +1,32 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { ArrowRight, Loader2 } from "lucide-react";
 import FillInTheBlanks from "@/components/questions/FillInTheBlanks";
 import GapFillWithWordBank from "@/components/questions/GapFillWithWordBank";
 import CustomButton from "@/components/global/CustomButton";
-import { 
-  QuestionsService, 
-  type QuestionSet, 
-  type FillInTheBlanksData, 
-  type GapFillData 
-} from "@/feature/students/questions/services/questionsService";
+import { useQuestions } from "@/feature/students/questions/hooks/useQuestions";
+import { type FillInTheBlanksData, type GapFillData } from "@/feature/students/questions/services/questionsService";
 
-
-// Example of how to use with different parameters
-// You can pass subjectId and difficulty to filter questions
-// const questions = await QuestionsService.fetchQuestionSets('physics', 'medium');
-
-export default function QuestionsPage() {
-  const [questionSets, setQuestionSets] = useState<QuestionSet[]>([]);
-  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-  const [isLoading, setIsLoading] = useState(true);
-  const [isCompleted, setIsCompleted] = useState(false);
-  const [showFeedback, setShowFeedback] = useState(false);
-  const [userAnswers, setUserAnswers] = useState<Record<string, string>>({});
-  const [error, setError] = useState<string | null>(null);
-
-  // Fetch questions from backend
-  useEffect(() => {
-    const loadQuestions = async () => {
-      try {
-        setIsLoading(true);
-        setError(null);
-        // You can customize this call with parameters:
-        // const questions = await QuestionsService.fetchQuestionSets('physics', 'medium');
-        const questions = await QuestionsService.fetchQuestionSets();
-        setQuestionSets(questions);
-      } catch (err) {
-        setError(err instanceof Error ? err.message : "Failed to load questions. Please try again.");
-        console.error("Error loading questions:", err);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    loadQuestions();
-  }, []);
-
-  const currentQuestion = questionSets[currentQuestionIndex];
-
-  const handleQuestionComplete = (answers: Record<string, string>) => {
-    setUserAnswers(answers);
-    setIsCompleted(true);
-    setShowFeedback(true);
-  };
-
-  const handleNextQuestion = () => {
-    if (currentQuestionIndex < questionSets.length - 1) {
-      setCurrentQuestionIndex(prev => prev + 1);
-    } else {
-      // All questions completed - could redirect or show completion message
-      console.log("All questions completed!");
-      // Reset to first question for demo
-      setCurrentQuestionIndex(0);
-    }
-    setIsCompleted(false);
-    setShowFeedback(false);
-    setUserAnswers({});
-  };
-
-  const handleRetry = () => {
-    setError(null);
-    setIsLoading(true);
-    // Retry loading questions
-    const loadQuestions = async () => {
-      try {
-        const questions = await QuestionsService.fetchQuestionSets();
-        setQuestionSets(questions);
-      } catch (err) {
-        setError(err instanceof Error ? err.message : "Failed to load questions. Please try again.");
-        console.error("Error loading questions:", err);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-    loadQuestions();
-  };
-
+export default function QuestionsPageWithHook() {
+  // Use the custom hook - you can pass parameters like subjectId and difficulty
+  const {
+    questionSets,
+    currentQuestionIndex,
+    currentQuestion,
+    isLoading,
+    error,
+    isCompleted,
+    showFeedback,
+    userAnswers,
+    handleQuestionComplete,
+    handleNextQuestion,
+    handleRetry,
+  } = useQuestions({
+    // subjectId: 'physics', // Uncomment to filter by subject
+    // difficulty: 'medium', // Uncomment to filter by difficulty
+  });
 
   // Loading state
   if (isLoading) {

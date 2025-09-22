@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { CheckCircle, ArrowRight } from "lucide-react";
 import ILMIAssistantv2 from "@/feature/parents/components/setup/common/ILMIAssistantv2";
@@ -35,6 +35,39 @@ const GapFillWithWordBank: React.FC<GapFillWithWordBankProps> = ({
   const [draggedWord, setDraggedWord] = useState<string>("");
   const [dragOverBlank, setDragOverBlank] = useState<string>("");
   const [usedWords, setUsedWords] = useState<Set<string>>(new Set());
+  const [touchStartPos, setTouchStartPos] = useState<{ x: number; y: number } | null>(null);
+  const [isDragging, setIsDragging] = useState(false);
+  const [dragPosition, setDragPosition] = useState<{ x: number; y: number } | null>(null);
+
+  // Global touch move listener for better drag tracking
+  useEffect(() => {
+    const handleGlobalTouchMove = (e: TouchEvent) => {
+      if (isDragging && e.touches.length > 0) {
+        const touch = e.touches[0];
+        setDragPosition({ x: touch.clientX, y: touch.clientY });
+      }
+    };
+
+    const handleGlobalTouchEnd = () => {
+      if (isDragging) {
+        setIsDragging(false);
+        setDraggedWord("");
+        setDragOverBlank("");
+        setTouchStartPos(null);
+        setDragPosition(null);
+      }
+    };
+
+    if (isDragging) {
+      document.addEventListener('touchmove', handleGlobalTouchMove, { passive: false });
+      document.addEventListener('touchend', handleGlobalTouchEnd);
+    }
+
+    return () => {
+      document.removeEventListener('touchmove', handleGlobalTouchMove);
+      document.removeEventListener('touchend', handleGlobalTouchEnd);
+    };
+  }, [isDragging]);
 
   const handleWordSelect = (word: string) => {
     setSelectedWord(word);
@@ -62,6 +95,9 @@ const GapFillWithWordBank: React.FC<GapFillWithWordBankProps> = ({
   const handleDragEnd = () => {
     setDraggedWord("");
     setDragOverBlank("");
+    setIsDragging(false);
+    setTouchStartPos(null);
+    setDragPosition(null);
   };
 
   const handleDragOver = (e: React.DragEvent, questionId: string) => {
@@ -106,6 +142,77 @@ const GapFillWithWordBank: React.FC<GapFillWithWordBankProps> = ({
     }
   };
 
+  // Touch event handlers for mobile drag and drop
+  const handleTouchStart = (e: React.TouchEvent, word: string) => {
+    if (isCompleted || usedWords.has(word)) return;
+    
+    const touch = e.touches[0];
+    setTouchStartPos({ x: touch.clientX, y: touch.clientY });
+    setDragPosition({ x: touch.clientX, y: touch.clientY });
+    setDraggedWord(word);
+    setIsDragging(true);
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    if (!isDragging || !touchStartPos) return;
+    
+    e.preventDefault();
+    const touch = e.touches[0];
+    
+    // Update drag position to follow the finger
+    setDragPosition({ x: touch.clientX, y: touch.clientY });
+    
+    const deltaX = Math.abs(touch.clientX - touchStartPos.x);
+    const deltaY = Math.abs(touch.clientY - touchStartPos.y);
+    
+    // Only start dragging if moved more than 10px
+    if (deltaX > 10 || deltaY > 10) {
+      // Find the element under the touch point
+      const elementBelow = document.elementFromPoint(touch.clientX, touch.clientY);
+      if (elementBelow) {
+        const blankElement = elementBelow.closest('[data-question-id]');
+        if (blankElement) {
+          const questionId = blankElement.getAttribute('data-question-id');
+          if (questionId) {
+            setDragOverBlank(questionId);
+          }
+        }
+      }
+    }
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (!isDragging || !draggedWord) {
+      setIsDragging(false);
+      setTouchStartPos(null);
+      setDragPosition(null);
+      return;
+    }
+
+    const touch = e.changedTouches[0];
+    const elementBelow = document.elementFromPoint(touch.clientX, touch.clientY);
+    
+    if (elementBelow) {
+      const blankElement = elementBelow.closest('[data-question-id]');
+      if (blankElement) {
+        const questionId = blankElement.getAttribute('data-question-id');
+        if (questionId && !answers[questionId] && !usedWords.has(draggedWord)) {
+          setAnswers(prev => ({
+            ...prev,
+            [questionId]: draggedWord
+          }));
+          setUsedWords(prev => new Set([...prev, draggedWord]));
+        }
+      }
+    }
+    
+    setDraggedWord("");
+    setDragOverBlank("");
+    setIsDragging(false);
+    setTouchStartPos(null);
+    setDragPosition(null);
+  };
+
   const handleSubmit = () => {
     onComplete(answers);
     setShowSuccess(true);
@@ -137,6 +244,7 @@ const GapFillWithWordBank: React.FC<GapFillWithWordBankProps> = ({
         return (
           <span key={index} className="inline-block mx-1">
             <div
+              data-question-id={questionId}
               onClick={() => handleBlankClick(questionId)}
               onDragOver={(e) => handleDragOver(e, questionId)}
               onDragLeave={handleDragLeave}
@@ -181,7 +289,7 @@ const GapFillWithWordBank: React.FC<GapFillWithWordBankProps> = ({
   };
 
   return (
-    <div className="w-full">
+    <div className="w-full relative">
       <style jsx>{`
         .drag-over {
           animation: pulse 1s infinite;
@@ -195,6 +303,21 @@ const GapFillWithWordBank: React.FC<GapFillWithWordBankProps> = ({
           z-index: 1000;
         }
       `}</style>
+      
+      {/* Mobile drag indicator that follows the finger */}
+      {isDragging && dragPosition && draggedWord && (
+        <div
+          className="fixed pointer-events-none z-50 px-3 py-2 rounded-lg border border-border bg-background text-xs sm:text-sm font-semibold text-foreground shadow-lg opacity-80"
+          style={{
+            left: dragPosition.x - 30,
+            top: dragPosition.y - 20,
+            transform: 'translate(-50%, -50%)'
+          }}
+        >
+          {draggedWord}
+        </div>
+      )}
+      
       <Card className="border-0 bg-transparent shadow-none">
         <CardHeader className="pb-4">
           <div className="flex items-center gap-4">
@@ -225,15 +348,19 @@ const GapFillWithWordBank: React.FC<GapFillWithWordBankProps> = ({
                     draggable={!isCompleted && !isUsed}
                     onDragStart={(e) => handleDragStart(e, word)}
                     onDragEnd={handleDragEnd}
+                    onTouchStart={(e) => handleTouchStart(e, word)}
+                    onTouchMove={handleTouchMove}
+                    onTouchEnd={handleTouchEnd}
                     className={`
                       px-3 sm:px-4 py-2 rounded-lg border border-border bg-background 
                       transition-all duration-200 text-xs sm:text-sm font-semibold text-foreground
                       ${selectedWord === word ? 'ring-2 ring-primary bg-primary/10' : ''}
                       ${isUsed ? 'opacity-50 cursor-not-allowed bg-muted' : 'cursor-grab hover:bg-accent'}
-                      ${isDragging ? 'opacity-50 scale-95' : ''}
+                      ${isDragging ? 'opacity-50 scale-95 shadow-lg' : ''}
                       ${!isCompleted && !isUsed ? 'hover:shadow-md' : ''}
+                      ${isDragging ? 'touch-none' : ''}
                     `}
-                    onClick={() => !isUsed && handleWordSelect(word)}
+                    onClick={() => !isUsed && !isDragging && handleWordSelect(word)}
                   >
                     {word}
                   </div>
@@ -242,7 +369,7 @@ const GapFillWithWordBank: React.FC<GapFillWithWordBankProps> = ({
             </div>
             <div className="flex justify-between items-center mt-2">
               <p className="text-xs text-foreground/70 leading-relaxed">
-                💡 Tip: Drag words to blanks or click to select, then click a blank to fill
+                💡 Tip: Drag/touch words to blanks or click to select, then click a blank to fill
               </p>
               <div className="text-xs text-foreground/70 font-medium">
                 {Object.keys(answers).length} / {questions.length} filled
