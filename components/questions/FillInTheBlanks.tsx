@@ -65,7 +65,7 @@ const FillInTheBlanks: React.FC<FillInTheBlanksProps> = ({
               placeholder={question.placeholder}
               className={`
                 inline-block w-24 sm:w-32 h-8 text-center border-b-2 border-dashed border-primary/50 
-                bg-transparent focus:border-primary focus:border-solid text-sm
+                bg-transparent focus:border-primary focus:border-solid text-sm text-foreground font-medium
                 ${isCorrect ? 'border-green-500 bg-green-100 dark:bg-green-900/20' : ''}
                 ${showFeedback && !isCorrect && answers[questionId] ? 'border-red-500 bg-red-100 dark:bg-red-900/20' : ''}
               `}
@@ -88,7 +88,7 @@ const FillInTheBlanks: React.FC<FillInTheBlanksProps> = ({
               <CardTitle className="text-2xl font-bold text-foreground mb-2">
                 {title}
               </CardTitle>
-              <p className="text-foreground/80 text-sm">
+              <p className="text-foreground/80 text-sm leading-relaxed">
                 {instructions}
               </p>
             </div>
@@ -98,7 +98,7 @@ const FillInTheBlanks: React.FC<FillInTheBlanksProps> = ({
         <CardContent className="space-y-6">
           <div className="space-y-4">
             {questions.map((question) => (
-              <div key={question.id} className="text-base sm:text-lg leading-relaxed">
+              <div key={question.id} className="text-base sm:text-lg text-foreground leading-relaxed">
                 {renderQuestionText(question)}
               </div>
             ))}
@@ -107,7 +107,7 @@ const FillInTheBlanks: React.FC<FillInTheBlanksProps> = ({
           {showSuccess && (
             <div className="flex items-center gap-2 text-green-600 dark:text-green-400">
               <CheckCircle size={20} />
-              <span className="font-medium">Good!</span>
+              <span className="font-semibold text-foreground">Good!</span>
             </div>
           )}
 
