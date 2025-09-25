@@ -5,12 +5,19 @@ import { Card, CardContent } from "@/components/ui/card";
 import { ArrowRight, Loader2 } from "lucide-react";
 import FillInTheBlanks from "@/components/questions/FillInTheBlanks";
 import GapFillWithWordBank from "@/components/questions/GapFillWithWordBank";
+import TrueFalse from "@/components/questions/TrueFalse";
+import Matching from "@/components/questions/Matching";
+import OddOneOut from "@/components/questions/OddOneOut";
 import CustomButton from "@/components/global/CustomButton";
 import { 
   QuestionsService, 
   type QuestionSet, 
   type FillInTheBlanksData, 
-  type GapFillData 
+  type GapFillData,
+  type TrueFalseData,
+  type MatchingData,
+  type MatchingPair,
+  type OddOneOutData
 } from "@/feature/students/questions/services/questionsService";
 
 
@@ -24,7 +31,7 @@ export default function QuestionsPage() {
   const [isLoading, setIsLoading] = useState(true);
   const [isCompleted, setIsCompleted] = useState(false);
   const [showFeedback, setShowFeedback] = useState(false);
-  const [userAnswers, setUserAnswers] = useState<Record<string, string>>({});
+  const [userAnswers, setUserAnswers] = useState<Record<string, string | boolean> | MatchingPair[]>({});
   const [error, setError] = useState<string | null>(null);
 
   // Fetch questions from backend
@@ -50,7 +57,7 @@ export default function QuestionsPage() {
 
   const currentQuestion = questionSets[currentQuestionIndex];
 
-  const handleQuestionComplete = (answers: Record<string, string>) => {
+  const handleQuestionComplete = (answers: Record<string, string | boolean> | MatchingPair[]) => {
     setUserAnswers(answers);
     setIsCompleted(true);
     setShowFeedback(true);
@@ -156,7 +163,11 @@ export default function QuestionsPage() {
               Question {currentQuestionIndex + 1} of {questionSets.length}
             </span>
             <span className="text-sm text-foreground/70">
-              {currentQuestion.type === "fill-blanks" ? "Fill in the Blanks" : "Gap Fill with Word Bank"}
+              {currentQuestion.type === "fill-blanks" ? "Fill in the Blanks" : 
+               currentQuestion.type === "word-bank" ? "Gap Fill with Word Bank" : 
+               currentQuestion.type === "true-false" ? "True or False" :
+               currentQuestion.type === "matching" ? "Matching/Joining Questions" :
+               "Odd One Out"}
             </span>
           </div>
           <div className="w-full bg-muted rounded-full h-2">
@@ -180,12 +191,42 @@ export default function QuestionsPage() {
                   isCompleted={isCompleted}
                   showFeedback={showFeedback}
                 />
-              ) : (
+              ) : currentQuestion.type === "word-bank" ? (
                 <GapFillWithWordBank
                   title={(currentQuestion.data as GapFillData).title}
                   instructions={(currentQuestion.data as GapFillData).instructions}
                   wordBank={(currentQuestion.data as GapFillData).wordBank}
                   questions={(currentQuestion.data as GapFillData).questions}
+                  onComplete={handleQuestionComplete}
+                  isCompleted={isCompleted}
+                  showFeedback={showFeedback}
+                />
+              ) : currentQuestion.type === "true-false" ? (
+                <TrueFalse
+                  title={(currentQuestion.data as TrueFalseData).title}
+                  instructions={(currentQuestion.data as TrueFalseData).instructions}
+                  questions={(currentQuestion.data as TrueFalseData).questions}
+                  onComplete={handleQuestionComplete}
+                  isCompleted={isCompleted}
+                  showFeedback={showFeedback}
+                />
+              ) : currentQuestion.type === "matching" ? (
+                <Matching
+                  title={(currentQuestion.data as MatchingData).title}
+                  instructions={(currentQuestion.data as MatchingData).instructions}
+                  leftItems={(currentQuestion.data as MatchingData).leftItems}
+                  rightItems={(currentQuestion.data as MatchingData).rightItems}
+                  correctPairs={(currentQuestion.data as MatchingData).correctPairs}
+                  explanation={(currentQuestion.data as MatchingData).explanation}
+                  onComplete={handleQuestionComplete}
+                  isCompleted={isCompleted}
+                  showFeedback={showFeedback}
+                />
+              ) : (
+                <OddOneOut
+                  title={(currentQuestion.data as OddOneOutData).title}
+                  instructions={(currentQuestion.data as OddOneOutData).instructions}
+                  questions={(currentQuestion.data as OddOneOutData).questions}
                   onComplete={handleQuestionComplete}
                   isCompleted={isCompleted}
                   showFeedback={showFeedback}

@@ -25,10 +25,61 @@ export interface GapFillData {
   questions: GapFillQuestion[];
 }
 
+export interface TrueFalseQuestion {
+  id: string;
+  text: string;
+  correctAnswer: boolean;
+}
+
+export interface TrueFalseData {
+  title: string;
+  instructions: string;
+  questions: TrueFalseQuestion[];
+}
+
+export interface MatchingItem {
+  id: string;
+  text: string;
+}
+
+export interface MatchingPair {
+  leftId: string;
+  rightId: string;
+}
+
+export interface MatchingData {
+  title: string;
+  instructions: string;
+  leftItems: MatchingItem[];
+  rightItems: MatchingItem[];
+  correctPairs: MatchingPair[];
+  explanation?: string;
+}
+
+export interface OddOneOutOption {
+  id: string;
+  text: string;
+  isCorrect?: boolean;
+}
+
+export interface OddOneOutQuestion {
+  id: string;
+  text: string;
+  options: OddOneOutOption[];
+  correctAnswer: string;
+  explanation?: string;
+}
+
+export interface OddOneOutData {
+  title: string;
+  instructions: string;
+  questions: OddOneOutQuestion[];
+}
+
 export interface QuestionSet {
   id: string;
-  type: "fill-blanks" | "word-bank";
-  data: FillInTheBlanksData | GapFillData;
+  type: "fill-blanks" | "word-bank" | "true-false" | "matching" | "odd-one-out";
+  data: FillInTheBlanksData | GapFillData | TrueFalseData | MatchingData | OddOneOutData;
 }
 
 // API endpoints
@@ -79,6 +130,116 @@ const mockQuestionSets: QuestionSet[] = [
       ],
     },
   },
+  {
+    id: "set3",
+    type: "true-false",
+    data: {
+      title: "True or False",
+      instructions: "Choose the correct answer. Select True or False for each statement.",
+      questions: [
+        {
+          id: "q1",
+          text: "The Law of Conservation of Energy states that energy cannot be created or destroyed, only transformed from one form to another.",
+          correctAnswer: true,
+        },
+        {
+          id: "q2",
+          text: "Water boils at 100°C at all atmospheric pressures.",
+          correctAnswer: false,
+        },
+        {
+          id: "q3",
+          text: "Photosynthesis is the process by which plants convert sunlight into chemical energy.",
+          correctAnswer: true,
+        },
+      ],
+    },
+  },
+  {
+    id: "set4",
+    type: "matching",
+    data: {
+      title: "Matching/Joining Questions",
+      instructions: "Match the organelles with their functions:",
+      leftItems: [
+        { id: "mitochondria", text: "Mitochondria" },
+        { id: "nucleus", text: "Nucleus" },
+        { id: "ribosomes", text: "Ribosomes" },
+        { id: "chloroplast", text: "Chloroplast" },
+      ],
+      rightItems: [
+        { id: "protein-synthesis", text: "Protein synthesis" },
+        { id: "energy-production", text: "Energy production" },
+        { id: "photosynthesis", text: "Photosynthesis" },
+        { id: "controls-cell", text: "Controls cell activities" },
+      ],
+      correctPairs: [
+        { leftId: "mitochondria", rightId: "energy-production" },
+        { leftId: "nucleus", rightId: "controls-cell" },
+        { leftId: "ribosomes", rightId: "protein-synthesis" },
+        { leftId: "chloroplast", rightId: "photosynthesis" },
+      ],
+      explanation: "Energy cannot be created or destroyed, only changed from one form to another.",
+    },
+  },
+  {
+    id: "set5",
+    type: "odd-one-out",
+    data: {
+      title: "Odd One Out",
+      instructions: "Identify which of the following statements is NOT correct or does NOT belong:",
+      questions: [
+        {
+          id: "q1",
+          text: "Which of the following statements about mechanical energy transfer is NOT correct?",
+          options: [
+            {
+              id: "a",
+              text: "A ball slows down as it rises after being thrown."
+            },
+            {
+              id: "b", 
+              text: "A stretched spring stores energy when twisted or stretched."
+            },
+            {
+              id: "c",
+              text: "A person eating food gets energy for muscles."
+            },
+            {
+              id: "d",
+              text: "Heat moves from hot tea to a metal spoon."
+            }
+          ],
+          correctAnswer: "d",
+          explanation: "Heat transfer is not mechanical, it's thermal energy transfer. The other options all involve mechanical energy transfer or storage."
+        },
+        {
+          id: "q2",
+          text: "Which of the following statements about mechanical energy transfer is NOT correct?",
+          options: [
+            {
+              id: "a",
+              text: "Pushing a swing transfers energy mechanically."
+            },
+            {
+              id: "b",
+              text: "Pulling a door open involves mechanical energy transfer."
+            },
+            {
+              id: "c",
+              text: "Twisting a rubber band stores mechanical energy."
+            },
+            {
+              id: "d",
+              text: "Sunlight warming the Earth is an example of mechanical energy transfer."
+            }
+          ],
+          correctAnswer: "d",
+          explanation: "Sunlight warming the Earth is radiation (electromagnetic energy), not mechanical energy transfer. The other options all involve mechanical energy transfer or storage."
+        }
+      ]
+    }
+  }
 ];
 
 // API service functions
@@ -142,7 +303,7 @@ export class QuestionsService {
    */
   static async submitAnswers(
     questionSetId: string, 
-    answers: Record<string, string>
+    answers: Record<string, string | boolean> | MatchingPair[]
   ): Promise<{ score: number; feedback: string; correctAnswers: Record<string, string> }> {
     try {
       // Replace with actual API call:
@@ -165,17 +326,52 @@ export class QuestionsService {
 
       if (questionSet.type === 'fill-blanks') {
         const data = questionSet.data as FillInTheBlanksData;
+        const stringAnswers = answers as Record<string, string | boolean>;
         data.questions.forEach(question => {
           correctAnswers[question.id] = question.correctAnswer;
-          if (answers[question.id]?.toLowerCase().trim() === question.correctAnswer.toLowerCase().trim()) {
+          if (typeof stringAnswers[question.id] === 'string' && (stringAnswers[question.id] as string).toLowerCase().trim() === question.correctAnswer.toLowerCase().trim()) {
             correctCount++;
           }
         });
-      } else {
+      } else if (questionSet.type === 'word-bank') {
         const data = questionSet.data as GapFillData;
+        const stringAnswers = answers as Record<string, string | boolean>;
         data.questions.forEach(question => {
           correctAnswers[question.id] = question.correctAnswer;
-          if (answers[question.id]?.toLowerCase().trim() === question.correctAnswer.toLowerCase().trim()) {
+          if (typeof stringAnswers[question.id] === 'string' && (stringAnswers[question.id] as string).toLowerCase().trim() === question.correctAnswer.toLowerCase().trim()) {
+            correctCount++;
+          }
+        });
+      } else if (questionSet.type === 'true-false') {
+        const data = questionSet.data as TrueFalseData;
+        const booleanAnswers = answers as Record<string, string | boolean>;
+        data.questions.forEach(question => {
+          correctAnswers[question.id] = question.correctAnswer.toString();
+          if (booleanAnswers[question.id] === question.correctAnswer) {
+            correctCount++;
+          }
+        });
+      } else if (questionSet.type === 'matching') {
+        const data = questionSet.data as MatchingData;
+        const userPairs = answers as MatchingPair[];
+        data.correctPairs.forEach(correctPair => {
+          const userMatch = userPairs.find(pair => 
+            pair.leftId === correctPair.leftId && pair.rightId === correctPair.rightId
+          );
+          if (userMatch) {
+            correctCount++;
+          }
+        });
+        // Store correct pairs as string for consistency
+        data.correctPairs.forEach(pair => {
+          correctAnswers[`${pair.leftId}-${pair.rightId}`] = `${pair.leftId}-${pair.rightId}`;
+        });
+      } else if (questionSet.type === 'odd-one-out') {
+        const data = questionSet.data as OddOneOutData;
+        const stringAnswers = answers as Record<string, string>;
+        data.questions.forEach(question => {
+          correctAnswers[question.id] = question.correctAnswer;
+          if (stringAnswers[question.id] === question.correctAnswer) {
             correctCount++;
           }
         });
@@ -183,7 +379,13 @@ export class QuestionsService {
 
       const totalQuestions = questionSet.type === 'fill-blanks' 
         ? (questionSet.data as FillInTheBlanksData).questions.length 
-        : (questionSet.data as GapFillData).questions.length;
+        : questionSet.type === 'word-bank'
+        ? (questionSet.data as GapFillData).questions.length
+        : questionSet.type === 'true-false'
+        ? (questionSet.data as TrueFalseData).questions.length
+        : questionSet.type === 'matching'
+        ? (questionSet.data as MatchingData).correctPairs.length
+        : (questionSet.data as OddOneOutData).questions.length;
       
       const score = Math.round((correctCount / totalQuestions) * 100);
       
@@ -227,11 +429,4 @@ export class QuestionsService {
   }
 }
 
-// Export types for use in components
-export type {
-  FillInTheBlanksQuestion,
-  GapFillQuestion,
-  FillInTheBlanksData,
-  GapFillData,
-  QuestionSet
-};
+// Types are already exported as interfaces above
