@@ -15,9 +15,9 @@ interface UseQuestionsReturn {
   error: string | null;
   isCompleted: boolean;
   showFeedback: boolean;
-  userAnswers: Record<string, string>;
+  userAnswers: Record<string, string | number>;
   setCurrentQuestionIndex: (index: number) => void;
-  handleQuestionComplete: (answers: Record<string, string>) => void;
+  handleQuestionComplete: (answers: Record<string, string | number>) => void;
   handleNextQuestion: () => void;
   handleRetry: () => void;
   resetAnswers: () => void;
@@ -33,7 +33,7 @@ export const useQuestions = (options: UseQuestionsOptions = {}): UseQuestionsRet
   const [error, setError] = useState<string | null>(null);
   const [isCompleted, setIsCompleted] = useState(false);
   const [showFeedback, setShowFeedback] = useState(false);
-  const [userAnswers, setUserAnswers] = useState<Record<string, string>>({});
+  const [userAnswers, setUserAnswers] = useState<Record<string, string | number>>({});
 
   const currentQuestion = questionSets[currentQuestionIndex] || null;
 
@@ -52,7 +52,7 @@ export const useQuestions = (options: UseQuestionsOptions = {}): UseQuestionsRet
     }
   };
 
-  const handleQuestionComplete = (answers: Record<string, string>) => {
+  const handleQuestionComplete = (answers: Record<string, string | number>) => {
     setUserAnswers(answers);
     setIsCompleted(true);
     setShowFeedback(true);

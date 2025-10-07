@@ -8,6 +8,10 @@ import GapFillWithWordBank from "@/components/questions/GapFillWithWordBank";
 import TrueFalse from "@/components/questions/TrueFalse";
 import Matching from "@/components/questions/Matching";
 import OddOneOut from "@/components/questions/OddOneOut";
+import SliderRange from "@/components/questions/SliderRange";
+import MultipleCorrect from "@/components/questions/MultipleCorrect";
+import Ordering from "@/components/questions/Ordering";
+import PracticalBased from "@/components/questions/PracticalBased";
 import CustomButton from "@/components/global/CustomButton";
 import { 
   QuestionsService, 
@@ -17,7 +21,11 @@ import {
   type TrueFalseData,
   type MatchingData,
   type MatchingPair,
-  type OddOneOutData
+  type OddOneOutData,
+  type SliderRangeData,
+  type MultipleCorrectData,
+  type OrderingData,
+  type PracticalBasedData
 } from "@/feature/students/questions/services/questionsService";
 
 
@@ -31,7 +39,7 @@ export default function QuestionsPage() {
   const [isLoading, setIsLoading] = useState(true);
   const [isCompleted, setIsCompleted] = useState(false);
   const [showFeedback, setShowFeedback] = useState(false);
-  const [userAnswers, setUserAnswers] = useState<Record<string, string | boolean> | MatchingPair[]>({});
+  const [userAnswers, setUserAnswers] = useState<Record<string, string | boolean | number | string[]> | MatchingPair[]>({});
   const [error, setError] = useState<string | null>(null);
 
   // Fetch questions from backend
@@ -57,7 +65,7 @@ export default function QuestionsPage() {
 
   const currentQuestion = questionSets[currentQuestionIndex];
 
-  const handleQuestionComplete = (answers: Record<string, string | boolean> | MatchingPair[]) => {
+  const handleQuestionComplete = (answers: Record<string, string | boolean | number | string[]> | MatchingPair[]) => {
     setUserAnswers(answers);
     setIsCompleted(true);
     setShowFeedback(true);
@@ -167,6 +175,10 @@ export default function QuestionsPage() {
                currentQuestion.type === "word-bank" ? "Gap Fill with Word Bank" : 
                currentQuestion.type === "true-false" ? "True or False" :
                currentQuestion.type === "matching" ? "Matching/Joining Questions" :
+               currentQuestion.type === "slider-range" ? "Slider/Range Questions" :
+               currentQuestion.type === "multiple-correct" ? "MCQ Multiple Select" :
+               currentQuestion.type === "ordering" ? "Ordering/Sequencing" :
+               currentQuestion.type === "practical-based" ? "Practical-Based Questions" :
                "Odd One Out"}
             </span>
           </div>
@@ -218,6 +230,42 @@ export default function QuestionsPage() {
                   rightItems={(currentQuestion.data as MatchingData).rightItems}
                   correctPairs={(currentQuestion.data as MatchingData).correctPairs}
                   explanation={(currentQuestion.data as MatchingData).explanation}
+                  onComplete={handleQuestionComplete}
+                  isCompleted={isCompleted}
+                  showFeedback={showFeedback}
+                />
+              ) : currentQuestion.type === "slider-range" ? (
+                <SliderRange
+                  title={(currentQuestion.data as SliderRangeData).title}
+                  instructions={(currentQuestion.data as SliderRangeData).instructions}
+                  questions={(currentQuestion.data as SliderRangeData).questions}
+                  onComplete={handleQuestionComplete}
+                  isCompleted={isCompleted}
+                  showFeedback={showFeedback}
+                />
+              ) : currentQuestion.type === "multiple-correct" ? (
+                <MultipleCorrect
+                  title={(currentQuestion.data as MultipleCorrectData).title}
+                  instructions={(currentQuestion.data as MultipleCorrectData).instructions}
+                  questions={(currentQuestion.data as MultipleCorrectData).questions}
+                  onComplete={handleQuestionComplete}
+                  isCompleted={isCompleted}
+                  showFeedback={showFeedback}
+                />
+              ) : currentQuestion.type === "ordering" ? (
+                <Ordering
+                  title={(currentQuestion.data as OrderingData).title}
+                  instructions={(currentQuestion.data as OrderingData).instructions}
+                  questions={(currentQuestion.data as OrderingData).questions}
+                  onComplete={handleQuestionComplete}
+                  isCompleted={isCompleted}
+                  showFeedback={showFeedback}
+                />
+              ) : currentQuestion.type === "practical-based" ? (
+                <PracticalBased
+                  title={(currentQuestion.data as PracticalBasedData).title}
+                  instructions={(currentQuestion.data as PracticalBasedData).instructions}
+                  questions={(currentQuestion.data as PracticalBasedData).questions}
                   onComplete={handleQuestionComplete}
                   isCompleted={isCompleted}
                   showFeedback={showFeedback}

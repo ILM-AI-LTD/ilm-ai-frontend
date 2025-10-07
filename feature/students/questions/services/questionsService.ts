@@ -76,10 +76,83 @@ export interface OddOneOutData {
   questions: OddOneOutQuestion[];
 }
 
+export interface SliderRangeQuestion {
+  id: string;
+  text: string;
+  min: number;
+  max: number;
+  step: number;
+  minLabel: string;
+  maxLabel: string;
+  correctAnswer: number;
+  unit?: string;
+  tolerance?: number;
+}
+
+export interface SliderRangeData {
+  title: string;
+  instructions: string;
+  questions: SliderRangeQuestion[];
+}
+
+export interface MultipleCorrectOption {
+  id: string;
+  text: string;
+}
+
+export interface MultipleCorrectQuestion {
+  id: string;
+  text: string;
+  options: MultipleCorrectOption[];
+  correctAnswers: string[];
+  explanation?: string;
+}
+
+export interface MultipleCorrectData {
+  title: string;
+  instructions: string;
+  questions: MultipleCorrectQuestion[];
+}
+
+export interface PracticalBasedQuestion {
+  id: string;
+  text: string;
+  videoUrl?: string;
+  imageUrl?: string;
+  placeholder?: string;
+  sampleAnswer?: string;
+  minWords?: number;
+}
+
+export interface PracticalBasedData {
+  title: string;
+  instructions?: string;
+  questions: PracticalBasedQuestion[];
+}
+
+export interface OrderingItem {
+  id: string;
+  text: string;
+  correctPosition: number;
+}
+
+export interface OrderingQuestion {
+  id: string;
+  text: string;
+  items: OrderingItem[];
+  explanation?: string;
+}
+
+export interface OrderingData {
+  title: string;
+  instructions: string;
+  questions: OrderingQuestion[];
+}
+
 export interface QuestionSet {
   id: string;
-  type: "fill-blanks" | "word-bank" | "true-false" | "matching" | "odd-one-out";
-  data: FillInTheBlanksData | GapFillData | TrueFalseData | MatchingData | OddOneOutData;
+  type: "fill-blanks" | "word-bank" | "true-false" | "matching" | "odd-one-out" | "slider-range" | "multiple-correct" | "practical-based" | "ordering";
+  data: FillInTheBlanksData | GapFillData | TrueFalseData | MatchingData | OddOneOutData | SliderRangeData | MultipleCorrectData | PracticalBasedData | OrderingData;
 }
 
 // API endpoints
@@ -239,6 +312,151 @@ const mockQuestionSets: QuestionSet[] = [
         }
       ]
     }
+  },
+  {
+    id: "set6",
+    type: "slider-range",
+    data: {
+      title: "Slider/Range Questions",
+      instructions: "Perfect for numerical ranges, percentages, and continuous values",
+      questions: [
+        {
+          id: "q1",
+          text: "What is the approximate pH level of pure water?",
+          min: 0,
+          max: 14,
+          step: 1,
+          minLabel: "Acidic",
+          maxLabel: "Basic",
+          correctAnswer: 7,
+          unit: "PH",
+          tolerance: 0
+        },
+        {
+          id: "q2",
+          text: "At what temperature does water boil at sea level?",
+          min: 0,
+          max: 150,
+          step: 5,
+          minLabel: "Freezing",
+          maxLabel: "Very Hot",
+          correctAnswer: 100,
+          unit: "°C",
+          tolerance: 5
+        },
+        {
+          id: "q3",
+          text: "What percentage of Earth's surface is covered by water?",
+          min: 0,
+          max: 100,
+          step: 5,
+          minLabel: "None",
+          maxLabel: "All",
+          correctAnswer: 70,
+          unit: "%",
+          tolerance: 5
+        }
+      ]
+    }
+  },
+  {
+    id: "set7",
+    type: "multiple-correct",
+    data: {
+      title: "MCQ multiple select",
+      instructions: "Tick two boxes.",
+      questions: [
+        {
+          id: "q1",
+          text: "Which two statements are correct about nuclear fission?",
+          options: [
+            {
+              id: "a",
+              text: "It happens when small nuclei join together."
+            },
+            {
+              id: "b",
+              text: "It releases energy when heavy nuclei split."
+            },
+            {
+              id: "c",
+              text: "It is the process that powers the Sun."
+            },
+            {
+              id: "d",
+              text: "It is used in nuclear power stations."
+            }
+          ],
+          correctAnswers: ["b", "d"],
+          explanation: "Nuclear fission occurs when heavy nuclei split, releasing energy. This process is used in nuclear power stations."
+        },
+        {
+          id: "q2",
+          text: "Which three of the following are renewable energy sources?",
+          options: [
+            {
+              id: "a",
+              text: "Coal"
+            },
+            {
+              id: "b",
+              text: "Solar power"
+            },
+            {
+              id: "c",
+              text: "Wind power"
+            },
+            {
+              id: "d",
+              text: "Natural gas"
+            },
+            {
+              id: "e",
+              text: "Hydroelectric power"
+            }
+          ],
+          correctAnswers: ["b", "c", "e"],
+          explanation: "Solar, wind, and hydroelectric power are renewable energy sources that naturally replenish."
+        }
+      ]
+    }
+  },
+  {
+    id: "set8",
+    type: "ordering",
+    data: {
+      title: "Matching/Joining Questions",
+      instructions: "Ordering/Sequencing",
+      questions: [
+        {
+          id: "q1",
+          text: "Arrange the steps of mitosis in the correct order:",
+          items: [
+            { id: "prophase", text: "Prophase", correctPosition: 0 },
+            { id: "metaphase", text: "Metaphase", correctPosition: 1 },
+            { id: "anaphase", text: "Anaphase", correctPosition: 2 },
+            { id: "telophase", text: "Telophase", correctPosition: 3 }
+          ],
+          explanation: "Mitosis proceeds through Prophase, Metaphase, Anaphase, and Telophase in that order."
+        }
+      ]
+    }
+  },
+  {
+    id: "set9",
+    type: "practical-based",
+    data: {
+      title: "Practical-Based Questions",
+      questions: [
+        {
+          id: "q1",
+          text: "You are conducting an experiment to test the effect of temperature on enzyme activity. Design an experiment including materials needed, procedure, and expected results. What safety precautions would you take?",
+          placeholder: "Describe your experimental design, procedure, and analysis ...",
+          minWords: 50,
+          sampleAnswer: "Materials needed:\n- Enzyme solution (e.g., catalase)\n- Hydrogen peroxide substrate\n- Test tubes and water baths at different temperatures (0°C, 20°C, 37°C, 60°C, 100°C)\n- Thermometer\n- Timer\n- Safety goggles and lab coat\n\nProcedure:\n1. Set up water baths at different temperatures\n2. Add equal amounts of enzyme solution to test tubes\n3. Place tubes in water baths for 5 minutes to equilibrate\n4. Add equal amounts of hydrogen peroxide to each tube\n5. Measure reaction rate by observing oxygen bubble formation\n6. Record results at 30-second intervals for 5 minutes\n\nExpected results:\n- Optimal activity around 37°C (human body temperature)\n- Reduced activity at low temperatures\n- Denaturation at high temperatures (>60°C)\n\nSafety precautions:\n- Wear safety goggles and lab coat\n- Handle hydrogen peroxide carefully as it's an oxidizing agent\n- Be cautious with hot water baths\n- Clean up spills immediately\n- Dispose of materials properly"
+        }
+      ]
+    }
   }
 ];
 
@@ -303,7 +521,7 @@ export class QuestionsService {
    */
   static async submitAnswers(
     questionSetId: string, 
-    answers: Record<string, string | boolean> | MatchingPair[]
+    answers: Record<string, string | boolean | number | string[]> | MatchingPair[]
   ): Promise<{ score: number; feedback: string; correctAnswers: Record<string, string> }> {
     try {
       // Replace with actual API call:
@@ -375,6 +593,51 @@ export class QuestionsService {
             correctCount++;
           }
         });
+      } else if (questionSet.type === 'slider-range') {
+        const data = questionSet.data as SliderRangeData;
+        const numberAnswers = answers as Record<string, number>;
+        data.questions.forEach(question => {
+          correctAnswers[question.id] = question.correctAnswer.toString();
+          const tolerance = question.tolerance || 0;
+          if (Math.abs(numberAnswers[question.id] - question.correctAnswer) <= tolerance) {
+            correctCount++;
+          }
+        });
+      } else if (questionSet.type === 'multiple-correct') {
+        const data = questionSet.data as MultipleCorrectData;
+        const arrayAnswers = answers as Record<string, string[]>;
+        data.questions.forEach(question => {
+          correctAnswers[question.id] = question.correctAnswers.join(', ');
+          const userAnswers = arrayAnswers[question.id] || [];
+          // Check if arrays have same length and same elements
+          if (userAnswers.length === question.correctAnswers.length &&
+              question.correctAnswers.every(ans => userAnswers.includes(ans))) {
+            correctCount++;
+          }
+        });
+      } else if (questionSet.type === 'ordering') {
+        const data = questionSet.data as OrderingData;
+        const arrayAnswers = answers as Record<string, string[]>;
+        data.questions.forEach(question => {
+          const correctOrder = [...question.items]
+            .sort((a, b) => a.correctPosition - b.correctPosition)
+            .map(item => item.id);
+          correctAnswers[question.id] = correctOrder.join(' → ');
+          const userOrder = arrayAnswers[question.id] || [];
+          if (JSON.stringify(userOrder) === JSON.stringify(correctOrder)) {
+            correctCount++;
+          }
+        });
+      } else if (questionSet.type === 'practical-based') {
+        const data = questionSet.data as PracticalBasedData;
+        const stringAnswers = answers as Record<string, string>;
+        data.questions.forEach(question => {
+          correctAnswers[question.id] = "Submitted for review";
+          // For practical-based questions, just check if answer is provided
+          if (stringAnswers[question.id] && stringAnswers[question.id].trim().length > 0) {
+            correctCount++;
+          }
+        });
       }
 
       const totalQuestions = questionSet.type === 'fill-blanks' 
@@ -385,6 +648,14 @@ export class QuestionsService {
         ? (questionSet.data as TrueFalseData).questions.length
         : questionSet.type === 'matching'
         ? (questionSet.data as MatchingData).correctPairs.length
+        : questionSet.type === 'slider-range'
+        ? (questionSet.data as SliderRangeData).questions.length
+        : questionSet.type === 'multiple-correct'
+        ? (questionSet.data as MultipleCorrectData).questions.length
+        : questionSet.type === 'ordering'
+        ? (questionSet.data as OrderingData).questions.length
+        : questionSet.type === 'practical-based'
+        ? (questionSet.data as PracticalBasedData).questions.length
         : (questionSet.data as OddOneOutData).questions.length;
       
       const score = Math.round((correctCount / totalQuestions) * 100);
